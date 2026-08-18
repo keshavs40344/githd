@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-devanagari: 'Noto Sans Devanagari', serif;
+  
+  --color-obsidian-950: #050508;
+  --color-obsidian-900: #0a0a10;
+  --color-obsidian-800: #121118;
+  --color-obsidian-700: #1a1825;
+  --color-obsidian-600: #252333;
+  --color-obsidian-500: #363347;
+  
+  --color-gold-50: #fffbeb;
+  --color-gold-100: #fff0a6;
+  --color-gold-200: #ffe066;
+  --color-gold-300: #ffd633;
+  --color-gold-400: #dfa837;
+  --color-gold-500: #c4912a;
+  --color-gold-600: #a67522;
+  --color-gold-700: #7a5518;
+  --color-gold-800: #3a2c14;
+  
+  --color-sattva: #34d399;
+  --color-rajas: #f97316;
+  --color-tamas: #64748b;
+}
+
+@layer base {
+  * {
+    @apply border-obsidian-700;
+  }
+  body {
+    @apply bg-obsidian-950 text-gold-100 antialiased;
+    font-family: var(--font-sans);
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-obsidian-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-obsidian-600 rounded-full;
+  }
+}

@@ -1,0 +1,187 @@
+[
+  {
+    "chapter": 2,
+    "verse": 47,
+    "devanagari": "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥",
+    "iast": "karmaṇyevādhikāraste mā phaleṣu kadācana\nmā karmaphalaheturbhūrmā te saṅgo'stvakarmaṇi",
+    "translation_en": "You have a right to perform your prescribed duty, but you are not entitled to the fruits of action. Never consider yourself the cause of the results of your activities, and never be attached to not doing your duty.",
+    "translation_hi": "कर्म पर ही तुम्हारा अधिकार है, कर्म के फलों में कभी नहीं। इसलिए कर्म को फल के लिए मत करो और न ही काम न करने में तुम्हारी आसक्ति हो।",
+    "practical_insight": "Focus purely on the excellence of your effort without obsessing over outcomes. Detachment from results eliminates anxiety and unlocks peak creative performance.",
+    "anvaya_tokens": [
+      { "word": "कर्मणि", "iast": "karmaṇi", "dhatu": "kṛ", "vibhakti": "Locative Singular", "meaning_en": "in prescribed duty/action", "meaning_hi": "कर्म में" },
+      { "word": "एव", "iast": "eva", "dhatu": "-", "vibhakti": "Indeclinable", "meaning_en": "only / certainly", "meaning_hi": "ही" },
+      { "word": "अधिकारः", "iast": "adhikāraḥ", "dhatu": "adhikṛ", "vibhakti": "Nominative Singular", "meaning_en": "right / authority", "meaning_hi": "अधिकार" },
+      { "word": "ते", "iast": "te", "dhatu": "yuṣmad", "vibhakti": "Genitive Singular", "meaning_en": "your", "meaning_hi": "तुम्हारा" },
+      { "word": "मा", "iast": "mā", "dhatu": "-", "vibhakti": "Indeclinable", "meaning_en": "never / not", "meaning_hi": "मत / कभी नहीं" },
+      { "word": "फलेषु", "iast": "phaleṣu", "dhatu": "phala", "vibhakti": "Locative Plural", "meaning_en": "in the fruits/results", "meaning_hi": "फलों में" },
+      { "word": "कदाचन", "iast": "kadācana", "dhatu": "-", "vibhakti": "Indeclinable", "meaning_en": "at any time", "meaning_hi": "कभी भी" },
+      { "word": "अकर्मणि", "iast": "akarmaṇi", "dhatu": "-", "vibhakti": "Locative Singular", "meaning_en": "in inaction / passivity", "meaning_hi": "कर्म न करने में" }
+    ]
+  },
+  {
+    "chapter": 2,
+    "verse": 14,
+    "devanagari": "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः।\nआगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥",
+    "iast": "mātrāsparśāstu kaunteya śītoṣṇasukhaduḥkhadāḥ\nāgamāpāyino'nityāstāṃstitikṣasva bhārata",
+    "translation_en": "O son of Kunti, the nonpermanent appearance of happiness and distress, and their disappearance in due course, are like the appearance and disappearance of winter and summer seasons. They arise from sense perception, O scion of Bharata, and one must learn to tolerate them without being disturbed.",
+    "translation_hi": "हे कुन्तीपुत्र! सर्दी-गर्मी और सुख-दुःख देने वाले इन्द्रिय और विषयों के संयोग तो उत्पत्ति-विनाशशील और अनित्य हैं, इसलिए हे भारत! उनको सहन करो।",
+    "practical_insight": "All sensory and emotional storms are cyclical and transient. Cultivating psychological endurance (Titiksha) keeps your intellect grounded through market cycles and emotional shifts.",
+    "anvaya_tokens": [
+      { "word": "मात्रास्पर्शाः", "iast": "mātrāsparśāḥ", "dhatu": "spṛś", "vibhakti": "Nominative Plural", "meaning_en": "contacts of senses with objects", "meaning_hi": "इन्द्रियों के विषय-संयोग" },
+      { "word": "तु", "iast": "tu", "dhatu": "-", "vibhakti": "Indeclinable", "meaning_en": "indeed / but", "meaning_hi": "तो" },
+      { "word": "कौन्तेय", "iast": "kaunteya", "dhatu": "-", "vibhakti": "Vocative Singular", "meaning_en": "O son of Kunti", "meaning_hi": "हे कुंतीपुत्र" },
+      { "word": "शीतोष्णसुखदुःखदाः", "iast": "śītoṣṇasukhaduḥkhadāḥ", "dhatu": "dā", "vibhakti": "Nominative Plural", "meaning_en": "giving cold, heat, pleasure, pain", "meaning_hi": "सर्दी-गर्मी, सुख-दुःख देने वाले" },
+      { "word": "आगमापायिनः", "iast": "āgamāpāyinaḥ", "dhatu": "i / yā", "vibhakti": "Nominative Plural", "meaning_en": "having beginning and end", "meaning_hi": "आने-जाने वाले" },
+      { "word": "अनित्याः", "iast": "anityāḥ", "dhatu": "-", "vibhakti": "Nominative Plural", "meaning_en": "temporary / impermanent", "meaning_hi": "अनित्य / क्षणभंगुर" },
+      { "word": "तितिक्षस्व", "iast": "titikṣasva", "dhatu": "tij", "vibhakti": "Imperative 2nd Person", "meaning_en": "endure / tolerate with composure", "meaning_hi": "सहन करो" }
+    ]
+  },
+  {
+    "chapter": 2,
+    "verse": 48,
+    "devanagari": "योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय।\nसिद्ध्यसिद्ध्योः समो भूत्वा समत्वं योग उच्यते॥",
+    "iast": "yogasthaḥ kuru karmāṇi saṅgaṃ tyaktvā dhanañjaya\nsiddhyasiddhyoḥ samo bhūtvā samatvaṃ yoga ucyate",
+    "translation_en": "Perform your duty equipoised, O Arjuna, abandoning all attachment to success or failure. Such equanimity of mind is called Yoga.",
+    "translation_hi": "हे धनञ्जय! आसक्ति को त्यागकर तथा सिद्धि और असिद्धि में समान बुद्धि वाले होकर योग में स्थित हुए कर्म करो; यह समत्व ही योग कहलाता है।",
+    "practical_insight": "True Yoga is not physical posture alone; it is unwavering mental equanimity (Samatvam) under both victory and defeat.",
+    "anvaya_tokens": [
+      { "word": "योगस्थः", "iast": "yogasthaḥ", "dhatu": "sthā", "vibhakti": "Nominative Singular", "meaning_en": "established in equanimity / Yoga", "meaning_hi": "योग में स्थित" },
+      { "word": "कुरु", "iast": "kuru", "dhatu": "kṛ", "vibhakti": "Imperative 2nd Person", "meaning_en": "perform / execute", "meaning_hi": "करो" },
+      { "word": "कर्माणि", "iast": "karmāṇi", "dhatu": "kṛ", "vibhakti": "Accusative Plural", "meaning_en": "duties / actions", "meaning_hi": "कर्मों को" },
+      { "word": "सङ्गम्", "iast": "saṅgam", "dhatu": "sañj", "vibhakti": "Accusative Singular", "meaning_en": "attachment / clinging", "meaning_hi": "आसक्ति को" },
+      { "word": "त्यक्त्वा", "iast": "tyaktvā", "dhatu": "tyaj", "vibhakti": "Gerund / Absolutive", "meaning_en": "having abandoned", "meaning_hi": "त्यागकर" },
+      { "word": "समत्वम्", "iast": "samatvam", "dhatu": "sama", "vibhakti": "Nominative Singular", "meaning_en": "evenness / equanimity", "meaning_hi": "समभाव / समत्व" },
+      { "word": "उच्यते", "iast": "ucyate", "dhatu": "vac", "vibhakti": "Passive Present 3rd Person", "meaning_en": "is called / declared", "meaning_hi": "कहा जाता है" }
+    ]
+  },
+  {
+    "chapter": 2,
+    "verse": 62,
+    "devanagari": "ध्यायतो विषयान्पुंसः सङ्गस्तेषूपजायते।\nसङ्गात्सञ्जायते कामः कामात्क्रोधोऽभिजायते॥",
+    "iast": "dhyāyato viṣayānpuṃsaḥ saṅgasteṣūpajāyate\nsaṅgātsañjāyate kāmaḥ kāmātkrodho'bhijāyate",
+    "translation_en": "While contemplating the objects of the senses, a person develops attachment for them, and from such attachment lust/craving develops, and from craving anger arises.",
+    "translation_hi": "विषयों का निरन्तर चिन्तन करने वाले पुरुष की उन विषयों में आसक्ति उत्पन्न हो जाती है; आसक्ति से कामना उत्पन्न होती है और कामना में बाधा पड़ने से क्रोध उत्पन्न होता है।",
+    "practical_insight": "Mental rumination is the root trigger of addictions and anger. Guard your attentional focus before desires turn into compulsive rage.",
+    "anvaya_tokens": [
+      { "word": "ध्यायतः", "iast": "dhyāyataḥ", "dhatu": "dhyai", "vibhakti": "Genitive Singular", "meaning_en": "of one contemplating", "meaning_hi": "चिन्तन करने वाले का" },
+      { "word": "विषयान्", "iast": "viṣayān", "dhatu": "-", "vibhakti": "Accusative Plural", "meaning_en": "sense objects", "meaning_hi": "विषयों को" },
+      { "word": "सङ्गः", "iast": "saṅgaḥ", "dhatu": "sañj", "vibhakti": "Nominative Singular", "meaning_en": "attachment", "meaning_hi": "आसक्ति" },
+      { "word": "कामः", "iast": "kāmaḥ", "dhatu": "kam", "vibhakti": "Nominative Singular", "meaning_en": "desire / craving", "meaning_hi": "कामना" },
+      { "word": "क्रोधः", "iast": "krodhaḥ", "dhatu": "krudh", "vibhakti": "Nominative Singular", "meaning_en": "anger / wrath", "meaning_hi": "क्रोध" }
+    ]
+  },
+  {
+    "chapter": 2,
+    "verse": 63,
+    "devanagari": "क्रोधाद्भवति संमोहः संमोहात्स्मृतिविभ्रमः।\nस्मृतिभ्रंशाद्बुद्धिनाशो बुद्धिनाशात्प्रणश्यति॥",
+    "iast": "krodhādbhavati saṃmohaḥ saṃmohātsmṛtivibhramaḥ\nsmṛtibhraṃśādbuddhināśo buddhināśātpraṇaśyati",
+    "translation_en": "From anger arises delusion; from delusion confusion of memory; from confusion of memory loss of intellect; and from loss of intellect a person is ruined.",
+    "translation_hi": "क्रोध से सम्मोह (अविवेक) उत्पन्न होता है; सम्मोह से स्मृति भ्रमित हो जाती है; स्मृति के भ्रमित होने से बुद्धि (विवेक) नष्ट हो जाती है, और बुद्धि नष्ट होने से मनुष्य का सर्वनाश हो जाता है।",
+    "practical_insight": "The neuro-psychological ladder of fall: Anger -> Delusion -> Memory Loss -> Loss of Reason -> Ruin. Break the chain at the earliest impulse.",
+    "anvaya_tokens": [
+      { "word": "क्रोधात्", "iast": "krodhāt", "dhatu": "krudh", "vibhakti": "Ablative Singular", "meaning_en": "from anger", "meaning_hi": "क्रोध से" },
+      { "word": "संमोहः", "iast": "saṃmohaḥ", "dhatu": "muh", "vibhakti": "Nominative Singular", "meaning_en": "clouded judgment / delusion", "meaning_hi": "अविवेक / मोह" },
+      { "word": "स्मृतिविभ्रमः", "iast": "smṛtivibhramaḥ", "dhatu": "smṛ / bhram", "vibhakti": "Nominative Singular", "meaning_en": "loss of moral memory", "meaning_hi": "स्मृति का भ्रमित होना" },
+      { "word": "बुद्धिनाशः", "iast": "buddhināśaḥ", "dhatu": "budh / naś", "vibhakti": "Nominative Singular", "meaning_en": "destruction of discernment", "meaning_hi": "विवेक का विनाश" },
+      { "word": "प्रणश्यति", "iast": "praṇaśyati", "dhatu": "naś", "vibhakti": "Present 3rd Person", "meaning_en": "he perishes / is ruined", "meaning_hi": "नष्ट हो जाता है" }
+    ]
+  },
+  {
+    "chapter": 3,
+    "verse": 35,
+    "devanagari": "श्रेयान्स्वधर्मो विगुणः परधर्मात्स्वनुष्ठितात्।\nस्वधर्मे निधनं श्रेयः परधर्मो भयावहः॥",
+    "iast": "śreyānsvadharmo viguṇaḥ paradharmātsvanuṣṭhitāt\nsvadharme nidhanaṃ śreyaḥ paradharmo bhayāvahaḥ",
+    "translation_en": "It is far better to perform one's own natural prescribed duty, even though tinged with faults, than another's duty perfectly executed. Destruction in the course of performing one's own duty is auspicious, but engaging in another's duty is perilous.",
+    "translation_hi": "अच्छी प्रकार आचरण किए हुए दूसरे के धर्म की अपेक्षा गुणरहित भी अपना धर्म श्रेष्ठ है। अपने धर्म में मरना भी कल्याणकारक है, किन्तु दूसरे का धर्म भय को देने वाला है।",
+    "practical_insight": "Authenticity over imitation. Living your authentic purpose (Svadharma), despite struggles, is infinitely healthier than living a borrowed life.",
+    "anvaya_tokens": [
+      { "word": "श्रेयान्", "iast": "śreyān", "dhatu": "śrī", "vibhakti": "Nominative Singular", "meaning_en": "far superior / better", "meaning_hi": "अधिक कल्याणकारी" },
+      { "word": "स्वधर्मः", "iast": "svadharmaḥ", "dhatu": "dhṛ", "vibhakti": "Nominative Singular", "meaning_en": "one's own innate duty", "meaning_hi": "अपना स्वाभाविक धर्म" },
+      { "word": "परधर्मात्", "iast": "paradharmāt", "dhatu": "-", "vibhakti": "Ablative Singular", "meaning_en": "than another's duty", "meaning_hi": "दूसरे के धर्म से" },
+      { "word": "निधनम्", "iast": "nidhanam", "dhatu": "dhā", "vibhakti": "Nominative Singular", "meaning_en": "death / end", "meaning_hi": "मृत्यु" },
+      { "word": "भयावहः", "iast": "bhayāvahaḥ", "dhatu": "vah", "vibhakti": "Nominative Singular", "meaning_en": "fraught with fear / danger", "meaning_hi": "भय उत्पन्न करने वाला" }
+    ]
+  },
+  {
+    "chapter": 4,
+    "verse": 7,
+    "devanagari": "यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥",
+    "iast": "yadā yadā hi dharmasya glānirbhavati bhārata\nabhyutthānamadharmasya tadātmānaṃ sṛjāmyaham",
+    "translation_en": "Whenever and wherever there is a decline in religious righteousness, O descendant of Bharata, and a predominant rise of unrighteousness—at that time I manifest Myself.",
+    "translation_hi": "हे भारत! जब-जब धर्म की हानि और अधर्म की वृद्धि होती है, तब-तब ही मैं अपने रूप को रचता हूँ अर्थात प्रकट होता हूँ।",
+    "practical_insight": "Consciousness always responds to rebalance internal and cosmic disorder. When moral chaos peaks, inner divine intervention awakens.",
+    "anvaya_tokens": [
+      { "word": "यदा", "iast": "yadā", "dhatu": "-", "vibhakti": "Indeclinable", "meaning_en": "whenever", "meaning_hi": "जब-जब" },
+      { "word": "धर्मस्य", "iast": "dharmasya", "dhatu": "dhṛ", "vibhakti": "Genitive Singular", "meaning_en": "of righteousness / Dharma", "meaning_hi": "धर्म की" },
+      { "word": "ग्लानिः", "iast": "glāniḥ", "dhatu": "glai", "vibhakti": "Nominative Singular", "meaning_en": "decay / decline", "meaning_hi": "हानि / पतन" },
+      { "word": "अधर्मस्य", "iast": "adharmasya", "dhatu": "-", "vibhakti": "Genitive Singular", "meaning_en": "of unrighteousness", "meaning_hi": "अधर्म की" },
+      { "word": "आत्मानम्", "iast": "ātmānam", "dhatu": "-", "vibhakti": "Accusative Singular", "meaning_en": "myself", "meaning_hi": "अपने आपको" },
+      { "word": "सृजामि", "iast": "sṛjāmi", "dhatu": "sṛj", "vibhakti": "Present 1st Person", "meaning_en": "I manifest / project", "meaning_hi": "प्रकट करता हूँ" }
+    ]
+  },
+  {
+    "chapter": 6,
+    "verse": 5,
+    "devanagari": "उद्धरेदात्मनात्मानं नात्मानमवसादयेत्।\nआत्मैव ह्यात्मनो बन्धुरात्मैव रिपुरात्मनः॥",
+    "iast": "uddharedātmanātmānaṃ nātmānamavasādayet\nātmaiva hyātmano bandhurātmaiva ripurātmanaḥ",
+    "translation_en": "A person must elevate oneself by one's own mind, and not degrade oneself. The mind is the greatest friend of the conditioned soul, and the mind is its greatest enemy.",
+    "translation_hi": "मनुष्य को चाहिए कि अपने मन के द्वारा अपना उद्धार करे और अपने को नीचे न गिराए; क्योंकि यह मन ही आत्मा का मित्र है और मन ही आत्मा का शत्रु है।",
+    "practical_insight": "Self-sovereignty starts with self-dialogue. Your trained mind is your greatest champion; your undisciplined mind is your most toxic saboteur.",
+    "anvaya_tokens": [
+      { "word": "उद्धरेत्", "iast": "uddharet", "dhatu": "hṛ", "vibhakti": "Optative 3rd Person", "meaning_en": "must elevate / deliver", "meaning_hi": "उद्धार करे" },
+      { "word": "आत्मना", "iast": "ātmanā", "dhatu": "-", "vibhakti": "Instrumental Singular", "meaning_en": "by one's own mind / self", "meaning_hi": "अपने मन द्वारा" },
+      { "word": "आत्मानम्", "iast": "ātmānam", "dhatu": "-", "vibhakti": "Accusative Singular", "meaning_en": "the self", "meaning_hi": "स्वयं को" },
+      { "word": "अवसादयेत्", "iast": "avasādayet", "dhatu": "sad", "vibhakti": "Optative 3rd Person", "meaning_en": "let one degrade / depress", "meaning_hi": "नीचे गिराए" },
+      { "word": "बन्धुः", "iast": "bandhuḥ", "dhatu": "bandh", "vibhakti": "Nominative Singular", "meaning_en": "friend / ally", "meaning_hi": "मित्र / बंधु" },
+      { "word": "रिपुः", "iast": "ripuḥ", "dhatu": "-", "vibhakti": "Nominative Singular", "meaning_en": "enemy / foe", "meaning_hi": "शत्रु" }
+    ]
+  },
+  {
+    "chapter": 9,
+    "verse": 22,
+    "devanagari": "अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥",
+    "iast": "ananyāścintayanto māṃ ye janāḥ paryupāsate\nteṣāṃ nityābhiyuktānāṃ yogakṣemaṃ vahāmyaham",
+    "translation_en": "To those who are constantly devoted and who meditate on Me with undivided focus, I supply what they lack and preserve what they have.",
+    "translation_hi": "जो अनन्य भक्तजन मुझे निरन्तर चिन्तन करते हुए निष्काम भाव से भजते हैं, उन नित्य-युक्त पुरुषों का योगक्षेम (अप्राप्त की प्राप्ति और प्राप्त की रक्षा) मैं स्वयं वहन करता हूँ।",
+    "practical_insight": "Total singular alignment with higher truth creates unconditional psychological safety (Yoga-Kshema).",
+    "anvaya_tokens": [
+      { "word": "अनन्याः", "iast": "ananyāḥ", "dhatu": "-", "vibhakti": "Nominative Plural", "meaning_en": "with undivided devotion", "meaning_hi": "अनन्य भाव से" },
+      { "word": "चिन्तयन्तः", "iast": "cintayantaḥ", "dhatu": "cint", "vibhakti": "Present Participle", "meaning_en": "thinking of / meditating", "meaning_hi": "चिन्तन करते हुए" },
+      { "word": "योगक्षेमम्", "iast": "yogakṣemam", "dhatu": "yuj / kṣi", "vibhakti": "Accusative Singular", "meaning_en": "provision and preservation of needs", "meaning_hi": "योग और क्षेम" },
+      { "word": "वहामि", "iast": "vahāmi", "dhatu": "vah", "vibhakti": "Present 1st Person", "meaning_en": "I carry / deliver personally", "meaning_hi": "वहन करता हूँ" }
+    ]
+  },
+  {
+    "chapter": 11,
+    "verse": 32,
+    "devanagari": "कालोऽस्मि लोकक्षयकृत्प्रवृद्धो लोकान्समाहर्तुमिह प्रवृत्ततः।\nऋतेऽपि त्वां न भविष्यन्ति सर्वे येऽवस्थिताः प्रत्यनीकेषु योधाः॥",
+    "iast": "kālo'smi lokakṣayakṛtpravṛddho lokānsamāhartumiha pravṛttaḥ\nṛte'pi tvāṃ na bhaviṣyanti sarve ye'vasthitāḥ pratyanīkeṣu yodhāḥ",
+    "translation_en": "Time I am, the great destroyer of the worlds, and I have come here to destroy all people. Even without your participation, none of the warriors assembled in these enemy ranks shall survive.",
+    "translation_hi": "मैं सम्पूर्ण लोकों का नाश करने वाला बढ़ा हुआ महाकाल हूँ; इस समय इन लोकों का संहार करने के लिए प्रवृत्त हुआ हूँ। तुम्हारे बिना भी प्रतिपक्ष की सेना में खड़े हुए ये सब योद्धा जीवित नहीं बचेंगे।",
+    "practical_insight": "Time is an unstoppable cosmic force. You do not control the grand outcome of history, only the courage of your present action.",
+    "anvaya_tokens": [
+      { "word": "कालः", "iast": "kālaḥ", "dhatu": "kal", "vibhakti": "Nominative Singular", "meaning_en": "all-devouring Time / Death", "meaning_hi": "महाकाल" },
+      { "word": "अस्मि", "iast": "asmi", "dhatu": "as", "vibhakti": "Present 1st Person", "meaning_en": "I am", "meaning_hi": "हूँ" },
+      { "word": "लोकक्षयकृत्", "iast": "lokakṣayakṛt", "dhatu": "kṛ", "vibhakti": "Nominative Singular", "meaning_en": "world-destroyer", "meaning_hi": "लोकों का नाश करने वाला" },
+      { "word": "प्रवृत्तः", "iast": "pravṛttaḥ", "dhatu": "vṛt", "vibhakti": "Past Passive Participle", "meaning_en": "engaged / set forth", "meaning_hi": "प्रवृत्त हुआ" }
+    ]
+  },
+  {
+    "chapter": 18,
+    "verse": 66,
+    "devanagari": "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।\nअहं त्वां सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥",
+    "iast": "sarvadharmānparityajya māmekaṃ śaraṇaṃ vraja\nahaṃ tvāṃ sarvapāpebhyo mokṣayiṣyāmi mā śucaḥ",
+    "translation_en": "Abandon all varieties of dharmas and simply surrender unto Me alone. I shall liberate you from all sinful reactions. Do not grieve.",
+    "translation_hi": "सम्पूर्ण धर्मों को अर्थात समस्त कर्तव्यों को मुझमें त्यागकर केवल मेरी एक की शरण में आ जा। मैं तुझे सम्पूर्ण पापों से मुक्त कर दूँगा, तू शोक मत कर।",
+    "practical_insight": "Ultimate freedom (Moksha) is reached when you transcend secondary social anxieties and surrender completely to supreme conscious awareness. Let go of fear.",
+    "anvaya_tokens": [
+      { "word": "सर्वधर्मान्", "iast": "sarvadharmān", "dhatu": "dhṛ", "vibhakti": "Accusative Plural", "meaning_en": "all relative duties/religions", "meaning_hi": "सम्पूर्ण धर्मों को" },
+      { "word": "परित्यज्य", "iast": "parityajya", "dhatu": "tyaj", "vibhakti": "Gerund", "meaning_en": "having completely relinquished", "meaning_hi": "त्यागकर" },
+      { "word": "शरणम्", "iast": "śaraṇam", "dhatu": "śrī", "vibhakti": "Accusative Singular", "meaning_en": "refuge / shelter", "meaning_hi": "शरण में" },
+      { "word": "व्रज", "iast": "vraja", "dhatu": "vraj", "vibhakti": "Imperative 2nd Person", "meaning_en": "go / surrender", "meaning_hi": "आ जाओ" },
+      { "word": "मोक्षयिष्यामि", "iast": "mokṣayiṣyāmi", "dhatu": "muc", "vibhakti": "Future 1st Person", "meaning_en": "I shall liberate", "meaning_hi": "मुक्त कर दूँगा" },
+      { "word": "मा", "iast": "mā", "dhatu": "-", "vibhakti": "Indeclinable", "meaning_en": "do not", "meaning_hi": "मत" },
+      { "word": "शुचः", "iast": "śucaḥ", "dhatu": "śuc", "vibhakti": "Aorist Imperative", "meaning_en": "grieve / lament", "meaning_hi": "शोक करो" }
+    ]
+  }
+]
