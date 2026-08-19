@@ -2,12 +2,12 @@
   "name": "dharma-os",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "frontend"
-  ],
   "scripts": {
-    "build": "npm run build --workspace=frontend",
-    "dev": "npm run dev --workspace=frontend",
-    "start": "npm run start --workspace=frontend"
+    "build": "node -e \"const fs = require('fs'); const cp = require('child_process'); if (fs.existsSync('frontend/package.json')) { cp.execSync('npm --prefix frontend run build', { stdio: 'inherit' }); } else { cp.execSync('npx next build', { stdio: 'inherit' }); }\"",
+    "start": "node -e \"const fs = require('fs'); const cp = require('child_process'); if (fs.existsSync('frontend/package.json')) { cp.execSync('npm --prefix frontend run start', { stdio: 'inherit' }); } else { cp.execSync('npx next start', { stdio: 'inherit' }); }\"",
+    "dev": "node -e \"const fs = require('fs'); const cp = require('child_process'); if (fs.existsSync('frontend/package.json')) { cp.execSync('npm --prefix frontend run dev', { stdio: 'inherit' }); } else { cp.execSync('npx next dev', { stdio: 'inherit' }); }\""
+  },
+  "dependencies": {
+    "next": "^15.1.0"
   }
 }
