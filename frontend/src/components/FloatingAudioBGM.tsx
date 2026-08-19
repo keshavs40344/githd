@@ -263,10 +263,23 @@ export default function FloatingAudioBGM() {
 
   return (
     <>
+      {/* Hidden YouTube Background Audio Stream for User Provided Tunes */}
+      {isPlaying && (currentTrack as any).youtubeId && (
+        <div className="fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0 pointer-events-none" aria-hidden="true">
+          <iframe
+            key={`bgm-${(currentTrack as any).youtubeId}-${isPlaying}`}
+            src={`https://www.youtube.com/embed/${(currentTrack as any).youtubeId}?autoplay=1&enablejsapi=1&rel=0&controls=0`}
+            title="Background Divine Tune"
+            allow="autoplay"
+          />
+        </div>
+      )}
+
       <aside 
         aria-label="Bhagavad Gita Divine Raga Player"
         className="fixed bottom-4 right-4 z-40 transition-all duration-300 font-sans"
       >
+
         {/* Minimized Floating Pill */}
         {!isExpanded ? (
           <div className="flex items-center gap-2 bg-obsidian-900/95 border border-gold-500/30 p-2 sm:p-2.5 rounded-full shadow-2xl backdrop-blur-2xl hover:border-gold-400/60 transition-all">

@@ -5,6 +5,8 @@ import { cn } from '@/lib/cn';
 import { CHAPTERS } from '@/types/verse';
 import { Search, BookOpen } from 'lucide-react';
 
+import { sacredAudio } from '@/lib/sacredSounds';
+
 interface ChapterSelectorProps {
   currentChapter: number;
   onSelectChapter: (chapter: number) => void;
@@ -18,6 +20,12 @@ export default function ChapterSelector({ currentChapter, onSelectChapter }: Cha
     ch.name_sanskrit.includes(search) ||
     ch.number.toString() === search.trim()
   );
+
+  const handleSelect = (chNum: number) => {
+    sacredAudio.playNavChime(0.1);
+    onSelectChapter(chNum);
+  };
+
 
   return (
     <div className="flex flex-col h-full w-full">
@@ -50,14 +58,15 @@ export default function ChapterSelector({ currentChapter, onSelectChapter }: Cha
           return (
             <button
               key={chapter.number}
-              onClick={() => onSelectChapter(chapter.number)}
+              onClick={() => handleSelect(chapter.number)}
               className={cn(
                 "flex items-center gap-3.5 px-4 py-3 w-full text-left transition-all border-l-2 cursor-pointer group",
                 isActive
-                  ? "border-gold-400 bg-gold-400/10 text-gold-100 shadow-[inset_0_0_20px_rgba(223,168,55,0.08)]"
-                  : "border-transparent hover:bg-obsidian-800/50 text-gold-200/70 hover:text-gold-100"
+                  ? "border-gold-400 bg-gold-400/10 text-gold-100 shadow-[inset_0_0_20px_rgba(223,168,55,0.08)] scale-[1.01]"
+                  : "border-transparent hover:bg-obsidian-800/50 text-gold-200/70 hover:text-gold-100 hover:translate-x-1"
               )}
             >
+
               {/* Chapter Number Pill */}
               <div className={cn(
                 "flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-xs font-mono font-semibold transition-colors border",
