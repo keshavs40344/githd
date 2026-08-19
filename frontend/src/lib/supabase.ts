@@ -1,4 +1,4 @@
-import { createClient, User, Session, AuthError } from '@supabase/supabase-js';
+import { createClient, User, Session, AuthError, Provider } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
@@ -74,6 +74,19 @@ export async function signInWithEmail(email: string, password: string) {
   return await supabase.auth.signInWithPassword({
     email,
     password
+  });
+}
+
+/**
+ * Sign in with Social OAuth (Google, GitHub, Facebook)
+ */
+export async function signInWithOAuthProvider(provider: 'google' | 'github' | 'facebook') {
+  if (!supabase) return { data: { provider, url: null }, error: new Error('Supabase is not configured') as unknown as AuthError };
+  return await supabase.auth.signInWithOAuth({
+    provider,
+    options: {
+      redirectTo: typeof window !== 'undefined' ? window.location.origin : undefined,
+    }
   });
 }
 
