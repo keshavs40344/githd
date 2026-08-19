@@ -13,10 +13,11 @@ import DharmaKarmaBadge from './DharmaKarmaBadge';
 import AuthModal from './AuthModal';
 import { getCurrentUser } from '@/lib/supabase';
 import { sacredAudio } from '@/lib/sacredSounds';
+import { useLanguage, SUPPORTED_LANGUAGES, type AppLanguage } from '@/context/LanguageContext';
 import type { User } from '@supabase/supabase-js';
 import { 
   Sparkles, BookOpen, Layers, Image as ImageIcon, Flame, 
-  Compass, Grid, Search, BookMarked, Music, Bell, User as UserIcon, LogIn, ShieldCheck 
+  Compass, Grid, Search, BookMarked, Music, Bell, User as UserIcon, LogIn, ShieldCheck, Globe 
 } from 'lucide-react';
 
 export type DharmaAppView = 'scripture' | 'mentor' | 'episodes' | 'studio' | 'sadhana' | 'music';
@@ -26,19 +27,20 @@ interface MasterDharmaHubProps {
   initialView?: DharmaAppView;
 }
 
-const NAV_TABS = [
-  { id: 'scripture', emoji: '📖', label: 'Scripture',    sub: '700 Shlokas' },
-  { id: 'mentor',    emoji: '🪔', label: 'Krishna AI',   sub: '7-Layer Mind' },
-  { id: 'music',     emoji: '🎵', label: 'Sacred Music', sub: '20+ Playlists' },
-  { id: 'episodes',  emoji: '📜', label: 'Episodes',     sub: '18 Chapters' },
-  { id: 'studio',    emoji: '🎨', label: 'Art Studio',   sub: 'Sacred Visuals' },
-  { id: 'sadhana',   emoji: '🔥', label: 'Sadhana',      sub: 'Daily Practice' },
-];
-
 export default function MasterDharmaHub({ verses, initialView = 'scripture' }: MasterDharmaHubProps) {
   const [activeView, setActiveView] = useState<DharmaAppView>(initialView);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
+  const { language, setLanguage, t } = useLanguage();
+
+  const NAV_TABS = [
+    { id: 'scripture', emoji: '📖', labelKey: 'tab_scripture', defaultLabel: 'Gita Shlokas' },
+    { id: 'mentor',    emoji: '🪔', labelKey: 'tab_mentor',    defaultLabel: 'Krishna AI' },
+    { id: 'music',     emoji: '🎵', labelKey: 'tab_music',     defaultLabel: 'Sacred Music' },
+    { id: 'episodes',  emoji: '📜', labelKey: 'tab_episodes',  defaultLabel: 'Episodes' },
+    { id: 'studio',    emoji: '🎨', labelKey: 'tab_studio',    defaultLabel: 'Art Studio' },
+    { id: 'sadhana',   emoji: '🔥', labelKey: 'tab_sadhana',   defaultLabel: 'Sadhana' },
+  ];
 
   // Sync tab from URL hash if provided
   useEffect(() => {
@@ -95,10 +97,10 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-cinzel text-xs sm:text-sm font-bold gradient-text-gold tracking-[0.14em] uppercase">
-                Dharma.OS
+                {t('app_title')}
               </span>
               <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-gold-400/50 font-sans font-medium hidden xs:inline mt-0.5">
-                Spiritual Intelligence
+                {t('app_subtitle')}
               </span>
             </div>
           </button>
@@ -116,13 +118,30 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
                 }`}
               >
                 <span className="text-xs">{tab.emoji}</span>
-                <span>{tab.label}</span>
+                <span>{t(tab.labelKey) || tab.defaultLabel}</span>
               </button>
             ))}
           </nav>
 
-          {/* User Auth & XP Badge */}
+          {/* User Auth, Global Language & XP Badge */}
           <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            
+            {/* Global Language Selector in Header */}
+            <div className="flex items-center gap-1 bg-obsidian-900/90 border border-gold-500/25 rounded-xl px-2 py-1 shadow-inner">
+              <Globe className="w-3.5 h-3.5 text-gold-400" />
+              <select
+                value={language}
+                onChange={(e) => setLanguage(e.target.value as AppLanguage)}
+                className="bg-transparent text-[11px] sm:text-xs text-gold-200 font-sans font-medium focus:outline-none cursor-pointer max-w-[90px] sm:max-w-[120px] truncate"
+              >
+                {SUPPORTED_LANGUAGES.map(lang => (
+                  <option key={lang.code} value={lang.code} className="bg-obsidian-950 text-gold-100">
+                    {lang.flag} {lang.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             <DharmaKarmaBadge />
 
             {/* Auth / Profile Trigger Button */}
@@ -147,7 +166,7 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
               ) : (
                 <>
                   <LogIn className="w-3.5 h-3.5 text-gold-400" />
-                  <span>लॉगिन</span>
+                  <span className="hidden xs:inline">लॉगिन</span>
                 </>
               )}
             </button>
@@ -219,25 +238,19 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
               <span className={`text-base transition-transform ${isActive ? 'scale-115 animate-bounce' : 'opacity-70'}`}>
                 {tab.emoji}
               </span>
-              <span className={`text-[9px] font-sans font-medium tracking-tight mt-0.5 ${
-                isActive ? 'text-gold-300 font-bold' : 'text-gold-400/60'
-              }`}>
-                {tab.label}
+              <span className={`text-[9px] font-sans transition-colors ${isActive ? 'text-gold-200 font-bold' : 'text-gold-400/60'}`}>
+                {t(tab.labelKey) || tab.defaultLabel}
               </span>
-              {isActive && (
-                <div className="w-1 h-1 rounded-full bg-gold-400 mt-0.5 shadow-[0_0_6px_rgba(232,163,32,0.9)]" />
-              )}
             </button>
           );
         })}
       </nav>
 
-      {/* Supabase Authentication Modal */}
-      <AuthModal
-        isOpen={isAuthModalOpen}
-        onClose={() => setIsAuthModalOpen(false)}
-        onAuthSuccess={(u) => setUser(u)}
-      />
+      {/* Auth & Social Sign-In Modal */}
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => {
+        setIsAuthModalOpen(false);
+        getCurrentUser().then(u => setUser(u));
+      }} />
 
     </div>
   );

@@ -5,6 +5,7 @@ import { cn } from '@/lib/cn';
 import { CHAPTERS } from '@/types/verse';
 import { Search, BookOpen, ChevronDown, ChevronRight, Sparkles } from 'lucide-react';
 import { sacredAudio } from '@/lib/sacredSounds';
+import { useLanguage } from '@/context/LanguageContext';
 
 interface ChapterSelectorProps {
   currentChapter: number;
@@ -19,6 +20,7 @@ export default function ChapterSelector({
   onSelectChapter,
   onSelectVerse 
 }: ChapterSelectorProps) {
+  const { t } = useLanguage();
   const [search, setSearch] = useState('');
   const [expandedChapter, setExpandedChapter] = useState<number>(currentChapter);
 
@@ -53,9 +55,9 @@ export default function ChapterSelector({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2 text-xs font-serif uppercase tracking-widest text-[#e6c687] font-bold">
             <BookOpen className="w-4 h-4 text-[#c5a059]" />
-            <span>श्रीमद्भगवद्गीता (18 अध्याय)</span>
+            <span>श्रीमद्भगवद्गीता (18 {t('chapter')})</span>
           </div>
-          <span className="text-[11px] text-[#c5a059]/70 font-mono">700 श्लोक</span>
+          <span className="text-[11px] text-[#c5a059]/70 font-mono">700 {t('verse')}</span>
         </div>
 
         <div className="relative">
@@ -64,7 +66,7 @@ export default function ChapterSelector({
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="अध्याय खोजें (Search Chapter)..."
+            placeholder={t('search_placeholder')}
             className="w-full bg-[#151722] border border-[#c5a059]/20 rounded-xl pl-9 pr-3 py-2 text-xs text-[#f5eed9] placeholder:text-[#c5a059]/40 focus:outline-none focus:border-[#c5a059] transition-all"
           />
         </div>
@@ -102,24 +104,21 @@ export default function ChapterSelector({
                     {chapter.number}
                   </div>
 
-                  {/* Titles */}
-                  <div className="min-w-0 flex flex-col">
-                    <div className="flex items-center gap-1.5">
-                      <span className={cn(
-                        "font-devanagari text-xs sm:text-sm font-semibold truncate",
-                        isCurrent ? "text-[#f5eed9]" : "text-[#e6c687]/90 group-hover:text-[#f5eed9]"
-                      )}>
-                        {chapter.name_sanskrit}
-                      </span>
-                    </div>
-                    <span className="text-[10px] text-[#c5a059]/60 truncate font-sans">
-                      {chapter.name_en} · <span className="font-mono text-[#e6c687]/70">{chapter.verse_count} श्लोक</span>
+                  {/* Title & Count */}
+                  <div className="flex flex-col min-w-0">
+                    <span className={cn(
+                      "font-devanagari font-bold text-xs sm:text-sm truncate transition-colors",
+                      isCurrent ? "text-[#f5eed9] font-bold" : "text-[#f5eed9]/85 group-hover:text-[#e6c687]"
+                    )}>
+                      {chapter.name_sanskrit}
+                    </span>
+                    <span className="text-[10px] text-[#c5a059]/65 font-serif italic truncate">
+                      {chapter.name_en} · {chapter.verse_count} {t('verse')}
                     </span>
                   </div>
                 </div>
 
-                {/* Chevron */}
-                <div className="text-[#c5a059]/50 group-hover:text-[#c5a059] p-1">
+                <div className="flex items-center gap-1 shrink-0 text-[#c5a059]/60">
                   {isExpanded ? (
                     <ChevronDown className="w-4 h-4 text-[#c5a059]" />
                   ) : (
@@ -128,33 +127,30 @@ export default function ChapterSelector({
                 </div>
               </button>
 
-              {/* EMBEDDED SHLOKA MATRIX BOX */}
+              {/* ── EMBEDDED SHLOKA MATRIX BOX (Expands under the clicked chapter) ── */}
               {isExpanded && (
-                <div className="p-3 bg-[#08090d] border-t border-[#c5a059]/15 animate-in fade-in slide-in-from-top-1 duration-200">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-[10px] uppercase font-mono tracking-wider text-[#c5a059]/80 font-bold flex items-center gap-1">
-                      <Sparkles className="w-3 h-3 text-[#c5a059]" />
-                      <span>श्लोक चुनें (Select Shloka):</span>
-                    </span>
-                    <span className="text-[10px] font-mono text-[#c5a059]/60">
-                      1 - {chapter.verse_count}
-                    </span>
+                <div className="px-3 pb-3 pt-1 border-t border-[#c5a059]/15 bg-[#090a0f]/80 animate-in fade-in duration-200">
+                  <div className="text-[10px] text-[#c5a059]/70 font-mono mb-2 flex items-center justify-between">
+                    <span>{t('verse')} चुनें (1-{chapter.verse_count}):</span>
+                    {isCurrent && (
+                      <span className="text-emerald-400 font-serif">सक्रिय श्लोक {currentVerse}</span>
+                    )}
                   </div>
 
-                  {/* Grid of Shlokas */}
                   <div className="grid grid-cols-6 sm:grid-cols-7 gap-1.5 max-h-48 overflow-y-auto p-1 custom-scrollbar">
-                    {Array.from({ length: chapter.verse_count }, (_, idx) => idx + 1).map(vNum => {
-                      const isSelected = isCurrent && currentVerse === vNum;
+                    {Array.from({ length: chapter.verse_count }, (_, i) => i + 1).map((vNum) => {
+                      const isVerseActive = isCurrent && currentVerse === vNum;
                       return (
                         <button
                           key={vNum}
                           onClick={(e) => handleVerseClick(e, vNum, chapter.number)}
                           className={cn(
-                            "h-7 rounded-lg text-xs font-mono font-bold flex items-center justify-center transition-all cursor-pointer border touch-manipulation",
-                            isSelected
-                              ? "bg-[#c5a059] text-[#090a0f] border-[#f5eed9] shadow-[0_0_10px_rgba(197,160,89,0.6)] scale-105"
-                              : "bg-[#141622] hover:bg-[#1f2232] text-[#e6c687]/80 hover:text-[#f5eed9] border-[#c5a059]/20 hover:border-[#c5a059]/60"
+                            "h-7 rounded-lg text-[11px] font-mono font-semibold flex items-center justify-center transition-all cursor-pointer border",
+                            isVerseActive
+                              ? "bg-[#c5a059] text-[#090a0f] border-[#f5eed9] shadow-sm font-bold scale-105"
+                              : "bg-[#141622] hover:bg-[#1f2232] text-[#e6c687] border-[#c5a059]/20 hover:border-[#c5a059]/50"
                           )}
+                          title={`${t('chapter')} ${chapter.number}, ${t('verse')} ${vNum}`}
                         >
                           {vNum}
                         </button>

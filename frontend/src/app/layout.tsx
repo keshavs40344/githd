@@ -3,6 +3,7 @@ import './globals.css';
 import type { Metadata, Viewport } from 'next';
 import FloatingAudioBGM from '@/components/FloatingAudioBGM';
 import PWAInstallBanner from '@/components/PWAInstallBanner';
+import { LanguageProvider } from '@/context/LanguageContext';
 
 const dmSans = DM_Sans({ 
   subsets: ['latin'], 
@@ -115,14 +116,17 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-obsidian-950 text-gold-100 min-h-screen selection:bg-gold-500/30 selection:text-gold-100">
-        <main className="min-h-screen">{children}</main>
-        
-        {/* Background Sacred Flute & Mantra Player */}
-        <FloatingAudioBGM />
-        
-        {/* PWA 1-Click Install Banner */}
-        <PWAInstallBanner />
+        <LanguageProvider>
+          <main className="min-h-screen">{children}</main>
+          
+          {/* Background Sacred Flute & Mantra Player */}
+          <FloatingAudioBGM />
+          
+          {/* PWA 1-Click Install Banner */}
+          <PWAInstallBanner />
+        </LanguageProvider>
       </body>
     </html>
   );
 }
+
