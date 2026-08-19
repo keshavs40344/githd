@@ -38,7 +38,7 @@ export const CHAPTERS: Chapter[] = [
   { number: 10, name_en: 'Divine Manifestations', name_sanskrit: 'विभूतियोग', verse_count: 42 },
   { number: 11, name_en: 'The Universal Form', name_sanskrit: 'विश्वरूपदर्शनयोग', verse_count: 55 },
   { number: 12, name_en: 'The Yoga of Devotion', name_sanskrit: 'भक्तियोग', verse_count: 20 },
-  { number: 13, name_en: 'The Field & Knower', name_sanskrit: 'क्षेत्रक्षेत्रज्ञविभागयोग', verse_count: 35 },
+  { number: 13, name_en: 'The Field & Knower', name_sanskrit: 'क्षेत्रक्षेत्रज्ञविभागयोग', verse_count: 34 },
   { number: 14, name_en: 'The Three Gunas', name_sanskrit: 'गुणत्रयविभागयोग', verse_count: 27 },
   { number: 15, name_en: 'The Supreme Person', name_sanskrit: 'पुरुषोत्तमयोग', verse_count: 20 },
   { number: 16, name_en: 'Divine & Demonic Natures', name_sanskrit: 'दैवासुरसम्पद्विभागयोग', verse_count: 24 },
