@@ -5,9 +5,10 @@ import {
   SACRED_YOUTUBE_PLAYLISTS, YouTubePlaylistItem 
 } from '@/data/youtubePlaylists';
 import { 
-  Play, Pause, Volume2, VolumeX, Search, Filter, Sparkles, 
-  Music, ExternalLink, PlusCircle, RotateCcw, Check, Radio, 
-  Disc3, Flame, Heart, Share2, Layers 
+  Play, Pause, SkipForward, SkipBack, Shuffle, Repeat, 
+  Volume2, VolumeX, Search, Filter, Sparkles, Music, 
+  PlusCircle, Heart, Radio, Disc3, Layers, Share2, 
+  ExternalLink, Waves 
 } from 'lucide-react';
 import { Button } from './ui/Button';
 import { sacredAudio } from '@/lib/sacredSounds';
@@ -26,16 +27,27 @@ const CATEGORIES: { id: CategoryFilter; label: string; icon: string }[] = [
 
 export default function SacredMusicHub() {
   const [playlists, setPlaylists] = useState<YouTubePlaylistItem[]>(SACRED_YOUTUBE_PLAYLISTS);
-  const [selectedTrack, setSelectedTrack] = useState<YouTubePlaylistItem>(SACRED_YOUTUBE_PLAYLISTS[0]);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
+  const [volume, setVolume] = useState(0.85);
+  const [isShuffle, setIsShuffle] = useState(false);
+  const [isRepeat, setIsRepeat] = useState(false);
+  
+  // Custom YouTube adder
   const [customUrl, setCustomUrl] = useState('');
   const [customTitle, setCustomTitle] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
   const [favorites, setFavorites] = useState<string[]>([]);
 
-  // Load custom playlists and favorites from localStorage
+  // Simulated playback time progression
+  const [playbackSeconds, setPlaybackSeconds] = useState(0);
+
+  const currentTrack = playlists[currentTrackIndex] || playlists[0];
+
+  // Load custom playlists & favorites
   useEffect(() => {
     if (typeof window !== 'undefined') {
       try {
@@ -52,14 +64,49 @@ export default function SacredMusicHub() {
     }
   }, []);
 
-  const handleSelectTrack = (track: YouTubePlaylistItem) => {
-    setSelectedTrack(track);
-    setIsPlaying(true);
-    sacredAudio.playFluteChime(0.2);
-    // Scroll player into view smoothly if on mobile
-    if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Timer for time counter
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isPlaying) {
+      interval = setInterval(() => {
+        setPlaybackSeconds(prev => prev + 1);
+      }, 1000);
     }
+    return () => clearInterval(interval);
+  }, [isPlaying]);
+
+  const handleSelectTrack = (track: YouTubePlaylistItem) => {
+    const idx = playlists.findIndex(t => t.id === track.id);
+    if (idx !== -1) {
+      setCurrentTrackIndex(idx);
+    }
+    setIsPlaying(true);
+    setPlaybackSeconds(0);
+    sacredAudio.playFluteChime(0.2);
+  };
+
+  const handleNextTrack = () => {
+    sacredAudio.playNavChime(0.12);
+    setPlaybackSeconds(0);
+    if (isShuffle) {
+      const randomIdx = Math.floor(Math.random() * playlists.length);
+      setCurrentTrackIndex(randomIdx);
+    } else {
+      setCurrentTrackIndex((prev) => (prev + 1) % playlists.length);
+    }
+    setIsPlaying(true);
+  };
+
+  const handlePrevTrack = () => {
+    sacredAudio.playNavChime(0.12);
+    setPlaybackSeconds(0);
+    setCurrentTrackIndex((prev) => (prev - 1 + playlists.length) % playlists.length);
+    setIsPlaying(true);
+  };
+
+  const togglePlay = () => {
+    sacredAudio.playNavChime(0.15);
+    setIsPlaying(!isPlaying);
   };
 
   const toggleFavorite = (id: string, e: React.MouseEvent) => {
@@ -74,7 +121,14 @@ export default function SacredMusicHub() {
     });
   };
 
-  // Parse YouTube video/playlist ID from full URL or shorthand
+  // Format seconds to mm:ss
+  const formatTime = (secs: number) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  };
+
+  // Extract YouTube ID
   const extractYouTubeId = (url: string): string | null => {
     if (!url.trim()) return null;
     const match1 = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
@@ -95,19 +149,19 @@ export default function SacredMusicHub() {
 
     const newTrack: YouTubePlaylistItem = {
       id: `custom-${Date.now()}`,
-      title: customTitle.trim() || 'कस्टम दिव्य संगीत (Custom YouTube Track)',
+      title: customTitle.trim() || 'कस्टम दिव्य संगीत (Custom Track)',
       subtitle: 'Seeker Added Devotional Music',
       category: 'bhajan',
       youtubeId: ytId,
       thumbnailUrl: `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`,
       duration: 'Live / Custom',
-      description: 'User added custom sacred track stream.',
+      description: 'User added custom sacred audio stream.',
       tags: ['Custom', 'User Added', 'Devotional']
     };
 
     sacredAudio.playTempleBell(0.35);
     setPlaylists(prev => [newTrack, ...prev]);
-    setSelectedTrack(newTrack);
+    setCurrentTrackIndex(0);
     setIsPlaying(true);
     setShowAddModal(false);
     setCustomUrl('');
@@ -134,23 +188,41 @@ export default function SacredMusicHub() {
   });
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-7 z-10 relative">
+    <div className="w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-8 z-10 relative">
       
+      {/* ── HIDDEN AUDIO-ONLY YOUTUBE ENGINE ──────────────────────── */}
+      {/* The video iframe is rendered invisibly to stream high-fidelity background audio without showing video */}
+      <div className="fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0 pointer-events-none overflow-hidden" aria-hidden="true">
+        {isPlaying && (
+          <iframe
+            key={`${currentTrack.youtubeId}-${isPlaying}`}
+            src={`https://www.youtube.com/embed/${currentTrack.youtubeId}?autoplay=1&enablejsapi=1&rel=0&controls=0&modestbranding=1&loop=${isRepeat ? 1 : 0}`}
+            title="Audio Background Stream"
+            allow="autoplay"
+          />
+        )}
+      </div>
+
       {/* ── Top Header ────────────────────────────────────── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gold-500/20 pb-5">
         <div className="space-y-1">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">🪈</span>
-            <h1 className="text-2xl sm:text-3xl font-cinzel font-bold text-gold-100 gradient-text-gold tracking-wide">
-              दिव्य संगीत व साधना केंद्र (Sacred Sound Sanctuary)
-            </h1>
+          <div className="flex items-center gap-2.5">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-400 via-gold-500 to-amber-700 flex items-center justify-center text-obsidian-950 font-bold text-xl shadow-[0_0_20px_rgba(232,163,32,0.45)] sacred-pulse">
+              🪈
+            </div>
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-cinzel font-bold text-gold-100 gradient-text-gold tracking-wide">
+                दिव्य संगीत साधना (Sacred Audio Sanctuary)
+              </h1>
+              <span className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest flex items-center gap-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping inline-block" />
+                Pure Lossless Audio-Only Mode (No Video Screen)
+              </span>
+            </div>
           </div>
-          <p className="text-xs sm:text-sm text-gold-300/75 font-sans">
-            २०+ प्रामाणिक कृष्ण बाँसुरी, सम्पूर्ण १८ अध्याय गीता पाठ, ॐ नाद ब्रह्म एवं पावन भजन प्लेलिस्ट
-          </p>
         </div>
 
-        {/* Action Button: Add YouTube Link */}
+        {/* Action Button: Add Custom Link */}
         <button
           onClick={() => {
             sacredAudio.playNavChime(0.15);
@@ -159,125 +231,226 @@ export default function SacredMusicHub() {
           className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-bold text-xs sm:text-sm font-sans flex items-center gap-2 shadow-[0_0_20px_rgba(232,163,32,0.4)] cursor-pointer active:scale-95 transition-all self-start md:self-auto"
         >
           <PlusCircle className="w-4 h-4" />
-          <span>+ कस्टम YouTube प्लेलिस्ट जोड़ें</span>
+          <span>+ कस्टम YouTube लिंक जोड़ें</span>
         </button>
       </div>
 
-      {/* ── Main Stage: Active Embedded Player + Details ─────────────── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-gradient-to-br from-obsidian-900/95 via-obsidian-850/95 to-amber-950/25 border border-gold-500/30 rounded-3xl p-4 sm:p-6 shadow-2xl backdrop-blur-xl">
+      {/* ── PURE AUDIO SANCTUARY CONSOLE (Master Player Interface) ───────── */}
+      <div className="bg-gradient-to-br from-obsidian-900 via-obsidian-900/98 to-amber-950/30 border border-gold-500/35 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-2xl relative overflow-hidden">
         
-        {/* Left: YouTube Video / Audio Container */}
-        <div className="lg:col-span-8 space-y-4">
-          <div className="w-full aspect-video rounded-2xl overflow-hidden border border-gold-500/30 shadow-2xl bg-black relative">
-            <iframe
-              key={selectedTrack.youtubeId}
-              src={`https://www.youtube.com/embed/${selectedTrack.youtubeId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1`}
-              title={selectedTrack.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full border-0"
-            />
-          </div>
+        {/* Ambient Golden Background Aura */}
+        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          {/* Quick Player Bar */}
-          <div className="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-obsidian-800/80 border border-gold-500/20">
-            <div className="flex items-center gap-3 min-w-0">
-              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-400 to-amber-600 flex items-center justify-center text-obsidian-950 font-bold text-lg shrink-0 shadow-md">
-                🪈
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          
+          {/* Left: Spinning Sacred Chakra / Vinyl Audio Disc */}
+          <div className="lg:col-span-5 flex flex-col items-center justify-center space-y-4">
+            <div className="relative group">
+              {/* Outer Golden Aura Ring */}
+              <div className={`w-56 h-56 sm:w-64 sm:h-64 rounded-full p-2 bg-gradient-to-tr from-gold-400/40 via-amber-500/30 to-amber-800/40 shadow-[0_0_50px_rgba(232,163,32,0.35)] flex items-center justify-center transition-all ${
+                isPlaying ? 'animate-spin-slow' : ''
+              }`}>
+                {/* Vinyl Grooves Body */}
+                <div className="w-full h-full rounded-full bg-gradient-to-br from-obsidian-950 via-obsidian-900 to-obsidian-950 border-4 border-gold-500/30 flex items-center justify-center relative overflow-hidden shadow-inner">
+                  
+                  {/* Concentric Vinyl Circles */}
+                  <div className="absolute inset-4 rounded-full border border-gold-500/10" />
+                  <div className="absolute inset-8 rounded-full border border-gold-500/15" />
+                  <div className="absolute inset-12 rounded-full border border-gold-500/10" />
+                  
+                  {/* Center Artwork Label */}
+                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-gold-400 shadow-xl relative z-10">
+                    <img 
+                      src={currentTrack.thumbnailUrl} 
+                      alt={currentTrack.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center text-gold-200 text-xl font-bold">
+                      ॐ
+                    </div>
+                  </div>
+
+                  {/* Center Spindle Hole */}
+                  <div className="w-4 h-4 rounded-full bg-obsidian-950 border border-gold-400 absolute z-20" />
+                </div>
               </div>
-              <div className="min-w-0">
-                <h3 className="text-sm font-bold text-gold-100 truncate font-display">
-                  {selectedTrack.title}
-                </h3>
-                <p className="text-xs text-gold-400/80 truncate font-sans">
-                  {selectedTrack.raga || selectedTrack.subtitle}
-                </p>
-              </div>
-            </div>
 
-            <div className="flex items-center gap-2 shrink-0">
-              <button
-                onClick={(e) => toggleFavorite(selectedTrack.id, e)}
-                className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
-                  favorites.includes(selectedTrack.id)
-                    ? 'bg-red-500/20 text-red-400 border-red-500/40'
-                    : 'bg-obsidian-900 text-gold-300/70 border-gold-500/20 hover:border-gold-400'
-                }`}
-                title="Favorite"
-              >
-                <Heart className={`w-4 h-4 ${favorites.includes(selectedTrack.id) ? 'fill-current text-red-400' : ''}`} />
-              </button>
-
-              <a
-                href={`https://www.youtube.com/watch?v=${selectedTrack.youtubeId}`}
-                target="_blank"
-                rel="noreferrer"
-                className="p-2.5 rounded-xl bg-obsidian-900 text-gold-300 border border-gold-500/20 hover:border-gold-400 hover:text-gold-100 transition-colors flex items-center gap-1.5 text-xs font-mono"
-                title="Open in YouTube"
-              >
-                <ExternalLink className="w-4 h-4" />
-                <span className="hidden sm:inline">YouTube</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Track Overview & Vedic Context */}
-        <div className="lg:col-span-4 space-y-4 flex flex-col justify-between">
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] font-cinzel font-bold uppercase tracking-widest text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/30">
-                {selectedTrack.category.toUpperCase().replace('_', ' ')}
-              </span>
-              {selectedTrack.duration && (
-                <span className="text-[11px] font-mono text-gold-400/70">
-                  ⏳ {selectedTrack.duration}
+              {/* Status Badge */}
+              <div className="absolute bottom-1 right-2 px-3 py-1 rounded-full bg-black/80 border border-gold-500/30 backdrop-blur-md flex items-center gap-1.5 shadow-lg">
+                <span className={`w-2 h-2 rounded-full ${isPlaying ? 'bg-emerald-400 animate-pulse' : 'bg-gold-500/40'}`} />
+                <span className="text-[10px] font-mono text-gold-200">
+                  {isPlaying ? 'PLAYING AUDIO' : 'PAUSED'}
                 </span>
-              )}
+              </div>
             </div>
 
-            <h2 className="text-lg sm:text-xl font-bold text-gold-100 font-display leading-snug">
-              {selectedTrack.title}
-            </h2>
-
-            <p className="text-xs sm:text-sm text-gold-200/80 leading-relaxed font-sans">
-              {selectedTrack.description}
-            </p>
-
-            {/* Sacred Tags */}
-            <div className="flex flex-wrap gap-1.5 pt-2">
-              {selectedTrack.tags.map((tag, i) => (
-                <span 
+            {/* Audio Wave Visualizer Bars */}
+            <div className="flex items-end justify-center gap-1.5 h-8 pt-2">
+              {[40, 75, 55, 90, 65, 80, 45, 95, 70, 85, 60, 100, 50, 75, 90, 65, 80].map((h, i) => (
+                <div
                   key={i}
-                  className="text-[10px] font-mono px-2 py-0.5 rounded-lg bg-obsidian-800 text-gold-300/80 border border-gold-500/15"
-                >
-                  #{tag}
-                </span>
+                  className={`w-1 rounded-full bg-gradient-to-t from-gold-500 to-amber-300 transition-all duration-300 ${
+                    isPlaying ? 'animate-pulse' : 'opacity-30'
+                  }`}
+                  style={{
+                    height: isPlaying ? `${Math.max(15, (h * ((i % 3) + 1)) % 100)}%` : '15%',
+                    animationDelay: `${i * 70}ms`
+                  }}
+                />
               ))}
             </div>
           </div>
 
-          {/* Quick Sound FX Triggers */}
-          <div className="p-3.5 rounded-2xl bg-obsidian-800/60 border border-gold-500/20 space-y-2">
-            <span className="block text-[10px] font-mono uppercase tracking-wider text-gold-400 font-bold">
-              दिव्य ध्वनि प्रभाव (Instant Sacred Sound FX)
-            </span>
-            <div className="grid grid-cols-4 gap-1.5">
-              {[
-                { label: '🔔 घण्टा', action: () => sacredAudio.playTempleBell(0.35) },
-                { label: '🐚 शंख', action: () => sacredAudio.playShankhnaad(0.3) },
-                { label: '🕉️ ॐ नाद', action: () => sacredAudio.playOmChime(0.28) },
-                { label: '🪈 मुरली', action: () => sacredAudio.playFluteChime(0.25) },
-              ].map((fx, i) => (
+          {/* Right: Master Controls & Track Metadata */}
+          <div className="lg:col-span-7 space-y-6">
+            
+            {/* Header / Badges */}
+            <div className="space-y-2">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-cinzel font-bold uppercase tracking-widest text-gold-300 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/30">
+                    {currentTrack.category.toUpperCase().replace('_', ' ')}
+                  </span>
+                  {currentTrack.raga && (
+                    <span className="text-xs font-mono text-gold-400/80 px-2.5 py-0.5 rounded-full bg-obsidian-800 border border-gold-500/20">
+                      {currentTrack.raga}
+                    </span>
+                  )}
+                </div>
+
                 <button
-                  key={i}
-                  onClick={fx.action}
-                  className="p-2 rounded-xl bg-obsidian-900 hover:bg-gold-500/20 border border-gold-500/20 text-xs text-gold-200 transition-all active:scale-95 cursor-pointer font-sans text-center"
+                  onClick={(e) => toggleFavorite(currentTrack.id, e)}
+                  className={`p-2 rounded-xl border transition-all cursor-pointer ${
+                    favorites.includes(currentTrack.id)
+                      ? 'bg-red-500/20 text-red-400 border-red-500/40'
+                      : 'bg-obsidian-800 text-gold-300/70 border-gold-500/20 hover:border-gold-400'
+                  }`}
+                  title="Favorite"
                 >
-                  {fx.label}
+                  <Heart className={`w-4 h-4 ${favorites.includes(currentTrack.id) ? 'fill-current text-red-400' : ''}`} />
                 </button>
-              ))}
+              </div>
+
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-gold-100 leading-tight">
+                {currentTrack.title}
+              </h2>
+
+              <p className="text-xs sm:text-sm text-gold-300/80 font-sans leading-relaxed">
+                {currentTrack.subtitle}
+              </p>
             </div>
+
+            {/* Progress & Time */}
+            <div className="space-y-1.5 pt-2">
+              <div className="w-full bg-obsidian-950 h-2 rounded-full overflow-hidden border border-gold-500/20 relative">
+                <div 
+                  className="h-full bg-gradient-to-r from-gold-500 via-amber-400 to-amber-600 transition-all duration-300 rounded-full"
+                  style={{ width: `${Math.min(100, (playbackSeconds % 300) / 3)}%` }}
+                />
+              </div>
+              <div className="flex items-center justify-between text-[11px] font-mono text-gold-400/70">
+                <span>{formatTime(playbackSeconds)}</span>
+                <span>{currentTrack.duration || 'Continuous Stream'}</span>
+              </div>
+            </div>
+
+            {/* Playback Button Bar */}
+            <div className="flex items-center justify-between gap-4 pt-2">
+              
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setIsShuffle(!isShuffle)}
+                  className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
+                    isShuffle 
+                      ? 'bg-gold-500/20 text-gold-300 border-gold-400 font-bold' 
+                      : 'bg-obsidian-800 text-gold-400/60 border-gold-500/15 hover:text-gold-200'
+                  }`}
+                  title="Shuffle"
+                >
+                  <Shuffle className="w-4 h-4" />
+                </button>
+
+                <button
+                  onClick={() => setIsRepeat(!isRepeat)}
+                  className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
+                    isRepeat 
+                      ? 'bg-gold-500/20 text-gold-300 border-gold-400 font-bold' 
+                      : 'bg-obsidian-800 text-gold-400/60 border-gold-500/15 hover:text-gold-200'
+                  }`}
+                  title="Repeat"
+                >
+                  <Repeat className="w-4 h-4" />
+                </button>
+              </div>
+
+              {/* Main Controls (Prev, Play, Next) */}
+              <div className="flex items-center gap-3 sm:gap-4">
+                <button
+                  onClick={handlePrevTrack}
+                  className="p-3 rounded-2xl bg-obsidian-800 hover:bg-obsidian-750 border border-gold-500/20 text-gold-200 hover:text-gold-100 transition-all active:scale-95 cursor-pointer shadow-md"
+                  title="Previous Track"
+                >
+                  <SkipBack className="w-5 h-5 fill-current" />
+                </button>
+
+                <button
+                  onClick={togglePlay}
+                  className="w-14 h-14 rounded-2xl bg-gradient-to-r from-gold-400 via-gold-500 to-amber-600 hover:from-gold-300 hover:to-amber-500 text-obsidian-950 font-bold flex items-center justify-center shadow-[0_0_25px_rgba(232,163,32,0.5)] active:scale-95 transition-all cursor-pointer"
+                  title={isPlaying ? 'Pause Audio' : 'Play Audio'}
+                >
+                  {isPlaying ? (
+                    <Pause className="w-6 h-6 fill-current" />
+                  ) : (
+                    <Play className="w-6 h-6 fill-current ml-1" />
+                  )}
+                </button>
+
+                <button
+                  onClick={handleNextTrack}
+                  className="p-3 rounded-2xl bg-obsidian-800 hover:bg-obsidian-750 border border-gold-500/20 text-gold-200 hover:text-gold-100 transition-all active:scale-95 cursor-pointer shadow-md"
+                  title="Next Track"
+                >
+                  <SkipForward className="w-5 h-5 fill-current" />
+                </button>
+              </div>
+
+              {/* Volume / YouTube Link */}
+              <div className="flex items-center gap-2">
+                <a
+                  href={`https://www.youtube.com/watch?v=${currentTrack.youtubeId}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-2.5 rounded-xl bg-obsidian-800 text-gold-300 border border-gold-500/20 hover:border-gold-400 hover:text-gold-100 transition-colors flex items-center gap-1 text-xs font-mono"
+                  title="Original Source"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
+
+            {/* Instant Sacred Sound FX Quick Trigger */}
+            <div className="pt-3 border-t border-gold-500/15 space-y-2">
+              <span className="block text-[10px] font-mono uppercase tracking-wider text-gold-400 font-bold">
+                दिव्य ध्वनि प्रभाव (Acoustic Bell & Conch FX)
+              </span>
+              <div className="grid grid-cols-4 gap-2">
+                {[
+                  { label: '🔔 मन्दिर घण्टा', action: () => sacredAudio.playTempleBell(0.35) },
+                  { label: '🐚 शंखनाद', action: () => sacredAudio.playShankhnaad(0.3) },
+                  { label: '🕉️ ॐ नाद', action: () => sacredAudio.playOmChime(0.28) },
+                  { label: '🪈 दिव्य मुरली', action: () => sacredAudio.playFluteChime(0.25) },
+                ].map((fx, i) => (
+                  <button
+                    key={i}
+                    onClick={fx.action}
+                    className="p-2 rounded-xl bg-obsidian-800 hover:bg-gold-500/20 border border-gold-500/20 hover:border-gold-400/40 text-xs text-gold-200 transition-all active:scale-95 cursor-pointer font-sans text-center truncate"
+                  >
+                    {fx.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -328,85 +501,79 @@ export default function SacredMusicHub() {
         </div>
       </div>
 
-      {/* ── 20+ Playlists Grid ───────────────────────────────── */}
+      {/* ── 20+ Audio Playlists Queue ───────────────────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-        {filteredTracks.map((track) => {
-          const isSelected = selectedTrack.id === track.id;
+        {filteredTracks.map((track, idx) => {
+          const isCurrent = currentTrack.id === track.id;
           const isFav = favorites.includes(track.id);
 
           return (
             <div
               key={track.id}
               onClick={() => handleSelectTrack(track)}
-              className={`group rounded-3xl overflow-hidden border transition-all duration-300 cursor-pointer flex flex-col justify-between relative ${
-                isSelected
+              className={`group rounded-3xl overflow-hidden border transition-all duration-300 cursor-pointer flex flex-col justify-between relative p-4 space-y-3 ${
+                isCurrent
                   ? 'bg-gradient-to-b from-obsidian-800 to-obsidian-900 border-gold-400 shadow-[0_0_25px_rgba(232,163,32,0.35)] scale-[1.02]'
                   : 'bg-obsidian-900/80 hover:bg-obsidian-850 border-gold-500/20 hover:border-gold-400/50 shadow-lg hover:shadow-2xl'
               }`}
             >
-              {/* Thumbnail with overlay */}
-              <div className="relative aspect-video w-full overflow-hidden bg-obsidian-950">
-                <img
-                  src={track.thumbnailUrl}
-                  alt={track.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-obsidian-950 via-obsidian-950/30 to-transparent" />
-                
-                {/* Play Button Indicator */}
-                <div className={`absolute inset-0 flex items-center justify-center transition-all ${
-                  isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100 bg-black/40 backdrop-blur-xs'
-                }`}>
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-gold-400 to-amber-500 text-obsidian-950 flex items-center justify-center font-bold shadow-[0_0_20px_rgba(232,163,32,0.6)]">
-                    <Play className="w-5 h-5 fill-current ml-0.5" />
+              {/* Artwork / Vinyl Icon */}
+              <div className="flex items-center gap-3">
+                <div className="w-14 h-14 rounded-2xl overflow-hidden border border-gold-500/30 shrink-0 relative">
+                  <img
+                    src={track.thumbnailUrl}
+                    alt={track.title}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div className={`absolute inset-0 bg-black/40 flex items-center justify-center ${
+                    isCurrent && isPlaying ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  } transition-opacity`}>
+                    {isCurrent && isPlaying ? (
+                      <Radio className="w-6 h-6 text-gold-300 animate-pulse" />
+                    ) : (
+                      <Play className="w-6 h-6 text-gold-300 fill-current ml-0.5" />
+                    )}
                   </div>
                 </div>
 
-                {/* Duration Badge */}
-                {track.duration && (
-                  <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded-md bg-black/80 text-[10px] font-mono text-gold-200 border border-gold-500/20">
-                    {track.duration}
-                  </span>
-                )}
-
-                {/* Favorite Heart */}
-                <button
-                  onClick={(e) => toggleFavorite(track.id, e)}
-                  className="absolute top-2 right-2 p-1.5 rounded-full bg-black/60 text-gold-300 hover:text-red-400 transition-colors"
-                >
-                  <Heart className={`w-3.5 h-3.5 ${isFav ? 'fill-current text-red-400' : ''}`} />
-                </button>
-              </div>
-
-              {/* Card Body */}
-              <div className="p-4 sm:p-5 space-y-2 flex-1 flex flex-col justify-between">
-                <div className="space-y-1">
-                  <div className="flex items-center justify-between text-[10px] font-mono text-gold-400/80">
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between text-[10px] font-mono text-gold-400/80 mb-0.5">
                     <span className="uppercase tracking-wider font-bold">
                       {track.category.replace('_', ' ')}
                     </span>
-                    {track.raga && <span>{track.raga}</span>}
+                    {track.duration && <span>{track.duration}</span>}
                   </div>
 
-                  <h4 className="text-sm font-bold text-gold-100 line-clamp-2 font-display leading-snug group-hover:text-gold-300 transition-colors">
+                  <h4 className="text-sm font-bold text-gold-100 line-clamp-1 font-display group-hover:text-gold-300 transition-colors">
                     {track.title}
                   </h4>
 
-                  <p className="text-xs text-gold-300/70 line-clamp-2 font-sans">
-                    {track.subtitle}
+                  <p className="text-xs text-gold-300/70 line-clamp-1 font-sans">
+                    {track.raga || track.subtitle}
                   </p>
                 </div>
+              </div>
 
-                <div className="pt-2 border-t border-gold-500/10 flex items-center justify-between">
-                  <span className="text-[11px] text-gold-400 flex items-center gap-1 font-mono">
-                    <Radio className={`w-3 h-3 ${isSelected ? 'animate-pulse text-amber-400' : ''}`} />
-                    <span>{isSelected ? 'सक्रिय (Playing)' : 'श्रवण करें'}</span>
-                  </span>
-                  <span className="text-xs text-gold-300/50 group-hover:translate-x-1 transition-transform">
-                    ➔
-                  </span>
-                </div>
+              {/* Bottom Action / Tag */}
+              <div className="pt-2 border-t border-gold-500/10 flex items-center justify-between text-xs">
+                <span className="text-[11px] text-gold-400/80 flex items-center gap-1.5 font-sans">
+                  {isCurrent ? (
+                    <span className="text-amber-400 font-bold flex items-center gap-1">
+                      <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping inline-block" />
+                      सक्रिय (Now Playing)
+                    </span>
+                  ) : (
+                    <span>▶ स्पर्श करके सुनें</span>
+                  )}
+                </span>
+
+                <button
+                  onClick={(e) => toggleFavorite(track.id, e)}
+                  className="p-1 text-gold-400/60 hover:text-red-400 transition-colors"
+                >
+                  <Heart className={`w-4 h-4 ${isFav ? 'fill-current text-red-400' : ''}`} />
+                </button>
               </div>
 
             </div>
@@ -422,7 +589,7 @@ export default function SacredMusicHub() {
             <div className="flex items-center justify-between">
               <h3 className="font-cinzel text-base font-bold text-gold-100 flex items-center gap-2">
                 <PlusCircle className="w-5 h-5 text-gold-400" />
-                <span>कस्टम YouTube प्लेलिस्ट या वीडियो जोड़ें</span>
+                <span>कस्टम YouTube ऑडियो लिंक जोड़ें</span>
               </h3>
               <button
                 onClick={() => setShowAddModal(false)}
@@ -431,6 +598,10 @@ export default function SacredMusicHub() {
                 ✕
               </button>
             </div>
+
+            <p className="text-xs text-gold-300/70 font-sans">
+              आप किसी भी YouTube वीडियो या प्लेलिस्ट का लिंक पेस्ट कर सकते हैं। यह स्वतः ही केवल ऑडियो रूप में प्ले होगा।
+            </p>
 
             <form onSubmit={handleAddCustomTrack} className="space-y-4">
               <div>
