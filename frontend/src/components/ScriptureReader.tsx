@@ -44,7 +44,7 @@ export default function ScriptureReader({
   const [showKarmaReward, setShowKarmaReward] = useState(false);
 
   // Sampradaya Bhashya Active Tab
-  const [activeSampradaya, setActiveSampradaya] = useState<'universal' | 'advaita' | 'vishishtadvaita' | 'dvaita'>('universal');
+  const [activeSampradaya, setActiveSampradaya] = useState<'universal' | 'advaita' | 'vishishtadvaita' | 'dvaita' | 'jnaneshwari' | 'vivekananda' | 'science' | 'meditation'>('universal');
 
   // Audio stream state
   const [isPlayingShlokaMusic, setIsPlayingShlokaMusic] = useState(false);
@@ -227,16 +227,14 @@ export default function ScriptureReader({
     return canonical?.translation?.hinglish || universalTrans?.hinglish || verse.translation_hi || verse.translation_en;
   };
 
-  const getActiveBhashya = () => {
-    if (activeSampradaya === 'advaita') {
-      return universal.sampradaya_notes.advaita;
-    }
-    if (activeSampradaya === 'vishishtadvaita') {
-      return universal.sampradaya_notes.vishishtadvaita;
-    }
-    if (activeSampradaya === 'dvaita') {
-      return universal.sampradaya_notes.dvaita;
-    }
+    const getActiveBhashya = () => {
+    if (activeSampradaya === 'advaita') return universal.sampradaya_notes.advaita;
+    if (activeSampradaya === 'vishishtadvaita') return universal.sampradaya_notes.vishishtadvaita;
+    if (activeSampradaya === 'dvaita') return universal.sampradaya_notes.dvaita;
+    if (activeSampradaya === 'jnaneshwari') return universal.sampradaya_notes.jnaneshwari;
+    if (activeSampradaya === 'vivekananda') return universal.sampradaya_notes.vivekananda;
+    if (activeSampradaya === 'science') return universal.sampradaya_notes.science;
+    if (activeSampradaya === 'meditation') return universal.sampradaya_notes.meditation;
 
     if (canonical?.deep_bhashya?.[language]) return canonical.deep_bhashya[language];
     if (dynamicData?.deep_bhashya) return dynamicData.deep_bhashya;
@@ -707,12 +705,16 @@ export default function ScriptureReader({
           </div>
 
           {/* Sampradaya Tabs */}
-          <div className="flex items-center gap-1 bg-[#141622] border border-[#c5a059]/20 p-1 rounded-2xl">
+          <div className="flex items-center gap-1.5 bg-[#141622] border border-[#c5a059]/20 p-1.5 rounded-2xl overflow-x-auto custom-scrollbar max-w-full">
             {[
-              { id: 'universal', label: 'सर्वसम्मत' },
-              { id: 'advaita', label: 'शंकराचार्य' },
-              { id: 'vishishtadvaita', label: 'रामानुज' },
-              { id: 'dvaita', label: 'मध्वाचार्य' }
+              { id: 'universal', label: '🕉️ सर्वसम्मत' },
+              { id: 'advaita', label: '🧘 शंकराचार्य' },
+              { id: 'vishishtadvaita', label: '🪷 रामानुज' },
+              { id: 'dvaita', label: '🔱 मध्वाचार्य' },
+              { id: 'jnaneshwari', label: '🌸 ज्ञानेश्वरी' },
+              { id: 'vivekananda', label: '⚡ विवेकानन्द' },
+              { id: 'science', label: '🌌 क्वांटम विज्ञान' },
+              { id: 'meditation', label: '🧘‍♂️ ध्यान विधि' }
             ].map(tab => (
               <button
                 key={tab.id}
@@ -720,10 +722,10 @@ export default function ScriptureReader({
                   setActiveSampradaya(tab.id as any);
                   sacredAudio.playNavChime(0.06);
                 }}
-                className={`px-2.5 py-1 rounded-xl text-[11px] font-serif transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-xl text-xs font-serif shrink-0 transition-all cursor-pointer whitespace-nowrap ${
                   activeSampradaya === tab.id
-                    ? 'bg-[#c5a059] text-[#090a0f] font-bold shadow-sm'
-                    : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
+                    ? 'bg-[#c5a059] text-[#090a0f] font-bold shadow-md scale-102'
+                    : 'bg-[#090a0f]/50 text-[#c5a059]/70 hover:text-[#f5eed9] hover:bg-[#141622]'
                 }`}
               >
                 {tab.label}
