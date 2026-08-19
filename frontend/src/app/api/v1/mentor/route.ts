@@ -331,11 +331,38 @@ function localVedanticDiagnosis(problem: string): SevenLayerMentorDiagnosis {
 export async function POST(req: Request) {
   try {
     const startTime = Date.now();
-    const body = await req.json() as MentorRequest;
     
+    // Security check: Payload parsing
+    let body: MentorRequest;
+    try {
+      body = await req.json() as MentorRequest;
+    } catch {
+      return NextResponse.json({ success: false, error: 'Invalid JSON payload' }, { status: 400 });
+    }
+
+    if (!body || typeof body.problem_description !== 'string' || !body.problem_description.trim()) {
+      return NextResponse.json({ success: false, error: 'problem_description is required' }, { status: 400 });
+    }
+
+    // Security check: Bounds & Sanitization (prevent memory exhaustion)
+    const sanitizedProblem = body.problem_description.slice(0, 4000).trim();
+
+    // Whitelist model validation
+    const ALLOWED_MODELS: AIModelOption[] = [
+      'llama-3.3-70b-versatile',
+      'llama-3.1-8b-instant',
+      'mixtral-8x7b-32768',
+      'gemma2-9b-it',
+      'dharma-vedic-engine-v1'
+    ];
+    const model: AIModelOption = ALLOWED_MODELS.includes(body.model as AIModelOption) 
+      ? (body.model as AIModelOption) 
+      : 'llama-3.3-70b-versatile';
+
+    // Sanitize custom API Key against HTTP header injection
+    let apiKey = (body.custom_api_key || process.env.GROQ_API_KEY || '').replace(/[\r\n]/g, '').trim();
+
     let diagnosis: SevenLayerMentorDiagnosis | null = null;
-    const apiKey = body.custom_api_key || process.env.GROQ_API_KEY;
-    const model = body.model || 'llama-3.3-70b-versatile';
 
     if (apiKey && model !== 'dharma-vedic-engine-v1') {
       try {
@@ -343,13 +370,15 @@ export async function POST(req: Request) {
           { role: 'system', content: SYSTEM_PROMPT }
         ];
 
-        if (body.conversation_history && body.conversation_history.length > 0) {
-          body.conversation_history.forEach(msg => {
-            messages.push({ role: msg.role, content: msg.content });
+        if (Array.isArray(body.conversation_history) && body.conversation_history.length > 0) {
+          body.conversation_history.slice(-8).forEach(msg => {
+            if (msg && typeof msg.content === 'string' && (msg.role === 'user' || msg.role === 'assistant')) {
+              messages.push({ role: msg.role, content: msg.content.slice(0, 2000) });
+            }
           });
         }
 
-        messages.push({ role: 'user', content: body.problem_description });
+        messages.push({ role: 'user', content: sanitizedProblem });
 
         const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
           method: 'POST',
@@ -370,9 +399,10 @@ export async function POST(req: Request) {
           diagnosis = JSON.parse(data.choices[0].message.content);
         }
       } catch (err) {
-        console.error('Groq API Error:', err);
+        console.error('Groq API Error (falling back to secure local engine):', err);
       }
     }
+
 
     if (!diagnosis) {
       diagnosis = localVedanticDiagnosis(body.problem_description);
