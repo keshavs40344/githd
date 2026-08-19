@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Menu, Grid, BookOpen, Search, BookMarked, 
-  ChevronRight, ChevronLeft, Sparkles, Flame, CheckCircle2, Globe 
+  ChevronRight, ChevronLeft, Sparkles, Flame, CheckCircle2, Globe, Dices 
 } from 'lucide-react';
 import ChapterSelector from './ChapterSelector';
 import ScriptureReader from './ScriptureReader';
@@ -94,6 +94,15 @@ export default function ScriptureWorkspace({ verses: initialVerses }: { verses: 
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const handleRandomVerse = () => {
+    const randomChapter = Math.floor(Math.random() * 18) + 1;
+    const targetChapter = CHAPTERS.find(c => c.number === randomChapter) || CHAPTERS[0];
+    const randomVerseNum = Math.floor(Math.random() * targetChapter.verse_count) + 1;
+    setChapter(randomChapter);
+    setVerse(randomVerseNum);
+    sacredAudio.playTempleBell(0.4);
+  };
+
   const progressPercentage = Math.round((currentVerse / currentChapterInfo.verse_count) * 100);
 
   return (
@@ -132,9 +141,19 @@ export default function ScriptureWorkspace({ verses: initialVerses }: { verses: 
           </button>
         </div>
 
-        {/* Right: Master Language Selector, Search & Saved Bookmarks */}
+        {/* Right: Master Language Selector, Random Shloka, Search & Saved Bookmarks */}
         <div className="flex items-center gap-2">
           
+          {/* Random Divine Verse Button */}
+          <button
+            onClick={handleRandomVerse}
+            className="px-2.5 py-1.5 rounded-xl bg-gradient-to-r from-[#c5a059]/20 to-amber-600/20 hover:from-[#c5a059]/30 hover:to-amber-600/30 border border-[#c5a059]/30 text-[#e6c687] hover:text-[#f5eed9] transition-all flex items-center gap-1.5 cursor-pointer touch-manipulation shadow-sm"
+            title="दैवी प्रेरणा / Random Shloka"
+          >
+            <Dices className="w-3.5 h-3.5 text-[#e6c687] animate-pulse" />
+            <span className="text-xs font-serif hidden sm:inline">दैवी प्रेरणा</span>
+          </button>
+
           {/* Working Expert Language Translator Dropdown */}
           <div className="flex items-center gap-1.5 bg-[#141622] border border-[#c5a059]/30 rounded-xl px-2.5 py-1.5 shadow-inner">
             <Globe className="w-3.5 h-3.5 text-[#c5a059]" />
