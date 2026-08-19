@@ -8,8 +8,9 @@ import {
   Play, Pause, SkipForward, SkipBack, Shuffle, Repeat, 
   Volume2, VolumeX, Search, Filter, Sparkles, Music, 
   PlusCircle, Heart, Radio, Disc3, Layers, Share2, 
-  ExternalLink, Waves, List, Grid 
+  ExternalLink, Waves, List, Grid, BookOpen 
 } from 'lucide-react';
+
 
 import { Button } from './ui/Button';
 import { sacredAudio } from '@/lib/sacredSounds';
@@ -29,6 +30,8 @@ const CATEGORIES: { id: CategoryFilter; label: string; icon: string }[] = [
 export default function SacredMusicHub() {
   const [playlists, setPlaylists] = useState<YouTubePlaylistItem[]>(SACRED_YOUTUBE_PLAYLISTS);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  const [currentEpisodeIndex, setCurrentEpisodeIndex] = useState(0);
+  const [episodeSearchQuery, setEpisodeSearchQuery] = useState('');
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [isPlaying, setIsPlaying] = useState(true);
@@ -39,7 +42,6 @@ export default function SacredMusicHub() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
   // Custom YouTube adder
-
   const [customUrl, setCustomUrl] = useState('');
   const [customTitle, setCustomTitle] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
@@ -49,6 +51,7 @@ export default function SacredMusicHub() {
   const [playbackSeconds, setPlaybackSeconds] = useState(0);
 
   const currentTrack = playlists[currentTrackIndex] || playlists[0];
+  const activeEpisode = currentTrack.episodes?.[currentEpisodeIndex] || currentTrack.episodes?.[0];
 
   // Load custom playlists & favorites
   useEffect(() => {
@@ -82,20 +85,34 @@ export default function SacredMusicHub() {
     const idx = playlists.findIndex(t => t.id === track.id);
     if (idx !== -1) {
       setCurrentTrackIndex(idx);
+      setCurrentEpisodeIndex(0);
+      setEpisodeSearchQuery('');
     }
     setIsPlaying(true);
     setPlaybackSeconds(0);
     sacredAudio.playFluteChime(0.2);
   };
 
+  const handleSelectEpisode = (epIdx: number) => {
+    setCurrentEpisodeIndex(epIdx);
+    setIsPlaying(true);
+    setPlaybackSeconds(0);
+    sacredAudio.playFluteChime(0.25);
+  };
+
   const handleNextTrack = () => {
     sacredAudio.playNavChime(0.12);
     setPlaybackSeconds(0);
-    if (isShuffle) {
-      const randomIdx = Math.floor(Math.random() * playlists.length);
-      setCurrentTrackIndex(randomIdx);
+    if (currentTrack.episodes && currentEpisodeIndex < currentTrack.episodes.length - 1) {
+      setCurrentEpisodeIndex(prev => prev + 1);
     } else {
-      setCurrentTrackIndex((prev) => (prev + 1) % playlists.length);
+      if (isShuffle) {
+        const randomIdx = Math.floor(Math.random() * playlists.length);
+        setCurrentTrackIndex(randomIdx);
+      } else {
+        setCurrentTrackIndex((prev) => (prev + 1) % playlists.length);
+      }
+      setCurrentEpisodeIndex(0);
     }
     setIsPlaying(true);
   };
@@ -103,9 +120,15 @@ export default function SacredMusicHub() {
   const handlePrevTrack = () => {
     sacredAudio.playNavChime(0.12);
     setPlaybackSeconds(0);
-    setCurrentTrackIndex((prev) => (prev - 1 + playlists.length) % playlists.length);
+    if (currentTrack.episodes && currentEpisodeIndex > 0) {
+      setCurrentEpisodeIndex(prev => prev - 1);
+    } else {
+      setCurrentTrackIndex((prev) => (prev - 1 + playlists.length) % playlists.length);
+      setCurrentEpisodeIndex(0);
+    }
     setIsPlaying(true);
   };
+
 
   const togglePlay = () => {
     sacredAudio.playNavChime(0.15);
@@ -163,8 +186,10 @@ export default function SacredMusicHub() {
         : `https://img.youtube.com/vi/${extracted.id}/hqdefault.jpg`,
       duration: 'Continuous Audio',
       description: 'Seeker customized sacred stream for meditation and chanting.',
-      tags: ['Custom', 'User Added', 'Sacred Audio']
+      tags: ['Custom', 'User Added', 'Sacred Audio'],
+      episodes: []
     };
+
 
     sacredAudio.playTempleBell(0.35);
     setPlaylists(prev => [newTrack, ...prev]);
@@ -203,15 +228,16 @@ export default function SacredMusicHub() {
       <div className="fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0 pointer-events-none overflow-hidden" aria-hidden="true">
         {isPlaying && (
           <iframe
-            key={`${currentTrack.youtubeId}-${isPlaying}-${currentTrackIndex}`}
+            key={`${currentTrack.youtubeId}-${currentEpisodeIndex}-${isPlaying}-${currentTrackIndex}`}
             src={currentTrack.isPlaylist
-              ? `https://www.youtube.com/embed/videoseries?list=${currentTrack.youtubeId}&autoplay=1&enablejsapi=1&rel=0&controls=0&modestbranding=1&loop=${isRepeat ? 1 : 0}`
+              ? `https://www.youtube.com/embed/videoseries?list=${currentTrack.youtubeId}&index=${currentEpisodeIndex}&autoplay=1&enablejsapi=1&rel=0&controls=0&modestbranding=1&loop=${isRepeat ? 1 : 0}`
               : `https://www.youtube.com/embed/${currentTrack.youtubeId}?autoplay=1&enablejsapi=1&rel=0&controls=0&modestbranding=1&loop=${isRepeat ? 1 : 0}`}
             title="Audio Background Stream Engine"
             allow="autoplay"
           />
         )}
       </div>
+
 
 
       {/* ── Top Header ────────────────────────────────────── */}
@@ -318,15 +344,24 @@ export default function SacredMusicHub() {
             {/* Header / Badges */}
             <div className="space-y-2">
               <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-[11px] font-cinzel font-bold uppercase tracking-widest text-gold-300 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/30">
-                    {currentTrack.category.toUpperCase().replace('_', ' ')}
+                    {currentTrack.categoryLabel || currentTrack.category.toUpperCase().replace('_', ' ')}
                   </span>
-                  {currentTrack.raga && (
+                  {currentTrack.isPlaylist && (
+                    <span className="text-[10px] font-mono text-amber-300 px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 font-bold flex items-center gap-1">
+                      📜 {currentTrack.episodeCount || 'प्लेलिस्ट धारावाहिक'}
+                    </span>
+                  )}
+                  {activeEpisode?.raga ? (
+                    <span className="text-xs font-mono text-gold-400/80 px-2.5 py-0.5 rounded-full bg-obsidian-800 border border-gold-500/20">
+                      {activeEpisode.raga}
+                    </span>
+                  ) : currentTrack.raga ? (
                     <span className="text-xs font-mono text-gold-400/80 px-2.5 py-0.5 rounded-full bg-obsidian-800 border border-gold-500/20">
                       {currentTrack.raga}
                     </span>
-                  )}
+                  ) : null}
                 </div>
 
                 <button
@@ -342,17 +377,26 @@ export default function SacredMusicHub() {
                 </button>
               </div>
 
+              {/* Playlist Parent Name if in episode */}
+              {currentTrack.episodes && currentTrack.episodes.length > 1 && (
+                <div className="text-xs font-mono text-gold-400/70 flex items-center gap-1.5 pt-0.5">
+                  <BookOpen className="w-3.5 h-3.5 text-gold-400" />
+                  <span className="truncate">{currentTrack.title}</span>
+                  <span className="text-amber-400 font-bold">• भाग {currentEpisodeIndex + 1} / {currentTrack.episodes.length}</span>
+                </div>
+              )}
+
               <h2 className="text-xl sm:text-2xl lg:text-3xl font-display font-bold text-gold-100 leading-tight">
-                {currentTrack.title}
+                {activeEpisode ? activeEpisode.title : currentTrack.title}
               </h2>
 
               <p className="text-xs sm:text-sm text-gold-300/80 font-sans leading-relaxed">
-                {currentTrack.subtitle}
+                {activeEpisode?.subtitle || currentTrack.subtitle}
               </p>
             </div>
 
             {/* Progress & Time */}
-            <div className="space-y-1.5 pt-2">
+            <div className="space-y-1.5 pt-1">
               <div className="w-full bg-obsidian-950 h-2 rounded-full overflow-hidden border border-gold-500/20 relative">
                 <div 
                   className="h-full bg-gradient-to-r from-gold-500 via-amber-400 to-amber-600 transition-all duration-300 rounded-full"
@@ -361,12 +405,12 @@ export default function SacredMusicHub() {
               </div>
               <div className="flex items-center justify-between text-[11px] font-mono text-gold-400/70">
                 <span>{formatTime(playbackSeconds)}</span>
-                <span>{currentTrack.duration || 'Continuous Stream'}</span>
+                <span>{activeEpisode?.duration || currentTrack.duration || 'Continuous Audio Stream'}</span>
               </div>
             </div>
 
             {/* Playback Button Bar */}
-            <div className="flex items-center justify-between gap-4 pt-2">
+            <div className="flex items-center justify-between gap-4 pt-1">
               
               <div className="flex items-center gap-2">
                 <button
@@ -399,7 +443,7 @@ export default function SacredMusicHub() {
                 <button
                   onClick={handlePrevTrack}
                   className="p-3 rounded-2xl bg-obsidian-800 hover:bg-obsidian-750 border border-gold-500/20 text-gold-200 hover:text-gold-100 transition-all active:scale-95 cursor-pointer shadow-md"
-                  title="Previous Track"
+                  title="Previous Episode / Track"
                 >
                   <SkipBack className="w-5 h-5 fill-current" />
                 </button>
@@ -419,7 +463,7 @@ export default function SacredMusicHub() {
                 <button
                   onClick={handleNextTrack}
                   className="p-3 rounded-2xl bg-obsidian-800 hover:bg-obsidian-750 border border-gold-500/20 text-gold-200 hover:text-gold-100 transition-all active:scale-95 cursor-pointer shadow-md"
-                  title="Next Track"
+                  title="Next Episode / Track"
                 >
                   <SkipForward className="w-5 h-5 fill-current" />
                 </button>
@@ -440,7 +484,6 @@ export default function SacredMusicHub() {
                 </a>
               </div>
             </div>
-
 
             {/* Instant Sacred Sound FX Quick Trigger */}
             <div className="pt-3 border-t border-gold-500/15 space-y-2">
@@ -469,6 +512,129 @@ export default function SacredMusicHub() {
         </div>
 
       </div>
+
+      {/* ── ACTIVE PLAYLIST EPISODE EXPLORER & TRACKLIST SECTION ─────────── */}
+      {currentTrack.episodes && currentTrack.episodes.length > 0 && (
+        <div className="bg-gradient-to-br from-obsidian-900/90 via-obsidian-900/95 to-amber-950/20 border border-gold-500/30 rounded-3xl p-5 sm:p-7 shadow-xl space-y-5">
+          
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gold-500/20 pb-4">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2">
+                <span className="text-lg">📜</span>
+                <h3 className="text-lg sm:text-xl font-cinzel font-bold text-gold-100 gradient-text-gold">
+                  {currentTrack.title} — सम्पूर्ण अध्याय एवं प्रसंग सूची
+                </h3>
+              </div>
+              <p className="text-xs text-gold-300/70 font-sans">
+                इस प्लेलिस्ट के कुल <span className="text-amber-400 font-bold">{currentTrack.episodes.length}</span> अध्याय/प्रसंग उपलब्ध हैं। किसी भी प्रसंग पर क्लिक करके सीधा सुनें:
+              </p>
+            </div>
+
+            {/* Episode Search Bar */}
+            <div className="relative min-w-[200px] sm:min-w-[240px]">
+              <Search className="w-3.5 h-3.5 text-gold-400/60 absolute left-3 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={episodeSearchQuery}
+                onChange={(e) => setEpisodeSearchQuery(e.target.value)}
+                placeholder="इस श्रृंखला में खोजें..."
+                className="w-full bg-obsidian-800 border border-gold-500/20 rounded-xl pl-9 pr-3 py-1.5 text-xs text-gold-100 focus:border-gold-400 outline-none font-sans"
+              />
+              {episodeSearchQuery && (
+                <button
+                  onClick={() => setEpisodeSearchQuery('')}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs text-gold-400/60 hover:text-gold-200"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Episode List Grid / Rows */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[480px] overflow-y-auto pr-1 custom-scrollbar">
+            {currentTrack.episodes
+              .filter(ep => {
+                if (!episodeSearchQuery.trim()) return true;
+                const q = episodeSearchQuery.toLowerCase();
+                return ep.title.toLowerCase().includes(q) || 
+                  (ep.subtitle && ep.subtitle.toLowerCase().includes(q)) ||
+                  (ep.raga && ep.raga.toLowerCase().includes(q));
+              })
+              .map((ep, epIdx) => {
+                const isEpActive = currentEpisodeIndex === epIdx;
+
+                return (
+                  <div
+                    key={ep.id || epIdx}
+                    onClick={() => handleSelectEpisode(epIdx)}
+                    className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 ${
+                      isEpActive
+                        ? 'bg-gradient-to-r from-gold-500/20 via-amber-500/15 to-obsidian-850 border-gold-400 shadow-[0_0_15px_rgba(232,163,32,0.3)]'
+                        : 'bg-obsidian-850/80 hover:bg-obsidian-800 border-gold-500/15 hover:border-gold-400/40'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3 min-w-0">
+                      {/* Episode Badge Number */}
+                      <div className={`w-9 h-9 rounded-xl flex items-center justify-center font-mono text-xs font-bold shrink-0 transition-colors ${
+                        isEpActive 
+                          ? 'bg-gradient-to-br from-gold-400 to-amber-600 text-obsidian-950 shadow-md' 
+                          : 'bg-obsidian-900 border border-gold-500/25 text-gold-300'
+                      }`}>
+                        {ep.episodeNumber < 10 ? `0${ep.episodeNumber}` : ep.episodeNumber}
+                      </div>
+
+                      <div className="min-w-0">
+                        <h4 className={`text-xs sm:text-sm font-bold truncate font-sans ${
+                          isEpActive ? 'text-gold-200 font-display' : 'text-gold-100'
+                        }`}>
+                          {ep.title}
+                        </h4>
+                        {ep.subtitle && (
+                          <p className="text-[11px] text-gold-400/70 truncate font-sans">
+                            {ep.subtitle}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-2 shrink-0">
+                      {ep.raga && (
+                        <span className="text-[10px] font-mono text-gold-400/70 px-2 py-0.5 rounded-md bg-obsidian-900 border border-gold-500/10 hidden lg:inline">
+                          {ep.raga}
+                        </span>
+                      )}
+
+                      {ep.duration && (
+                        <span className="text-[10px] font-mono text-gold-400/60 hidden sm:inline">
+                          {ep.duration}
+                        </span>
+                      )}
+
+                      <button
+                        className={`p-2 rounded-xl transition-all ${
+                          isEpActive
+                            ? 'bg-gold-500 text-obsidian-950 shadow-[0_0_10px_rgba(232,163,32,0.4)]'
+                            : 'bg-obsidian-900 text-gold-300 border border-gold-500/20 hover:border-gold-400'
+                        }`}
+                        title={isEpActive && isPlaying ? 'Playing' : 'Play Episode'}
+                      >
+                        {isEpActive && isPlaying ? (
+                          <Radio className="w-3.5 h-3.5 animate-pulse" />
+                        ) : (
+                          <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+                        )}
+                      </button>
+                    </div>
+
+                  </div>
+                );
+              })}
+          </div>
+
+        </div>
+      )}
+
 
       {/* ── Category Filters & Search Row ────────────────────── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pt-2">
