@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect } from 'react';
 import type { GitaVerse, AnvayaToken } from '../types/verse';
@@ -8,7 +8,7 @@ import {
   Bookmark, BookmarkCheck, Copy, Check, ChevronRight, ChevronLeft, 
   Sparkles, BookOpen, Volume2, VolumeX, Share2, Compass, Globe2, 
   Layers, Radio, RefreshCw, Disc3, Play, Pause, ShieldCheck, Heart, Lightbulb,
-  Film, Tv, Eye, EyeOff, Music2
+  Music, Bell, Disc, Sparkle, Flame
 } from 'lucide-react';
 import { Button } from './ui/Button';
 import { sacredAudio } from '@/lib/sacredSounds';
@@ -49,16 +49,33 @@ export default function ScriptureReader({
   const [showWisdomCard, setShowWisdomCard] = useState(false);
   const [showBhashya, setShowBhashya] = useState(true);
 
-  // Dedicated Shloka Video State (Positioned right above translation)
-  const [showShlokaVideo, setShowShlokaVideo] = useState(true);
-  const [videoPlaybackMode, setVideoPlaybackMode] = useState<'video' | 'audio'>('video');
+  // Pure Shloka Music Player State (Above Translation)
+  const [isPlayingShlokaMusic, setIsPlayingShlokaMusic] = useState(false);
+  const [shlokaPlaybackSeconds, setShlokaPlaybackSeconds] = useState(0);
 
-  // Authentic Chapter Audio Stream states
+  // Chapter Audio Stream state
   const [isPlayingChapterAudio, setIsPlayingChapterAudio] = useState(false);
   const [audioStreamSource, setAudioStreamSource] = useState<'gita_series' | 'bhagwat_katha'>('gita_series');
 
-  // Resolve accurate video for this chapter and verse
-  const shlokaVideo = getGitaVideoForVerse(verse.chapter, verse.verse);
+  // Resolve accurate audio source for this chapter and verse
+  const shlokaAudioData = getGitaVideoForVerse(verse.chapter, verse.verse);
+
+  // Timer for Shloka Music
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isPlayingShlokaMusic) {
+      interval = setInterval(() => {
+        setShlokaPlaybackSeconds(prev => prev + 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [isPlayingShlokaMusic]);
+
+  // Reset audio when verse changes
+  useEffect(() => {
+    setIsPlayingShlokaMusic(false);
+    setShlokaPlaybackSeconds(0);
+  }, [verse.chapter, verse.verse]);
 
   // Check Bookmark status
   useEffect(() => {
@@ -123,6 +140,12 @@ export default function ScriptureReader({
       sacredAudio.playNavChime(0.15);
       setTimeout(() => setCopied(false), 2000);
     }
+  };
+
+  const formatSeconds = (secs: number) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
   const getActiveTranslation = () => {
@@ -199,7 +222,7 @@ export default function ScriptureReader({
         
         {/* Chapter & Verse Badge */}
         <div className="flex items-center gap-2">
-          <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-gold-400 to-amber-600 flex items-center justify-center text-obsidian-950 font-bold text-sm shadow-md">
+          <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-gold-400 to-amber-600 flex items-center justify-center text-obsidian-950 font-bold text-sm shadow-md animate-pulse">
             ॐ
           </span>
           <div>
@@ -227,8 +250,8 @@ export default function ScriptureReader({
               }}
               className={`px-2.5 py-1 rounded-xl text-xs font-sans font-medium whitespace-nowrap transition-all cursor-pointer flex items-center gap-1 ${
                 selectedLang === lang.code
-                  ? 'bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold shadow-[0_0_12px_rgba(232,163,32,0.4)]'
-                  : 'bg-obsidian-800/80 hover:bg-obsidian-750 text-gold-300/70 border border-gold-500/15'
+                  ? 'bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold shadow-[0_0_12px_rgba(232,163,32,0.4)] scale-105'
+                  : 'bg-obsidian-800/80 hover:bg-obsidian-750 text-gold-300/70 border border-gold-500/15 hover:scale-102'
               }`}
             >
               <span>{lang.flag}</span>
@@ -241,7 +264,7 @@ export default function ScriptureReader({
         <div className="flex items-center gap-1.5 self-end sm:self-auto shrink-0">
           <button
             onClick={copyVerse}
-            className="p-2 rounded-xl bg-obsidian-800 text-gold-300 border border-gold-500/15 hover:border-gold-400 transition-colors"
+            className="p-2 rounded-xl bg-obsidian-800 text-gold-300 border border-gold-500/15 hover:border-gold-400 transition-all hover:scale-105 active:scale-95"
             title="Copy Shloka & Meaning"
           >
             {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
@@ -249,7 +272,7 @@ export default function ScriptureReader({
 
           <button
             onClick={toggleBookmark}
-            className={`p-2 rounded-xl border transition-colors ${
+            className={`p-2 rounded-xl border transition-all hover:scale-105 active:scale-95 ${
               isBookmarked
                 ? 'bg-gold-500/20 text-gold-300 border-gold-400'
                 : 'bg-obsidian-800 text-gold-300/70 border-gold-500/15 hover:border-gold-400'
@@ -261,7 +284,7 @@ export default function ScriptureReader({
 
           <button
             onClick={() => setShowWisdomCard(true)}
-            className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-gold-500/20 to-amber-500/20 hover:from-gold-500/30 hover:to-amber-500/30 text-gold-200 border border-gold-400/30 text-xs font-sans flex items-center gap-1.5"
+            className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-gold-500/20 to-amber-500/20 hover:from-gold-500/30 hover:to-amber-500/30 text-gold-200 border border-gold-400/30 text-xs font-sans flex items-center gap-1.5 transition-all hover:scale-105"
           >
             <Sparkles className="w-3.5 h-3.5 text-gold-400" />
             <span className="hidden sm:inline">विज्डम कार्ड</span>
@@ -279,9 +302,9 @@ export default function ScriptureReader({
         {/* Sanskrit Shloka Devanagari */}
         <div className="text-center space-y-4 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 text-[11px] font-mono text-gold-300 uppercase tracking-widest">
-            <span>✨</span>
+            <span className="animate-spin-slow">✨</span>
             <span>मूल संस्कृत श्लोक (Original Sacred Verse)</span>
-            <span>✨</span>
+            <span className="animate-spin-slow">✨</span>
           </div>
 
           <p className="text-xl sm:text-2xl lg:text-3xl font-devanagari font-bold text-gold-100 leading-relaxed tracking-wide text-glow-gold whitespace-pre-line py-2">
@@ -306,7 +329,7 @@ export default function ScriptureReader({
             className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-sans font-bold flex items-center gap-2.5 border transition-all cursor-pointer shadow-lg active:scale-95 ${
               isPlayingChapterAudio
                 ? 'bg-gradient-to-r from-gold-400 to-amber-500 text-obsidian-950 border-gold-300 shadow-[0_0_20px_rgba(232,163,32,0.45)]'
-                : 'bg-obsidian-850 hover:bg-obsidian-800 text-gold-200 border-gold-500/30 hover:border-gold-400'
+                : 'bg-obsidian-850 hover:bg-obsidian-800 text-gold-200 border-gold-500/30 hover:border-gold-400 hover:scale-102'
             }`}
           >
             {isPlayingChapterAudio ? (
@@ -345,7 +368,7 @@ export default function ScriptureReader({
 
         </div>
 
-        {/* Hidden Audio Stream Iframe */}
+        {/* Hidden Chapter Audio Stream Iframe */}
         {isPlayingChapterAudio && (
           <div className="fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0 pointer-events-none" aria-hidden="true">
             <iframe
@@ -377,7 +400,7 @@ export default function ScriptureReader({
               <button
                 key={i}
                 onClick={() => onWordClick && onWordClick(token)}
-                className="group p-2 sm:px-3 sm:py-2 rounded-2xl bg-obsidian-800/90 hover:bg-gold-500/20 border border-gold-500/20 hover:border-gold-400 transition-all text-left cursor-pointer active:scale-95 shadow-sm"
+                className="group p-2 sm:px-3 sm:py-2 rounded-2xl bg-obsidian-800/90 hover:bg-gold-500/20 border border-gold-500/20 hover:border-gold-400 transition-all text-left cursor-pointer active:scale-95 hover:scale-103 shadow-sm"
               >
                 <div className="text-xs sm:text-sm font-devanagari font-bold text-gold-100 group-hover:text-gold-300">
                   {token.word}
@@ -396,117 +419,151 @@ export default function ScriptureReader({
         </div>
       )}
 
-      {/* ── 🎬 DEDICATED SHLOKA VIDEO & EXPLANATION CARD (UPPER THE TRANSLATION SECTION) ──────── */}
-      <div className="bg-gradient-to-br from-obsidian-900/95 via-obsidian-900 to-amber-950/20 border border-gold-500/30 rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4">
+      {/* ── 🪈 DEDICATED PURE MUSIC & SHLOKA AUDIO SANCTUM (UPPER THE TRANSLATION SECTION - 100% AUDIO ONLY) ──────── */}
+      <div className="bg-gradient-to-br from-obsidian-900/98 via-obsidian-900 to-amber-950/30 border border-gold-500/35 rounded-3xl p-6 sm:p-7 shadow-2xl space-y-5 relative overflow-hidden">
         
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gold-500/15 pb-3">
-          <div className="flex items-center gap-2.5">
-            <span className="w-8 h-8 rounded-xl bg-gold-500/20 border border-gold-400/40 flex items-center justify-center text-gold-300">
-              <Film className="w-4 h-4" />
+        {/* Ambient Glow Aura */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        {/* Hidden Audio Iframe Engine (No Video Screen) */}
+        {isPlayingShlokaMusic && (
+          <div className="fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0 pointer-events-none" aria-hidden="true">
+            <iframe
+              key={`pure-shloka-music-${shlokaAudioData.videoId}-${isPlayingShlokaMusic}`}
+              src={`https://www.youtube.com/embed/${shlokaAudioData.videoId}?autoplay=1&enablejsapi=1&rel=0&controls=0`}
+              title={shlokaAudioData.title}
+              allow="autoplay"
+            />
+          </div>
+        )}
+
+        {/* Header Title & Badge */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gold-500/15 pb-4 relative z-10">
+          <div className="flex items-center gap-3">
+            <span className="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-400 to-amber-600 flex items-center justify-center text-obsidian-950 font-bold shadow-[0_0_15px_rgba(232,163,32,0.4)]">
+              <Music className="w-5 h-5 fill-current" />
             </span>
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="font-cinzel text-sm sm:text-base font-bold text-gold-100">
-                  श्लोक वीडियो एवं प्रामाणिक व्याख्या
+                  श्लोक पावन संगीत एवं स्वर पाठ (Pure Audio)
                 </h3>
-                <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold ${
-                  shlokaVideo.type === 'exact_verse'
-                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
-                    : 'bg-gold-500/20 text-gold-300 border border-gold-500/30'
-                }`}>
-                  {shlokaVideo.type === 'exact_verse' ? '✨ श्लोक विशुद्ध वीडियो' : '📜 अध्याय सम्पूर्ण सार'}
+                <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold bg-gold-500/20 text-gold-300 border border-gold-400/40 animate-pulse">
+                  {shlokaAudioData.type === 'exact_verse' ? '✨ श्लोक विशुद्ध संगीत' : '📜 अध्याय पावन संगीत'}
                 </span>
               </div>
-              <p className="text-[11px] text-gold-300/70 font-sans line-clamp-1">
-                {shlokaVideo.title}
+              <p className="text-xs text-gold-300/80 font-sans line-clamp-1 mt-0.5">
+                {shlokaAudioData.title}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 self-end sm:self-auto">
-            {/* Video / Audio View Toggle */}
-            <div className="flex items-center p-1 rounded-xl bg-obsidian-950 border border-gold-500/20 text-xs">
-              <button
-                onClick={() => {
-                  setVideoPlaybackMode('video');
-                  sacredAudio.playNavChime(0.1);
-                }}
-                className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer flex items-center gap-1 ${
-                  videoPlaybackMode === 'video'
-                    ? 'bg-gold-500 text-obsidian-950 font-bold shadow-sm'
-                    : 'text-gold-400/70 hover:text-gold-200'
-                }`}
-              >
-                <Tv className="w-3.5 h-3.5" />
-                <span>वीडियो</span>
-              </button>
-              <button
-                onClick={() => {
-                  setVideoPlaybackMode('audio');
-                  sacredAudio.playNavChime(0.1);
-                }}
-                className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer flex items-center gap-1 ${
-                  videoPlaybackMode === 'audio'
-                    ? 'bg-gold-500 text-obsidian-950 font-bold shadow-sm'
-                    : 'text-gold-400/70 hover:text-gold-200'
-                }`}
-              >
-                <Music2 className="w-3.5 h-3.5" />
-                <span>केवल ऑडियो</span>
-              </button>
-            </div>
-
-            {/* Collapse / Expand Toggle */}
+          {/* Quick Sound FX Triggers */}
+          <div className="flex items-center gap-1.5 self-end sm:self-auto">
             <button
-              onClick={() => setShowShlokaVideo(!showShlokaVideo)}
-              className="p-1.5 rounded-xl bg-obsidian-800 text-gold-300 border border-gold-500/20 hover:border-gold-400 transition-colors"
-              title={showShlokaVideo ? 'Hide Player' : 'Show Player'}
+              onClick={() => sacredAudio.playTempleBell(0.3)}
+              className="px-2 py-1 rounded-xl bg-obsidian-800 hover:bg-gold-500/20 border border-gold-500/20 text-[11px] text-gold-300 flex items-center gap-1 transition-all hover:scale-105"
+              title="Temple Bell Chime"
             >
-              {showShlokaVideo ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+              <Bell className="w-3 h-3 text-gold-400" />
+              <span>घण्टी</span>
+            </button>
+            <button
+              onClick={() => sacredAudio.playShankhnaad(0.3)}
+              className="px-2 py-1 rounded-xl bg-obsidian-800 hover:bg-gold-500/20 border border-gold-500/20 text-[11px] text-gold-300 flex items-center gap-1 transition-all hover:scale-105 cursor-pointer"
+              title="Sacred Shankh"
+            >
+              <span>🐚</span>
+              <span>शंख</span>
+            </button>
+            <button
+              onClick={() => sacredAudio.playFluteChime(0.3)}
+              className="px-2 py-1 rounded-xl bg-obsidian-800 hover:bg-gold-500/20 border border-gold-500/20 text-[11px] text-gold-300 flex items-center gap-1 transition-all hover:scale-105"
+              title="Bansuri Tune"
+            >
+              <span>🪈</span>
+              <span>बाँसुरी</span>
             </button>
           </div>
         </div>
 
-        {showShlokaVideo && (
-          <div className="space-y-3 pt-1 animate-in fade-in duration-300">
-            {videoPlaybackMode === 'video' ? (
-              /* High Definition Embedded Video Player */
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-gold-500/25 bg-black shadow-2xl">
-                <iframe
-                  key={shlokaVideo.videoId}
-                  src={`https://www.youtube.com/embed/${shlokaVideo.videoId}?rel=0&modestbranding=1&color=white`}
-                  title={shlokaVideo.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="w-full h-full"
+        {/* Chakra Vinyl & Dynamic Equalizer Center Console */}
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center p-3 rounded-2xl bg-obsidian-950/70 border border-gold-500/20 relative z-10">
+          
+          {/* Left: Spinning Golden Chakra Vinyl Disc */}
+          <div className="sm:col-span-4 flex flex-col items-center justify-center">
+            <div className={`w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-gradient-to-tr from-gold-400 via-amber-500 to-amber-700 shadow-[0_0_25px_rgba(232,163,32,0.35)] flex items-center justify-center ${
+              isPlayingShlokaMusic ? 'animate-spin-slow' : ''
+            }`}>
+              <div className="w-full h-full rounded-full bg-obsidian-950 border-2 border-gold-400/40 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-1.5 rounded-full border border-gold-500/15" />
+                <div className="absolute inset-3 rounded-full border border-gold-500/20" />
+                <div className="absolute inset-5 rounded-full border border-gold-500/10" />
+                <span className="text-xl sm:text-2xl font-bold font-devanagari text-gold-200 text-glow-gold">
+                  ॐ
+                </span>
+                <div className="w-3 h-3 rounded-full bg-obsidian-950 border border-gold-400 absolute" />
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Dynamic Equalizer Waveform & Play Action */}
+          <div className="sm:col-span-8 space-y-4">
+            
+            {/* Animated Equalizer Frequency Wave */}
+            <div className="flex items-end justify-between gap-1 h-8 px-2 py-1 rounded-xl bg-obsidian-900 border border-gold-500/15">
+              {[35, 75, 55, 90, 65, 80, 45, 100, 70, 85, 60, 95, 50, 80, 65, 90].map((h, idx) => (
+                <div
+                  key={idx}
+                  className={`w-1.5 rounded-full bg-gradient-to-t from-gold-500 via-amber-400 to-amber-200 transition-all ${
+                    isPlayingShlokaMusic ? 'animate-pulse' : 'opacity-30'
+                  }`}
+                  style={{
+                    height: isPlayingShlokaMusic ? `${Math.max(25, (h * ((idx % 4) + 1)) % 100)}%` : '20%',
+                    animationDelay: `${idx * 60}ms`
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* Progress line & Timer */}
+            <div className="space-y-1">
+              <div className="w-full bg-obsidian-900 h-1.5 rounded-full overflow-hidden border border-gold-500/20">
+                <div
+                  className="h-full bg-gradient-to-r from-gold-400 via-amber-500 to-amber-600 transition-all rounded-full"
+                  style={{ width: `${Math.min(100, (shlokaPlaybackSeconds % 120) / 1.2)}%` }}
                 />
               </div>
-            ) : (
-              /* Pure Audio Sanctum View */
-              <div className="p-6 rounded-2xl bg-obsidian-950/80 border border-gold-500/20 flex flex-col items-center justify-center space-y-3 text-center">
-                <div className="w-16 h-16 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center animate-spin-slow">
-                  <Disc3 className="w-8 h-8 text-gold-400" />
-                </div>
-                <div className="space-y-1">
-                  <h4 className="text-xs sm:text-sm font-bold text-gold-100 font-sans">
-                    {shlokaVideo.title}
-                  </h4>
-                  <p className="text-[11px] text-gold-400/70 font-mono">
-                    अध्याय {verse.chapter} • श्लोक {verse.verse} (पावन ऑडियो मोड)
-                  </p>
-                </div>
-                <div className="w-full max-w-sm aspect-video h-0 overflow-hidden opacity-0 pointer-events-none">
-                  <iframe
-                    key={`audio-only-${shlokaVideo.videoId}`}
-                    src={`https://www.youtube.com/embed/${shlokaVideo.videoId}?autoplay=1&rel=0`}
-                    title={shlokaVideo.title}
-                    allow="autoplay"
-                  />
-                </div>
+              <div className="flex items-center justify-between text-[11px] font-mono text-gold-400/80">
+                <span>{formatSeconds(shlokaPlaybackSeconds)}</span>
+                <span>अध्याय {verse.chapter} · श्लोक {verse.verse} विशुद्ध संगीत</span>
               </div>
-            )}
+            </div>
+
+            {/* Main Play / Pause Button */}
+            <button
+              onClick={() => {
+                setIsPlayingShlokaMusic(!isPlayingShlokaMusic);
+                sacredAudio.playFluteChime(0.2);
+              }}
+              className="w-full py-3 rounded-2xl bg-gradient-to-r from-gold-400 via-gold-500 to-amber-600 hover:from-gold-300 hover:to-amber-500 text-obsidian-950 font-bold text-xs sm:text-sm font-sans flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(232,163,32,0.4)] active:scale-95 transition-all cursor-pointer"
+            >
+              {isPlayingShlokaMusic ? (
+                <>
+                  <Pause className="w-4 h-4 fill-current" />
+                  <span>संगीत रोकें (Pause Sacred Music)</span>
+                </>
+              ) : (
+                <>
+                  <Play className="w-4 h-4 fill-current ml-0.5" />
+                  <span>▶ श्लोक {verse.verse} का पावन संगीत सुनें (Play Music Only)</span>
+                </>
+              )}
+            </button>
+
           </div>
-        )}
+
+        </div>
 
       </div>
 
@@ -571,7 +628,7 @@ export default function ScriptureReader({
               onPrev();
             }
           }}
-          className="px-5 py-3 rounded-2xl bg-obsidian-900 hover:bg-obsidian-850 border border-gold-500/20 text-gold-200 hover:text-gold-100 font-sans text-xs sm:text-sm font-bold flex items-center gap-2 transition-all active:scale-95 shadow-md cursor-pointer"
+          className="px-5 py-3 rounded-2xl bg-obsidian-900 hover:bg-obsidian-850 border border-gold-500/20 text-gold-200 hover:text-gold-100 font-sans text-xs sm:text-sm font-bold flex items-center gap-2 transition-all active:scale-95 shadow-md cursor-pointer hover:scale-102"
         >
           <ChevronLeft className="w-4 h-4" />
           <span>पिछला श्लोक (Previous)</span>
@@ -584,7 +641,7 @@ export default function ScriptureReader({
               onNext();
             }
           }}
-          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-sans text-xs sm:text-sm font-bold flex items-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(232,163,32,0.35)] cursor-pointer"
+          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-sans text-xs sm:text-sm font-bold flex items-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(232,163,32,0.35)] cursor-pointer hover:scale-102"
         >
           <span>अगला श्लोक (Next Verse)</span>
           <ChevronRight className="w-4 h-4" />
