@@ -1,11 +1,12 @@
-﻿/**
+/**
  * Sacred Audio FX & Soundscape Engine (Web Audio API)
- * Procedural lossless audio synthesis for temple bells, shankh, flutes, and OM drones.
+ * Lossless procedural audio synthesis for temple bells, shankh, flutes, and Sanskrit Speech Vocal Engine.
  */
 
 class SacredSoundEngine {
   private ctx: AudioContext | null = null;
   public soundEnabled: boolean = true;
+  private currentUtterance: SpeechSynthesisUtterance | null = null;
 
   private getAudioContext(): AudioContext | null {
     if (typeof window === 'undefined') return null;
@@ -20,11 +21,81 @@ class SacredSoundEngine {
   }
 
   /**
+   * 📳 Tactile Haptic Vibration for Real Physical Feel
+   */
+  public vibrate(pattern: number | number[] = 25) {
+    if (typeof window !== 'undefined' && 'navigator' in window && navigator.vibrate) {
+      try {
+        navigator.vibrate(pattern);
+      } catch {}
+    }
+  }
+
+  /**
+   * 🗣️ Authentic Sanskrit Vocal Speech Synthesizer (श्लोक वाचन)
+   * Recites Sanskrit shlokas and translations with resonant Vedic cadence
+   */
+  public speakSanskritVerse(
+    text: string, 
+    lang: string = 'hi-IN', 
+    onStart?: () => void, 
+    onEnd?: () => void
+  ) {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+
+    try {
+      window.speechSynthesis.cancel();
+
+      // Clean Sanskrit text for natural phonetics
+      const cleanText = text
+        .replace(/[|॥]/g, '')
+        .replace(/\d+-\d+/g, '')
+        .trim();
+
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+      utterance.rate = 0.82; // Meditative, stately cadence
+      utterance.pitch = 0.95; // Warm, resonant pitch
+      utterance.lang = lang === 'en' ? 'en-IN' : 'hi-IN';
+
+      // Pick an Indian regional voice if available
+      const voices = window.speechSynthesis.getVoices();
+      const regionalVoice = voices.find(v => v.lang.includes('hi') || v.lang.includes('IN') || v.name.includes('India'));
+      if (regionalVoice) {
+        utterance.voice = regionalVoice;
+      }
+
+      utterance.onstart = () => {
+        if (onStart) onStart();
+      };
+
+      utterance.onend = () => {
+        if (onEnd) onEnd();
+      };
+
+      utterance.onerror = () => {
+        if (onEnd) onEnd();
+      };
+
+      this.currentUtterance = utterance;
+      window.speechSynthesis.speak(utterance);
+    } catch (err) {
+      console.warn('Speech synthesis error:', err);
+      if (onEnd) onEnd();
+    }
+  }
+
+  public stopSpeaking() {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+  }
+
+  /**
    * 🔔 Authentic Bronze Temple Bell (मन्दिर घण्टा नाद)
-   * High overtone metallic resonance with warm natural decay
    */
   public playTempleBell(volume = 0.3) {
     if (!this.soundEnabled) return;
+    this.vibrate([30, 40, 30]);
     try {
       const ctx = this.getAudioContext();
       if (!ctx) return;
@@ -35,7 +106,6 @@ class SacredSoundEngine {
       master.gain.setValueAtTime(volume, now);
       master.gain.exponentialRampToValueAtTime(0.0001, now + 3.2);
 
-      // Bell partial frequencies: Fundamental + Inharmonic partials
       const partials = [
         { freq: 780, gain: 0.8 },
         { freq: 1160, gain: 0.6 },
@@ -57,17 +127,15 @@ class SacredSoundEngine {
         osc.start(now);
         osc.stop(now + 3.2);
       });
-    } catch {
-      // Audio autoplay policy
-    }
+    } catch {}
   }
 
   /**
    * 🐚 Sacred Shankhnaad (पवित्र शंखनाद)
-   * Natural conch shell acoustic swell with pitch bend and breath vibration
    */
   public playShankhnaad(volume = 0.35) {
     if (!this.soundEnabled) return;
+    this.vibrate([50, 30, 60]);
     try {
       const ctx = this.getAudioContext();
       if (!ctx) return;
@@ -81,7 +149,6 @@ class SacredSoundEngine {
       master.gain.linearRampToValueAtTime(volume, now + 0.6);
       master.gain.exponentialRampToValueAtTime(0.0001, now + duration);
 
-      // Lowpass warmth filter
       const filter = ctx.createBiquadFilter();
       filter.type = 'lowpass';
       filter.frequency.setValueAtTime(600, now);
@@ -89,40 +156,35 @@ class SacredSoundEngine {
       filter.frequency.exponentialRampToValueAtTime(400, now + duration);
       filter.Q.value = 3.5;
 
-      // Primary horn oscillator with pitch rise
       const osc1 = ctx.createOscillator();
       osc1.type = 'sawtooth';
       osc1.frequency.setValueAtTime(220, now);
       osc1.frequency.exponentialRampToValueAtTime(330, now + 0.7);
       osc1.frequency.linearRampToValueAtTime(328, now + duration);
 
-      // Vibrato LFO
       const lfo = ctx.createOscillator();
-      lfo.type = 'sine';
-      lfo.frequency.value = 5.2; // Natural lip vibrato
       const lfoGain = ctx.createGain();
-      lfoGain.gain.value = 14;
+      lfo.frequency.value = 5.2;
+      lfoGain.gain.value = 12;
       lfo.connect(lfoGain);
       lfoGain.connect(osc1.frequency);
-      lfo.start(now);
-      lfo.stop(now + duration);
 
       osc1.connect(filter);
       filter.connect(master);
 
+      lfo.start(now);
       osc1.start(now);
       osc1.stop(now + duration);
-    } catch {
-      // Audio autoplay policy
-    }
+      lfo.stop(now + duration);
+    } catch {}
   }
 
   /**
-   * 🕉️ Cosmic OM Tanpura Chime (१३६.१ हर्ट्ज़ नाद ब्रह्म)
-   * 136.1Hz fundamental with pure Pa overtone
+   * 🪈 Bamboo Flute (बाँसुरी स्वर)
    */
-  public playOmChime(volume = 0.3) {
+  public playFluteChime(volume = 0.3) {
     if (!this.soundEnabled) return;
+    this.vibrate(20);
     try {
       const ctx = this.getAudioContext();
       if (!ctx) return;
@@ -130,69 +192,28 @@ class SacredSoundEngine {
       const now = ctx.currentTime;
       const master = ctx.createGain();
       master.connect(ctx.destination);
-      master.gain.setValueAtTime(0.01, now);
-      master.gain.linearRampToValueAtTime(volume, now + 0.4);
-      master.gain.exponentialRampToValueAtTime(0.0001, now + 4.0);
-
-      [136.1, 204.15, 272.2, 408.3].forEach((freq, i) => {
-        const osc = ctx.createOscillator();
-        osc.type = i === 0 ? 'sine' : 'triangle';
-        osc.frequency.setValueAtTime(freq, now);
-
-        const g = ctx.createGain();
-        g.gain.setValueAtTime(1 / (i + 1), now);
-        g.gain.exponentialRampToValueAtTime(0.001, now + 3.8);
-
-        osc.connect(g);
-        g.connect(master);
-        osc.start(now);
-        osc.stop(now + 4.0);
-      });
-    } catch {
-      // Audio autoplay policy
-    }
-  }
-
-  /**
-   * 🪈 Bansuri Flute Harmonic Sweep (दिव्य मुरली आलाप)
-   */
-  public playFluteChime(volume = 0.25) {
-    if (!this.soundEnabled) return;
-    try {
-      const ctx = this.getAudioContext();
-      if (!ctx) return;
-
-      const now = ctx.currentTime;
-      const master = ctx.createGain();
-      master.connect(ctx.destination);
-      master.gain.setValueAtTime(0.01, now);
+      master.gain.setValueAtTime(0.001, now);
       master.gain.linearRampToValueAtTime(volume, now + 0.15);
-      master.gain.exponentialRampToValueAtTime(0.0001, now + 1.6);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 2.0);
 
       const osc = ctx.createOscillator();
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(432, now);
-      osc.frequency.exponentialRampToValueAtTime(576, now + 0.25);
-      osc.frequency.linearRampToValueAtTime(648, now + 0.6);
+      osc.frequency.setValueAtTime(587.33, now); // D5 note
+      osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.4); // E5
+      osc.frequency.linearRampToValueAtTime(587.33, now + 1.2);
 
-      const filter = ctx.createBiquadFilter();
-      filter.type = 'lowpass';
-      filter.frequency.value = 1200;
-
-      osc.connect(filter);
-      filter.connect(master);
+      osc.connect(master);
       osc.start(now);
-      osc.stop(now + 1.6);
-    } catch {
-      // Audio autoplay policy
-    }
+      osc.stop(now + 2.0);
+    } catch {}
   }
 
   /**
-   * ✨ Sacred UI Navigation Chime (हल्की स्वर्णिम झंकार)
+   * 🕉️ OM Chime (ॐ ध्वनि)
    */
-  public playNavChime(volume = 0.18) {
+  public playOmChime(volume = 0.25) {
     if (!this.soundEnabled) return;
+    this.vibrate(35);
     try {
       const ctx = this.getAudioContext();
       if (!ctx) return;
@@ -200,34 +221,26 @@ class SacredSoundEngine {
       const now = ctx.currentTime;
       const master = ctx.createGain();
       master.connect(ctx.destination);
-      master.gain.setValueAtTime(volume, now);
-      master.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+      master.gain.setValueAtTime(0.001, now);
+      master.gain.linearRampToValueAtTime(volume, now + 0.5);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 4.0);
 
-      const freqs = [880, 1320, 1760];
-      freqs.forEach((freq, idx) => {
-        const osc = ctx.createOscillator();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now + idx * 0.04);
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(136.1, now); // 136.1 Hz Cosmic OM
 
-        const g = ctx.createGain();
-        g.gain.setValueAtTime(0.6, now + idx * 0.04);
-        g.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
-
-        osc.connect(g);
-        g.connect(master);
-        osc.start(now + idx * 0.04);
-        osc.stop(now + 0.5);
-      });
-    } catch {
-      // Audio autoplay policy
-    }
+      osc.connect(master);
+      osc.start(now);
+      osc.stop(now + 4.0);
+    } catch {}
   }
 
   /**
-   * 🧘 Tibetan Singing Bowl Meditation Strike (५२८ हर्ट्ज़ हीलिंग ध्वनि)
+   * 🥣 Tibetan Singing Bowl (सिङ्गिङ बोल नाद)
    */
   public playSingingBowl(volume = 0.3) {
     if (!this.soundEnabled) return;
+    this.vibrate(30);
     try {
       const ctx = this.getAudioContext();
       if (!ctx) return;
@@ -236,26 +249,43 @@ class SacredSoundEngine {
       const master = ctx.createGain();
       master.connect(ctx.destination);
       master.gain.setValueAtTime(volume, now);
-      master.gain.exponentialRampToValueAtTime(0.0001, now + 4.5);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 3.5);
 
-      // 528 Hz DNA / Heart chakra repair frequency
-      [528, 528 * 1.5, 528 * 2.02].forEach((freq, idx) => {
-        const osc = ctx.createOscillator();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now);
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(432, now); // 432 Hz Healing frequency
 
-        const g = ctx.createGain();
-        g.gain.setValueAtTime(idx === 0 ? 0.9 : 0.4, now);
-        g.gain.exponentialRampToValueAtTime(0.001, now + 4.2);
+      osc.connect(master);
+      osc.start(now);
+      osc.stop(now + 3.5);
+    } catch {}
+  }
 
-        osc.connect(g);
-        g.connect(master);
-        osc.start(now);
-        osc.stop(now + 4.5);
-      });
-    } catch {
-      // Audio autoplay policy
-    }
+  /**
+   * 🔘 Tactile UI Click Chime
+   */
+  public playNavChime(volume = 0.1) {
+    if (!this.soundEnabled) return;
+    this.vibrate(15);
+    try {
+      const ctx = this.getAudioContext();
+      if (!ctx) return;
+
+      const now = ctx.currentTime;
+      const master = ctx.createGain();
+      master.connect(ctx.destination);
+      master.gain.setValueAtTime(volume, now);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1200, now);
+      osc.frequency.exponentialRampToValueAtTime(800, now + 0.1);
+
+      osc.connect(master);
+      osc.start(now);
+      osc.stop(now + 0.12);
+    } catch {}
   }
 }
 
