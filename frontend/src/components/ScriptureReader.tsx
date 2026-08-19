@@ -7,10 +7,12 @@ import WisdomCardModal from './WisdomCardModal';
 import { 
   Bookmark, BookmarkCheck, Copy, Check, ChevronRight, ChevronLeft, 
   Sparkles, BookOpen, Volume2, VolumeX, Share2, Compass, Globe2, 
-  Layers, Radio, RefreshCw, Disc3, Play, Pause, ShieldCheck, Heart, Lightbulb 
+  Layers, Radio, RefreshCw, Disc3, Play, Pause, ShieldCheck, Heart, Lightbulb,
+  Film, Tv, Eye, EyeOff, Music2
 } from 'lucide-react';
 import { Button } from './ui/Button';
 import { sacredAudio } from '@/lib/sacredSounds';
+import { getGitaVideoForVerse } from '@/data/gitaVideoEpisodes';
 
 interface ScriptureReaderProps {
   verse: GitaVerse;
@@ -47,9 +49,16 @@ export default function ScriptureReader({
   const [showWisdomCard, setShowWisdomCard] = useState(false);
   const [showBhashya, setShowBhashya] = useState(true);
 
+  // Dedicated Shloka Video State (Positioned right above translation)
+  const [showShlokaVideo, setShowShlokaVideo] = useState(true);
+  const [videoPlaybackMode, setVideoPlaybackMode] = useState<'video' | 'audio'>('video');
+
   // Authentic Chapter Audio Stream states
   const [isPlayingChapterAudio, setIsPlayingChapterAudio] = useState(false);
   const [audioStreamSource, setAudioStreamSource] = useState<'gita_series' | 'bhagwat_katha'>('gita_series');
+
+  // Resolve accurate video for this chapter and verse
+  const shlokaVideo = getGitaVideoForVerse(verse.chapter, verse.verse);
 
   // Check Bookmark status
   useEffect(() => {
@@ -320,7 +329,7 @@ export default function ScriptureReader({
                 setAudioStreamSource(audioStreamSource === 'gita_series' ? 'bhagwat_katha' : 'gita_series');
                 sacredAudio.playNavChime(0.1);
               }}
-              className="px-3.5 py-2 rounded-xl text-xs font-sans bg-obsidian-850 hover:bg-obsidian-800 text-gold-300/90 border border-gold-500/20 hover:border-gold-400 flex items-center gap-1.5 transition-colors"
+              className="px-3.5 py-2 rounded-xl text-xs font-sans bg-obsidian-850 hover:bg-obsidian-800 text-gold-300/90 border border-gold-500/20 hover:border-gold-400 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Radio className="w-3.5 h-3.5 text-gold-400" />
               <span>{audioStreamSource === 'gita_series' ? 'कथा व्याख्या मोड पर बदलें' : 'गीता श्लोक पाठ मोड'}</span>
@@ -386,6 +395,120 @@ export default function ScriptureReader({
           </div>
         </div>
       )}
+
+      {/* ── 🎬 DEDICATED SHLOKA VIDEO & EXPLANATION CARD (UPPER THE TRANSLATION SECTION) ──────── */}
+      <div className="bg-gradient-to-br from-obsidian-900/95 via-obsidian-900 to-amber-950/20 border border-gold-500/30 rounded-3xl p-5 sm:p-6 shadow-2xl space-y-4">
+        
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gold-500/15 pb-3">
+          <div className="flex items-center gap-2.5">
+            <span className="w-8 h-8 rounded-xl bg-gold-500/20 border border-gold-400/40 flex items-center justify-center text-gold-300">
+              <Film className="w-4 h-4" />
+            </span>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="font-cinzel text-sm sm:text-base font-bold text-gold-100">
+                  श्लोक वीडियो एवं प्रामाणिक व्याख्या
+                </h3>
+                <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold ${
+                  shlokaVideo.type === 'exact_verse'
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    : 'bg-gold-500/20 text-gold-300 border border-gold-500/30'
+                }`}>
+                  {shlokaVideo.type === 'exact_verse' ? '✨ श्लोक विशुद्ध वीडियो' : '📜 अध्याय सम्पूर्ण सार'}
+                </span>
+              </div>
+              <p className="text-[11px] text-gold-300/70 font-sans line-clamp-1">
+                {shlokaVideo.title}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 self-end sm:self-auto">
+            {/* Video / Audio View Toggle */}
+            <div className="flex items-center p-1 rounded-xl bg-obsidian-950 border border-gold-500/20 text-xs">
+              <button
+                onClick={() => {
+                  setVideoPlaybackMode('video');
+                  sacredAudio.playNavChime(0.1);
+                }}
+                className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer flex items-center gap-1 ${
+                  videoPlaybackMode === 'video'
+                    ? 'bg-gold-500 text-obsidian-950 font-bold shadow-sm'
+                    : 'text-gold-400/70 hover:text-gold-200'
+                }`}
+              >
+                <Tv className="w-3.5 h-3.5" />
+                <span>वीडियो</span>
+              </button>
+              <button
+                onClick={() => {
+                  setVideoPlaybackMode('audio');
+                  sacredAudio.playNavChime(0.1);
+                }}
+                className={`px-2.5 py-1 rounded-lg transition-all cursor-pointer flex items-center gap-1 ${
+                  videoPlaybackMode === 'audio'
+                    ? 'bg-gold-500 text-obsidian-950 font-bold shadow-sm'
+                    : 'text-gold-400/70 hover:text-gold-200'
+                }`}
+              >
+                <Music2 className="w-3.5 h-3.5" />
+                <span>केवल ऑडियो</span>
+              </button>
+            </div>
+
+            {/* Collapse / Expand Toggle */}
+            <button
+              onClick={() => setShowShlokaVideo(!showShlokaVideo)}
+              className="p-1.5 rounded-xl bg-obsidian-800 text-gold-300 border border-gold-500/20 hover:border-gold-400 transition-colors"
+              title={showShlokaVideo ? 'Hide Player' : 'Show Player'}
+            >
+              {showShlokaVideo ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+            </button>
+          </div>
+        </div>
+
+        {showShlokaVideo && (
+          <div className="space-y-3 pt-1 animate-in fade-in duration-300">
+            {videoPlaybackMode === 'video' ? (
+              /* High Definition Embedded Video Player */
+              <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-gold-500/25 bg-black shadow-2xl">
+                <iframe
+                  key={shlokaVideo.videoId}
+                  src={`https://www.youtube.com/embed/${shlokaVideo.videoId}?rel=0&modestbranding=1&color=white`}
+                  title={shlokaVideo.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+            ) : (
+              /* Pure Audio Sanctum View */
+              <div className="p-6 rounded-2xl bg-obsidian-950/80 border border-gold-500/20 flex flex-col items-center justify-center space-y-3 text-center">
+                <div className="w-16 h-16 rounded-full bg-gold-500/10 border border-gold-400/30 flex items-center justify-center animate-spin-slow">
+                  <Disc3 className="w-8 h-8 text-gold-400" />
+                </div>
+                <div className="space-y-1">
+                  <h4 className="text-xs sm:text-sm font-bold text-gold-100 font-sans">
+                    {shlokaVideo.title}
+                  </h4>
+                  <p className="text-[11px] text-gold-400/70 font-mono">
+                    अध्याय {verse.chapter} • श्लोक {verse.verse} (पावन ऑडियो मोड)
+                  </p>
+                </div>
+                <div className="w-full max-w-sm aspect-video h-0 overflow-hidden opacity-0 pointer-events-none">
+                  <iframe
+                    key={`audio-only-${shlokaVideo.videoId}`}
+                    src={`https://www.youtube.com/embed/${shlokaVideo.videoId}?autoplay=1&rel=0`}
+                    title={shlokaVideo.title}
+                    allow="autoplay"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+      </div>
 
       {/* ── TRANSLATION & MEANING CARD (सरलार्थ एवं भावार्थ) ───────────── */}
       <div className="bg-obsidian-900/90 border border-gold-500/25 rounded-3xl p-6 sm:p-7 shadow-xl space-y-4">
