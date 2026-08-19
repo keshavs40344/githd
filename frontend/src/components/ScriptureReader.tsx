@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import type { GitaVerse, AnvayaToken } from '../types/verse';
-import type { MentorDiagnosis } from '../types/mentor';
+import type { SevenLayerMentorDiagnosis, GunaType } from '../types/mentor';
 import WisdomCardModal from './WisdomCardModal';
 import { 
   Bookmark, BookmarkCheck, Copy, Check, ChevronRight, ChevronLeft, 
   Sparkles, BookOpen, Volume2, VolumeX, Share2, Compass, Globe2, 
   Layers, Radio, RefreshCw, Disc3, Play, Pause, ShieldCheck, Heart, Lightbulb,
-  Music, Bell, Disc, Sparkle, Flame
+  Music, Bell, Disc, Sparkle, Flame, CheckCircle2, Award, ZoomIn, ZoomOut, FileText
 } from 'lucide-react';
 import { Button } from './ui/Button';
 import { sacredAudio } from '@/lib/sacredSounds';
@@ -22,6 +22,7 @@ interface ScriptureReaderProps {
 }
 
 type LangCode = 'hi' | 'en' | 'sa' | 'mr' | 'gu' | 'bn' | 'ta' | 'te' | 'kn';
+type CommentaryTab = 'translation' | 'bhashya' | 'insight' | 'anvaya';
 
 const LANGUAGES: { code: LangCode; label: string; flag: string }[] = [
   { code: 'hi', label: 'हिन्दी',    flag: '🇮🇳' },
@@ -42,12 +43,14 @@ export default function ScriptureReader({
   onPrev,
 }: ScriptureReaderProps) {
   const [selectedLang, setSelectedLang] = useState<LangCode>('hi');
+  const [activeCommentaryTab, setActiveCommentaryTab] = useState<CommentaryTab>('translation');
   const [dynamicData, setDynamicData] = useState<any>(null);
   const [isLoadingLang, setIsLoadingLang] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isContemplated, setIsContemplated] = useState(false);
   const [showWisdomCard, setShowWisdomCard] = useState(false);
-  const [showBhashya, setShowBhashya] = useState(true);
+  const [fontSizeMultiplier, setFontSizeMultiplier] = useState(1); // 1 = normal, 1.25 = large, 1.5 = extra large
 
   // Pure Shloka Music Player State (Above Translation)
   const [isPlayingShlokaMusic, setIsPlayingShlokaMusic] = useState(false);
@@ -62,13 +65,15 @@ export default function ScriptureReader({
 
   // Timer for Shloka Music
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: NodeJS.Timeout | undefined;
     if (isPlayingShlokaMusic) {
       interval = setInterval(() => {
         setShlokaPlaybackSeconds(prev => prev + 1);
       }, 1000);
     }
-    return () => clearInterval(interval);
+    return () => {
+      if (interval) clearInterval(interval);
+    };
   }, [isPlayingShlokaMusic]);
 
   // Reset audio when verse changes
@@ -77,15 +82,18 @@ export default function ScriptureReader({
     setShlokaPlaybackSeconds(0);
   }, [verse.chapter, verse.verse]);
 
-  // Check Bookmark status
+  // Check Bookmark and Contemplation status
   useEffect(() => {
     if (typeof window !== 'undefined') {
       try {
-        const saved = JSON.parse(localStorage.getItem('dharma_saved_verses') || '[]');
+        const saved: string[] = JSON.parse(localStorage.getItem('dharma_saved_verses') || '[]');
+        const contemplated: string[] = JSON.parse(localStorage.getItem('dharma_contemplated_verses') || '[]');
         const key = `${verse.chapter}_${verse.verse}`;
         setIsBookmarked(saved.includes(key));
+        setIsContemplated(contemplated.includes(key));
       } catch {
         setIsBookmarked(false);
+        setIsContemplated(false);
       }
     }
   }, [verse.chapter, verse.verse]);
@@ -120,7 +128,7 @@ export default function ScriptureReader({
       const key = `${verse.chapter}_${verse.verse}`;
       let updated: string[];
       if (saved.includes(key)) {
-        updated = saved.filter(k => k !== key);
+        updated = saved.filter((k: string) => k !== key);
         setIsBookmarked(false);
       } else {
         updated = [...saved, key];
@@ -128,6 +136,24 @@ export default function ScriptureReader({
       }
       localStorage.setItem('dharma_saved_verses', JSON.stringify(updated));
       sacredAudio.playNavChime(0.12);
+    } catch {}
+  };
+
+  const toggleContemplated = () => {
+    if (typeof window === 'undefined') return;
+    try {
+      const list: string[] = JSON.parse(localStorage.getItem('dharma_contemplated_verses') || '[]');
+      const key = `${verse.chapter}_${verse.verse}`;
+      let updated: string[];
+      if (list.includes(key)) {
+        updated = list.filter((k: string) => k !== key);
+        setIsContemplated(false);
+      } else {
+        updated = [...list, key];
+        setIsContemplated(true);
+        sacredAudio.playTempleBell(0.35);
+      }
+      localStorage.setItem('dharma_contemplated_verses', JSON.stringify(updated));
     } catch {}
   };
 
@@ -167,9 +193,11 @@ export default function ScriptureReader({
     ? dynamicData.anvaya_tokens 
     : (verse.anvaya_tokens || []);
 
-  const currentDiagnosis: MentorDiagnosis = {
+  const dominantGuna: GunaType = 'Sattva';
+
+  const currentDiagnosis: SevenLayerMentorDiagnosis = {
     psychological_telemetry: {
-      dominant_guna: 'Sattva',
+      dominant_guna: dominantGuna,
       cognitive_distortion: 'Cognitive Realignment (आत्म-सजगता)',
       mind_state_diagnosis: verse.practical_insight,
       guna_percentages: { sattva: 70, rajas: 20, tamas: 10 }
@@ -187,9 +215,9 @@ export default function ScriptureReader({
       pronunciation_key: 'Distinct Sanskrit phonetics'
     },
     word_by_word_anvaya: activeTokens.map((t: any) => ({
-      sanskrit_word: t.word,
-      root_dhatu: t.dhatu || '-',
-      grammar_case: t.vibhakti || '-',
+      sanskrit_word: t.word || t.sanskrit_word,
+      root_dhatu: t.dhatu || t.root_dhatu || '-',
+      grammar_case: t.vibhakti || t.grammar_case || '-',
       meaning: t.meaning || t.meaning_hi || t.meaning_en || ''
     })),
     simple_translation: getActiveTranslation(),
@@ -213,6 +241,13 @@ export default function ScriptureReader({
   const kathaPlaylistId = 'PL5A5QJkW7MkvYslAbg7_rFij8yVEeiEwF';
   const playlistIndex = Math.max(0, verse.chapter - 1);
   const activePlaylistId = audioStreamSource === 'gita_series' ? gitaPlaylistId : kathaPlaylistId;
+
+  // Font size classes
+  const fontClass = fontSizeMultiplier === 1.5 
+    ? 'text-2xl sm:text-3xl lg:text-4xl' 
+    : fontSizeMultiplier === 1.25 
+    ? 'text-xl sm:text-2xl lg:text-3xl' 
+    : 'text-lg sm:text-2xl lg:text-3xl';
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6 animate-in fade-in duration-500 pb-12">
@@ -260,11 +295,26 @@ export default function ScriptureReader({
           ))}
         </div>
 
-        {/* Action Buttons */}
+        {/* Action Buttons: Contemplate Check, Bookmark, Copy, Wisdom Card */}
         <div className="flex items-center gap-1.5 self-end sm:self-auto shrink-0">
+          
+          {/* Mark as Contemplated */}
+          <button
+            onClick={toggleContemplated}
+            className={`px-3 py-1.5 rounded-xl border text-xs font-sans font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+              isContemplated
+                ? 'bg-emerald-500/20 text-emerald-300 border-emerald-400/60 shadow-[0_0_15px_rgba(16,185,129,0.3)]'
+                : 'bg-obsidian-800 text-gold-300/70 border-gold-500/15 hover:border-emerald-400/50 hover:text-emerald-300'
+            }`}
+            title="मनन पूर्ण (Mark as Contemplated)"
+          >
+            <CheckCircle2 className={`w-3.5 h-3.5 ${isContemplated ? 'text-emerald-400 fill-emerald-500/20' : ''}`} />
+            <span className="hidden sm:inline">{isContemplated ? 'मनन पूर्ण' : 'मनन करें'}</span>
+          </button>
+
           <button
             onClick={copyVerse}
-            className="p-2 rounded-xl bg-obsidian-800 text-gold-300 border border-gold-500/15 hover:border-gold-400 transition-all hover:scale-105 active:scale-95"
+            className="p-2 rounded-xl bg-obsidian-800 text-gold-300 border border-gold-500/15 hover:border-gold-400 transition-all hover:scale-105 active:scale-95 cursor-pointer"
             title="Copy Shloka & Meaning"
           >
             {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
@@ -272,7 +322,7 @@ export default function ScriptureReader({
 
           <button
             onClick={toggleBookmark}
-            className={`p-2 rounded-xl border transition-all hover:scale-105 active:scale-95 ${
+            className={`p-2 rounded-xl border transition-all hover:scale-105 active:scale-95 cursor-pointer ${
               isBookmarked
                 ? 'bg-gold-500/20 text-gold-300 border-gold-400'
                 : 'bg-obsidian-800 text-gold-300/70 border-gold-500/15 hover:border-gold-400'
@@ -284,7 +334,7 @@ export default function ScriptureReader({
 
           <button
             onClick={() => setShowWisdomCard(true)}
-            className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-gold-500/20 to-amber-500/20 hover:from-gold-500/30 hover:to-amber-500/30 text-gold-200 border border-gold-400/30 text-xs font-sans flex items-center gap-1.5 transition-all hover:scale-105"
+            className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-gold-500/20 to-amber-500/20 hover:from-gold-500/30 hover:to-amber-500/30 text-gold-200 border border-gold-400/30 text-xs font-sans flex items-center gap-1.5 transition-all hover:scale-105 cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5 text-gold-400" />
             <span className="hidden sm:inline">विज्डम कार्ड</span>
@@ -299,15 +349,28 @@ export default function ScriptureReader({
         {/* Glow ambient background */}
         <div className="absolute -top-24 -right-24 w-72 h-72 bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
 
-        {/* Sanskrit Shloka Devanagari */}
-        <div className="text-center space-y-4 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 text-[11px] font-mono text-gold-300 uppercase tracking-widest">
+        {/* Top Shloka Meter & Font Scaling Bar */}
+        <div className="flex items-center justify-between border-b border-gold-500/15 pb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/10 border border-gold-500/20 text-[10px] font-mono text-gold-300 uppercase tracking-widest">
             <span className="animate-spin-slow">✨</span>
-            <span>मूल संस्कृत श्लोक (Original Sacred Verse)</span>
-            <span className="animate-spin-slow">✨</span>
+            <span>अनुष्टुप् छन्द (Anushtup Vedic Meter)</span>
           </div>
 
-          <p className="text-xl sm:text-2xl lg:text-3xl font-devanagari font-bold text-gold-100 leading-relaxed tracking-wide text-glow-gold whitespace-pre-line py-2">
+          <div className="flex items-center gap-1">
+            <button
+              onClick={() => setFontSizeMultiplier(prev => (prev === 1 ? 1.25 : prev === 1.25 ? 1.5 : 1))}
+              className="px-2.5 py-1 rounded-xl bg-obsidian-800 border border-gold-500/20 text-xs font-mono text-gold-300 hover:border-gold-400 cursor-pointer flex items-center gap-1"
+              title="Font Scale"
+            >
+              <span>Aa</span>
+              <span className="text-[10px] text-gold-500">{fontSizeMultiplier === 1.5 ? 'Max' : fontSizeMultiplier === 1.25 ? 'Med' : 'Std'}</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Sanskrit Shloka Devanagari */}
+        <div className="text-center space-y-4 relative z-10 py-1">
+          <p className={`${fontClass} font-devanagari font-bold text-gold-100 leading-relaxed tracking-wide text-glow-gold whitespace-pre-line py-2 transition-all duration-300`}>
             {verse.devanagari}
           </p>
 
@@ -355,7 +418,7 @@ export default function ScriptureReader({
               className="px-3.5 py-2 rounded-xl text-xs font-sans bg-obsidian-850 hover:bg-obsidian-800 text-gold-300/90 border border-gold-500/20 hover:border-gold-400 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               <Radio className="w-3.5 h-3.5 text-gold-400" />
-              <span>{audioStreamSource === 'gita_series' ? 'कथा व्याख्या मोड पर बदलें' : 'गीता श्लोक पाठ मोड'}</span>
+              <span>{audioStreamSource === 'gita_series' ? 'कथा व्याख्या मोड' : 'गीता श्लोक पाठ मोड'}</span>
             </button>
 
             {isPlayingChapterAudio && (
@@ -381,43 +444,6 @@ export default function ScriptureReader({
         )}
 
       </div>
-
-      {/* ── WORD-BY-WORD ANVAYA & PADACHHEDA (शब्दार्थ एवं पदच्छेद) ──────── */}
-      {activeTokens.length > 0 && (
-        <div className="bg-obsidian-900/85 border border-gold-500/25 rounded-3xl p-5 sm:p-6 shadow-xl space-y-3.5">
-          <div className="flex items-center justify-between">
-            <h3 className="font-cinzel text-sm sm:text-base font-bold text-gold-200 flex items-center gap-2">
-              <Layers className="w-4 h-4 text-gold-400" />
-              <span>पदच्छेद एवं अन्वय (Word-by-Word Breakdown)</span>
-            </h3>
-            <span className="text-[10px] font-mono text-gold-400/60 uppercase">
-              Click word to deconstruct
-            </span>
-          </div>
-
-          <div className="flex flex-wrap gap-2 pt-1">
-            {activeTokens.map((token: any, i: number) => (
-              <button
-                key={i}
-                onClick={() => onWordClick && onWordClick(token)}
-                className="group p-2 sm:px-3 sm:py-2 rounded-2xl bg-obsidian-800/90 hover:bg-gold-500/20 border border-gold-500/20 hover:border-gold-400 transition-all text-left cursor-pointer active:scale-95 hover:scale-103 shadow-sm"
-              >
-                <div className="text-xs sm:text-sm font-devanagari font-bold text-gold-100 group-hover:text-gold-300">
-                  {token.word}
-                </div>
-                <div className="text-[11px] text-gold-300/80 font-sans mt-0.5">
-                  {token.meaning || token.meaning_hi || token.meaning_en}
-                </div>
-                {token.dhatu && token.dhatu !== '-' && (
-                  <div className="text-[9px] font-mono text-gold-400/60 mt-0.5">
-                    धातु: {token.dhatu}
-                  </div>
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
 
       {/* ── 🪈 DEDICATED PURE MUSIC & SHLOKA AUDIO SANCTUM (UPPER THE TRANSLATION SECTION - 100% AUDIO ONLY) ──────── */}
       <div className="bg-gradient-to-br from-obsidian-900/98 via-obsidian-900 to-amber-950/30 border border-gold-500/35 rounded-3xl p-6 sm:p-7 shadow-2xl space-y-5 relative overflow-hidden">
@@ -461,8 +487,8 @@ export default function ScriptureReader({
           {/* Quick Sound FX Triggers */}
           <div className="flex items-center gap-1.5 self-end sm:self-auto">
             <button
-              onClick={() => sacredAudio.playTempleBell(0.3)}
-              className="px-2 py-1 rounded-xl bg-obsidian-800 hover:bg-gold-500/20 border border-gold-500/20 text-[11px] text-gold-300 flex items-center gap-1 transition-all hover:scale-105"
+              onClick={() => sacredAudio.playTempleBell(0.35)}
+              className="px-2 py-1 rounded-xl bg-obsidian-800 hover:bg-gold-500/20 border border-gold-500/20 text-[11px] text-gold-300 flex items-center gap-1 transition-all hover:scale-105 cursor-pointer"
               title="Temple Bell Chime"
             >
               <Bell className="w-3 h-3 text-gold-400" />
@@ -477,8 +503,8 @@ export default function ScriptureReader({
               <span>शंख</span>
             </button>
             <button
-              onClick={() => sacredAudio.playFluteChime(0.3)}
-              className="px-2 py-1 rounded-xl bg-obsidian-800 hover:bg-gold-500/20 border border-gold-500/20 text-[11px] text-gold-300 flex items-center gap-1 transition-all hover:scale-105"
+              onClick={() => sacredAudio.playFluteChime(0.25)}
+              className="px-2 py-1 rounded-xl bg-obsidian-800 hover:bg-gold-500/20 border border-gold-500/20 text-[11px] text-gold-300 flex items-center gap-1 transition-all hover:scale-105 cursor-pointer"
               title="Bansuri Tune"
             >
               <span>🪈</span>
@@ -567,56 +593,112 @@ export default function ScriptureReader({
 
       </div>
 
-      {/* ── TRANSLATION & MEANING CARD (सरलार्थ एवं भावार्थ) ───────────── */}
-      <div className="bg-obsidian-900/90 border border-gold-500/25 rounded-3xl p-6 sm:p-7 shadow-xl space-y-4">
+      {/* ── ADVANCED COMMENTARY & MULTI-LAYER EXEGESIS CONSOLE ───────────── */}
+      <div className="bg-obsidian-900/90 border border-gold-500/25 rounded-3xl p-6 sm:p-7 shadow-xl space-y-5">
         
-        <div className="flex items-center justify-between border-b border-gold-500/15 pb-3">
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-4 h-4 text-gold-400" />
-            <h3 className="font-cinzel text-sm sm:text-base font-bold text-gold-100">
-              सरलार्थ एवं भावार्थ ({LANGUAGES.find(l => l.code === selectedLang)?.label})
-            </h3>
+        {/* Commentary Tabs Switcher */}
+        <div className="flex items-center justify-between border-b border-gold-500/15 pb-3.5 gap-2 overflow-x-auto custom-scrollbar">
+          <div className="flex items-center gap-1.5">
+            {[
+              { id: 'translation', label: 'सरलार्थ (Meaning)', icon: '📖' },
+              { id: 'bhashya',     label: 'शास्त्रीय भाष्य (Bhashya)', icon: '📜' },
+              { id: 'insight',     label: 'व्यावहारिक सूत्र (Life Insight)', icon: '💡' },
+              { id: 'anvaya',      label: 'पदच्छेद (Word Breakdown)', icon: '🪷' },
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setActiveCommentaryTab(tab.id as CommentaryTab);
+                  sacredAudio.playNavChime(0.1);
+                }}
+                className={`px-3 py-1.5 rounded-xl text-xs font-sans font-semibold transition-all cursor-pointer flex items-center gap-1.5 whitespace-nowrap ${
+                  activeCommentaryTab === tab.id
+                    ? 'bg-gold-500/20 text-gold-200 border border-gold-400/60 shadow-sm'
+                    : 'text-gold-300/60 hover:text-gold-100 hover:bg-obsidian-800'
+                }`}
+              >
+                <span>{tab.icon}</span>
+                <span>{tab.label}</span>
+              </button>
+            ))}
           </div>
+
           {isLoadingLang && (
-            <span className="text-xs font-mono text-amber-400 flex items-center gap-1.5 animate-pulse">
+            <span className="text-xs font-mono text-amber-400 flex items-center gap-1.5 animate-pulse shrink-0">
               <RefreshCw className="w-3.5 h-3.5 animate-spin" />
               अनुवाद लोड हो रहा है...
             </span>
           )}
         </div>
 
-        <p className="text-sm sm:text-base text-gold-100 font-sans leading-relaxed">
-          {getActiveTranslation()}
-        </p>
+        {/* Tab 1: Translation */}
+        {activeCommentaryTab === 'translation' && (
+          <div className="space-y-3 animate-in fade-in">
+            <h4 className="text-xs font-mono text-gold-400 uppercase tracking-widest">
+              सरलार्थ एवं भावार्थ ({LANGUAGES.find(l => l.code === selectedLang)?.label})
+            </h4>
+            <p className="text-sm sm:text-base text-gold-100 font-sans leading-relaxed">
+              {getActiveTranslation()}
+            </p>
+          </div>
+        )}
 
-        {/* ── DEEP PHILOSOPHICAL BHASHYA (गूढ़ भाष्य एवं टीका) ─────────── */}
-        <div className="pt-3 border-t border-gold-500/15 space-y-2">
-          <button
-            onClick={() => setShowBhashya(!showBhashya)}
-            className="text-xs font-cinzel font-bold text-gold-300 hover:text-gold-200 flex items-center gap-1.5 cursor-pointer py-1"
-          >
-            <span>📜</span>
-            <span>{showBhashya ? 'गूढ़ भाष्य एवं आध्यात्मिक रहस्य छिपाएं' : 'गूढ़ भाष्य एवं आध्यात्मिक रहस्य देखें'}</span>
-          </button>
-
-          {showBhashya && (
-            <div className="p-4 rounded-2xl bg-obsidian-950/70 border border-gold-500/15 text-xs sm:text-sm text-gold-300/90 font-sans leading-relaxed space-y-2 animate-in fade-in">
+        {/* Tab 2: Classical Bhashya */}
+        {activeCommentaryTab === 'bhashya' && (
+          <div className="space-y-3 animate-in fade-in">
+            <h4 className="text-xs font-mono text-gold-400 uppercase tracking-widest">
+              शास्त्रीय भाष्य एवं वेदान्त रहस्य
+            </h4>
+            <div className="p-4 rounded-2xl bg-obsidian-950/80 border border-gold-500/15 text-xs sm:text-sm text-gold-200/90 font-sans leading-relaxed space-y-2">
               <p>{getActiveBhashya()}</p>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
-      </div>
+        {/* Tab 3: Actionable Life Insight */}
+        {activeCommentaryTab === 'insight' && (
+          <div className="space-y-3 animate-in fade-in">
+            <h4 className="text-xs font-mono text-amber-300 uppercase tracking-widest flex items-center gap-1.5">
+              <Lightbulb className="w-4 h-4 text-amber-400" />
+              दैनिक जीवन में व्यावहारिक अनुप्रयोग
+            </h4>
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-500/15 via-gold-500/10 to-obsidian-900 border border-gold-500/30 text-xs sm:text-sm text-gold-100 font-sans leading-relaxed">
+              {verse.practical_insight}
+            </div>
+          </div>
+        )}
 
-      {/* ── PRACTICAL REAL-WORLD INSIGHT CARD (व्यावहारिक सूत्र) ───────── */}
-      <div className="bg-gradient-to-r from-amber-500/15 via-gold-500/10 to-obsidian-900 border border-gold-500/35 rounded-3xl p-5 sm:p-6 shadow-xl space-y-2.5">
-        <div className="flex items-center gap-2 text-amber-300 font-cinzel text-xs sm:text-sm font-bold uppercase tracking-wider">
-          <Lightbulb className="w-4 h-4 text-amber-400" />
-          <span>दैनिक जीवन में व्यावहारिक अनुप्रयोग (Actionable Modern Insight)</span>
-        </div>
-        <p className="text-xs sm:text-sm text-gold-200 font-sans leading-relaxed">
-          {verse.practical_insight}
-        </p>
+        {/* Tab 4: Word-by-Word Anvaya */}
+        {activeCommentaryTab === 'anvaya' && activeTokens.length > 0 && (
+          <div className="space-y-3 animate-in fade-in">
+            <h4 className="text-xs font-mono text-gold-400 uppercase tracking-widest flex items-center justify-between">
+              <span>पदच्छेद एवं धातु-विभक्ति विवरण</span>
+              <span className="text-[10px] text-gold-400/60 lowercase">Click word to deconstruct</span>
+            </h4>
+            <div className="flex flex-wrap gap-2 pt-1">
+              {activeTokens.map((token: any, i: number) => (
+                <button
+                  key={i}
+                  onClick={() => onWordClick && onWordClick(token)}
+                  className="group p-2.5 rounded-2xl bg-obsidian-800/90 hover:bg-gold-500/20 border border-gold-500/20 hover:border-gold-400 transition-all text-left cursor-pointer active:scale-95 shadow-sm hover:scale-102"
+                >
+                  <div className="text-xs sm:text-sm font-devanagari font-bold text-gold-100 group-hover:text-gold-300">
+                    {token.word || token.sanskrit_word}
+                  </div>
+                  <div className="text-[11px] text-gold-300/80 font-sans mt-0.5">
+                    {token.meaning || token.meaning_hi || token.meaning_en}
+                  </div>
+                  {(token.dhatu || token.root_dhatu) && (token.dhatu || token.root_dhatu) !== '-' && (
+                    <div className="text-[9px] font-mono text-gold-400/60 mt-0.5">
+                      धातु: {token.dhatu || token.root_dhatu}
+                    </div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
       </div>
 
       {/* ── PREV / NEXT VERSE NAVIGATION BAR ───────────────────────── */}
