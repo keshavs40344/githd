@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
@@ -8,22 +8,23 @@ import {
   Play, Pause, SkipForward, SkipBack, Shuffle, Repeat, 
   Volume2, VolumeX, Search, Filter, Sparkles, Music, 
   PlusCircle, Heart, Radio, Disc3, Layers, Share2, 
-  ExternalLink, Waves 
+  ExternalLink, Waves, List, Grid 
 } from 'lucide-react';
+
 import { Button } from './ui/Button';
 import { sacredAudio } from '@/lib/sacredSounds';
 
-type CategoryFilter = 'all' | 'flute' | 'gita_chanting' | 'bhajan' | 'meditation_drone' | 'shankhnaad' | 'aarti';
+type CategoryFilter = 'all' | 'gita_english' | 'bhagwat_katha' | 'bhajan' | 'relaxing_meditation' | 'kirtan';
 
 const CATEGORIES: { id: CategoryFilter; label: string; icon: string }[] = [
-  { id: 'all',              label: 'सभी दिव्य संगीत (All)',       icon: '🌟' },
-  { id: 'flute',            label: 'कृष्ण बाँसुरी (Flute 432Hz)',  icon: '🪈' },
-  { id: 'gita_chanting',    label: 'सम्पूर्ण गीता पाठ (Gita)',    icon: '📖' },
-  { id: 'bhajan',           label: 'भजन एवं संकीर्तन (Bhajan)',  icon: '🪕' },
-  { id: 'meditation_drone', label: 'ध्यान व समाधि (OM Drones)',  icon: '🧘' },
-  { id: 'shankhnaad',       label: 'शंखनाद व शौर्य (Conch)',      icon: '⚔️' },
-  { id: 'aarti',            label: 'आरती व उत्सव (Aarti)',       icon: '🪔' },
+  { id: 'all',                 label: 'सभी दिव्य संगीत (All)',       icon: '🌟' },
+  { id: 'gita_english',       label: 'गीता अंग्रेजी पाठ (Gita)',    icon: '📖' },
+  { id: 'bhagwat_katha',      label: 'भागवत महापुराण (Katha)',      icon: '📜' },
+  { id: 'bhajan',             label: 'कृष्ण व OFI भजन (Bhajans)',   icon: '🪕' },
+  { id: 'relaxing_meditation',label: 'मन शांति संगीत (432Hz)',      icon: '🧘' },
+  { id: 'kirtan',             label: 'महासंकीर्तन (Kirtan)',        icon: '🪘' },
 ];
+
 
 export default function SacredMusicHub() {
   const [playlists, setPlaylists] = useState<YouTubePlaylistItem[]>(SACRED_YOUTUBE_PLAYLISTS);
@@ -35,8 +36,10 @@ export default function SacredMusicHub() {
   const [volume, setVolume] = useState(0.85);
   const [isShuffle, setIsShuffle] = useState(false);
   const [isRepeat, setIsRepeat] = useState(false);
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   
   // Custom YouTube adder
+
   const [customUrl, setCustomUrl] = useState('');
   const [customTitle, setCustomTitle] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
@@ -129,34 +132,38 @@ export default function SacredMusicHub() {
   };
 
   // Extract YouTube ID
-  const extractYouTubeId = (url: string): string | null => {
+  const extractYouTubeId = (url: string): { id: string; isPlaylist: boolean } | null => {
     if (!url.trim()) return null;
-    const match1 = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
-    if (match1 && match1[1]) return match1[1];
     const matchPlaylist = url.match(/[?&]list=([^#&?]+)/);
-    if (matchPlaylist && matchPlaylist[1]) return matchPlaylist[1];
-    if (url.trim().length === 11) return url.trim();
+    if (matchPlaylist && matchPlaylist[1]) return { id: matchPlaylist[1], isPlaylist: true };
+    const matchVideo = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w-]{11})/);
+    if (matchVideo && matchVideo[1]) return { id: matchVideo[1], isPlaylist: false };
+    if (url.trim().length === 11) return { id: url.trim(), isPlaylist: false };
     return null;
   };
 
   const handleAddCustomTrack = (e: React.FormEvent) => {
     e.preventDefault();
-    const ytId = extractYouTubeId(customUrl);
-    if (!ytId) {
+    const extracted = extractYouTubeId(customUrl);
+    if (!extracted) {
       alert('कृपया एक वैध YouTube वीडियो या प्लेलिस्ट लिंक दर्ज करें।');
       return;
     }
 
     const newTrack: YouTubePlaylistItem = {
       id: `custom-${Date.now()}`,
-      title: customTitle.trim() || 'कस्टम दिव्य संगीत (Custom Track)',
+      title: customTitle.trim() || 'कस्टम दिव्य संगीत (Seeker Custom Track)',
       subtitle: 'Seeker Added Devotional Music',
       category: 'bhajan',
-      youtubeId: ytId,
-      thumbnailUrl: `https://img.youtube.com/vi/${ytId}/hqdefault.jpg`,
-      duration: 'Live / Custom',
-      description: 'User added custom sacred audio stream.',
-      tags: ['Custom', 'User Added', 'Devotional']
+      categoryLabel: 'Custom Playlist',
+      youtubeId: extracted.id,
+      isPlaylist: extracted.isPlaylist,
+      thumbnailUrl: extracted.isPlaylist 
+        ? 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=700&auto=format&fit=crop&q=80'
+        : `https://img.youtube.com/vi/${extracted.id}/hqdefault.jpg`,
+      duration: 'Continuous Audio',
+      description: 'Seeker customized sacred stream for meditation and chanting.',
+      tags: ['Custom', 'User Added', 'Sacred Audio']
     };
 
     sacredAudio.playTempleBell(0.35);
@@ -166,6 +173,7 @@ export default function SacredMusicHub() {
     setShowAddModal(false);
     setCustomUrl('');
     setCustomTitle('');
+
 
     if (typeof window !== 'undefined') {
       try {
@@ -190,18 +198,21 @@ export default function SacredMusicHub() {
   return (
     <div className="w-full max-w-7xl mx-auto p-4 sm:p-6 lg:p-8 space-y-8 z-10 relative">
       
-      {/* ── HIDDEN AUDIO-ONLY YOUTUBE ENGINE ──────────────────────── */}
-      {/* The video iframe is rendered invisibly to stream high-fidelity background audio without showing video */}
+      {/* ── HIDDEN AUDIO-ONLY YOUTUBE STREAMING ENGINE ────────────── */}
+      {/* The video element is completely hidden; only audio is channeled into the user experience */}
       <div className="fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0 pointer-events-none overflow-hidden" aria-hidden="true">
         {isPlaying && (
           <iframe
-            key={`${currentTrack.youtubeId}-${isPlaying}`}
-            src={`https://www.youtube.com/embed/${currentTrack.youtubeId}?autoplay=1&enablejsapi=1&rel=0&controls=0&modestbranding=1&loop=${isRepeat ? 1 : 0}`}
-            title="Audio Background Stream"
+            key={`${currentTrack.youtubeId}-${isPlaying}-${currentTrackIndex}`}
+            src={currentTrack.isPlaylist
+              ? `https://www.youtube.com/embed/videoseries?list=${currentTrack.youtubeId}&autoplay=1&enablejsapi=1&rel=0&controls=0&modestbranding=1&loop=${isRepeat ? 1 : 0}`
+              : `https://www.youtube.com/embed/${currentTrack.youtubeId}?autoplay=1&enablejsapi=1&rel=0&controls=0&modestbranding=1&loop=${isRepeat ? 1 : 0}`}
+            title="Audio Background Stream Engine"
             allow="autoplay"
           />
         )}
       </div>
+
 
       {/* ── Top Header ────────────────────────────────────── */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gold-500/20 pb-5">
@@ -414,10 +425,12 @@ export default function SacredMusicHub() {
                 </button>
               </div>
 
-              {/* Volume / YouTube Link */}
+              {/* External Link */}
               <div className="flex items-center gap-2">
                 <a
-                  href={`https://www.youtube.com/watch?v=${currentTrack.youtubeId}`}
+                  href={currentTrack.isPlaylist 
+                    ? `https://www.youtube.com/playlist?list=${currentTrack.youtubeId}`
+                    : `https://www.youtube.com/watch?v=${currentTrack.youtubeId}`}
                   target="_blank"
                   rel="noreferrer"
                   className="p-2.5 rounded-xl bg-obsidian-800 text-gold-300 border border-gold-500/20 hover:border-gold-400 hover:text-gold-100 transition-colors flex items-center gap-1 text-xs font-mono"
@@ -427,6 +440,7 @@ export default function SacredMusicHub() {
                 </a>
               </div>
             </div>
+
 
             {/* Instant Sacred Sound FX Quick Trigger */}
             <div className="pt-3 border-t border-gold-500/15 space-y-2">
@@ -480,106 +494,209 @@ export default function SacredMusicHub() {
           ))}
         </div>
 
-        {/* Search Field */}
-        <div className="relative min-w-[240px]">
-          <Search className="w-4 h-4 text-gold-400/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="खोजें (राधा कृष्ण, गीता, ॐ, बाँसुरी)..."
-            className="w-full bg-obsidian-900/90 border border-gold-500/25 rounded-2xl pl-10 pr-4 py-2 text-xs text-gold-100 focus:border-gold-400 outline-none font-sans"
-          />
-          {searchQuery && (
+        {/* View Toggle & Search Field */}
+        <div className="flex items-center gap-2 shrink-0">
+          
+          <div className="flex items-center bg-obsidian-900 border border-gold-500/20 p-1 rounded-xl">
             <button
-              onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gold-400/60 hover:text-gold-200"
+              onClick={() => setViewMode('grid')}
+              className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+                viewMode === 'grid' ? 'bg-gold-500 text-obsidian-950 font-bold' : 'text-gold-400/60 hover:text-gold-200'
+              }`}
+              title="Grid View"
             >
-              ✕
+              <Grid className="w-4 h-4" />
             </button>
-          )}
+            <button
+              onClick={() => setViewMode('list')}
+              className={`p-1.5 rounded-lg transition-colors cursor-pointer ${
+                viewMode === 'list' ? 'bg-gold-500 text-obsidian-950 font-bold' : 'text-gold-400/60 hover:text-gold-200'
+              }`}
+              title="List & Episode View"
+            >
+              <List className="w-4 h-4" />
+            </button>
+          </div>
+
+          <div className="relative min-w-[220px]">
+            <Search className="w-4 h-4 text-gold-400/60 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="खोजें (गीता, भागवत, भजन, कीर्तन)..."
+              className="w-full bg-obsidian-900/90 border border-gold-500/25 rounded-2xl pl-10 pr-4 py-2 text-xs text-gold-100 focus:border-gold-400 outline-none font-sans"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery('')}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gold-400/60 hover:text-gold-200"
+              >
+                ✕
+              </button>
+            )}
+          </div>
         </div>
       </div>
 
-      {/* ── 20+ Audio Playlists Queue ───────────────────────────── */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
-        {filteredTracks.map((track, idx) => {
-          const isCurrent = currentTrack.id === track.id;
-          const isFav = favorites.includes(track.id);
+      {/* ── PLAYLISTS & EPISODES RENDER (Grid or List View) ─────────────── */}
+      {viewMode === 'grid' ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+          {filteredTracks.map((track) => {
+            const isCurrent = currentTrack.id === track.id;
+            const isFav = favorites.includes(track.id);
 
-          return (
-            <div
-              key={track.id}
-              onClick={() => handleSelectTrack(track)}
-              className={`group rounded-3xl overflow-hidden border transition-all duration-300 cursor-pointer flex flex-col justify-between relative p-4 space-y-3 ${
-                isCurrent
-                  ? 'bg-gradient-to-b from-obsidian-800 to-obsidian-900 border-gold-400 shadow-[0_0_25px_rgba(232,163,32,0.35)] scale-[1.02]'
-                  : 'bg-obsidian-900/80 hover:bg-obsidian-850 border-gold-500/20 hover:border-gold-400/50 shadow-lg hover:shadow-2xl'
-              }`}
-            >
-              {/* Artwork / Vinyl Icon */}
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 rounded-2xl overflow-hidden border border-gold-500/30 shrink-0 relative">
-                  <img
-                    src={track.thumbnailUrl}
-                    alt={track.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className={`absolute inset-0 bg-black/40 flex items-center justify-center ${
-                    isCurrent && isPlaying ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
-                  } transition-opacity`}>
-                    {isCurrent && isPlaying ? (
-                      <Radio className="w-6 h-6 text-gold-300 animate-pulse" />
+            return (
+              <div
+                key={track.id}
+                onClick={() => handleSelectTrack(track)}
+                className={`group rounded-3xl overflow-hidden border transition-all duration-300 cursor-pointer flex flex-col justify-between relative p-4 space-y-3 ${
+                  isCurrent
+                    ? 'bg-gradient-to-b from-obsidian-800 to-obsidian-900 border-gold-400 shadow-[0_0_25px_rgba(232,163,32,0.35)] scale-[1.02]'
+                    : 'bg-obsidian-900/80 hover:bg-obsidian-850 border-gold-500/20 hover:border-gold-400/50 shadow-lg hover:shadow-2xl'
+                }`}
+              >
+                {/* Artwork / Vinyl Icon */}
+                <div className="flex items-center gap-3">
+                  <div className="w-16 h-16 rounded-2xl overflow-hidden border border-gold-500/30 shrink-0 relative bg-obsidian-950">
+                    <img
+                      src={track.thumbnailUrl}
+                      alt={track.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className={`absolute inset-0 bg-black/40 flex items-center justify-center ${
+                      isCurrent && isPlaying ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                    } transition-opacity`}>
+                      {isCurrent && isPlaying ? (
+                        <Radio className="w-6 h-6 text-gold-300 animate-pulse" />
+                      ) : (
+                        <Play className="w-6 h-6 text-gold-300 fill-current ml-0.5" />
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center justify-between text-[10px] font-mono text-gold-400/80 mb-0.5">
+                      <span className="uppercase tracking-wider font-bold">
+                        {track.categoryLabel || track.category.replace('_', ' ')}
+                      </span>
+                      {track.episodeCount && <span>{track.episodeCount}</span>}
+                    </div>
+
+                    <h4 className="text-sm font-bold text-gold-100 line-clamp-2 font-display group-hover:text-gold-300 transition-colors leading-snug">
+                      {track.title}
+                    </h4>
+                  </div>
+                </div>
+
+                <p className="text-xs text-gold-300/70 line-clamp-2 font-sans">
+                  {track.subtitle}
+                </p>
+
+                {/* Bottom Action / Tag */}
+                <div className="pt-2 border-t border-gold-500/10 flex items-center justify-between text-xs">
+                  <span className="text-[11px] text-gold-400/80 flex items-center gap-1.5 font-sans">
+                    {isCurrent ? (
+                      <span className="text-amber-400 font-bold flex items-center gap-1">
+                        <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping inline-block" />
+                        सक्रिय (Now Playing)
+                      </span>
                     ) : (
-                      <Play className="w-6 h-6 text-gold-300 fill-current ml-0.5" />
+                      <span>▶ स्पर्श करके सुनें</span>
+                    )}
+                  </span>
+
+                  <button
+                    onClick={(e) => toggleFavorite(track.id, e)}
+                    className="p-1 text-gold-400/60 hover:text-red-400 transition-colors"
+                  >
+                    <Heart className={`w-4 h-4 ${isFav ? 'fill-current text-red-400' : ''}`} />
+                  </button>
+                </div>
+
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        /* LIST & EPISODES DETAILED VIEW */
+        <div className="space-y-3">
+          {filteredTracks.map((track, idx) => {
+            const isCurrent = currentTrack.id === track.id;
+            const isFav = favorites.includes(track.id);
+
+            return (
+              <div
+                key={track.id}
+                onClick={() => handleSelectTrack(track)}
+                className={`p-4 sm:p-5 rounded-2xl border transition-all cursor-pointer flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 ${
+                  isCurrent
+                    ? 'bg-gradient-to-r from-obsidian-800 via-obsidian-850 to-obsidian-900 border-gold-400 shadow-[0_0_20px_rgba(232,163,32,0.3)]'
+                    : 'bg-obsidian-900/80 hover:bg-obsidian-850 border-gold-500/15 hover:border-gold-400/40'
+                }`}
+              >
+                <div className="flex items-center gap-4 min-w-0">
+                  <span className="text-sm font-mono text-gold-400/60 w-6 text-center shrink-0">
+                    {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                  </span>
+
+                  <div className="w-12 h-12 rounded-xl overflow-hidden border border-gold-500/25 shrink-0 relative bg-black">
+                    <img src={track.thumbnailUrl} alt={track.title} className="w-full h-full object-cover" />
+                    {isCurrent && isPlaying && (
+                      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                        <Radio className="w-5 h-5 text-gold-300 animate-pulse" />
+                      </div>
                     )}
                   </div>
-                </div>
 
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center justify-between text-[10px] font-mono text-gold-400/80 mb-0.5">
-                    <span className="uppercase tracking-wider font-bold">
-                      {track.category.replace('_', ' ')}
-                    </span>
-                    {track.duration && <span>{track.duration}</span>}
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2 text-[10px] font-mono text-gold-400/80">
+                      <span className="uppercase tracking-wider font-bold">
+                        {track.categoryLabel}
+                      </span>
+                      {track.episodeCount && <span>• {track.episodeCount}</span>}
+                    </div>
+                    <h4 className="text-sm font-bold text-gold-100 truncate font-display">
+                      {track.title}
+                    </h4>
+                    <p className="text-xs text-gold-300/70 truncate font-sans">
+                      {track.subtitle}
+                    </p>
                   </div>
+                </div>
 
-                  <h4 className="text-sm font-bold text-gold-100 line-clamp-1 font-display group-hover:text-gold-300 transition-colors">
-                    {track.title}
-                  </h4>
+                <div className="flex items-center gap-3 self-end sm:self-auto shrink-0">
+                  {track.raga && (
+                    <span className="text-[11px] font-mono text-gold-400/80 px-2.5 py-1 rounded-lg bg-obsidian-800 border border-gold-500/15 hidden md:inline">
+                      {track.raga}
+                    </span>
+                  )}
 
-                  <p className="text-xs text-gold-300/70 line-clamp-1 font-sans">
-                    {track.raga || track.subtitle}
-                  </p>
+                  <button
+                    onClick={(e) => toggleFavorite(track.id, e)}
+                    className="p-2 text-gold-400/60 hover:text-red-400 transition-colors"
+                  >
+                    <Heart className={`w-4 h-4 ${isFav ? 'fill-current text-red-400' : ''}`} />
+                  </button>
+
+                  <button
+                    className={`px-4 py-1.5 rounded-xl font-bold text-xs font-sans flex items-center gap-1.5 transition-all ${
+                      isCurrent
+                        ? 'bg-gold-500 text-obsidian-950 shadow-[0_0_12px_rgba(232,163,32,0.4)]'
+                        : 'bg-obsidian-800 text-gold-300 border border-gold-500/20 hover:border-gold-400'
+                    }`}
+                  >
+                    {isCurrent && isPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current" />}
+                    <span>{isCurrent && isPlaying ? 'चल रहा है' : 'सुनें'}</span>
+                  </button>
                 </div>
               </div>
+            );
+          })}
+        </div>
+      )}
 
-              {/* Bottom Action / Tag */}
-              <div className="pt-2 border-t border-gold-500/10 flex items-center justify-between text-xs">
-                <span className="text-[11px] text-gold-400/80 flex items-center gap-1.5 font-sans">
-                  {isCurrent ? (
-                    <span className="text-amber-400 font-bold flex items-center gap-1">
-                      <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping inline-block" />
-                      सक्रिय (Now Playing)
-                    </span>
-                  ) : (
-                    <span>▶ स्पर्श करके सुनें</span>
-                  )}
-                </span>
-
-                <button
-                  onClick={(e) => toggleFavorite(track.id, e)}
-                  className="p-1 text-gold-400/60 hover:text-red-400 transition-colors"
-                >
-                  <Heart className={`w-4 h-4 ${isFav ? 'fill-current text-red-400' : ''}`} />
-                </button>
-              </div>
-
-            </div>
-          );
-        })}
-      </div>
 
       {/* ── Modal: Add Custom YouTube Link ──────────────────────── */}
       {showAddModal && (
