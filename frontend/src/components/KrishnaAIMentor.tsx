@@ -107,10 +107,27 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
 
       const params = new URLSearchParams(window.location.search);
       const initialQuery = params.get('query');
-      if (initialQuery) {
+      const prefill = sessionStorage.getItem('dharma_mentor_prefill');
+      
+      if (prefill) {
+        sessionStorage.removeItem('dharma_mentor_prefill');
+        setProblem(prefill);
+        submitProblem(prefill);
+      } else if (initialQuery) {
         setProblem(initialQuery);
         submitProblem(initialQuery);
       }
+
+      const handleAskEvent = (e: any) => {
+        const { chapter, verse } = e.detail || {};
+        if (chapter && verse) {
+          const q = `हे कृष्ण! श्रीमद्भगवद्गीता के अध्याय ${chapter}, श्लोक ${verse} का मेरे जीवन और कर्मक्षेत्र में क्या वास्तविक संदेश है?`;
+          setProblem(q);
+          submitProblem(q);
+        }
+      };
+      window.addEventListener('dharma_ask_krishna', handleAskEvent);
+      return () => window.removeEventListener('dharma_ask_krishna', handleAskEvent);
     }
   }, []);
 
