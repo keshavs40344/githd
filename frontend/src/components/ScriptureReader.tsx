@@ -1,14 +1,13 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import type { GitaVerse, AnvayaToken } from '../types/verse';
 import type { MentorDiagnosis } from '../types/mentor';
-import AIVoiceSpeaker from './AIVoiceSpeaker';
 import WisdomCardModal from './WisdomCardModal';
 import { 
   Bookmark, BookmarkCheck, Copy, Check, ChevronRight, ChevronLeft, 
-  Sparkles, BookOpen, Volume2, Share2, Compass, Globe2, 
-  Layers, Radio, RefreshCw, Disc3, ShieldCheck, Heart, Lightbulb 
+  Sparkles, BookOpen, Volume2, VolumeX, Share2, Compass, Globe2, 
+  Layers, Radio, RefreshCw, Disc3, Play, Pause, ShieldCheck, Heart, Lightbulb 
 } from 'lucide-react';
 import { Button } from './ui/Button';
 import { sacredAudio } from '@/lib/sacredSounds';
@@ -47,7 +46,10 @@ export default function ScriptureReader({
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showWisdomCard, setShowWisdomCard] = useState(false);
   const [showBhashya, setShowBhashya] = useState(true);
-  const [isPlayingAudioKatha, setIsPlayingAudioKatha] = useState(false);
+
+  // Authentic Chapter Audio Stream states
+  const [isPlayingChapterAudio, setIsPlayingChapterAudio] = useState(false);
+  const [audioStreamSource, setAudioStreamSource] = useState<'gita_series' | 'bhagwat_katha'>('gita_series');
 
   // Check Bookmark status
   useEffect(() => {
@@ -148,7 +150,7 @@ export default function ScriptureReader({
       transliteration_iast: verse.iast
     },
     audio_sonic_metadata: {
-      recommended_raga_bgm: '136.1 Hz Sacred Tanpura & Flute Drone',
+      recommended_raga_bgm: 'Chapter Sacred Recitation',
       vocal_modulation_guidance: 'Serene, meditative Vedic cadence',
       pronunciation_key: 'Distinct Sanskrit phonetics'
     },
@@ -174,6 +176,11 @@ export default function ScriptureReader({
     }
   };
 
+  // Chapter Playlist URLs
+  const gitaPlaylistId = 'PL5A5QJkW7MksDFp4b0JYnV-R-tZTRHURP';
+  const kathaPlaylistId = 'PL5A5QJkW7MkvYslAbg7_rFij8yVEeiEwF';
+  const playlistIndex = Math.max(0, verse.chapter - 1);
+  const activePlaylistId = audioStreamSource === 'gita_series' ? gitaPlaylistId : kathaPlaylistId;
 
   return (
     <div className="w-full max-w-4xl mx-auto space-y-6 animate-in fade-in duration-500 pb-12">
@@ -278,45 +285,64 @@ export default function ScriptureReader({
           </p>
         </div>
 
-        {/* Audio Recitation & Chanting Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-gold-500/20 bg-obsidian-950/60 -mx-6 -mb-6 sm:-mx-9 sm:-mb-9 p-4 sm:p-5 rounded-b-3xl">
+        {/* Authentic Playlist Chapter Audio Stream Bar */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-gold-500/20 bg-obsidian-950/70 -mx-6 -mb-6 sm:-mx-9 sm:-mb-9 p-4 sm:p-5 rounded-b-3xl">
           
-          <div className="flex items-center gap-3">
-            <AIVoiceSpeaker 
-              sanskrit={verse.devanagari} 
-              text={verse.devanagari} 
-              label="वैदिक संस्कृत पाठ"
-            />
-            <span className="text-xs font-mono text-gold-400/80 hidden sm:inline">
-              वैदिक स्वर पाठ (Authentic Sanskrit Voice)
-            </span>
-          </div>
-
-
-          {/* Katha Audio Stream Link */}
+          {/* Main Play Chapter Button */}
           <button
             onClick={() => {
-              setIsPlayingAudioKatha(!isPlayingAudioKatha);
-              sacredAudio.playFluteChime(0.2);
+              setIsPlayingChapterAudio(!isPlayingChapterAudio);
+              sacredAudio.playNavChime(0.15);
             }}
-            className={`px-4 py-2 rounded-xl text-xs font-sans font-semibold flex items-center gap-2 border transition-all cursor-pointer ${
-              isPlayingAudioKatha
-                ? 'bg-amber-500 text-obsidian-950 border-amber-400 shadow-[0_0_15px_rgba(232,163,32,0.4)]'
-                : 'bg-obsidian-800 text-gold-300 border-gold-500/20 hover:border-gold-400'
+            className={`px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-sans font-bold flex items-center gap-2.5 border transition-all cursor-pointer shadow-lg active:scale-95 ${
+              isPlayingChapterAudio
+                ? 'bg-gradient-to-r from-gold-400 to-amber-500 text-obsidian-950 border-gold-300 shadow-[0_0_20px_rgba(232,163,32,0.45)]'
+                : 'bg-obsidian-850 hover:bg-obsidian-800 text-gold-200 border-gold-500/30 hover:border-gold-400'
             }`}
           >
-            <Radio className={`w-3.5 h-3.5 ${isPlayingAudioKatha ? 'animate-pulse' : ''}`} />
-            <span>{isPlayingAudioKatha ? 'कथा ऑडियो चल रहा है' : '📻 सम्पूर्ण कथा ऑडियो सुनें'}</span>
+            {isPlayingChapterAudio ? (
+              <>
+                <Pause className="w-4 h-4 fill-current" />
+                <span>अध्याय {verse.chapter} ऑडियो चल रहा है (Pause)</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-4 h-4 fill-current ml-0.5" />
+                <span>▶ अध्याय {verse.chapter} सम्पूर्ण श्लोक ऑडियो सुनें</span>
+              </>
+            )}
           </button>
+
+          {/* Source Toggle & Katha Mode */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => {
+                setAudioStreamSource(audioStreamSource === 'gita_series' ? 'bhagwat_katha' : 'gita_series');
+                sacredAudio.playNavChime(0.1);
+              }}
+              className="px-3.5 py-2 rounded-xl text-xs font-sans bg-obsidian-850 hover:bg-obsidian-800 text-gold-300/90 border border-gold-500/20 hover:border-gold-400 flex items-center gap-1.5 transition-colors"
+            >
+              <Radio className="w-3.5 h-3.5 text-gold-400" />
+              <span>{audioStreamSource === 'gita_series' ? 'कथा व्याख्या मोड पर बदलें' : 'गीता श्लोक पाठ मोड'}</span>
+            </button>
+
+            {isPlayingChapterAudio && (
+              <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-[10px] font-mono text-emerald-400">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+                <span>STREAMING</span>
+              </div>
+            )}
+          </div>
 
         </div>
 
-        {/* Hidden Audio Katha Stream Iframe */}
-        {isPlayingAudioKatha && (
+        {/* Hidden Audio Stream Iframe */}
+        {isPlayingChapterAudio && (
           <div className="fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0 pointer-events-none" aria-hidden="true">
             <iframe
-              src="https://www.youtube.com/embed/videoseries?list=PL5A5QJkW7MkvYslAbg7_rFij8yVEeiEwF&autoplay=1&enablejsapi=1&rel=0&controls=0"
-              title="Sacred Katha Audio Background Stream"
+              key={`reader-stream-${activePlaylistId}-${playlistIndex}-${audioStreamSource}`}
+              src={`https://www.youtube.com/embed/videoseries?list=${activePlaylistId}&index=${playlistIndex}&autoplay=1&enablejsapi=1&rel=0&controls=0`}
+              title="Chapter Audio Stream"
               allow="autoplay"
             />
           </div>
@@ -422,7 +448,7 @@ export default function ScriptureReader({
               onPrev();
             }
           }}
-          className="px-5 py-3 rounded-2xl bg-obsidian-900 hover:bg-obsidian-850 border border-gold-500/20 text-gold-200 hover:text-gold-100 font-sans text-xs sm:text-sm font-bold flex items-center gap-2 transition-all active:scale-95 shadow-md"
+          className="px-5 py-3 rounded-2xl bg-obsidian-900 hover:bg-obsidian-850 border border-gold-500/20 text-gold-200 hover:text-gold-100 font-sans text-xs sm:text-sm font-bold flex items-center gap-2 transition-all active:scale-95 shadow-md cursor-pointer"
         >
           <ChevronLeft className="w-4 h-4" />
           <span>पिछला श्लोक (Previous)</span>
@@ -435,7 +461,7 @@ export default function ScriptureReader({
               onNext();
             }
           }}
-          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-sans text-xs sm:text-sm font-bold flex items-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(232,163,32,0.35)]"
+          className="px-5 py-3 rounded-2xl bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-obsidian-950 font-sans text-xs sm:text-sm font-bold flex items-center gap-2 transition-all active:scale-95 shadow-[0_0_20px_rgba(232,163,32,0.35)] cursor-pointer"
         >
           <span>अगला श्लोक (Next Verse)</span>
           <ChevronRight className="w-4 h-4" />
@@ -449,7 +475,6 @@ export default function ScriptureReader({
           onClose={() => setShowWisdomCard(false)}
         />
       )}
-
 
     </div>
   );

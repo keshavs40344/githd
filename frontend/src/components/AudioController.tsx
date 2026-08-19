@@ -1,255 +1,203 @@
-'use client';
+﻿'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Play, Pause, Volume2, FastForward, Rewind, Radio, Mic2, Disc } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Play, Pause, Volume2, VolumeX, SkipForward, SkipBack, Radio, Disc3, Sparkles, BookOpen, Layers } from 'lucide-react';
+import { sacredAudio } from '@/lib/sacredSounds';
 
 interface AudioControllerProps {
-  sanskritVerse: string;
+  sanskritVerse?: string;
   chapter: number;
   verse: number;
 }
 
-type AudioMode = 'tanpura' | 'recitation' | 'studio';
-
-export default function AudioController({ sanskritVerse, chapter, verse }: AudioControllerProps) {
+export default function AudioController({ chapter, verse }: AudioControllerProps) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [mode, setMode] = useState<AudioMode>('tanpura');
-  const [volume, setVolume] = useState(0.5);
-  const [playbackRate, setPlaybackRate] = useState(1.0);
-  
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const audioContextRef = useRef<AudioContext | null>(null);
-  const oscillatorsRef = useRef<OscillatorNode[]>([]);
-  const gainNodesRef = useRef<GainNode[]>([]);
-  const analyserRef = useRef<AnalyserNode | null>(null);
-  const animationFrameRef = useRef<number | null>(null);
-  const audioElRef = useRef<HTMLAudioElement | null>(null);
-  const speechUtteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const [streamSource, setStreamSource] = useState<'gita_series' | 'bhagwat_katha'>('gita_series');
+  const [playbackSeconds, setPlaybackSeconds] = useState(0);
 
-  // Stop all audio
-  const stopAll = useCallback(() => {
-    // Stop Tanpura
-    oscillatorsRef.current.forEach(osc => {
-      try { osc.stop(); } catch (e) {}
-      osc.disconnect();
-    });
-    oscillatorsRef.current = [];
-    
-    // Stop Studio
-    if (audioElRef.current) {
-      audioElRef.current.pause();
-      audioElRef.current.currentTime = 0;
-    }
-    
-    // Stop Speech
-    window.speechSynthesis.cancel();
-  }, []);
-
-  // Initialize Tanpura
-  const startTanpura = useCallback(() => {
-    if (!audioContextRef.current) {
-      audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
-    }
-    const ctx = audioContextRef.current;
-    if (ctx.state === 'suspended') ctx.resume();
-
-    analyserRef.current = ctx.createAnalyser();
-    analyserRef.current.fftSize = 2048;
-    analyserRef.current.connect(ctx.destination);
-
-    const masterGain = ctx.createGain();
-    masterGain.gain.value = volume;
-    masterGain.connect(analyserRef.current);
-    
-    gainNodesRef.current = [masterGain];
-
-    // Frequencies for C# (Sa) Tanpura drone
-    const freqs = [136.10, 204.15, 272.20, 68.05];
-    
-    freqs.forEach((freq, i) => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      
-      osc.type = i === 3 ? 'sine' : 'triangle';
-      osc.frequency.value = freq;
-      
-      // Tremolo/LFO effect
-      const lfo = ctx.createOscillator();
-      lfo.type = 'sine';
-      lfo.frequency.value = 0.2 + (i * 0.1); // Slow subtle modulation
-      const lfoGain = ctx.createGain();
-      lfoGain.gain.value = 0.2;
-      
-      lfo.connect(lfoGain);
-      lfoGain.connect(gain.gain);
-      lfo.start();
-      
-      osc.connect(gain);
-      gain.connect(masterGain);
-      
-      osc.start();
-      oscillatorsRef.current.push(osc, lfo);
-      gainNodesRef.current.push(gain, lfoGain);
-    });
-  }, [volume]);
-
-  // Handle Play/Pause
+  // Time tracker
   useEffect(() => {
+    let interval: NodeJS.Timeout;
     if (isPlaying) {
-      if (mode === 'tanpura') {
-        startTanpura();
-      } else if (mode === 'studio') {
-        if (!audioElRef.current) {
-          audioElRef.current = new Audio(`/audio/ch${chapter}_v${verse}.mp3`);
-          audioElRef.current.loop = true;
-        }
-        audioElRef.current.volume = volume;
-        audioElRef.current.playbackRate = playbackRate;
-        audioElRef.current.play().catch(() => {
-          console.error("Audio file not found, falling back to Tanpura");
-          setMode('tanpura');
-        });
-      } else if (mode === 'recitation') {
-        const utterance = new SpeechSynthesisUtterance(sanskritVerse);
-        utterance.lang = 'hi-IN';
-        utterance.rate = playbackRate;
-        utterance.volume = volume;
-        utterance.onend = () => setIsPlaying(false);
-        speechUtteranceRef.current = utterance;
-        window.speechSynthesis.speak(utterance);
-      }
-    } else {
-      stopAll();
+      interval = setInterval(() => {
+        setPlaybackSeconds(prev => prev + 1);
+      }, 1000);
     }
-    
-    return () => {
-      if (isPlaying) stopAll();
-    };
-  }, [isPlaying, mode, startTanpura, stopAll, chapter, verse, sanskritVerse, volume, playbackRate]);
+    return () => clearInterval(interval);
+  }, [isPlaying]);
 
-  // Visualizer Animation
+  // When chapter changes, reset playback timer
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
+    setPlaybackSeconds(0);
+  }, [chapter]);
 
-    let width = canvas.width;
-    let height = canvas.height;
+  const togglePlay = () => {
+    sacredAudio.playNavChime(0.12);
+    setIsPlaying(!isPlaying);
+  };
 
-    const draw = () => {
-      animationFrameRef.current = requestAnimationFrame(draw);
-      
-      ctx.fillStyle = 'rgba(20, 20, 20, 0.2)'; // obsidian trail effect
-      ctx.fillRect(0, 0, width, height);
+  const formatTime = (secs: number) => {
+    const m = Math.floor(secs / 60);
+    const s = secs % 60;
+    return `${m}:${s < 10 ? '0' : ''}${s}`;
+  };
 
-      if (!isPlaying) return;
+  // Chapter playlist index: Chapter 1 is index 0, Chapter 2 is index 1, etc.
+  const playlistIndex = Math.max(0, chapter - 1);
 
-      if (mode === 'tanpura' && analyserRef.current) {
-        const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount);
-        analyserRef.current.getByteTimeDomainData(dataArray);
+  // Stream URLs for pure audio (hidden iframe)
+  const gitaPlaylistId = 'PL5A5QJkW7MksDFp4b0JYnV-R-tZTRHURP';
+  const kathaPlaylistId = 'PL5A5QJkW7MkvYslAbg7_rFij8yVEeiEwF';
 
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = '#D4AF37'; // Golden
-        ctx.beginPath();
+  const activePlaylistId = streamSource === 'gita_series' ? gitaPlaylistId : kathaPlaylistId;
+  const activePlaylistTitle = streamSource === 'gita_series' 
+    ? `अध्याय ${chapter} — गीता सम्पूर्ण श्लोक व व्याख्या`
+    : `प्रसंग ${Math.min(14, chapter)} — श्रीमद्भागवत कथा व्याख्या`;
 
-        const sliceWidth = width * 1.0 / analyserRef.current.frequencyBinCount;
-        let x = 0;
-
-        for (let i = 0; i < analyserRef.current.frequencyBinCount; i++) {
-          const v = dataArray[i] / 128.0;
-          const y = v * height / 2;
-          if (i === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-          x += sliceWidth;
-        }
-        ctx.lineTo(canvas.width, canvas.height / 2);
-        ctx.stroke();
-      } else {
-        // Simulated visualizer for studio/recitation
-        ctx.lineWidth = 2;
-        ctx.strokeStyle = '#D4AF37';
-        ctx.beginPath();
-        const time = Date.now() / 200;
-        for (let i = 0; i <= width; i += 5) {
-          const y = (height / 2) + Math.sin(i * 0.05 + time) * 15 * (Math.random() * 0.5 + 0.5);
-          if (i === 0) ctx.moveTo(i, y);
-          else ctx.lineTo(i, y);
-        }
-        ctx.stroke();
-      }
-    };
-    
-    draw();
-    return () => {
-      if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
-    };
-  }, [isPlaying, mode]);
+  const iframeSrc = `https://www.youtube.com/embed/videoseries?list=${activePlaylistId}&index=${playlistIndex}&autoplay=1&enablejsapi=1&rel=0&controls=0&modestbranding=1`;
 
   return (
-    <div className="w-full bg-[#1A1A1A]/80 backdrop-blur-md rounded-2xl border border-[#D4AF37]/30 p-4 shadow-lg shadow-[#D4AF37]/5">
-      <div className="flex flex-col gap-4">
-        {/* Canvas Visualizer */}
-        <div className="w-full h-16 rounded-lg bg-[#0F0F0F] overflow-hidden border border-[#D4AF37]/20 relative">
-          <canvas 
-            ref={canvasRef} 
-            className="w-full h-full" 
-            width={400} 
-            height={64} 
+    <div className="w-full space-y-4">
+      
+      {/* Hidden Audio-Only Stream Engine */}
+      <div className="fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0 pointer-events-none" aria-hidden="true">
+        {isPlaying && (
+          <iframe
+            key={`${activePlaylistId}-${playlistIndex}-${isPlaying}-${streamSource}`}
+            src={iframeSrc}
+            title="Chapter Audio Stream"
+            allow="autoplay"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0F0F0F] via-transparent to-[#0F0F0F] pointer-events-none" />
-        </div>
-
-        {/* Controls */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <button 
-              onClick={() => setIsPlaying(!isPlaying)}
-              className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8972E] flex items-center justify-center text-[#1A1A1A] hover:scale-105 transition-transform shadow-md shadow-[#D4AF37]/20"
-            >
-              {isPlaying ? <Pause size={24} fill="currentColor" /> : <Play size={24} fill="currentColor" className="ml-1" />}
-            </button>
-            
-            <div className="flex flex-col">
-              <span className="text-sm font-medium text-[#D4AF37]">
-                {mode === 'tanpura' ? 'Meditative Drone' : mode === 'recitation' ? 'Sanskrit Recitation' : 'Original Track'}
-              </span>
-              <span className="text-xs text-gray-400">Chapter {chapter}, Verse {verse}</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            {/* Mode Selectors */}
-            <div className="flex bg-[#0F0F0F] rounded-lg p-1 border border-[#D4AF37]/20">
-              <button 
-                onClick={() => { setMode('tanpura'); setIsPlaying(false); }}
-                className={`p-2 rounded-md transition-colors ${mode === 'tanpura' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : 'text-gray-500 hover:text-[#D4AF37]/70'}`}
-                title="Tanpura Drone"
-              ><Radio size={16} /></button>
-              <button 
-                onClick={() => { setMode('recitation'); setIsPlaying(false); }}
-                className={`p-2 rounded-md transition-colors ${mode === 'recitation' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : 'text-gray-500 hover:text-[#D4AF37]/70'}`}
-                title="Speech Recitation"
-              ><Mic2 size={16} /></button>
-              <button 
-                onClick={() => { setMode('studio'); setIsPlaying(false); }}
-                className={`p-2 rounded-md transition-colors ${mode === 'studio' ? 'bg-[#D4AF37]/20 text-[#D4AF37]' : 'text-gray-500 hover:text-[#D4AF37]/70'}`}
-                title="Studio Track"
-              ><Disc size={16} /></button>
-            </div>
-
-            {/* Speed & Volume */}
-            <div className="flex items-center gap-2">
-              <button 
-                onClick={() => setPlaybackRate(r => r === 0.75 ? 1.0 : r === 1.0 ? 1.25 : 0.75)}
-                className="px-2 py-1 text-xs text-[#D4AF37] border border-[#D4AF37]/30 rounded-md hover:bg-[#D4AF37]/10"
-              >
-                {playbackRate}x
-              </button>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
+
+      {/* Main Console Box */}
+      <div className="bg-gradient-to-br from-obsidian-900 via-obsidian-900 to-amber-950/30 border border-gold-500/25 rounded-3xl p-5 shadow-xl space-y-4">
+        
+        {/* Stream Source Toggle Tabs */}
+        <div className="grid grid-cols-2 gap-1.5 p-1 rounded-2xl bg-obsidian-950/80 border border-gold-500/15">
+          <button
+            onClick={() => {
+              setStreamSource('gita_series');
+              setPlaybackSeconds(0);
+              sacredAudio.playNavChime(0.1);
+            }}
+            className={`py-2 px-2.5 rounded-xl text-xs font-sans font-semibold transition-all cursor-pointer truncate ${
+              streamSource === 'gita_series'
+                ? 'bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold shadow-md'
+                : 'text-gold-300/70 hover:text-gold-100'
+            }`}
+          >
+            📖 गीता श्लोक पाठ
+          </button>
+
+          <button
+            onClick={() => {
+              setStreamSource('bhagwat_katha');
+              setPlaybackSeconds(0);
+              sacredAudio.playNavChime(0.1);
+            }}
+            className={`py-2 px-2.5 rounded-xl text-xs font-sans font-semibold transition-all cursor-pointer truncate ${
+              streamSource === 'bhagwat_katha'
+                ? 'bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold shadow-md'
+                : 'text-gold-300/70 hover:text-gold-100'
+            }`}
+          >
+            📜 भागवत कथा पाठ
+          </button>
+        </div>
+
+        {/* Golden Vinyl / Chakra Center Widget */}
+        <div className="flex flex-col items-center justify-center space-y-3 pt-2">
+          
+          <div className="relative">
+            {/* Spinning Aura */}
+            <div className={`w-28 h-28 rounded-full p-1.5 bg-gradient-to-tr from-gold-400/40 via-amber-500/30 to-amber-800/40 shadow-[0_0_30px_rgba(232,163,32,0.3)] flex items-center justify-center transition-all ${
+              isPlaying ? 'animate-spin-slow' : ''
+            }`}>
+              <div className="w-full h-full rounded-full bg-obsidian-950 border-2 border-gold-500/30 flex items-center justify-center relative overflow-hidden">
+                <div className="absolute inset-2 rounded-full border border-gold-500/10" />
+                <div className="absolute inset-4 rounded-full border border-gold-500/15" />
+                <span className="text-2xl font-bold font-devanagari text-gold-200 text-glow-gold">
+                  ॐ
+                </span>
+                <div className="w-2.5 h-2.5 rounded-full bg-obsidian-950 border border-gold-400 absolute" />
+              </div>
+            </div>
+
+            {/* Live Indicator */}
+            <div className="absolute -bottom-1 -right-1 px-2 py-0.5 rounded-full bg-black/85 border border-gold-500/30 flex items-center gap-1">
+              <span className={`w-1.5 h-1.5 rounded-full ${isPlaying ? 'bg-emerald-400 animate-pulse' : 'bg-gold-500/30'}`} />
+              <span className="text-[9px] font-mono text-gold-300 font-bold">
+                {isPlaying ? 'LIVE' : 'AUDIO'}
+              </span>
+            </div>
+          </div>
+
+          {/* Equalizer Wave Bars */}
+          <div className="flex items-end justify-center gap-1 h-5">
+            {[40, 80, 60, 95, 70, 85, 50, 100, 75, 90, 65].map((h, i) => (
+              <div
+                key={i}
+                className={`w-1 rounded-full bg-gradient-to-t from-gold-500 to-amber-300 transition-all ${
+                  isPlaying ? 'animate-pulse' : 'opacity-25'
+                }`}
+                style={{
+                  height: isPlaying ? `${Math.max(20, (h * ((i % 3) + 1)) % 100)}%` : '20%',
+                  animationDelay: `${i * 70}ms`
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Title & Chapter Details */}
+          <div className="text-center space-y-1">
+            <h4 className="text-xs font-bold text-gold-100 font-display line-clamp-1">
+              {activePlaylistTitle}
+            </h4>
+            <div className="text-[10px] font-mono text-gold-400/80">
+              अध्याय {chapter} • श्लोक {verse}
+            </div>
+          </div>
+
+        </div>
+
+        {/* Progress & Timing */}
+        <div className="space-y-1 pt-1">
+          <div className="w-full bg-obsidian-950 h-1.5 rounded-full overflow-hidden border border-gold-500/15">
+            <div
+              className="h-full bg-gradient-to-r from-gold-500 to-amber-500 transition-all rounded-full"
+              style={{ width: `${Math.min(100, (playbackSeconds % 180) / 1.8)}%` }}
+            />
+          </div>
+          <div className="flex items-center justify-between text-[10px] font-mono text-gold-400/70">
+            <span>{formatTime(playbackSeconds)}</span>
+            <span>अध्याय ऑडियो स्ट्रीम</span>
+          </div>
+        </div>
+
+        {/* Play / Pause Big Button */}
+        <div className="flex items-center justify-center gap-3 pt-1">
+          <button
+            onClick={togglePlay}
+            className="w-full py-2.5 rounded-2xl bg-gradient-to-r from-gold-400 via-gold-500 to-amber-600 hover:from-gold-300 hover:to-amber-500 text-obsidian-950 font-bold text-xs sm:text-sm font-sans flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(232,163,32,0.4)] active:scale-95 transition-all cursor-pointer"
+          >
+            {isPlaying ? (
+              <>
+                <Pause className="w-4 h-4 fill-current" />
+                <span>ऑडियो रोकें (Pause)</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-4 h-4 fill-current ml-0.5" />
+                <span>अध्याय {chapter} ऑडियो सुनें (Play)</span>
+              </>
+            )}
+          </button>
+        </div>
+
+      </div>
+
     </div>
   );
 }
