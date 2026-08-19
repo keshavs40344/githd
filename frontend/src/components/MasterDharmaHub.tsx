@@ -10,10 +10,13 @@ import DailySadhanaWidget from './DailySadhanaWidget';
 import SacredMusicHub from './SacredMusicHub';
 import WebGLShaderBackground from './WebGLShaderBackground';
 import DharmaKarmaBadge from './DharmaKarmaBadge';
+import AuthModal from './AuthModal';
+import { getCurrentUser } from '@/lib/supabase';
 import { sacredAudio } from '@/lib/sacredSounds';
+import type { User } from '@supabase/supabase-js';
 import { 
   Sparkles, BookOpen, Layers, Image as ImageIcon, Flame, 
-  Compass, Grid, Search, BookMarked, Music, Bell 
+  Compass, Grid, Search, BookMarked, Music, Bell, User as UserIcon, LogIn, ShieldCheck 
 } from 'lucide-react';
 
 export type DharmaAppView = 'scripture' | 'mentor' | 'episodes' | 'studio' | 'sadhana' | 'music';
@@ -25,6 +28,8 @@ interface MasterDharmaHubProps {
 
 export default function MasterDharmaHub({ verses, initialView = 'scripture' }: MasterDharmaHubProps) {
   const [activeView, setActiveView] = useState<DharmaAppView>(initialView);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
 
   // Sync tab from URL hash if provided
   useEffect(() => {
@@ -34,6 +39,11 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
         setActiveView(hash);
       }
     }
+  }, []);
+
+  // Fetch current authenticated user
+  useEffect(() => {
+    getCurrentUser().then(u => setUser(u));
   }, []);
 
   const switchView = (view: DharmaAppView) => {
@@ -47,6 +57,11 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
   const handleBrandClick = () => {
     sacredAudio.playTempleBell(0.35);
     switchView('scripture');
+  };
+
+  const handleAuthClick = () => {
+    sacredAudio.playNavChime(0.12);
+    setIsAuthModalOpen(true);
   };
 
   return (
@@ -64,7 +79,6 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
             onClick={handleBrandClick}
             className="flex items-center gap-3 group cursor-pointer text-left shrink-0"
           >
-
             {/* Sacred OM Logo */}
             <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-400 via-gold-500 to-amber-700 flex items-center justify-center text-obsidian-950 font-bold text-xl shadow-[0_0_20px_rgba(232,163,32,0.45)] group-hover:scale-105 transition-transform sacred-pulse">
               ॐ
@@ -104,13 +118,39 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
             ))}
           </nav>
 
-          {/* XP Badge */}
+          {/* User Auth & XP Badge */}
           <div className="flex items-center gap-2 shrink-0">
             <DharmaKarmaBadge />
+
+            {/* Auth / Profile Trigger Button */}
+            <button
+              onClick={handleAuthClick}
+              className={`px-3 py-1.5 rounded-xl border text-xs font-sans font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+                user
+                  ? 'bg-gradient-to-r from-gold-500/20 to-amber-500/20 text-gold-200 border-gold-400/50 shadow-md hover:scale-105'
+                  : 'bg-obsidian-800 hover:bg-gold-500/20 text-gold-300 border-gold-500/25 hover:border-gold-400 hover:scale-105'
+              }`}
+              title={user ? `Logged in as ${user.email}` : 'साधक प्रवेश (Login)'}
+            >
+              {user ? (
+                <>
+                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-gold-400 to-amber-500 flex items-center justify-center text-obsidian-950 font-bold text-[10px]">
+                    {(user.user_metadata?.full_name || user.email || 'U')[0].toUpperCase()}
+                  </div>
+                  <span className="hidden md:inline max-w-[80px] truncate text-[11px]">
+                    {user.user_metadata?.full_name || 'साधक'}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <LogIn className="w-3.5 h-3.5 text-gold-400" />
+                  <span className="hidden sm:inline">लॉगिन</span>
+                </>
+              )}
+            </button>
           </div>
         </div>
       </header>
-
 
       {/* Dynamic View Body */}
       <main className="flex-1 z-10 relative">
@@ -159,7 +199,13 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
 
       </main>
 
+      {/* Supabase Authentication Modal */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        onAuthSuccess={(u) => setUser(u)}
+      />
+
     </div>
   );
 }
-
