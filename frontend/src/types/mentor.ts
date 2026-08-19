@@ -62,12 +62,14 @@ export interface SevenLayerMentorDiagnosis {
 }
 
 export type AIModelOption = 
+  | 'param-prajna-deep'
+  | 'divya-drishti-cosmic'
+  | 'shighra-bodha-fast'
+  | 'dharma-vedic-engine-v1'
   | 'llama-3.3-70b-versatile'
-  | 'llama3-70b-8192'
   | 'llama-3.1-8b-instant'
-  | 'mixtral-8x7b-32768'
-  | 'gemma2-9b-it'
-  | 'dharma-vedic-engine-v1';
+  | 'gemini-1.5-flash'
+  | 'gemini-2.0-flash';
 
 export interface ChatMessage {
   id: string;

@@ -12,14 +12,15 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from './ui/Button';
+import { sacredAudio } from '@/lib/sacredSounds';
 
 const MODEL_OPTIONS: { id: AIModelOption; label: string; desc: string }[] = [
-  { id: 'llama-3.3-70b-versatile', label: 'Llama 3.3 70B', desc: 'Flagship Deep Reasoning' },
-  { id: 'llama-3.1-8b-instant', label: 'Llama 3.1 8B', desc: 'Sub-100ms Ultra Fast' },
-  { id: 'mixtral-8x7b-32768', label: 'Mixtral 8x7B', desc: 'Philosophical Synthesis' },
-  { id: 'gemma2-9b-it', label: 'Gemma 2 9B', desc: 'Google High-Speed' },
-  { id: 'dharma-vedic-engine-v1', label: 'Dharma Vedic Engine', desc: '100% Offline (0 Credits)' },
+  { id: 'param-prajna-deep', label: 'परम प्रज्ञा (Supreme Wisdom)', desc: 'गहन दार्शनिक एवं मानसिक मार्गदर्शन' },
+  { id: 'divya-drishti-cosmic', label: 'दिव्य दृष्टि (Cosmic Insight)', desc: 'सर्वज्ञ चेतना एवं समग्र बोध' },
+  { id: 'shighra-bodha-fast', label: 'शीघ्र बोध (Instant Guidance)', desc: 'तीव्र एवं स्पष्ट परामर्श' },
+  { id: 'dharma-vedic-engine-v1', label: 'वैदिक स्मृति (Offline Sacred Mode)', desc: 'स्थानीय वैदिक ज्ञानकोष' },
 ];
+
 
 const STARTER_PROMPTS = [
   { label: '⚡ Instant Anxiety & Panic Relief', prompt: 'I am experiencing severe overthinking, mental racing, panic, and restlessness. How do I instantly ground my consciousness in peace?' },
@@ -85,7 +86,7 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
   const [problem, setProblem] = useState('');
   const [followUpText, setFollowUpText] = useState('');
   const [loading, setLoading] = useState(false);
-  const [selectedModel, setSelectedModel] = useState<AIModelOption>('llama-3.3-70b-versatile');
+  const [selectedModel, setSelectedModel] = useState<AIModelOption>('param-prajna-deep');
   const [diagnosis, setDiagnosis] = useState<SevenLayerMentorDiagnosis>(initialDiagnosis || DEFAULT_DIAGNOSIS);
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [isListening, setIsListening] = useState(false);
@@ -174,16 +175,21 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
   };
 
   const saveSettings = () => {
+
     if (typeof window !== 'undefined') {
       localStorage.setItem('dharma_groq_key', groqKey);
       localStorage.setItem('dharma_elevenlabs_key', elevenLabsKey);
     }
+    sacredAudio.playNavChime();
     setShowSettings(false);
   };
 
   const submitProblem = async (queryText?: string, isFollowUp: boolean = false) => {
     const textToSubmit = queryText || (isFollowUp ? followUpText : problem);
     if (!textToSubmit.trim() || loading) return;
+
+    // Sacred Sound Effect on submission (Conch / Bell invocation)
+    sacredAudio.playShankhnaad(0.25);
 
     setLoading(true);
     if (isFollowUp) {
@@ -225,6 +231,9 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
         setDiagnosis(data.diagnosis);
         setExecutionTime(data.execution_time_ms);
 
+        // OM chime when divine counsel is received
+        sacredAudio.playOmChime(0.25);
+
         const krishnaResponse: ChatMessage = {
           id: `krishna-${Date.now()}`,
           sender: 'krishna',
@@ -242,33 +251,35 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
   };
 
   const startNewConsultation = () => {
+    sacredAudio.playTempleBell(0.3);
     setChatHistory([]);
     setProblem('');
     setFollowUpText('');
     setDiagnosis(DEFAULT_DIAGNOSIS);
   };
 
+
   return (
-    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 text-gold-100 min-h-screen z-10 relative space-y-6">
+    <div className="w-full max-w-4xl mx-auto p-4 sm:p-6 lg:p-8 text-gold-100 min-h-screen z-10 relative space-y-5">
       
-      {/* Top Header */}
-      <header className="flex items-center justify-between p-4 sm:p-5 rounded-3xl bg-obsidian-900/80 backdrop-blur-2xl border border-gold-500/20 shadow-2xl">
+      {/* ── Enterprise Header ───────────────────────── */}
+      <header className="flex items-center justify-between p-4 sm:p-5 rounded-3xl glass-dark shadow-2xl">
         <div className="flex items-center gap-3.5">
-          <Link href="/" className="p-2 rounded-xl bg-obsidian-800 border border-gold-500/20 text-gold-300 hover:text-gold-100 hover:border-gold-400/50 transition-all">
+          <Link href="/" className="p-2 rounded-xl bg-obsidian-800/80 border border-gold-500/20 text-gold-300 hover:text-gold-100 hover:border-gold-400/50 transition-all">
             <ArrowLeft className="w-4 h-4" />
           </Link>
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-400 via-amber-500 to-amber-700 flex items-center justify-center shadow-[0_0_20px_rgba(223,168,55,0.4)]">
+          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-gold-400 via-gold-500 to-amber-700 flex items-center justify-center shadow-[0_0_24px_rgba(232,163,32,0.45)] sacred-pulse shrink-0">
             <Sparkles className="w-5 h-5 text-obsidian-950" />
           </div>
           <div>
-            <h1 className="text-base sm:text-lg font-bold text-gold-100 flex items-center gap-2">
-              <span>Bhagavan Shri Krishna</span>
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold-400/15 border border-gold-400/30 text-gold-300 font-mono">
+            <h1 className="font-display text-base sm:text-lg font-bold text-gold-100 leading-tight flex items-center gap-2 flex-wrap">
+              Bhagavān Śrī Kṛṣṇa
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-gold-400/12 border border-gold-400/25 text-gold-300 font-sans font-normal tracking-wide">
                 7-Layer Dharma Engine
               </span>
             </h1>
-            <p className="text-xs text-gold-400/70 font-sans">
-              Supreme Cognitive Guide & Sakha in Your Life's Kurukshetra
+            <p className="text-xs text-gold-400/60 font-sans mt-0.5 leading-snug">
+              Supreme Cognitive Guide · Your Sakha in Life's Kurukshetra
             </p>
           </div>
         </div>
@@ -278,7 +289,7 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
           {chatHistory.length > 0 && (
             <button
               onClick={startNewConsultation}
-              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-obsidian-800 border border-gold-500/20 text-xs font-mono text-gold-300 hover:text-gold-100 transition-all cursor-pointer"
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-obsidian-800/80 border border-gold-500/20 text-xs font-sans font-medium text-gold-300 hover:text-gold-100 transition-all cursor-pointer"
               title="Start New Topic"
             >
               <PlusCircle className="w-3.5 h-3.5" />
@@ -288,7 +299,7 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
 
           <Link 
             href="/episodes"
-            className="hidden sm:inline-flex px-3 py-1.5 rounded-xl bg-obsidian-800 border border-gold-500/25 text-xs font-mono text-gold-300 hover:text-gold-100 hover:border-gold-400/50 transition-all"
+            className="hidden sm:inline-flex px-3 py-1.5 rounded-xl bg-obsidian-800/80 border border-gold-500/20 text-xs font-sans font-medium text-gold-300 hover:text-gold-100 hover:border-gold-400/50 transition-all"
           >
             18 Episodes
           </Link>
@@ -296,7 +307,7 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
           <select
             value={selectedModel}
             onChange={(e) => setSelectedModel(e.target.value as AIModelOption)}
-            className="bg-obsidian-800 text-gold-200 border border-gold-500/25 rounded-xl px-3 py-1.5 text-xs font-mono outline-none cursor-pointer hover:border-gold-400/50 transition-all"
+            className="bg-obsidian-800 text-gold-200 border border-gold-500/25 rounded-xl px-3 py-1.5 text-xs font-sans font-medium outline-none cursor-pointer hover:border-gold-400/50 transition-all"
           >
             {MODEL_OPTIONS.map((m) => (
               <option key={m.id} value={m.id}>
@@ -307,13 +318,14 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
 
           <button 
             onClick={() => setShowSettings(true)}
-            className="p-2 rounded-xl bg-obsidian-800 border border-gold-500/20 text-gold-300 hover:text-gold-100 hover:border-gold-400/50 transition-all cursor-pointer"
+            className="p-2 rounded-xl bg-obsidian-800/80 border border-gold-500/20 text-gold-300 hover:text-gold-100 hover:border-gold-400/50 transition-all cursor-pointer"
             title="Configure API Keys"
           >
             <Settings className="w-4 h-4" />
           </button>
         </div>
       </header>
+
 
       {/* Main Consultation Input */}
       <div className="bg-obsidian-900/90 border border-gold-500/20 rounded-3xl p-5 sm:p-6 shadow-2xl backdrop-blur-xl space-y-3">
@@ -468,31 +480,34 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
         </section>
 
         {/* Layer 3: Prescribed Shloka Card with Chhanda Meter */}
-        <section className="bg-gradient-to-br from-obsidian-900 via-obsidian-800 to-amber-950/30 border border-gold-500/30 rounded-3xl p-6 sm:p-7 shadow-2xl space-y-4 relative overflow-hidden">
+        <section className="bg-gradient-to-br from-obsidian-900 via-obsidian-800 to-amber-950/20 border border-gold-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5 relative overflow-hidden">
+          {/* Decorative corner glyph */}
+          <div className="absolute top-4 right-5 text-6xl text-gold-500/5 font-cinzel font-bold select-none pointer-events-none">ॐ</div>
+
           <div className="flex items-center justify-between flex-wrap gap-2">
-            <span className="text-xs font-mono font-semibold uppercase tracking-wider text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/30">
-              BHAGAVAD GITA {diagnosis.shloka_meta.chapter}.{diagnosis.shloka_meta.verse}
+            <span className="font-cinzel text-xs font-bold uppercase tracking-[0.18em] text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/30">
+              Bhagavad Gītā {diagnosis.shloka_meta.chapter}.{diagnosis.shloka_meta.verse}
             </span>
-            <span className="text-xs font-mono text-gold-400/70">
-              Meter: {diagnosis.shloka_meta.chhanda_meter}
+            <span className="text-[11px] font-sans text-gold-400/60 italic">
+              {diagnosis.shloka_meta.chhanda_meter}
             </span>
           </div>
 
-          <div className="space-y-3 text-center my-4">
-            <p className="text-2xl sm:text-3xl font-devanagari text-gold-100 font-bold leading-relaxed whitespace-pre-line drop-shadow-[0_0_15px_rgba(223,168,55,0.3)]">
+          <div className="space-y-3 text-center my-2">
+            <p className="font-devanagari text-2xl sm:text-3xl text-gold-100 font-semibold leading-loose whitespace-pre-line text-glow-gold">
               {diagnosis.shloka_meta.sanskrit_devanagari}
             </p>
-            <p className="text-xs sm:text-sm font-serif italic text-gold-300/80 whitespace-pre-line">
+            <p className="text-xs sm:text-sm font-sans italic text-gold-300/70 whitespace-pre-line leading-relaxed">
               {diagnosis.shloka_meta.transliteration_iast}
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-obsidian-800/80 border border-gold-500/15">
-            <h5 className="text-[11px] font-mono uppercase tracking-widest text-gold-400 font-bold mb-1">
+          <div className="p-4 rounded-2xl bg-obsidian-800/60 border border-gold-500/12">
+            <h5 className="font-cinzel text-[10px] uppercase tracking-[0.2em] text-gold-400 font-bold mb-2">
               Direct Translation
             </h5>
-            <p className="text-sm sm:text-base text-gold-50/95 leading-relaxed font-serif">
-              "{diagnosis.simple_translation}"
+            <p className="font-display text-sm sm:text-base text-gold-50/95 leading-relaxed italic">
+              &ldquo;{diagnosis.simple_translation}&rdquo;
             </p>
           </div>
         </section>
@@ -555,31 +570,34 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
         />
 
         {/* Layer 7: Shri Krishna Uvacha & Immediate 24-hr Action */}
-        <section className="bg-gradient-to-br from-amber-950/40 via-obsidian-900 to-obsidian-900 border border-gold-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5 relative overflow-hidden">
+        <section className="bg-gradient-to-br from-amber-950/30 via-obsidian-900 to-obsidian-900 border border-gold-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-5 relative overflow-hidden">
+          {/* Top gold bar */}
+          <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold-500/60 to-transparent" />
+
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gold-500/20 border border-gold-400/40 flex items-center justify-center text-gold-400">
+            <div className="w-11 h-11 rounded-2xl bg-gold-500/15 border border-gold-400/35 flex items-center justify-center shrink-0 glow-gold-sm">
               <Heart className="w-5 h-5 text-gold-400" />
             </div>
             <div>
-              <h3 className="text-sm font-mono uppercase tracking-widest text-gold-400 font-bold">
-                Shri Krishna Uvacha (श्रीभगवानुवाच)
+              <h3 className="font-cinzel text-xs uppercase tracking-[0.2em] text-gold-400 font-bold">
+                Śrī Kṛṣṇa Uvāca — श्रीभगवानुवाच
               </h3>
-              <p className="text-xs text-gold-200/70 font-serif italic">
+              <p className="font-display text-sm text-gold-200/80 italic mt-0.5">
                 {diagnosis.shri_krishna_uvacha.divine_address}
               </p>
             </div>
           </div>
 
-          <p className="text-base sm:text-lg text-gold-50/95 font-serif leading-relaxed italic border-l-2 border-gold-400 pl-4 py-1">
-            "{diagnosis.shri_krishna_uvacha.deep_counsel}"
-          </p>
+          <blockquote className="font-display text-base sm:text-lg text-gold-50/95 leading-relaxed italic border-l-2 border-gold-400/70 pl-5 py-1">
+            &ldquo;{diagnosis.shri_krishna_uvacha.deep_counsel}&rdquo;
+          </blockquote>
 
-          <div className="p-4 rounded-2xl bg-obsidian-800/90 border border-gold-500/20 space-y-1">
-            <h5 className="text-xs font-mono uppercase tracking-wider text-gold-400 font-bold flex items-center gap-1.5">
+          <div className="p-4 rounded-2xl bg-obsidian-800/80 border border-gold-500/20 space-y-1">
+            <h5 className="font-cinzel text-[10px] uppercase tracking-[0.18em] text-gold-400 font-bold flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-gold-400" />
-              <span>24-Hour Dharma Action Commitment (संकल्प)</span>
+              <span>24-Hour Dharma Commitment — संकल्प</span>
             </h5>
-            <p className="text-xs sm:text-sm text-gold-100/95 leading-relaxed font-sans">
+            <p className="text-xs sm:text-sm text-gold-100/95 leading-relaxed font-sans mt-1">
               {diagnosis.shri_krishna_uvacha.immediate_24hr_dharma_action}
             </p>
           </div>
@@ -656,7 +674,7 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
             <div className="flex items-center justify-between">
               <h2 className="text-base font-bold text-gold-100 flex items-center gap-2">
                 <Settings className="w-4 h-4 text-gold-400" />
-                <span>AI & Speech Configuration</span>
+                <span>दिव्य प्रज्ञा विन्यास (Wisdom Settings)</span>
               </h2>
               <button 
                 onClick={() => setShowSettings(false)}
@@ -669,41 +687,42 @@ export default function KrishnaAIMentor({ diagnosis: initialDiagnosis }: Krishna
             <div className="space-y-4">
               <div>
                 <label className="block text-xs font-mono text-gold-400 mb-1">
-                  Custom Groq API Key (Optional)
+                  कस्टम प्रज्ञा कुंजी (Custom Access Key - Optional)
                 </label>
                 <input 
                   type="password" 
                   value={groqKey} 
                   onChange={e => setGroqKey(e.target.value)} 
-                  placeholder="gsk_..."
+                  placeholder="प्रवेश कुंजी..."
                   className="w-full bg-obsidian-800 border border-gold-500/20 rounded-xl p-3 text-xs text-gold-100 focus:border-gold-400 outline-none font-mono" 
                 />
-                <p className="text-[10px] text-obsidian-400 mt-1">Leave empty to use built-in zero-credit engine or server env key.</p>
+                <p className="text-[10px] text-obsidian-400 mt-1">सर्वर पर सुरक्षित रूप से कॉन्फ़िगर की गई चाबियाँ सक्रिय हैं।</p>
               </div>
 
               <div>
                 <label className="block text-xs font-mono text-gold-400 mb-1">
-                  ElevenLabs API Key (Optional for Neural TTS)
+                  दिव्य ध्वनि संवर्धन कुंजी (Voice Enhancement - Optional)
                 </label>
                 <input 
                   type="password" 
                   value={elevenLabsKey} 
                   onChange={e => setElevenLabsKey(e.target.value)} 
-                  placeholder="xi-api-key..."
+                  placeholder="ध्वनि कुंजी..."
                   className="w-full bg-obsidian-800 border border-gold-500/20 rounded-xl p-3 text-xs text-gold-100 focus:border-gold-400 outline-none font-mono" 
                 />
-                <p className="text-[10px] text-obsidian-400 mt-1">Enables studio-grade human voice streaming if supplied.</p>
+                <p className="text-[10px] text-obsidian-400 mt-1">अतिरिक्त उच्च-गुणवत्ता स्टूडियो स्वर संवर्धन।</p>
               </div>
             </div>
 
             <div className="flex justify-end gap-2 pt-2">
               <Button onClick={saveSettings} variant="primary" size="sm" className="px-6 rounded-xl cursor-pointer">
-                Save Preferences
+                सेटिंग्स सुरक्षित करें
               </Button>
             </div>
           </div>
         </div>
       )}
+
     </div>
   );
 }

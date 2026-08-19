@@ -10,6 +10,8 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 
+import { sacredAudio } from '@/lib/sacredSounds';
+
 const THEMES: ('All' | EpisodeTheme)[] = [
   'All',
   'Inner Conflict',
@@ -49,13 +51,20 @@ export default function EpisodeExplorer() {
   // Save to localStorage whenever completedIds changes
   const toggleComplete = (id: number) => {
     setCompletedIds((prev) => {
-      const next = prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id];
+      const isFinishing = !prev.includes(id);
+      if (isFinishing) {
+        sacredAudio.playTempleBell(0.3);
+      } else {
+        sacredAudio.playNavChime(0.12);
+      }
+      const next = isFinishing ? [...prev, id] : prev.filter((item) => item !== id);
       if (typeof window !== 'undefined') {
         localStorage.setItem('dharma_completed_episodes', JSON.stringify(next));
       }
       return next;
     });
   };
+
 
   const markAllDone = () => {
     const allIds = EPISODES.map(e => e.id);
@@ -195,19 +204,22 @@ export default function EpisodeExplorer() {
     <div className="w-full max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 space-y-8 z-10 relative">
       
       {/* Header Banner */}
-      <div className="bg-gradient-to-br from-obsidian-900 via-obsidian-800 to-amber-950/40 border border-gold-500/30 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+      <div className="bg-gradient-to-br from-obsidian-900 via-obsidian-800 to-amber-950/30 border border-gold-500/25 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl relative overflow-hidden">
+        {/* Decorative OM */}
+        <div className="absolute top-4 right-6 text-7xl text-gold-500/5 font-cinzel select-none pointer-events-none">ॐ</div>
+        
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
           <div className="space-y-2 max-w-2xl">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-mono uppercase tracking-widest text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/30 flex items-center gap-1.5">
+              <span className="font-cinzel text-[10px] font-bold uppercase tracking-[0.18em] text-gold-400 bg-gold-400/10 px-3 py-1 rounded-full border border-gold-400/30 flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-gold-400" />
-                <span>18 Divine Chapters • Quest of Wisdom</span>
+                <span>18 Divine Chapters · Quest of Wisdom</span>
               </span>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-bold text-gold-100 font-devanagari tracking-tight">
+            <h1 className="font-devanagari text-2xl sm:text-4xl font-bold text-gold-100 tracking-tight text-glow-gold">
               श्रीकृष्ण लीला एवं भगवद्गीता के १८ अध्याय
             </h1>
-            <p className="text-xs sm:text-sm text-gold-300/80 font-sans leading-relaxed">
+            <p className="text-xs sm:text-sm text-gold-300/70 font-sans leading-relaxed">
               Explore all 18 divine episodes of the Gita. Track your spiritual mastery, listen to consecrated Raga melodies, and unlock Krishna's psychological counsel for every human conflict.
             </p>
           </div>
@@ -309,8 +321,8 @@ export default function EpisodeExplorer() {
           return (
             <div
               key={episode.id}
-              className={`bg-obsidian-900/90 border rounded-3xl overflow-hidden flex flex-col justify-between shadow-2xl backdrop-blur-xl transition-all duration-300 hover:border-gold-400/50 hover:shadow-[0_0_25px_rgba(223,168,55,0.15)] group ${
-                isDone ? 'border-emerald-500/30' : 'border-gold-500/20'
+              className={`bg-obsidian-900/90 border rounded-3xl overflow-hidden flex flex-col justify-between shadow-xl backdrop-blur-xl card-hover ${
+                isDone ? 'border-emerald-500/30' : 'border-gold-500/18'
               }`}
             >
               {/* Card Image Banner */}
@@ -324,8 +336,8 @@ export default function EpisodeExplorer() {
 
                 {/* Top Badges */}
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
-                  <span className="text-[10px] font-mono px-2.5 py-0.5 rounded-full bg-obsidian-900/90 text-gold-300 border border-gold-500/30 font-bold">
-                    Chapter {episode.chapter}
+                  <span className="font-cinzel text-[9px] font-bold px-2.5 py-0.5 rounded-full bg-obsidian-900/90 text-gold-300 border border-gold-500/30 tracking-widest uppercase">
+                    Ch. {episode.chapter}
                   </span>
 
                   {/* Quick Toggle Done/Undone */}
@@ -334,7 +346,7 @@ export default function EpisodeExplorer() {
                       e.stopPropagation();
                       toggleComplete(episode.id);
                     }}
-                    className={`px-2.5 py-1 rounded-full text-[11px] font-mono font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                    className={`px-2.5 py-1 rounded-full text-[11px] font-sans font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
                       isDone
                         ? 'bg-emerald-500/30 text-emerald-300 border border-emerald-400/60 shadow-[0_0_10px_rgba(16,185,129,0.3)]'
                         : 'bg-obsidian-900/90 text-gold-400/70 border border-gold-500/20 hover:border-gold-400 hover:text-gold-200'
@@ -347,10 +359,10 @@ export default function EpisodeExplorer() {
 
                 {/* Bottom Overlay Title */}
                 <div className="absolute bottom-3 left-4 right-4 z-10">
-                  <span className="text-[10px] font-mono text-gold-400/80 uppercase tracking-wider block mb-0.5">
+                  <span className="text-[9px] font-sans font-medium text-gold-400/80 uppercase tracking-wider block mb-0.5">
                     {episode.theme}
                   </span>
-                  <h3 className="text-base font-bold text-gold-100 font-devanagari line-clamp-1">
+                  <h3 className="font-devanagari text-base font-bold text-gold-100 line-clamp-1 text-glow-gold">
                     {episode.title_devanagari}
                   </h3>
                 </div>
@@ -358,11 +370,11 @@ export default function EpisodeExplorer() {
 
               {/* Card Body */}
               <div className="p-5 space-y-4 flex-1 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h4 className="text-xs font-semibold text-gold-200/90 font-sans line-clamp-1">
+                <div className="space-y-1.5">
+                  <h4 className="font-display text-sm font-semibold text-gold-200/95 line-clamp-1">
                     {episode.title_en}
                   </h4>
-                  <p className="text-xs text-gold-300/70 line-clamp-2 leading-relaxed font-sans">
+                  <p className="text-xs text-gold-300/65 line-clamp-2 leading-relaxed font-sans">
                     {episode.subtitle}
                   </p>
                 </div>

@@ -6,6 +6,7 @@ import {
   Palette, Layers, Check, Type, Eye, ShieldCheck 
 } from 'lucide-react';
 import { Button } from './ui/Button';
+import { sacredAudio } from '@/lib/sacredSounds';
 
 interface ArtPreset {
   id: string;
@@ -272,11 +273,13 @@ export default function KrishnaImageStudio() {
 
   const downloadHD = () => {
     if (!canvasRef.current) return;
+    sacredAudio.playTempleBell(0.35);
     const link = document.createElement('a');
     link.download = `Shri_Krishna_${selectedPreset.id}_HD.png`;
     link.href = canvasRef.current.toDataURL('image/png');
     link.click();
   };
+
 
   const copyImage = async () => {
     if (!canvasRef.current) return;

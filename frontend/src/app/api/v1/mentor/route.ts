@@ -349,22 +349,71 @@ export async function POST(req: Request) {
 
     // Whitelist model validation
     const ALLOWED_MODELS: AIModelOption[] = [
+      'param-prajna-deep',
+      'divya-drishti-cosmic',
+      'shighra-bodha-fast',
+      'dharma-vedic-engine-v1',
       'llama-3.3-70b-versatile',
       'llama-3.1-8b-instant',
-      'mixtral-8x7b-32768',
-      'gemma2-9b-it',
-      'dharma-vedic-engine-v1'
+      'gemini-1.5-flash',
+      'gemini-2.0-flash'
     ];
     const model: AIModelOption = ALLOWED_MODELS.includes(body.model as AIModelOption) 
       ? (body.model as AIModelOption) 
-      : 'llama-3.3-70b-versatile';
+      : 'param-prajna-deep';
 
-    // Sanitize custom API Key against HTTP header injection
-    let apiKey = (body.custom_api_key || process.env.GROQ_API_KEY || '').replace(/[\r\n]/g, '').trim();
+
+    // Sanitize custom API Keys
+    let groqKey = (process.env.GROQ_API_KEY || '').replace(/[\r\n]/g, '').trim();
+    let geminiKey = (process.env.GEMINI_API_KEY || '').replace(/[\r\n]/g, '').trim();
+    if (body.custom_api_key) {
+      if (body.custom_api_key.startsWith('gsk_')) {
+        groqKey = body.custom_api_key.trim();
+      } else {
+        geminiKey = body.custom_api_key.trim();
+      }
+    }
 
     let diagnosis: SevenLayerMentorDiagnosis | null = null;
 
-    if (apiKey && model !== 'dharma-vedic-engine-v1') {
+    // Helper: Call Gemini API
+    const callGemini = async (): Promise<SevenLayerMentorDiagnosis | null> => {
+      if (!geminiKey) return null;
+      try {
+        const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiKey}`;
+        const historyText = Array.isArray(body.conversation_history) && body.conversation_history.length > 0
+          ? body.conversation_history.slice(-6).map(m => `${m.role === 'user' ? 'Parth' : 'Shri Krishna'}: ${m.content}`).join('\n\n')
+          : '';
+
+        const fullPrompt = `${SYSTEM_PROMPT}\n\n${historyText ? `Previous Dialogue:\n${historyText}\n\n` : ''}Seeker Dilemma:\n${sanitizedProblem}\n\nRespond with strictly raw JSON matching the schema.`;
+
+        const res = await fetch(geminiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: fullPrompt }] }],
+            generationConfig: {
+              responseMimeType: 'application/json',
+              temperature: 0.7
+            }
+          })
+        });
+
+        if (res.ok) {
+          const gemData = await res.json();
+          const rawText = gemData.candidates?.[0]?.content?.parts?.[0]?.text || '';
+          const cleanedText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
+          return JSON.parse(cleanedText);
+        }
+      } catch (err) {
+        console.warn('Gemini API call failed, attempting alternative pipeline:', err);
+      }
+      return null;
+    };
+
+    // Helper: Call Groq API
+    const callGroq = async (targetModel: string = 'llama-3.3-70b-versatile'): Promise<SevenLayerMentorDiagnosis | null> => {
+      if (!groqKey) return null;
       try {
         const messages: { role: 'system' | 'user' | 'assistant'; content: string }[] = [
           { role: 'system', content: SYSTEM_PROMPT }
@@ -383,11 +432,11 @@ export async function POST(req: Request) {
         const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${apiKey}`,
+            'Authorization': `Bearer ${groqKey}`,
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            model: model,
+            model: targetModel,
             messages: messages,
             temperature: 0.7,
             response_format: { type: "json_object" }
@@ -396,11 +445,25 @@ export async function POST(req: Request) {
 
         if (response.ok) {
           const data = await response.json();
-          diagnosis = JSON.parse(data.choices[0].message.content);
+          return JSON.parse(data.choices[0].message.content);
         }
       } catch (err) {
-        console.error('Groq API Error (falling back to secure local engine):', err);
+        console.warn('Groq API call failed:', err);
       }
+      return null;
+    };
+
+    // Routing based on divine model choice with seamless auto-fallback
+    if (model === 'divya-drishti-cosmic' || model === 'gemini-1.5-flash' || model === 'gemini-2.0-flash') {
+      diagnosis = await callGemini();
+      if (!diagnosis) diagnosis = await callGroq('llama-3.3-70b-versatile');
+    } else if (model === 'shighra-bodha-fast' || model === 'llama-3.1-8b-instant') {
+      diagnosis = await callGroq('llama-3.1-8b-instant');
+      if (!diagnosis) diagnosis = await callGemini();
+    } else if (model !== 'dharma-vedic-engine-v1') {
+      // Default: Param Prajna (Deep Groq Llama 3.3 70B with Gemini fallback)
+      diagnosis = await callGroq('llama-3.3-70b-versatile');
+      if (!diagnosis) diagnosis = await callGemini();
     }
 
 

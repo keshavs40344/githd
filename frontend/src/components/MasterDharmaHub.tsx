@@ -9,9 +9,10 @@ import KrishnaImageStudio from './KrishnaImageStudio';
 import DailySadhanaWidget from './DailySadhanaWidget';
 import WebGLShaderBackground from './WebGLShaderBackground';
 import DharmaKarmaBadge from './DharmaKarmaBadge';
+import { sacredAudio } from '@/lib/sacredSounds';
 import { 
   Sparkles, BookOpen, Layers, Image as ImageIcon, Flame, 
-  Compass, Grid, Search, BookMarked, Music 
+  Compass, Grid, Search, BookMarked, Music, Bell 
 } from 'lucide-react';
 
 export type DharmaAppView = 'scripture' | 'mentor' | 'episodes' | 'studio' | 'sadhana';
@@ -36,72 +37,78 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
 
   const switchView = (view: DharmaAppView) => {
     setActiveView(view);
+    sacredAudio.playNavChime();
     if (typeof window !== 'undefined') {
       window.location.hash = view;
     }
   };
 
+  const handleBrandClick = () => {
+    sacredAudio.playTempleBell(0.35);
+    switchView('scripture');
+  };
+
   return (
-    <div className="min-h-screen bg-obsidian-950 text-gold-100 flex flex-col relative overflow-x-hidden selection:bg-gold-500 selection:text-obsidian-950">
+    <div className="min-h-screen bg-obsidian-950 text-gold-100 flex flex-col relative overflow-x-hidden">
       
       {/* Dynamic Sacred WebGL Particle Canvas */}
       <WebGLShaderBackground />
 
-      {/* Master Top Navigation / Command Bar */}
-      <header className="sticky top-0 z-40 bg-obsidian-950/85 backdrop-blur-2xl border-b border-gold-500/20 px-3 sm:px-6 py-3 shadow-2xl">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
+      {/* ── Enterprise Top Nav ─────────────────────── */}
+      <header className="sticky top-0 z-40 glass-dark border-b border-gold-500/15 px-4 sm:px-8 py-3 shadow-[0_4px_32px_rgba(0,0,0,0.6)]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           
-          {/* Logo Brand */}
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={() => switchView('scripture')}
-              className="flex items-center gap-2.5 group cursor-pointer text-left"
-            >
-              <div className="w-9 h-9 rounded-2xl bg-gradient-to-br from-gold-400 via-amber-500 to-amber-700 flex items-center justify-center text-obsidian-950 font-bold text-lg shadow-[0_0_20px_rgba(223,168,55,0.4)] group-hover:scale-105 transition-transform">
-                ॐ
-              </div>
-              <div className="flex flex-col">
-                <span className="text-base font-bold bg-gradient-to-r from-gold-200 via-gold-400 to-amber-500 bg-clip-text text-transparent tracking-wide font-mono">
-                  DHARMA.OS
-                </span>
-                <span className="text-[9px] uppercase tracking-widest text-gold-400/60 font-mono hidden sm:inline">
-                  All-in-One Spiritual Intelligence
-                </span>
-              </div>
-            </button>
-          </div>
+          {/* Brand */}
+          <button 
+            onClick={handleBrandClick}
+            className="flex items-center gap-3 group cursor-pointer text-left shrink-0"
+          >
 
-          {/* Master View Switcher Tabs */}
-          <nav className="flex items-center bg-obsidian-900/90 border border-gold-500/25 p-1 rounded-2xl shadow-xl overflow-x-auto custom-scrollbar">
+            {/* Sacred OM Logo */}
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-400 via-gold-500 to-amber-700 flex items-center justify-center text-obsidian-950 font-bold text-xl shadow-[0_0_20px_rgba(232,163,32,0.45)] group-hover:scale-105 transition-transform sacred-pulse">
+              ॐ
+            </div>
+            <div className="flex flex-col leading-none">
+              <span className="font-cinzel text-sm font-bold gradient-text-gold tracking-[0.14em] uppercase">
+                Dharma.OS
+              </span>
+              <span className="text-[9px] uppercase tracking-[0.2em] text-gold-400/50 font-sans font-medium hidden sm:inline mt-0.5">
+                Spiritual Intelligence Platform
+              </span>
+            </div>
+          </button>
+
+          {/* ── Tab Nav ─────────────────────────────── */}
+          <nav className="flex items-center gap-1 bg-obsidian-900/70 border border-gold-500/15 p-1 rounded-2xl shadow-lg overflow-x-auto shrink">
             {[
-              { id: 'scripture', label: '📖 700 Shlokas', desc: 'Scripture Explorer' },
-              { id: 'mentor', label: '🪔 Krishna AI', desc: '7-Layer Cognitive Guidance' },
-              { id: 'episodes', label: '📜 18 Episodes', desc: 'Leela Quest & Tunes' },
-              { id: 'studio', label: '🎨 AI Art Studio', desc: 'Wallpapers & Cards' },
-              { id: 'sadhana', label: '🔥 Daily Sadhana', desc: 'Streak & Reflection' },
+              { id: 'scripture', emoji: '📖', label: 'Scripture',  sub: '700 Shlokas' },
+              { id: 'mentor',    emoji: '🪔', label: 'Krishna AI', sub: '7-Layer Mind' },
+              { id: 'episodes',  emoji: '📜', label: 'Episodes',   sub: '18 Chapters' },
+              { id: 'studio',    emoji: '🎨', label: 'Art Studio', sub: 'Sacred Visuals' },
+              { id: 'sadhana',   emoji: '🔥', label: 'Sadhana',   sub: 'Daily Practice' },
             ].map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => switchView(tab.id as DharmaAppView)}
-                className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-mono transition-all cursor-pointer whitespace-nowrap ${
+                className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-sans font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
                   activeView === tab.id
-                    ? 'bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold shadow-[0_0_15px_rgba(223,168,55,0.35)]'
-                    : 'text-gold-300/70 hover:text-gold-100 hover:bg-obsidian-800'
+                    ? 'bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold shadow-[0_0_16px_rgba(232,163,32,0.40)]'
+                    : 'text-gold-300/60 hover:text-gold-100 hover:bg-obsidian-700/60'
                 }`}
               >
-                {tab.label}
+                <span className="text-sm">{tab.emoji}</span>
+                <span className="hidden sm:inline">{tab.label}</span>
               </button>
             ))}
           </nav>
 
-          {/* Dharma Karma XP Badge */}
-          <div className="flex items-center gap-2">
+          {/* XP Badge */}
+          <div className="flex items-center gap-2 shrink-0">
             <DharmaKarmaBadge />
           </div>
-
-
         </div>
       </header>
+
 
       {/* Dynamic View Body */}
       <main className="flex-1 z-10 relative">

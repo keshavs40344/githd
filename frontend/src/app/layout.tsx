@@ -1,12 +1,31 @@
-import { Inter, Noto_Sans_Devanagari } from 'next/font/google';
+import { DM_Sans, Noto_Sans_Devanagari, Playfair_Display, Cinzel_Decorative } from 'next/font/google';
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const dmSans = DM_Sans({ 
+  subsets: ['latin'], 
+  variable: '--font-sans',
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: ['400', '500', '600', '700', '800', '900'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+});
+const cinzel = Cinzel_Decorative({
+  subsets: ['latin'],
+  variable: '--font-cinzel',
+  weight: ['400', '700', '900'],
+  display: 'swap',
+});
 const notoSansDevanagari = Noto_Sans_Devanagari({
-  weight: ['400', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   subsets: ['devanagari'],
   variable: '--font-devanagari',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -34,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${notoSansDevanagari.variable}`}>
+    <html lang="en" className={`${dmSans.variable} ${playfair.variable} ${cinzel.variable} ${notoSansDevanagari.variable}`}>
       <body className="bg-obsidian-950 text-gold-100 min-h-screen">
         <main className="min-h-screen">{children}</main>
         <FloatingAudioBGM />
