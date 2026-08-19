@@ -40,3 +40,10 @@ yarn-error.log*
 .DS_Store
 *.pem
 Thumbs.db
+
+# Scrapes, Dumps & Temp
+*_raw.html
+*.raw
+*.dump
+*.tmp
+*.bak
