@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { 
@@ -113,93 +113,77 @@ export default function ScriptureWorkspace({ verses: initialVerses }: { verses: 
   const progressPercentage = Math.round((currentVerse / currentChapterInfo.verse_count) * 100);
 
   return (
-    <div className="min-h-screen flex flex-col text-gold-100 selection:bg-gold-500/30 selection:text-gold-100 relative bg-obsidian-950">
-      <GoldenParticles />
+    <div className="min-h-screen flex flex-col text-gold-100 selection:bg-gold-500/30 selection:text-gold-100 relative bg-transparent">
       
-      {/* Top Glass Navigation */}
-      <header className="flex items-center justify-between px-4 sm:px-8 py-3.5 border-b border-gold-500/15 bg-obsidian-950/80 backdrop-blur-xl sticky top-0 z-30 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
-        <div className="flex items-center gap-3">
+      {/* ── WORKSPACE SUB-BAR (Chapter Selector, Search, Bookmarks) ─────────────────────── */}
+      <div className="flex items-center justify-between px-3 sm:px-6 lg:px-8 py-2 border-b border-gold-500/15 bg-obsidian-900/90 backdrop-blur-md sticky top-0 z-30 shadow-md">
+        <div className="flex items-center gap-2">
           <button 
-            className="md:hidden p-2 rounded-xl text-gold-200 hover:text-gold-100 hover:bg-gold-400/10 transition-colors cursor-pointer"
+            className="md:hidden p-2 rounded-xl text-gold-200 hover:text-gold-100 hover:bg-gold-400/10 transition-colors cursor-pointer touch-manipulation"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Open Chapter Selector"
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="w-5 h-5 text-gold-400" />
           </button>
           
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <span className="w-8 h-8 rounded-xl bg-gradient-to-br from-gold-400 to-amber-600 flex items-center justify-center text-obsidian-950 font-bold text-lg shadow-[0_0_15px_rgba(223,168,55,0.4)] group-hover:scale-105 transition-transform animate-pulse">
-              ॐ
-            </span>
-            <div className="flex flex-col">
-              <span className="text-base font-bold bg-gradient-to-r from-gold-200 via-gold-400 to-amber-500 bg-clip-text text-transparent tracking-wide font-cinzel">
-                Dharma.OS
-              </span>
-              <span className="text-[9px] uppercase tracking-widest text-gold-400/60 font-mono hidden sm:inline">
-                Spiritual Intelligence Suite
-              </span>
-            </div>
-          </Link>
-        </div>
-        
-        {/* Center Chapter & Verse Switcher */}
-        <div className="flex items-center gap-2">
+          {/* Chapter & Verse Quick Dropdown Switcher */}
           <button
             onClick={() => setIsVersePickerOpen(true)}
-            className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-obsidian-800/90 hover:bg-obsidian-700/90 border border-gold-500/25 hover:border-gold-400/60 text-xs sm:text-sm text-gold-200 font-medium transition-all shadow-inner hover:scale-103 cursor-pointer"
+            className="flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 rounded-xl bg-obsidian-800 hover:bg-obsidian-700 border border-gold-500/30 text-xs sm:text-sm text-gold-200 font-medium transition-all shadow-inner touch-manipulation"
           >
             <Grid className="w-3.5 h-3.5 text-gold-400" />
             <span className="font-mono">अध्याय {currentChapter} · श्लोक {currentVerse}</span>
-            <span className="text-gold-500/50 text-xs">▾</span>
+            <span className="text-gold-500/50 text-[10px]">▾</span>
           </button>
         </div>
 
         {/* Right Action: Workspace tools + Focus Mode */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             onClick={() => {
               setIsFocusMode(!isFocusMode);
               sacredAudio.playNavChime(0.1);
             }}
-            className={`p-2 rounded-xl border transition-all cursor-pointer hidden md:flex items-center gap-1.5 text-xs font-sans ${
+            className={`p-1.5 sm:p-2 rounded-xl border transition-all cursor-pointer hidden md:flex items-center gap-1.5 text-xs font-sans touch-manipulation ${
               isFocusMode
                 ? 'bg-gold-500/20 text-gold-300 border-gold-400'
                 : 'bg-obsidian-800/80 text-gold-300/70 border-gold-500/20 hover:border-gold-400'
             }`}
             title="Toggle Zen Focus Mode"
           >
-            {isFocusMode ? <Minimize2 className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+            {isFocusMode ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
             <span className="hidden lg:inline">{isFocusMode ? 'सामान्य दृश्य' : 'ध्यान दृश्य'}</span>
           </button>
 
           <button 
             onClick={() => setIsSearchOpen(true)}
-            className="p-2 text-gold-300 hover:text-gold-100 hover:bg-gold-500/10 rounded-full transition-colors flex items-center gap-1.5 cursor-pointer"
+            className="p-2 text-gold-300 hover:text-gold-100 hover:bg-gold-500/10 rounded-xl transition-colors flex items-center gap-1 cursor-pointer touch-manipulation"
             title="Search Verses (Cmd+K)"
           >
-            <Search className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="hidden lg:inline text-[11px] border border-gold-500/30 px-1.5 rounded font-mono bg-obsidian-900">⌘K</span>
+            <Search className="w-4 h-4 text-gold-400" />
+            <span className="hidden lg:inline text-[10px] border border-gold-500/30 px-1.5 rounded font-mono bg-obsidian-950">⌘K</span>
           </button>
 
           <button 
             onClick={() => setIsSavedOpen(true)}
-            className="relative p-2 text-gold-300 hover:text-gold-100 hover:bg-gold-500/10 rounded-full transition-colors cursor-pointer"
+            className="relative p-2 text-gold-300 hover:text-gold-100 hover:bg-gold-500/10 rounded-xl transition-colors cursor-pointer touch-manipulation"
             title="Saved Verses"
           >
-            <BookMarked className="w-4 h-4 sm:w-5 sm:h-5" />
+            <BookMarked className="w-4 h-4 text-gold-400" />
             {savedCount > 0 && (
-              <span className="absolute top-0.5 right-0.5 w-3.5 h-3.5 bg-gold-500 text-obsidian-950 text-[9px] font-bold rounded-full flex items-center justify-center animate-pulse">
+              <span className="absolute top-0.5 right-0.5 w-4 h-4 bg-gold-500 text-obsidian-950 text-[10px] font-bold rounded-full flex items-center justify-center animate-pulse">
                 {savedCount}
               </span>
             )}
           </button>
         </div>
 
-      </header>
+      </div>
 
       {/* ── STICKY FAST HORIZONTAL SHLOKA CAROUSEL STRIP ───────────── */}
-      <div className="sticky top-[57px] z-20 bg-obsidian-950/90 backdrop-blur-md border-b border-gold-500/15 px-4 sm:px-8 py-2.5 shadow-md">
-        <div className="max-w-7xl mx-auto flex items-center gap-3">
+      <div className="bg-obsidian-950/95 border-b border-gold-500/15 px-3 sm:px-6 lg:px-8 py-2 shadow-sm">
+        <div className="max-w-7xl mx-auto flex items-center gap-2">
+
           
           <span className="text-[11px] font-mono text-gold-400 font-bold uppercase tracking-wider shrink-0 flex items-center gap-1">
             <span>श्लोक:</span>

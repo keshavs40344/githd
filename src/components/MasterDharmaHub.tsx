@@ -26,6 +26,15 @@ interface MasterDharmaHubProps {
   initialView?: DharmaAppView;
 }
 
+const NAV_TABS = [
+  { id: 'scripture', emoji: '📖', label: 'Scripture',    sub: '700 Shlokas' },
+  { id: 'mentor',    emoji: '🪔', label: 'Krishna AI',   sub: '7-Layer Mind' },
+  { id: 'music',     emoji: '🎵', label: 'Sacred Music', sub: '20+ Playlists' },
+  { id: 'episodes',  emoji: '📜', label: 'Episodes',     sub: '18 Chapters' },
+  { id: 'studio',    emoji: '🎨', label: 'Art Studio',   sub: 'Sacred Visuals' },
+  { id: 'sadhana',   emoji: '🔥', label: 'Sadhana',      sub: 'Daily Practice' },
+];
+
 export default function MasterDharmaHub({ verses, initialView = 'scripture' }: MasterDharmaHubProps) {
   const [activeView, setActiveView] = useState<DharmaAppView>(initialView);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
@@ -48,9 +57,10 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
 
   const switchView = (view: DharmaAppView) => {
     setActiveView(view);
-    sacredAudio.playNavChime();
+    sacredAudio.playNavChime(0.1);
     if (typeof window !== 'undefined') {
       window.location.hash = view;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -65,86 +75,79 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
   };
 
   return (
-    <div className="min-h-screen bg-obsidian-950 text-gold-100 flex flex-col relative overflow-x-hidden">
+    <div className="min-h-screen bg-obsidian-950 text-gold-100 flex flex-col relative overflow-x-hidden pb-20 md:pb-6">
       
-      {/* Dynamic Sacred WebGL Particle Canvas */}
+      {/* Dynamic Adaptive Sacred Particle & Glow Background */}
       <WebGLShaderBackground />
 
-      {/* ── Enterprise Top Nav ─────────────────────── */}
-      <header className="sticky top-0 z-40 glass-dark border-b border-gold-500/15 px-4 sm:px-8 py-3 shadow-[0_4px_32px_rgba(0,0,0,0.6)]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      {/* ── Top Header ─────────────────────── */}
+      <header className="sticky top-0 z-40 bg-obsidian-950/80 backdrop-blur-md border-b border-gold-500/15 px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
           
           {/* Brand */}
           <button 
             onClick={handleBrandClick}
-            className="flex items-center gap-3 group cursor-pointer text-left shrink-0"
+            className="flex items-center gap-2.5 group cursor-pointer text-left shrink-0 touch-manipulation"
           >
             {/* Sacred OM Logo */}
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-gold-400 via-gold-500 to-amber-700 flex items-center justify-center text-obsidian-950 font-bold text-xl shadow-[0_0_20px_rgba(232,163,32,0.45)] group-hover:scale-105 transition-transform sacred-pulse">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-gradient-to-br from-gold-400 via-gold-500 to-amber-700 flex items-center justify-center text-obsidian-950 font-bold text-base sm:text-xl shadow-[0_0_15px_rgba(232,163,32,0.4)] group-hover:scale-105 transition-transform">
               ॐ
             </div>
             <div className="flex flex-col leading-none">
-              <span className="font-cinzel text-sm font-bold gradient-text-gold tracking-[0.14em] uppercase">
+              <span className="font-cinzel text-xs sm:text-sm font-bold gradient-text-gold tracking-[0.14em] uppercase">
                 Dharma.OS
               </span>
-              <span className="text-[9px] uppercase tracking-[0.2em] text-gold-400/50 font-sans font-medium hidden sm:inline mt-0.5">
-                Spiritual Intelligence Platform
+              <span className="text-[8px] sm:text-[9px] uppercase tracking-[0.18em] text-gold-400/50 font-sans font-medium hidden xs:inline mt-0.5">
+                Spiritual Intelligence
               </span>
             </div>
           </button>
 
-          {/* ── Tab Nav ─────────────────────────────── */}
-          <nav className="flex items-center gap-1 bg-obsidian-900/70 border border-gold-500/15 p-1 rounded-2xl shadow-lg overflow-x-auto shrink">
-            {[
-              { id: 'scripture', emoji: '📖', label: 'Scripture',    sub: '700 Shlokas' },
-              { id: 'mentor',    emoji: '🪔', label: 'Krishna AI',   sub: '7-Layer Mind' },
-              { id: 'music',     emoji: '🎵', label: 'Sacred Music', sub: '20+ Playlists' },
-              { id: 'episodes',  emoji: '📜', label: 'Episodes',     sub: '18 Chapters' },
-              { id: 'studio',    emoji: '🎨', label: 'Art Studio',   sub: 'Sacred Visuals' },
-              { id: 'sadhana',   emoji: '🔥', label: 'Sadhana',      sub: 'Daily Practice' },
-            ].map((tab) => (
+          {/* ── Desktop Tab Nav (Hidden on Mobile) ─────────────────────────────── */}
+          <nav className="hidden md:flex items-center gap-1 bg-obsidian-900/80 border border-gold-500/15 p-1 rounded-2xl shadow-lg">
+            {NAV_TABS.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => switchView(tab.id as DharmaAppView)}
-                className={`px-3 sm:px-4 py-2 rounded-xl text-xs font-sans font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
+                className={`px-3 sm:px-3.5 py-1.5 rounded-xl text-xs font-sans font-medium transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 touch-manipulation ${
                   activeView === tab.id
-                    ? 'bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold shadow-[0_0_16px_rgba(232,163,32,0.40)]'
-                    : 'text-gold-300/60 hover:text-gold-100 hover:bg-obsidian-700/60'
+                    ? 'bg-gradient-to-r from-gold-500 to-amber-600 text-obsidian-950 font-bold shadow-[0_0_14px_rgba(232,163,32,0.40)]'
+                    : 'text-gold-300/60 hover:text-gold-100 hover:bg-obsidian-800'
                 }`}
               >
-                <span className="text-sm">{tab.emoji}</span>
-                <span className="hidden sm:inline">{tab.label}</span>
+                <span className="text-xs">{tab.emoji}</span>
+                <span>{tab.label}</span>
               </button>
             ))}
           </nav>
 
           {/* User Auth & XP Badge */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
             <DharmaKarmaBadge />
 
             {/* Auth / Profile Trigger Button */}
             <button
               onClick={handleAuthClick}
-              className={`px-3 py-1.5 rounded-xl border text-xs font-sans font-semibold flex items-center gap-1.5 transition-all cursor-pointer ${
+              className={`px-2.5 sm:px-3 py-1.5 rounded-xl border text-[11px] sm:text-xs font-sans font-semibold flex items-center gap-1.5 transition-all cursor-pointer touch-manipulation ${
                 user
-                  ? 'bg-gradient-to-r from-gold-500/20 to-amber-500/20 text-gold-200 border-gold-400/50 shadow-md hover:scale-105'
-                  : 'bg-obsidian-800 hover:bg-gold-500/20 text-gold-300 border-gold-500/25 hover:border-gold-400 hover:scale-105'
+                  ? 'bg-gradient-to-r from-gold-500/20 to-amber-500/20 text-gold-200 border-gold-400/50 shadow-md'
+                  : 'bg-obsidian-800 hover:bg-gold-500/20 text-gold-300 border-gold-500/25 hover:border-gold-400'
               }`}
               title={user ? `Logged in as ${user.email}` : 'साधक प्रवेश (Login)'}
             >
               {user ? (
                 <>
-                  <div className="w-5 h-5 rounded-full bg-gradient-to-br from-gold-400 to-amber-500 flex items-center justify-center text-obsidian-950 font-bold text-[10px]">
+                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-gradient-to-br from-gold-400 to-amber-500 flex items-center justify-center text-obsidian-950 font-bold text-[9px] sm:text-[10px]">
                     {(user.user_metadata?.full_name || user.email || 'U')[0].toUpperCase()}
                   </div>
-                  <span className="hidden md:inline max-w-[80px] truncate text-[11px]">
+                  <span className="hidden sm:inline max-w-[70px] truncate">
                     {user.user_metadata?.full_name || 'साधक'}
                   </span>
                 </>
               ) : (
                 <>
                   <LogIn className="w-3.5 h-3.5 text-gold-400" />
-                  <span className="hidden sm:inline">लॉगिन</span>
+                  <span>लॉगिन</span>
                 </>
               )}
             </button>
@@ -157,47 +160,77 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
         
         {/* VIEW 1: Scripture Explorer */}
         {activeView === 'scripture' && (
-          <div className="animate-in fade-in duration-300">
+          <div className="animate-in fade-in duration-200">
             <ScriptureWorkspace verses={verses} />
           </div>
         )}
 
         {/* VIEW 2: Krishna AI 7-Layer Cognitive Mentor */}
         {activeView === 'mentor' && (
-          <div className="py-6 animate-in fade-in duration-300">
+          <div className="py-4 sm:py-6 animate-in fade-in duration-200">
             <KrishnaAIMentor />
           </div>
         )}
 
         {/* VIEW 3: 20+ YouTube Sacred Music & Devotional Playlists */}
         {activeView === 'music' && (
-          <div className="py-6 animate-in fade-in duration-300">
+          <div className="py-4 sm:py-6 animate-in fade-in duration-200">
             <SacredMusicHub />
           </div>
         )}
 
         {/* VIEW 4: 18 Episodes Quest & Raga Melodies */}
         {activeView === 'episodes' && (
-          <div className="py-6 animate-in fade-in duration-300">
+          <div className="py-4 sm:py-6 animate-in fade-in duration-200">
             <EpisodeExplorer />
           </div>
         )}
 
         {/* VIEW 5: AI Sacred Krishna Art Studio */}
         {activeView === 'studio' && (
-          <div className="py-6 animate-in fade-in duration-300">
+          <div className="py-4 sm:py-6 animate-in fade-in duration-200">
             <KrishnaImageStudio />
           </div>
         )}
 
         {/* VIEW 6: Daily Sadhana & Streak System */}
         {activeView === 'sadhana' && (
-          <div className="max-w-3xl mx-auto p-4 sm:p-6 lg:p-8 py-10 space-y-6 animate-in fade-in duration-300">
+          <div className="max-w-3xl mx-auto p-3 sm:p-6 lg:p-8 py-6 sm:py-10 space-y-6 animate-in fade-in duration-200">
             <DailySadhanaWidget />
           </div>
         )}
 
       </main>
+
+      {/* ── Mobile Native App Bottom Navigation Dock (Visible on Mobile/Tablets < 768px) ── */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-obsidian-950/95 backdrop-blur-xl border-t border-gold-500/20 px-2 py-1.5 shadow-[0_-4px_20px_rgba(0,0,0,0.7)] flex items-center justify-around safe-area-pb">
+        {NAV_TABS.map((tab) => {
+          const isActive = activeView === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => switchView(tab.id as DharmaAppView)}
+              className={`flex flex-col items-center justify-center py-1 px-2 rounded-xl transition-all touch-manipulation min-w-[50px] ${
+                isActive
+                  ? 'text-gold-300 scale-105'
+                  : 'text-gold-400/50 hover:text-gold-300'
+              }`}
+            >
+              <span className={`text-base transition-transform ${isActive ? 'scale-115 animate-bounce' : 'opacity-70'}`}>
+                {tab.emoji}
+              </span>
+              <span className={`text-[9px] font-sans font-medium tracking-tight mt-0.5 ${
+                isActive ? 'text-gold-300 font-bold' : 'text-gold-400/60'
+              }`}>
+                {tab.label}
+              </span>
+              {isActive && (
+                <div className="w-1 h-1 rounded-full bg-gold-400 mt-0.5 shadow-[0_0_6px_rgba(232,163,32,0.9)]" />
+              )}
+            </button>
+          );
+        })}
+      </nav>
 
       {/* Supabase Authentication Modal */}
       <AuthModal

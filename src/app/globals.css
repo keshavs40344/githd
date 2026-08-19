@@ -38,7 +38,10 @@
 /*  BASE — Reset + Root Typography                    */
 /* ══════════════════════════════════════════════════ */
 @layer base {
-  *, *::before, *::after { box-sizing: border-box; }
+  *, *::before, *::after { 
+    box-sizing: border-box; 
+    -webkit-tap-highlight-color: transparent;
+  }
 
   html {
     -webkit-text-size-adjust: 100%;
@@ -47,6 +50,7 @@
     -moz-osx-font-smoothing: grayscale;
     font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
     scroll-behavior: smooth;
+    touch-action: manipulation;
   }
 
   body {
@@ -55,6 +59,8 @@
     font-size: 16px;
     line-height: 1.65;
     letter-spacing: -0.01em;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* ── Typographic Scale ─────────────────────────── */
