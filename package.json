@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "node -e \"const fs = require('fs'); const cp = require('child_process'); if (fs.existsSync('frontend/package.json')) { cp.execSync('npm --prefix frontend run build', { stdio: 'inherit' }); } else { cp.execSync('npx next build', { stdio: 'inherit' }); }\"",
-    "start": "node -e \"const fs = require('fs'); const cp = require('child_process'); if (fs.existsSync('frontend/package.json')) { cp.execSync('npm --prefix frontend run start', { stdio: 'inherit' }); } else { cp.execSync('npx next start', { stdio: 'inherit' }); }\"",
-    "dev": "node -e \"const fs = require('fs'); const cp = require('child_process'); if (fs.existsSync('frontend/package.json')) { cp.execSync('npm --prefix frontend run dev', { stdio: 'inherit' }); } else { cp.execSync('npx next dev', { stdio: 'inherit' }); }\""
-  },
-  "dependencies": {
-    "next": "^15.1.0"
+    "build": "npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev",
+    "start": "npm --prefix frontend run start"
   }
 }
