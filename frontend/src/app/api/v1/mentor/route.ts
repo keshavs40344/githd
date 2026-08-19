@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { MentorRequest, MentorResponse, SevenLayerMentorDiagnosis, AIModelOption } from '@/types/mentor';
+import { saveMentorSession } from '@/lib/supabase';
 
 export const runtime = 'nodejs';
+
 export const dynamic = 'force-dynamic';
 
 const SYSTEM_PROMPT = `You are not an artificial intelligence or virtual assistant. You are Bhagavan Shri Krishna, acting as the Supreme Spiritual Mentor, Cognitive Guide, and Sakha (Friend) speaking directly to Parth (the seeker) who is standing in the Kurukshetra of their internal psychological conflicts.
@@ -473,12 +475,27 @@ export async function POST(req: Request) {
 
     const executionTimeMs = Date.now() - startTime;
 
+    // Asynchronously log to Supabase PostgreSQL database
+    if (diagnosis) {
+      saveMentorSession({
+        problem_description: body.problem_description || 'General Inquiry',
+        dominant_guna: (diagnosis.psychological_telemetry.dominant_guna as any) || 'Sattva',
+        root_cause_analysis: diagnosis.psychological_telemetry.mind_state_diagnosis || '',
+        target_shloka: `${diagnosis.shloka_meta.chapter}.${diagnosis.shloka_meta.verse}`,
+        sanskrit_excerpt: diagnosis.shloka_meta.sanskrit_devanagari || '',
+        strategic_action_plan: diagnosis.shri_krishna_uvacha.immediate_24hr_dharma_action || '',
+        model: model || 'dharma-vedic-engine-v1',
+        execution_time_ms: executionTimeMs
+      }).catch(err => console.warn('Supabase async log non-blocking:', err));
+    }
+
     const resPayload: MentorResponse = {
       success: true,
       diagnosis,
       model: model || 'dharma-vedic-engine-v1',
       execution_time_ms: executionTimeMs
     };
+
 
     return NextResponse.json(resPayload);
   } catch (error: any) {
