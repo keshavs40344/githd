@@ -7,6 +7,7 @@ import EpisodeExplorer from './EpisodeExplorer';
 import ScriptureWorkspace from './ScriptureWorkspace';
 import KrishnaImageStudio from './KrishnaImageStudio';
 import DailySadhanaWidget from './DailySadhanaWidget';
+import SacredMusicHub from './SacredMusicHub';
 import WebGLShaderBackground from './WebGLShaderBackground';
 import DharmaKarmaBadge from './DharmaKarmaBadge';
 import { sacredAudio } from '@/lib/sacredSounds';
@@ -15,7 +16,7 @@ import {
   Compass, Grid, Search, BookMarked, Music, Bell 
 } from 'lucide-react';
 
-export type DharmaAppView = 'scripture' | 'mentor' | 'episodes' | 'studio' | 'sadhana';
+export type DharmaAppView = 'scripture' | 'mentor' | 'episodes' | 'studio' | 'sadhana' | 'music';
 
 interface MasterDharmaHubProps {
   verses: GitaVerse[];
@@ -29,7 +30,7 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const hash = window.location.hash.replace('#', '') as DharmaAppView;
-      if (['scripture', 'mentor', 'episodes', 'studio', 'sadhana'].includes(hash)) {
+      if (['scripture', 'mentor', 'episodes', 'studio', 'sadhana', 'music'].includes(hash)) {
         setActiveView(hash);
       }
     }
@@ -81,11 +82,12 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
           {/* ── Tab Nav ─────────────────────────────── */}
           <nav className="flex items-center gap-1 bg-obsidian-900/70 border border-gold-500/15 p-1 rounded-2xl shadow-lg overflow-x-auto shrink">
             {[
-              { id: 'scripture', emoji: '📖', label: 'Scripture',  sub: '700 Shlokas' },
-              { id: 'mentor',    emoji: '🪔', label: 'Krishna AI', sub: '7-Layer Mind' },
-              { id: 'episodes',  emoji: '📜', label: 'Episodes',   sub: '18 Chapters' },
-              { id: 'studio',    emoji: '🎨', label: 'Art Studio', sub: 'Sacred Visuals' },
-              { id: 'sadhana',   emoji: '🔥', label: 'Sadhana',   sub: 'Daily Practice' },
+              { id: 'scripture', emoji: '📖', label: 'Scripture',    sub: '700 Shlokas' },
+              { id: 'mentor',    emoji: '🪔', label: 'Krishna AI',   sub: '7-Layer Mind' },
+              { id: 'music',     emoji: '🎵', label: 'Sacred Music', sub: '20+ Playlists' },
+              { id: 'episodes',  emoji: '📜', label: 'Episodes',     sub: '18 Chapters' },
+              { id: 'studio',    emoji: '🎨', label: 'Art Studio',   sub: 'Sacred Visuals' },
+              { id: 'sadhana',   emoji: '🔥', label: 'Sadhana',      sub: 'Daily Practice' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -127,21 +129,28 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
           </div>
         )}
 
-        {/* VIEW 3: 18 Episodes Quest & Raga Melodies */}
+        {/* VIEW 3: 20+ YouTube Sacred Music & Devotional Playlists */}
+        {activeView === 'music' && (
+          <div className="py-6 animate-in fade-in duration-300">
+            <SacredMusicHub />
+          </div>
+        )}
+
+        {/* VIEW 4: 18 Episodes Quest & Raga Melodies */}
         {activeView === 'episodes' && (
           <div className="py-6 animate-in fade-in duration-300">
             <EpisodeExplorer />
           </div>
         )}
 
-        {/* VIEW 4: AI Sacred Krishna Art Studio */}
+        {/* VIEW 5: AI Sacred Krishna Art Studio */}
         {activeView === 'studio' && (
           <div className="py-6 animate-in fade-in duration-300">
             <KrishnaImageStudio />
           </div>
         )}
 
-        {/* VIEW 5: Daily Sadhana & Streak System */}
+        {/* VIEW 6: Daily Sadhana & Streak System */}
         {activeView === 'sadhana' && (
           <div className="max-w-3xl mx-auto p-4 sm:p-6 lg:p-8 py-10 space-y-6 animate-in fade-in duration-300">
             <DailySadhanaWidget />
@@ -153,3 +162,4 @@ export default function MasterDharmaHub({ verses, initialView = 'scripture' }: M
     </div>
   );
 }
+
