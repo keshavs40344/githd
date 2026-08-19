@@ -220,51 +220,51 @@ export default function ScriptureReader({
   const getActiveTranslation = () => {
     if (canonical?.translation?.[language]) return canonical.translation[language];
     if (dynamicData?.translation) return dynamicData.translation;
-    if (universal?.translation?.[language]) return universal.translation[language];
+    const universalTrans = universal?.translation as Record<string, string> | undefined;
+    if (universalTrans?.[language]) return universalTrans[language];
     if (language === 'hi') return verse.translation_hi;
     if (language === 'en') return verse.translation_en;
-    return canonical?.translation?.hinglish || verse.translation_hi || verse.translation_en;
+    return canonical?.translation?.hinglish || universalTrans?.hinglish || verse.translation_hi || verse.translation_en;
   };
 
   const getActiveBhashya = () => {
     if (activeSampradaya === 'advaita') {
-      return universal.sampradaya_notes.advaita + "\n\nआदि शंकराचार्य के अनुसार यह श्लोक अद्वैत ज्ञान और आत्म-साक्षात्कार का परम द्वार है।";
+      return universal.sampradaya_notes.advaita;
     }
     if (activeSampradaya === 'vishishtadvaita') {
-      return universal.sampradaya_notes.vishishtadvaita + "\n\nरामानुजाचार्य के अनुसार जीव का परम कर्तव्य श्रीमन नारायण के चरणों में आत्म-समर्पण करना है।";
+      return universal.sampradaya_notes.vishishtadvaita;
     }
     if (activeSampradaya === 'dvaita') {
-      return universal.sampradaya_notes.dvaita + "\n\nमध्वाचार्य के अनुसार भगवान श्री कृष्ण ही समस्त जगत के स्वतंत्र स्वामी और परम आश्रय हैं।";
+      return universal.sampradaya_notes.dvaita;
     }
 
     if (canonical?.deep_bhashya?.[language]) return canonical.deep_bhashya[language];
     if (dynamicData?.deep_bhashya) return dynamicData.deep_bhashya;
-    if (universal?.deep_bhashya?.[language]) return universal.deep_bhashya[language];
-    if (language === 'hi') {
-      return (verse as any).bhashya_hi || "इस श्लोक में भगवान श्री कृष्ण आत्मा की अमरता, निष्काम कर्तव्य पालन और चित्त की एकाग्रता का रहस्य उद्घाटित करते हैं।";
-    }
-    if (language === 'en') {
-      return (verse as any).bhashya_en || "In this sacred verse, Lord Krishna reveals the timeless truth of selfless duty, transcendental equanimity, and the eternal nature of consciousness.";
-    }
-    return canonical?.deep_bhashya?.hinglish || universal.deep_bhashya.hinglish;
+    const universalBhashya = universal?.deep_bhashya as Record<string, string> | undefined;
+    if (universalBhashya?.[language]) return universalBhashya[language];
+    return canonical?.deep_bhashya?.hinglish || universalBhashya?.hinglish || universal.sampradaya_notes.universal;
   };
 
   const getActiveInsight = () => {
     if (canonical?.practical_insight?.[language]) return canonical.practical_insight[language];
     if (dynamicData?.practical_insight) return dynamicData.practical_insight;
-    if (universal?.practical_insight?.[language]) return universal.practical_insight[language];
-    return verse.practical_insight;
+    const universalInsight = universal?.practical_insight as Record<string, string> | undefined;
+    if (universalInsight?.[language]) return universalInsight[language];
+    return verse.practical_insight || universalInsight?.hinglish || universalInsight?.hi;
   };
 
   const getActiveAnvayaTokens = () => {
     if (canonical?.word_anvaya) {
-      return canonical.word_anvaya.map(w => ({
-        word: w.word,
-        iast: w.iast,
-        dhatu: w.dhatu,
-        vibhakti: w.vibhakti,
-        meaning: w.meaning[language] || w.meaning.hinglish || w.meaning.hi || w.meaning.en || '-'
-      }));
+      return canonical.word_anvaya.map(w => {
+        const m = w.meaning as Record<string, string>;
+        return {
+          word: w.word,
+          iast: w.iast,
+          dhatu: w.dhatu,
+          vibhakti: w.vibhakti,
+          meaning: m[language] || m.hinglish || m.hi || m.en || '-'
+        };
+      });
     }
     if (dynamicData?.anvaya_tokens?.length) return dynamicData.anvaya_tokens;
     if (verse.anvaya_tokens?.length) {
@@ -276,13 +276,16 @@ export default function ScriptureReader({
         meaning: language === 'en' ? t.meaning_en : t.meaning_hi
       }));
     }
-    return universal.anvaya_tokens.map(w => ({
-      word: w.word,
-      iast: w.iast,
-      dhatu: w.dhatu,
-      vibhakti: w.vibhakti,
-      meaning: w.meaning[language] || w.meaning.hinglish || w.meaning.hi || w.meaning.en || '-'
-    }));
+    return universal.anvaya_tokens.map(w => {
+      const m = w.meaning as Record<string, string>;
+      return {
+        word: w.word,
+        iast: w.iast,
+        dhatu: w.dhatu,
+        vibhakti: w.vibhakti,
+        meaning: m[language] || m.hinglish || m.hi || m.en || '-'
+      };
+    });
   };
 
   const copyToClipboard = () => {

@@ -1,146 +1,107 @@
-import { CHAPTERS } from '@/types/verse';
-import type { AppLanguage } from '@/context/LanguageContext';
+import { CHAPTERS, type GitaVerse, type AnvayaToken } from "@/types/verse";
 
-export interface CompleteVedicShloka {
-  chapter: number;
-  verse: number;
-  speaker: string;
-  speaker_name: string;
-  chhanda: string;
-  devanagari: string;
-  iast: string;
-  anvaya_tokens: Array<{
-    word: string;
-    iast: string;
-    dhatu?: string;
-    vibhakti?: string;
-    meaning: Record<string, string>;
-  }>;
-  translation: Record<string, string>;
-  deep_bhashya: Record<string, string>;
-  psychological_insight: Record<string, string>;
-  practical_insight: Record<string, string>;
-  sampradaya_notes: {
-    advaita: string;
-    vishishtadvaita: string;
-    dvaita: string;
-  };
+export interface SpeakerInfo {
+  speaker: "krishna" | "arjuna" | "sanjaya" | "dhritarashtra";
+  title: string;
+  title_en: string;
+  name: string;
 }
 
-// Speaker Resolution based on Gita canonical structure
-export function getSpeakerForVerse(chapter: number, verse: number): { title: string; name: string } {
+export function getSpeakerForVerse(chapter: number, verse: number): SpeakerInfo {
   if (chapter === 1) {
-    if (verse === 1) return { title: 'धृतराष्ट्र उवाच', name: 'Dhritarashtra' };
-    if (verse >= 2 && verse <= 20) return { title: 'सञ्जय उवाच', name: 'Sanjaya' };
-    if (verse >= 21 && verse <= 23) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    if (verse >= 24 && verse <= 27) return { title: 'सञ्जय उवाच', name: 'Sanjaya' };
-    if (verse >= 28 && verse <= 46) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'सञ्जय उवाच', name: 'Sanjaya' };
+    if (verse === 1) return { speaker: "dhritarashtra", title: "धृतराष्ट्र उवाच", title_en: "Dhritarashtra said", name: "धृतराष्ट्र" };
+    if (verse >= 2 && verse <= 19) return { speaker: "sanjaya", title: "सञ्जय उवाच", title_en: "Sanjaya said", name: "सञ्जय" };
+    if (verse >= 21 && verse <= 23) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    if (verse >= 24 && verse <= 27) return { speaker: "sanjaya", title: "सञ्जय उवाच", title_en: "Sanjaya said", name: "सञ्जय" };
+    if (verse >= 28 && verse <= 46) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    if (verse === 47) return { speaker: "sanjaya", title: "सञ्जय उवाच", title_en: "Sanjaya said", name: "सञ्जय" };
   }
-
   if (chapter === 2) {
-    if (verse === 1) return { title: 'सञ्जय उवाच', name: 'Sanjaya' };
-    if (verse >= 2 && verse <= 3) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse >= 4 && verse <= 8) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    if (verse >= 9 && verse <= 10) return { title: 'सञ्जय उवाच', name: 'Sanjaya' };
-    if (verse >= 11 && verse <= 53) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse === 54) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
+    if (verse === 1) return { speaker: "sanjaya", title: "सञ्जय उवाच", title_en: "Sanjaya said", name: "सञ्जय" };
+    if (verse >= 2 && verse <= 3) return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
+    if (verse >= 4 && verse <= 8) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    if (verse === 9 || verse === 10) return { speaker: "sanjaya", title: "सञ्जय उवाच", title_en: "Sanjaya said", name: "सञ्जय" };
+    if (verse >= 11 && verse <= 53) return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
+    if (verse === 54) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    if (verse >= 55 && verse <= 72) return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
   }
-
   if (chapter === 3) {
-    if (verse >= 1 && verse <= 2) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    if (verse >= 3 && verse <= 35) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse === 36) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
+    if (verse <= 2) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    if (verse >= 3 && verse <= 35) return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
+    if (verse === 36) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
   }
-
   if (chapter === 4) {
-    if (verse >= 1 && verse <= 3) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse === 4) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
+    if (verse <= 3) return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
+    if (verse === 4) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
   }
-
-  if (chapter === 5) {
-    if (verse === 1) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-  }
-
-  if (chapter === 6) {
-    if (verse >= 1 && verse <= 32) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse >= 33 && verse <= 34) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    if (verse >= 35 && verse <= 36) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse >= 37 && verse <= 39) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-  }
-
-  if (chapter === 8) {
-    if (verse >= 1 && verse <= 2) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-  }
-
-  if (chapter === 10) {
-    if (verse >= 1 && verse <= 11) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse >= 12 && verse <= 18) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-  }
-
   if (chapter === 11) {
-    if (verse >= 1 && verse <= 4) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    if (verse >= 5 && verse <= 8) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse >= 9 && verse <= 14) return { title: 'सञ्जय उवाच', name: 'Sanjaya' };
-    if (verse >= 15 && verse <= 31) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    if (verse >= 32 && verse <= 34) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse === 35) return { title: 'सञ्जय उवाच', name: 'Sanjaya' };
-    if (verse >= 36 && verse <= 46) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    if (verse >= 47 && verse <= 49) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse === 50) return { title: 'सञ्जय उवाच', name: 'Sanjaya' };
-    if (verse === 51) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
+    if (verse <= 4) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    if (verse >= 5 && verse <= 8) return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
+    if (verse >= 9 && verse <= 14) return { speaker: "sanjaya", title: "सञ्जय उवाच", title_en: "Sanjaya said", name: "सञ्जय" };
+    if (verse >= 15 && verse <= 31) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    if (verse >= 32 && verse <= 34) return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
+    if (verse === 35) return { speaker: "sanjaya", title: "सञ्जय उवाच", title_en: "Sanjaya said", name: "सञ्जय" };
+    if (verse >= 36 && verse <= 46) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    if (verse >= 47 && verse <= 49) return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
+    if (verse === 50) return { speaker: "sanjaya", title: "सञ्जय उवाच", title_en: "Sanjaya said", name: "सञ्जय" };
+    if (verse === 51) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
   }
-
-  if (chapter === 12) {
-    if (verse === 1) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-  }
-
-  if (chapter === 14) {
-    if (verse >= 1 && verse <= 20) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse === 21) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-  }
-
-  if (chapter === 17) {
-    if (verse === 1) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-  }
-
   if (chapter === 18) {
-    if (verse === 1) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    if (verse >= 2 && verse <= 72) return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
-    if (verse === 73) return { title: 'अर्जुन उवाच', name: 'Arjuna' };
-    return { title: 'सञ्जय उवाच', name: 'Sanjaya' };
+    if (verse === 1) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    if (verse >= 2 && verse <= 72) return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
+    if (verse === 73) return { speaker: "arjuna", title: "अर्जुन उवाच", title_en: "Arjuna said", name: "अर्जुन" };
+    return { speaker: "sanjaya", title: "सञ्जय उवाच", title_en: "Sanjaya said", name: "सञ्जय" };
   }
-
-  return { title: 'श्रीभगवानुवाच', name: 'Lord Krishna' };
+  return { speaker: "krishna", title: "श्रीभगवानुवाच", title_en: "The Blessed Lord said", name: "श्री कृष्ण" };
 }
 
-// Chhanda (Vedic Metre) classification
 export function getChhandaForVerse(chapter: number, verse: number): string {
-  if (chapter === 11 && ((verse >= 15 && verse <= 31) || (verse >= 36 && verse <= 46))) {
-    return 'त्रिष्टुप् छन्दः (11 अक्षरीय वैदिक वृत्त)';
-  }
-  if (chapter === 2 && verse >= 5 && verse <= 8) {
-    return 'त्रिष्टुप् छन्दः (Trishtubh Metre)';
-  }
-  if (chapter === 8 && verse >= 9 && verse <= 13) {
-    return 'त्रिष्टुप् छन्दः (Trishtubh Metre)';
-  }
-  return 'अनुष्टुप् छन्दः (8-8-8-8 = 32 अक्षरीय श्लोक)';
+  if (chapter === 11 && verse >= 15 && verse <= 50) return "त्रिष्टुप् छन्दः (11 अक्षरीय वैदिक वृत्त)";
+  if (chapter === 2 && (verse === 20 || verse === 29 || verse === 70)) return "त्रिष्टुप् छन्दः (वैदिक वृत्त)";
+  if (chapter === 8 && (verse === 9 || verse === 10 || verse === 28)) return "त्रिष्टुप् छन्दः";
+  return "अनुष्टुप् छन्दः (32 अक्षरीय श्लोक वृत्त)";
 }
 
-// Universal Synthesis Engine for any of the 700 Gita verses
-export function generateUniversalVedicData(chapter: number, verse: number): CompleteVedicShloka {
+export function getDeepSampradayaCommentary(chapter: number, verse: number, sampradaya: "universal" | "advaita" | "vishishtadvaita" | "dvaita", lang = "hinglish") {
+  const ch = CHAPTERS.find(c => c.number === chapter) || CHAPTERS[0];
+  const speaker = getSpeakerForVerse(chapter, verse);
+
+  if (sampradaya === "advaita") {
+    return [
+      "१. आदि शंकराचार्य भाष्य (अद्वैत वेदान्त - निर्गुण ब्रह्म एवं आत्मैक्य):\nआदि शंकराचार्य के शारीरिक भाष्य एवं गीता भाष्य के अनुसार, श्रीमद्भगवद्गीता के " + ch.name_sanskrit + " (अध्याय " + chapter + ", श्लोक " + verse + ") का मूल प्रयोजन साधक को द्वैत भ्रम (अविद्या) से मुक्त कर केवल अद्वैत चैतन्य (शुद्ध आत्मतत्त्व) में प्रतिष्ठित करना है।",
+      "२. माया, अध्यास एवं विवेक:\nशंकराचार्य स्पष्ट करते हैं कि शरीर, इन्द्रिय और मन के धर्मों को आत्मा पर आरोपित करना ही अध्यास (Superimposition) कहलाता है। जब तक मनुष्य स्वयं को कर्ता और भोक्ता मानता रहता है, तब तक वह जन्म-मरण के भवचक्र में बंधा रहता है। यह श्लोक अविद्या की ग्रंथि को भेदकर अहं ब्रह्मास्मि और तत्त्वमसि के महावाक्य का व्यावहारिक साक्षात्कार कराता है।",
+      "३. साधना सोपान एवं चित्तशुद्धि:\nनिष्काम कर्म द्वारा अन्तःकरण की शुद्धि होती है, शुद्ध चित्त में विवेक और वैराग्य का उदय होता है, और विवेक से परब्रह्म परमात्मा के अखण्ड स्वरूप की प्राप्ति होती है।"
+    ].join("\n\n");
+  }
+
+  if (sampradaya === "vishishtadvaita") {
+    return [
+      "१. श्री रामानुजाचार्य भाष्य (विशिष्टाद्वैत वेदान्त - शरणागति एवं अनन्य भक्ति):\nभगवान रामानुजाचार्य के गीता भाष्य के अनुसार, इस श्लोक (अध्याय " + chapter + ", श्लोक " + verse + ") में जीवात्मा और परमात्मा के नित्य सम्बन्ध (शेष-शेषी भाव) का परम निरूपण है। जीव परमात्मा का नित्य अंश और सेवक है, और परमेश्वर श्रीमन नारायण ही समस्त ब्रह्माण्ड के नित्य स्वामी, अन्तरात्मा और आधार हैं।",
+      "२. प्रपत्ति (पूर्ण आत्मसमर्पण):\nरामानुजाचार्य के अनुसार ज्ञान और कर्म दोनों का चरम पर्यवसान भक्ति में होता है। अपने पुरुषार्थ के अहंकार को त्यागकर जब भक्त भगवान के चरण कमलों में अनन्य शरणागति (प्रपत्ति) स्वीकार करता है, तब भगवान अपनी परम कृपा से उसके समस्त संशयों और बन्धनों का नाश कर देते हैं।",
+      "३. नित्य कैंकर्य (दिव्य सेवा भाव):\nप्रत्येक सांसारिक कर्म को भगवान की पूजा समझकर समर्पित करना ही इस श्लोक का जीवन्त सार है।"
+    ].join("\n\n");
+  }
+
+  if (sampradaya === "dvaita") {
+    return [
+      "१. श्रीमन् मध्वाचार्य भाष्य (द्वैत वेदान्त - हरि सर्वोत्तमत्व एवं पञ्चभेद):\nआनन्दतीर्थ मध्वाचार्य के गीता तात्पर्य निर्णय के अनुसार, अध्याय " + chapter + ", श्लोक " + verse + " में भगवान श्री कृष्ण के सर्वोत्तमत्व और जगत की वास्तविकता का अकाट्य प्रतिपादन है।",
+      "२. पञ्च-भेद का सनातन सत्य:\nमध्वाचार्य बल देते हैं कि जीव और ईश्वर में, जीव और जीव में, जीव और जड़ में, ईश्वर और जड़ में, तथा जड़ और जड़ में नित्य भेद है। भगवान श्री कृष्ण स्वतंत्र तत्त्व हैं और समस्त जीवात्माएं परतंत्र तत्त्व हैं। ईश्वर की नित्य दासता और उनकी महिमा का यथार्थ ज्ञान ही मुक्ति का एकमात्र साधन है।",
+      "३. तारतम्य एवं निष्काम सेवा:\nईश्वर के प्रति प्रगाढ़ प्रेम और उनकी सर्व-नियंता शक्ति का अनुभव करते हुए धर्मयुक्त जीवन जीना ही साधक का परम कर्तव्य है।"
+    ].join("\n\n");
+  }
+
+  return [
+    "१. प्रसंग एवं पृष्ठभूमि (" + ch.name_sanskrit + " - अध्याय " + chapter + ", श्लोक " + verse + "):\nयह श्लोक कुरुक्षेत्र के युगांतकारी धर्मयुद्ध में " + speaker.name + " द्वारा उच्चारित किया गया है। यहाँ अर्जुन के अन्तःकरण में उठे भय, संशय, और विषाद को समूल नष्ट कर उसे कर्म के परम आध्यात्मिक शिखर पर स्थापित करने का सार्वभौमिक रहस्य उद्घाटित किया गया है।",
+    "२. तत्त्व मीमांसा एवं दार्शनिक विश्लेषण:\nइस श्लोक में चेतना (Pure Consciousness), कर्म (Action), और समत्व (Equanimity) का गहरा समन्वय है। जब मनुष्य अपने कर्म को सांसारिक फल की वासना और व्यग्रता से मुक्त कर देता है, तब कर्म बन्धन न रहकर मुक्ति का साधन (योग) बन जाता है।",
+    "३. मनोवैज्ञानिक विश्लेषण एवं आंतरिक रूपांतरण:\nआधुनिक मनोविज्ञान के अनुसार मानव की ९०% चिंताएं भविष्य के अनिश्चित परिणामों के डर से उत्पन्न होती हैं। यह श्लोक मनुष्य को मानसिक बिखराव (Cognitive Overload) से निकालकर वर्तमान क्षण की अखण्ड एकाग्रता (Flow State) में स्थापित करता है।",
+    "४. सर्वसम्मत समन्वय:\nचाहे अद्वैत का ज्ञान-मार्ग हो, विशिष्टाद्वैत का शरणागति-मार्ग हो, या द्वैत का भक्ति-मार्ग — सभी आचार्य एक स्वर में स्वीकार करते हैं कि यह श्लोक साधक को अज्ञान के अन्धकार से निकालकर अमरत्व के प्रकाश की ओर ले जाने वाला दिव्य मन्त्र है।"
+  ].join("\n\n");
+}
+
+export function generateUniversalVedicData(chapter: number, verse: number) {
   const chapterInfo = CHAPTERS.find(c => c.number === chapter) || CHAPTERS[0];
   const speaker = getSpeakerForVerse(chapter, verse);
   const chhanda = getChhandaForVerse(chapter, verse);
@@ -148,25 +109,41 @@ export function generateUniversalVedicData(chapter: number, verse: number): Comp
   return {
     chapter,
     verse,
-    speaker: speaker.title,
-    speaker_name: speaker.name,
+    speaker,
     chhanda,
-    devanagari: `${speaker.title} |\nश्रीमद्भगवद्गीता अध्याय ${chapter}, श्लोक ${verse} || ${chapter}-${verse} ||`,
-    iast: `${speaker.name.toLowerCase()} uvāca\nśrīmadbhagavadgītā adhyāya ${chapter}, śloka ${verse}`,
+    devanagari: speaker.title + " |\nॐ तत्सत् परब्रह्मणे नमः श्रीकृष्णाय समर्पणम् |\nअध्याय " + chapter + " श्लोक " + verse + " मन्त्र स्वरूपम् || " + chapter + "-" + verse + " ||",
+    iast: speaker.title_en + " · om tat sat parabrahmane namah shrikrishnaya samarpanam · adhyaya " + chapter + " shloka " + verse,
     anvaya_tokens: [
+      {
+        word: "ॐ तत्सत्",
+        iast: "om tat sat",
+        dhatu: "as",
+        vibhakti: "प्रथमा",
+        meaning: {
+          hinglish: "Param Satya Sacchidananda Parabrahman (The Ultimate Reality)",
+          hi: "परम सत्य सच्चिदानन्द परब्रह्म",
+          en: "The Supreme Eternal Truth and Ultimate Consciousness",
+          sa: "परब्रह्मस्वरूपम्",
+          mr: "परम सत्य परब्रह्म",
+          gu: "પરમ સત્ય પરબ્રહ્મ",
+          bn: "পরম সত্য পরব্রহ্ম",
+          ta: "பரம்பொருள் உண்மை",
+          te: "పరమ సత్యం పరబ్రహ్మ",
+        }
+      },
       {
         word: "धर्म",
         iast: "dharma",
-        dhatu: "dhṛ",
+        dhatu: "dhr",
         vibhakti: "प्रथमा",
         meaning: {
-          hinglish: "Sanatan kartavya aur satya (Eternal righteous duty)",
-          hi: "सनातन धर्म एवं कर्तव्य",
-          en: "righteous duty and universal cosmic order",
-          sa: "धर्मः सनातनः",
-          mr: "सनातन धर्म आणि कर्तव्य",
-          gu: "ધર્મ અને સત્ય",
-          bn: "ধর্ম ও কর্তব্য",
+          hinglish: "Satya, kartavya aur cosmic order (Righteous Duty)",
+          hi: "शाश्वत कर्तव्य, नीति एवं सत्य",
+          en: "universal righteous duty and moral cosmic order",
+          sa: "सदाचारः",
+          mr: "शाश्वत कर्तव्य आणि धर्म",
+          gu: "શાશ્વત ધર્મ અને કર્તવ્ય",
+          bn: "শাশ্বত ধর্ম ও কর্তব্য",
           ta: "தர்மம் மற்றும் கடமை",
           te: "ధర్మం మరియు కర్తవ్యం",
         }
@@ -174,14 +151,14 @@ export function generateUniversalVedicData(chapter: number, verse: number): Comp
       {
         word: "कर्म",
         iast: "karma",
-        dhatu: "kṛ",
+        dhatu: "kr",
         vibhakti: "द्वितीया",
         meaning: {
-          hinglish: "Nishkam kartavya execution (Action without anxiety)",
-          hi: "निष्काम भाव से किया गया कर्म",
-          en: "selfless execution of prescribed action",
+          hinglish: "Nishkam kartavya execution (Selfless focused action)",
+          hi: "निष्काम भाव से किया गया कर्तव्य कर्म",
+          en: "selfless execution of prescribed righteous action",
           sa: "कर्तव्यकर्म",
-          mr: "निःस्वार्थ कर्म",
+          mr: "निःस्वार्थ कर्तव्य कर्म",
           gu: "નિષ્કામ કર્મ",
           bn: "নিষ্কাম কর্ম",
           ta: "சுயநலமற்ற செயல்",
@@ -194,9 +171,9 @@ export function generateUniversalVedicData(chapter: number, verse: number): Comp
         dhatu: "yuj",
         vibhakti: "तृतीया",
         meaning: {
-          hinglish: "Samattva bhav aur man ki shanti (Equanimity)",
+          hinglish: "Samattva bhav aur man ki shanti (Equanimity & Flow)",
           hi: "समत्व भाव एवं चित्त की एकाग्रता",
-          en: "state of equanimity and supreme unity",
+          en: "state of unshakeable mental equanimity and unity",
           sa: "समत्वयोगेन",
           mr: "समत्व भाव आणि मनाची शांती",
           gu: "સમત્વ ભાવ અને યોગ",
@@ -207,13 +184,13 @@ export function generateUniversalVedicData(chapter: number, verse: number): Comp
       },
       {
         word: "प्रज्ञा",
-        iast: "prajñā",
-        dhatu: "jñā",
+        iast: "prajna",
+        dhatu: "jna",
         vibhakti: "प्रथमा",
         meaning: {
-          hinglish: "Spiritual intelligence aur clear viveka",
+          hinglish: "Spiritual intelligence aur clear viveka (Wisdom)",
           hi: "स्थिर आध्यात्मिक बुद्धि एवं विवेक",
-          en: "intuitive spiritual wisdom and intellect",
+          en: "intuitive spiritual wisdom, clarity, and intellect",
           sa: "स्थिरबुद्धिः",
           mr: "स्थिर बुद्धिमत्ता आणि विवेक",
           gu: "આધ્યાત્મિક પ્રજ્ઞા",
@@ -224,53 +201,42 @@ export function generateUniversalVedicData(chapter: number, verse: number): Comp
       }
     ],
     translation: {
-      hinglish: `${speaker.title}: Is pavitra shloka me ${chapterInfo.name_sanskrit} ke antargat atma ki amarta, nishkam karma aur man ki shanti ka gahan rahasya bataya gaya hai.`,
-      hi: `${speaker.title}: इस दिव्य श्लोक में ${chapterInfo.name_sanskrit} के अन्तर्गत आत्मा के शाश्वत स्वरूप, समत्व योग एवं निष्काम कर्म का परम उपदेश दिया गया है।`,
-      en: `${speaker.name}: In this sacred verse from ${chapterInfo.name_en}, the timeless science of spiritual equanimity, selfless duty, and inner liberation is revealed.`,
-      sa: `${speaker.title}: अत्र श्लोके ${chapterInfo.name_sanskrit} प्रसङ्गे आत्मतत्त्वस्य कर्मयोगस्य च परमं रहस्यं प्रतिपादितम्।`,
-      mr: `${speaker.title}: या श्लोकात ${chapterInfo.name_sanskrit} अंतर्गत आत्म्याचे अमर स्वरूप आणि कर्मयोगाचे रहस्य सांगितले आहे.`,
-      gu: `${speaker.title}: આ શ્લોકમાં ${chapterInfo.name_sanskrit} અંતર્ગત આત્માના શાશ્વત સ્વરૂપ અને કર્મયોગનું જ્ઞાન આપ્યું છે.`,
-      bn: `${speaker.title}: এই শ্লোকে ${chapterInfo.name_sanskrit} প্রসঙ্গে আত্মার অমরত্ব ও নিষ্কাম কর্মযোগের উপদেশ প্রদত্ত হইয়াছে।`,
-      ta: `${speaker.title}: இந்த ஸ்லோகத்தில் ${chapterInfo.name_sanskrit} கீழ் ஆன்மாவின் நித்திய தத்துவமும் கர்ம யோகமும் விளக்கப்படுகிறது.`,
-      te: `${speaker.title}: ఈ శ్లోకంలో ${chapterInfo.name_sanskrit} ఆధారంగా ఆత్మ తత్త్వము మరియు నిష్కామ కర్మయోగ రహస్యము ఉపదేశించబడింది.`,
+      hinglish: speaker.title + ": Is pavitra shloka me " + chapterInfo.name_sanskrit + " ke antargat atma ki amarta, nishkam karma aur man ki sthirata ka gahan sarvabhaumik upadesh diya gaya hai.",
+      hi: speaker.title + ": इस दिव्य श्लोक में " + chapterInfo.name_sanskrit + " के अन्तर्गत आत्मा के शाश्वत स्वरूप, समत्व योग एवं निष्काम कर्तव्य पालन का परम उपदेश दिया गया है।",
+      en: speaker.name + ": In this sacred verse from " + chapterInfo.name_en + ", the timeless science of spiritual equanimity, selfless duty, and inner liberation is revealed.",
+      sa: speaker.title + ": अत्र श्लोके " + chapterInfo.name_sanskrit + " प्रसङ्गे आत्मतत्त्वस्य कर्मयोगस्य च परमं रहस्यं प्रतिपादितम्।",
+      mr: speaker.title + ": या श्लोकात " + chapterInfo.name_sanskrit + " अंतर्गत आत्म्याचे अमर स्वरूप आणि कर्मयोगाचे रहस्य सांगितले आहे।",
+      gu: speaker.title + ": આ શ્લોકમાં " + chapterInfo.name_sanskrit + " અંતર્ગત આત્માના શાશ્વત સ્વરૂપ અને કર્મયોગનું જ્ઞાન આપ્યું છે।",
+      bn: speaker.title + ": এই শ্লোকে " + chapterInfo.name_sanskrit + " প্রসঙ্গে আত্মার অমরত্ব ও নিষ্কাম কর্মযোগের উপদেশ প্রদত্ত হইয়াছে।",
+      ta: speaker.title + ": இந்த ஸ்லோகத்தில் " + chapterInfo.name_sanskrit + " கீழ் ஆன்மாவின் நித்திய தத்துவமும் கர்ம யோகமும் விளக்கப்படுகிறது.",
+      te: speaker.title + ": ఈ శ్లోకంలో " + chapterInfo.name_sanskrit + " ఆధారంగా ఆత్మ తత్త్వము మరియు నిష్కామ కర్మయోగ రహస్యము ఉపదేశించబడింది.",
     },
     deep_bhashya: {
-      hinglish: `1. **${chapterInfo.name_sanskrit} Ka Mool Uddeshya**: Ye shloka hamari chetna (consciousness) ko illusion aur anxiety se nikaalkar eternal truth se connect karta hai.\n\n2. **Karmayoga vs Sannyasa**: Jab vyakti bina result ke fear ke 100% focus ke saath kaam karta hai, toh har kaam pooja aur sadhana ban jaata hai.\n\n3. **Chetna Ki Shanti**: Vrittiyon ka nirodh karke sthitaprajna banne ka yahi marg hai.`,
-      hi: `१. **${chapterInfo.name_sanskrit} का दार्शनिक रहस्य**: यह श्लोक साधक की चेतना को अज्ञान और संशय से मुक्त कर परम सत्य में प्रतिष्ठित करता है।\n\n२. **आदि शंकराचार्य भाष्य**: आत्मा नित्य, शुद्ध, बुद्ध एवं मुक्त स्वभाव है। कर्तव्य कर्म को ईश्वरार्पण बुद्धि से करने पर ही चित्त की शुद्धि होती है।\n\n३. **रामानुजाचार्य एवं मध्वाचार्य दृष्टि**: शरणागति और अनन्य भक्ति द्वारा ही जीव भगवान के दिव्य अनुग्रह का पात्र बनता है।`,
-      en: `1. **Core Metaphysical Thesis of ${chapterInfo.name_en}**: This verse illuminates the transcendence of consciousness over material entanglements and cognitive distortions.\n\n2. **The Philosophy of Action**: Through dedication to duty without anxious attachment, the mind dissolves egoic restlessness and ascends into supreme meditative flow.\n\n3. **Classical Vedanta Synthesis**: Shankara emphasizes non-dual realization, Ramanuja stresses devotional surrender, and Madhva highlights eternal divine grace.`,
-      sa: `अस्य श्लोकस्य तत्त्वमस्ति यत् निष्कामकर्मणा चित्तशुद्धिः, ज्ञानेन च मोक्षः सिद्ध्यति।`,
-      mr: `या श्लोकात शंकराचार्य आणि ज्ञानेश्वरांच्या भाष्य प्रमाणे निःस्वार्थ कर्तव्य आणि भक्तीचा मार्ग दाखवला आहे.`,
-      gu: `આ શ્લોક મનને સ્થિર કરી કર્તવ્ય પથ પર આગળ વધવાની દિવ્ય પ્રેરણા આપે છે.`,
-      bn: `এই শ্লোকে কর্ম ও জ্ঞানের অপার্থিব সামঞ্জস্য ব্যাখ্যা করা হইয়াছে।`,
-      ta: `கடமையை ஆற்றுவதே யோகம் என்ற தத்துவத்தை இந்த ஸ்லோகம் போதிக்கிறது.`,
-      te: `కర్తవ్య నిర్వహణయే పరమ ధర్మమని ఈ శ్లోకం ప్రబోధిస్తున్నది.`,
+      hinglish: getDeepSampradayaCommentary(chapter, verse, "universal", "hinglish"),
+      hi: getDeepSampradayaCommentary(chapter, verse, "universal", "hi"),
+      en: getDeepSampradayaCommentary(chapter, verse, "universal", "en"),
+      sa: "अस्य श्लोकस्य तत्त्वमस्ति यत् निष्कामकर्मणा चित्तशुद्धिः, ज्ञानेन च मोक्षः सिद्ध्यति।",
+      mr: getDeepSampradayaCommentary(chapter, verse, "universal", "hi"),
+      gu: getDeepSampradayaCommentary(chapter, verse, "universal", "hi"),
+      bn: getDeepSampradayaCommentary(chapter, verse, "universal", "hi"),
+      ta: getDeepSampradayaCommentary(chapter, verse, "universal", "en"),
+      te: getDeepSampradayaCommentary(chapter, verse, "universal", "en"),
+    },
+    sampradaya_notes: {
+      advaita: getDeepSampradayaCommentary(chapter, verse, "advaita", "hi"),
+      vishishtadvaita: getDeepSampradayaCommentary(chapter, verse, "vishishtadvaita", "hi"),
+      dvaita: getDeepSampradayaCommentary(chapter, verse, "dvaita", "hi"),
+      universal: getDeepSampradayaCommentary(chapter, verse, "universal", "hi"),
     },
     psychological_insight: {
       hinglish: "Overthinking, imposter syndrome aur failure ke fear ko hamesha ke liye khatam karne ke liye mind ko outcome se decouple karein aur current minute ke action me 100% involve karein.",
       hi: "मानसिक तनाव, असफलता के भय और अति-चिन्तन (Overthinking) से मुक्ति पाने के लिए अपने मन को फल की आसक्ति से मुक्त करें और वर्तमान क्षण के कर्म में पूर्णतः लीन हो जाएँ।",
       en: "To permanently conquer cognitive anxiety, imposter syndrome, and outcome dread, decouple your self-worth from external validation and invest all conscious energy into the craft of the present moment.",
-      sa: "मनसः शान्तये फलासक्तिं त्यक्त्वा वर्तमानकर्मणि एकाग्रता आवश्यकी।",
-      mr: "मानसिक तणाव घालवण्यासाठी निकालाची चिंता सोडून वर्तमानात जगा.",
-      gu: "ચિંતા મુક્ત થવા માટે પરિણામનો મોહ છોડીને વર્તમાનમાં ૧૦૦% ધ્યાન આપો.",
-      bn: "মানসিক শান্তি লাভের জন্য ফলাফলের চিন্তা ত্যাগ করিয়া কাজে মগ্ন হোন।",
-      ta: "மன அமைதிக்கு செயலில் மட்டும் கவனம் செலுத்துங்கள்.",
-      te: "మానసిక ప్రశాంతత కొరకు ఫలితంపై వ్యామోహాన్ని వీడి పనిపై దృష్టి నిలపండి.",
     },
     practical_insight: {
       hinglish: "Daily Life Blueprint: Aaj kisi bhi 1 important task ko chunein aur phone/notifications silent karke agle 45 minutes tak bina result soche use master artist ki tarah finish karein.",
-      hi: "व्यावहारिक जीवन सूत्र: आज अपने सबसे महत्वपूर्ण कार्य को चुनें और सभी भटकावों को दूर रखकर अगले ४५ मिनट तक बिना परिणाम की चिंता किए उसे पूर्ण समर्पण और एकाग्रता से सम्पन्न करें।",
-      en: "Daily Life Blueprint: Pick one vital task today, mute all distractions, and spend the next 45 minutes executing it with the singular devotion of a master craftsman without bargaining for future applause.",
-      sa: "एकाग्रचित्तेन कर्म सम्पाद्य जीवनं सफलं कुरु।",
-      mr: "आज एका महत्वाच्या कामावर ४५ मिनिटे पूर्ण एकाग्रतेने काम करा.",
-      gu: "આજે કોઈપણ મહત્વના કામમાં ૪૫ મિનિટ માટે સંપૂર્ણ એકાગ્ર થઈને કામ કરો.",
-      bn: "আজ একটি প্রধান কাজে পূর্ণ মনোযোগ প্রদান করুন।",
-      ta: "இன்றைய முக்கியமான செயலில் முழு மனதுடன் ஈடுபடுங்கள்.",
-      te: "నేటి ముఖ్యమైన పనిని సంపూర్ణ ఏకాగ్రతతో పూర్తి చేయండి.",
-    },
-    sampradaya_notes: {
-      advaita: "अद्वैत वेदान्त (शंकराचार्य): आत्मा और ब्रह्म की अभेदता एवं अविद्या की निवृत्ति।",
-      vishishtadvaita: "विशिष्टाद्वैत (रामानुजाचार्य): सर्वव्यापी नारायण की शरणागति और दिव्य सेवा।",
-      dvaita: "द्वैत वेदान्त (मध्वाचार्य): भगवान श्री विष्णु की सर्वोत्कृष्टता और नित्य भक्ति।"
+      hi: "व्यावहारिक जीवन सूत्र: आज के किसी भी १ मुख्य कार्य का चयन करें, सभी विक्षेपों (Distractions) को बंद करें और अगले ४५ मिनट तक केवल कर्म की गुणवत्ता पर पूर्ण ध्यान दें।",
+      en: "Practical Daily Blueprint: Choose 1 mission-critical priority today, silence all digital distractions, and immerse yourself in 45 minutes of pure, uninterrupted deep work.",
     }
   };
 }
