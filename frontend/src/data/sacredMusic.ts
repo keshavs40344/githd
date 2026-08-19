@@ -5,6 +5,7 @@ export interface SacredTrack {
   category: string;
   raga: string;
   audioUrl: string;
+  youtubeId?: string;
   duration: string;
   mood: string;
   isAiGenerated: boolean;
@@ -14,31 +15,34 @@ export interface SacredTrack {
 
 export const REALISTIC_BHAGWAT_TRACKS: SacredTrack[] = [
   {
-    id: 'vrindavan-bansuri-studio',
-    title: 'वृन्दावन मुरली अमृत (Vrindavan Studio Flute & Yamuna)',
-    subtitle: 'Authentic 432Hz Bamboo Bansuri in Raga Yaman Kalyan with gentle Yamuna waters',
-    category: 'दिव्य मुरली',
-    raga: 'राग यमन कल्याण (Raga Yaman 432Hz)',
+    id: 'divine-flute-master-tune-1',
+    title: 'दिव्य कृष्ण मुरली अमृत धुन (Divine Master Flute Tune)',
+    subtitle: 'Ultra-pure 432Hz meditative bamboo flute with sanctum resonance & peace',
+    category: 'परम मुरली',
+    raga: 'राग यमन कल्याण (Raga Yaman)',
+    youtubeId: 'gOSjUOYbAic',
     audioUrl: 'https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=indian-spiritual-flute-14815.mp3',
-    duration: '04:12',
-    mood: 'परम शांति एवं कृष्ण प्रेम',
+    duration: 'Sacred Stream',
+    mood: 'परम शांति, मानसिक विश्राम एवं कृष्ण शरणागति',
     isAiGenerated: false,
     baseFreq: 136.1,
-    tags: ['Flute', 'Bansuri', 'Krishna', '432Hz', 'Yamuna']
+    tags: ['Master Tune', 'Flute', 'Krishna', '432Hz', 'Peace']
   },
   {
-    id: 'vedic-gita-shloka-recitation',
-    title: 'श्रीमद्भगवद्गीता सम्पूर्ण पाठ (Vedic Gita Chanting & Tanpura)',
-    subtitle: 'Pure Sanskrit Temple Chanting with 136.1Hz Acoustic Tanpura & Bronze Bells',
-    category: 'वैदिक पाठ',
-    raga: 'राग अहीर भैरव (Raga Ahir Bhairav)',
+    id: 'divine-peace-meditation-tune-2',
+    title: 'परम पावन ध्यान व शांति धुन (Deep Meditation & Harmony Tune)',
+    subtitle: 'Soul-stirring divine acoustic melody for deep sadhana and anxiety relief',
+    category: 'शांति व समाधि',
+    raga: 'राग भैरवी व मालकौंस',
+    youtubeId: 'GUPHaaVG_zo',
     audioUrl: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=meditation-spiritual-112191.mp3',
-    duration: '03:45',
-    mood: 'आध्यात्मिक जाग्रति एवं ध्यान',
+    duration: 'Sacred Stream',
+    mood: 'एकाग्रता, तनाव मुक्ति एवं आंतरिक प्रकाश',
     isAiGenerated: false,
-    baseFreq: 136.1,
-    tags: ['Gita', 'Vedic', 'Tanpura', 'Sanskrit']
+    baseFreq: 528.0,
+    tags: ['Meditation', 'Peace', 'Harmony', 'Spiritual Tune']
   },
+
   {
     id: 'kurukshetra-shankhnaad-epic',
     title: 'कुरुक्षेत्र शंखनाद एवं धर्मयुद्ध (Kurukshetra Conch & Battle Drums)',

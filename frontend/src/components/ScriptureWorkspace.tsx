@@ -17,7 +17,8 @@ import { GitaVerse, AnvayaToken, CHAPTERS } from '@/types/verse';
 import { useVerseNavigation } from '@/hooks/useVerseNavigation';
 import Link from 'next/link';
 
-export default function ScriptureWorkspace({ verses }: { verses: GitaVerse[] }) {
+export default function ScriptureWorkspace({ verses: initialVerses }: { verses: GitaVerse[] }) {
+  const [allVerses, setAllVerses] = useState<GitaVerse[]>(initialVerses);
   const { 
     currentChapter, 
     currentVerse, 
@@ -28,19 +29,48 @@ export default function ScriptureWorkspace({ verses }: { verses: GitaVerse[] }) 
     prevVerse,
     currentVerseData,
     versesInCurrentChapter 
-  } = useVerseNavigation(verses);
+  } = useVerseNavigation(allVerses);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVersePickerOpen, setIsVersePickerOpen] = useState(false);
   const [selectedToken, setSelectedToken] = useState<AnvayaToken | null>(null);
+  const [isLoadingVerse, setIsLoadingVerse] = useState(false);
   
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isSavedOpen, setIsSavedOpen] = useState(false);
   const [savedCount, setSavedCount] = useState(0);
 
-  const activeVerse = currentVerseData || verses.find(v => v.chapter === currentChapter && v.verse === currentVerse) || verses[0];
+  // If active verse is not loaded, fetch dynamically
+  useEffect(() => {
+    const exists = allVerses.some(v => v.chapter === currentChapter && v.verse === currentVerse);
+    if (!exists) {
+      setIsLoadingVerse(true);
+      fetch(`/api/v1/shloka?chapter=${currentChapter}&verse=${currentVerse}`)
+        .then(res => res.json())
+        .then(res => {
+          if (res.success && res.data) {
+            const newVerse: GitaVerse = {
+              chapter: currentChapter,
+              verse: currentVerse,
+              devanagari: res.data.devanagari,
+              iast: res.data.iast,
+              translation_hi: res.data.translation_hi,
+              translation_en: res.data.translation_en,
+              practical_insight: res.data.practical_insight,
+              anvaya_tokens: res.data.anvaya_tokens || []
+            };
+            setAllVerses(prev => [...prev, newVerse]);
+          }
+        })
+        .catch(err => console.warn('Dynamic verse fetch error:', err))
+        .finally(() => setIsLoadingVerse(false));
+    }
+  }, [currentChapter, currentVerse, allVerses]);
+
+  const activeVerse = currentVerseData || allVerses.find(v => v.chapter === currentChapter && v.verse === currentVerse) || allVerses[0];
   const currentChapterInfo = CHAPTERS.find(c => c.number === currentChapter) || CHAPTERS[0];
-  const dailyVerse = verses.length > 0 ? verses[Math.floor(new Date().getDate() % verses.length)] : null;
+  const dailyVerse = allVerses.length > 0 ? allVerses[Math.floor(new Date().getDate() % allVerses.length)] : null;
+
 
   const updateSavedCount = () => {
     const saved = JSON.parse(localStorage.getItem('dharma_saved_verses') || '[]');
@@ -174,7 +204,7 @@ export default function ScriptureWorkspace({ verses }: { verses: GitaVerse[] }) 
             
             <div className="grid grid-cols-5 sm:grid-cols-8 gap-2 max-h-80 overflow-y-auto p-1 custom-scrollbar">
               {Array.from({ length: currentChapterInfo.verse_count }, (_, i) => i + 1).map(vNum => {
-                const isLoaded = verses.some(v => v.chapter === currentChapter && v.verse === vNum);
+                const isLoaded = allVerses.some(v => v.chapter === currentChapter && v.verse === vNum);
                 const isCurrent = currentVerse === vNum;
                 return (
                   <button
@@ -183,6 +213,7 @@ export default function ScriptureWorkspace({ verses }: { verses: GitaVerse[] }) 
                       setVerse(vNum);
                       setIsVersePickerOpen(false);
                     }}
+
                     className={`h-10 rounded-xl text-xs font-mono font-medium flex items-center justify-center transition-all cursor-pointer border ${
                       isCurrent
                         ? 'bg-gold-400 text-obsidian-950 border-gold-300 font-bold shadow-[0_0_12px_rgba(223,168,55,0.5)]'
@@ -294,15 +325,16 @@ export default function ScriptureWorkspace({ verses }: { verses: GitaVerse[] }) 
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
         onSelectVerse={jumpTo}
-        verses={verses}
+        verses={allVerses}
       />
 
       <SavedVersesDrawer
         isOpen={isSavedOpen}
         onClose={() => setIsSavedOpen(false)}
         onSelectVerse={jumpTo}
-        verses={verses}
+        verses={allVerses}
       />
+
     </div>
   );
 }
