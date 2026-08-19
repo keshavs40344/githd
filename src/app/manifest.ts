@@ -1,17 +1,23 @@
-import type { MetadataRoute } from 'next';
+import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Dharma.OS — Spiritual Intelligence Platform',
+    name: 'Dharma.OS — Vedic Spiritual Intelligence',
     short_name: 'Dharma.OS',
-    description: 'GPU-accelerated, offline-first Bhagavad Gita platform with AI-powered spiritual mentorship',
+    description: 'Bhagavad Gita 700 Shlokas, Krishna AI Cognitive Mentor & Sacred Sound Sanctum',
     start_url: '/',
     display: 'standalone',
-    background_color: '#050508',
-    theme_color: '#dfa837',
+    background_color: '#030305',
+    theme_color: '#e8a320',
     icons: [
-      { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
-      { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+      {
+        src: '/favicon.ico',
+        sizes: '64x64 32x32 24x24 16x16',
+        type: 'image/x-icon',
+      },
     ],
+    categories: ['education', 'lifestyle', 'spirituality', 'music'],
+    lang: 'hi',
+    orientation: 'portrait',
   };
 }
