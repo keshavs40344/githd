@@ -12,6 +12,7 @@ import { getComprehensiveVerse } from '@/data/canonicalGitaTranslations';
 import { generateUniversalVedicData } from '@/lib/universalVedicEngine';
 import { getSpeakerForVerse, getChhandaForVerse } from '@/lib/universalVedicEngine';
 import { getMasterTimestampForVerse, MasterShlokaTimestamp, MASTER_VIDEO_ID } from '@/data/gitaMasterAudioTimestamps';
+import { getArtworkForShloka } from '@/data/krishnaArtworks';
 import { getGitaVideoForVerse } from '@/data/gitaVideoEpisodes';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useLanguage } from '@/context/LanguageContext';
@@ -365,6 +366,8 @@ export default function ScriptureReader({
     large: 'text-2xl sm:text-3xl md:text-4xl leading-loose tracking-wider font-semibold'
   };
 
+  const shlokaArtwork = getArtworkForShloka(verse.chapter, verse.verse);
+
   // Equalizer bar heights for dynamic animation
   const barHeights = [40, 70, 95, 60, 85, 100, 75, 45, 90, 65, 80, 50, 95, 70, 85, 55];
 
@@ -448,7 +451,35 @@ export default function ScriptureReader({
       </div>
 
       {/* ── TIER 1: SACRED SHLOKA ALTAR CARD (Devanagari, Speaker & Chhanda) ───── */}
-      <div className="relative rounded-3xl bg-gradient-to-b from-[#141622] via-[#0d0e16] to-[#07080c] border border-[#c5a059]/30 p-6 sm:p-9 shadow-2xl overflow-hidden space-y-5">
+      <div className="relative rounded-3xl bg-gradient-to-b from-[#141622] via-[#0d0e16] to-[#07080c] border-2 border-[#c5a059]/35 shadow-2xl overflow-hidden space-y-5">
+        
+        {/* ── SHLOKA HD KRISHNA ARTWORK HERO BANNER ── */}
+        <div className="relative w-full h-44 sm:h-56 md:h-64 overflow-hidden bg-black rounded-2xl border-b border-[#c5a059]/30">
+          <img
+            src={shlokaArtwork}
+            alt={`श्रीमद्भगवद्गीता श्लोक ${verse.chapter}.${verse.verse}`}
+            className="w-full h-full object-cover filter brightness-85 hover:brightness-100 transition-all duration-700 hover:scale-105"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0d0e16] via-[#0d0e16]/40 to-transparent" />
+          
+          {/* Top Inscription Pill */}
+          <div className="absolute top-3 left-3 px-3 py-1 rounded-xl bg-black/75 backdrop-blur-md border border-[#c5a059]/40 text-xs font-mono font-bold text-[#e6c687] shadow-lg">
+            <span>अध्याय {verse.chapter} · श्लोक {verse.verse}</span>
+          </div>
+
+          <div className="absolute top-3 right-3 px-3 py-1 rounded-xl bg-black/75 backdrop-blur-md border border-[#c5a059]/30 text-xs font-serif text-[#f5eed9] shadow-lg">
+            ✨ {speaker.title}
+          </div>
+
+          <div className="absolute bottom-3 left-4 right-4">
+            <span className="text-[10px] sm:text-xs font-serif text-[#e6c687] drop-shadow-md">
+              श्रीमद्भगवद्गीता महामन्दिर • दिव्य अमर वाणी
+            </span>
+          </div>
+        </div>
+
+        <div className="p-4 sm:p-7 space-y-5">
         
         {/* Subtle Brass Corner Filigree */}
         <div className="absolute top-3 left-3 text-[#c5a059]/25 text-xs font-serif select-none pointer-events-none">𑁍</div>
@@ -493,6 +524,8 @@ export default function ScriptureReader({
             <MessageSquare className="w-3.5 h-3.5 text-[#e6c687]" />
             <span>इस श्लोक पर कृष्ण AI से दिव्य संवाद करें 🪔</span>
           </button>
+        </div>
+
         </div>
 
       </div>

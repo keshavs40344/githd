@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { CHAPTERS, GitaVerse } from '@/types/verse';
 import { getMasterTimestampForVerse } from '@/data/gitaMasterAudioTimestamps';
-import { getArtworkForShloka } from '@/data/krishnaArtworks';
+import { getArtworkForChapter, getArtworkForShloka } from '@/data/krishnaArtworks';
 import { getSpeakerForVerse } from '@/lib/universalVedicEngine';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useLanguage } from '@/context/LanguageContext';
@@ -35,6 +35,7 @@ export default function ChapterDetailView({
   const [activeVerseRange, setActiveVerseRange] = useState<string>('all');
 
   const chapterInfo = CHAPTERS.find(c => c.number === chapterNum) || CHAPTERS[0];
+  const chapterArtwork = getArtworkForChapter(chapterNum);
   
   // Filter shlokas belonging to this chapter
   const chapterVerses = verses.filter(v => v.chapter === chapterNum);
@@ -125,41 +126,48 @@ export default function ChapterDetailView({
         </div>
       </div>
 
-      {/* ── CHAPTER HERO BANNER (ROYAL AUDIOBOOK ALBUM HEADER) ─────────────── */}
-      <div className="relative rounded-3xl bg-gradient-to-r from-[#181a2c] via-[#0e101d] to-[#151726] border-2 border-[#c5a059]/40 p-6 sm:p-9 shadow-[0_15px_45px_rgba(0,0,0,0.9)] overflow-hidden space-y-4">
+      {/* ── CHAPTER HERO BANNER (WITH HD KRISHNA THUMBNAIL) ────────────────── */}
+      <div className="relative rounded-3xl bg-gradient-to-r from-[#181a2c] via-[#0e101d] to-[#151726] border-2 border-[#c5a059]/40 shadow-[0_15px_45px_rgba(0,0,0,0.9)] overflow-hidden">
         
-        {/* Background Divine Mandala Radiance */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#c5a059]/10 rounded-full blur-2xl pointer-events-none" />
+        {/* Large Background / Side HD Krishna Artwork */}
+        <div className="relative w-full h-48 sm:h-64 md:h-72 overflow-hidden bg-black">
+          <img
+            src={chapterArtwork}
+            alt={chapterInfo.name_sanskrit}
+            className="w-full h-full object-cover filter brightness-75"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0e101d] via-[#0e101d]/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0e101d] via-[#0e101d]/80 to-transparent" />
+          
+          <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-8 sm:right-8 space-y-2">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="px-3.5 py-1 rounded-full bg-gradient-to-r from-[#c5a059] to-amber-500 text-[#090a0f] text-xs font-mono font-bold shadow-md">
+                अध्याय {chapterNum}
+              </span>
+              <span className="text-xs font-serif text-[#e6c687] italic">
+                {chapterInfo.name_en}
+              </span>
+            </div>
 
-        <div className="relative z-10 space-y-3">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span className="px-3.5 py-1 rounded-full bg-gradient-to-r from-[#c5a059] to-amber-500 text-[#090a0f] text-xs font-mono font-bold shadow-md">
-              अध्याय {chapterNum}
-            </span>
-            <span className="text-xs font-serif text-[#e6c687] italic">
-              {chapterInfo.name_en}
-            </span>
-          </div>
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-devanagari font-bold text-[#f5eed9] drop-shadow-md leading-tight">
+              {chapterInfo.name_sanskrit}
+            </h1>
 
-          <h1 className="text-2xl sm:text-4xl lg:text-5xl font-devanagari font-bold text-[#f5eed9] leading-tight">
-            {chapterInfo.name_sanskrit}
-          </h1>
+            <p className="text-xs sm:text-sm text-[#f5eed9]/90 font-serif leading-relaxed max-w-3xl drop-shadow">
+              {chapterInfo.summary_hi}
+            </p>
 
-          <p className="text-xs sm:text-sm md:text-base text-[#c5a059]/90 font-serif leading-relaxed max-w-3xl">
-            {chapterInfo.summary_hi}
-          </p>
-
-          {/* Quick Action: Start From Shloka 1 */}
-          <div className="pt-2 flex flex-wrap items-center gap-3">
-            <Link
-              href={`/chapter/${chapterNum}/1`}
-              onClick={() => sacredAudio.playTempleBell(0.3)}
-              className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-[#d4af37] via-[#c5a059] to-amber-600 hover:from-[#e6c687] hover:to-[#d4af37] text-[#090a0f] font-serif font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-xl hover:scale-102 active:scale-95"
-            >
-              <Play className="w-4 h-4 fill-current" />
-              <span>श्लोक १ से वाचन व अध्ययन प्रारंभ करें ▶️</span>
-            </Link>
+            {/* Start Chanting Button */}
+            <div className="pt-2 flex flex-wrap items-center gap-3">
+              <Link
+                href={`/chapter/${chapterNum}/1`}
+                onClick={() => sacredAudio.playTempleBell(0.3)}
+                className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-[#d4af37] via-[#c5a059] to-amber-600 hover:from-[#e6c687] hover:to-[#d4af37] text-[#090a0f] font-serif font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-xl hover:scale-102 active:scale-95"
+              >
+                <Play className="w-4 h-4 fill-current" />
+                <span>श्लोक १ से वाचन व अध्ययन प्रारंभ करें ▶️</span>
+              </Link>
+            </div>
           </div>
         </div>
 
@@ -214,7 +222,7 @@ export default function ChapterDetailView({
 
       </div>
 
-      {/* ── CONDITIONAL VIEW: ROYAL BOX CARDS GRID (PRIMARY VIEW WITH REAL LINKS) ── */}
+      {/* ── CONDITIONAL VIEW: ROYAL BOX CARDS GRID (WITH HD KRISHNA THUMBNAILS) ── */}
       {viewMode === 'grid' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {displayedVerses.map(v => {
@@ -249,7 +257,7 @@ export default function ChapterDetailView({
                     </div>
                     <div className="flex flex-col drop-shadow-md">
                       <span className="text-xs font-devanagari font-bold text-[#f5eed9]">
-                        श्लोक ${v.chapter}.${v.verse}
+                        श्लोक {v.chapter}.{v.verse}
                       </span>
                       <span className="text-[10px] font-mono text-[#e6c687]">
                         {ts.formattedStart}
@@ -304,7 +312,7 @@ export default function ChapterDetailView({
           })}
         </div>
       ) : (
-        /* ── ALTERNATE VIEW: STREAMLINED AUDIO TRACK LIST WITH REAL LINKS ── */
+        /* ── ALTERNATE VIEW: STREAMLINED AUDIO TRACK LIST ─────────────────── */
         <div className="space-y-3">
           {displayedVerses.map(v => {
             const ts = getMasterTimestampForVerse(v.chapter, v.verse);
