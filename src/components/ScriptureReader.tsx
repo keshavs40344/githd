@@ -4,13 +4,14 @@ import React, { useState, useEffect } from 'react';
 import { 
   Play, Pause, RotateCcw, BookOpen, 
   Bookmark, BookmarkCheck, Check, Copy, CheckCircle2,
-  MessageSquare, Flame, SkipBack, SkipForward, Sparkles, Disc3, Volume2, VolumeX
+  MessageSquare, Flame, SkipBack, SkipForward, Sparkles, Disc3, Volume2, VolumeX,
+  Radio, Music
 } from 'lucide-react';
 import { GitaVerse, AnvayaToken } from '@/types/verse';
 import { getComprehensiveVerse } from '@/data/canonicalGitaTranslations';
 import { generateUniversalVedicData } from '@/lib/universalVedicEngine';
 import { getSpeakerForVerse, getChhandaForVerse } from '@/lib/universalVedicEngine';
-import { getMasterTimestampForVerse, MasterShlokaTimestamp } from '@/data/gitaMasterAudioTimestamps';
+import { getMasterTimestampForVerse, MasterShlokaTimestamp, MASTER_VIDEO_ID } from '@/data/gitaMasterAudioTimestamps';
 import { getGitaVideoForVerse } from '@/data/gitaVideoEpisodes';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useLanguage } from '@/context/LanguageContext';
@@ -54,6 +55,7 @@ export default function ScriptureReader({
   const [isLooping, setIsLooping] = useState(true);
   const [elapsedSec, setElapsedSec] = useState(0);
   const [playerKey, setPlayerKey] = useState(0);
+  const [audioSourceMode, setAudioSourceMode] = useState<'auto' | 'master' | 'dedicated'>('auto');
 
   const canonical = getComprehensiveVerse(verse.chapter, verse.verse);
   const universal = generateUniversalVedicData(verse.chapter, verse.verse);
@@ -64,14 +66,23 @@ export default function ScriptureReader({
   const masterTimestamp: MasterShlokaTimestamp = getMasterTimestampForVerse(verse.chapter, verse.verse);
   const dedicatedVideo = getGitaVideoForVerse(verse.chapter, verse.verse);
 
-  // Active audio source
-  const activeVideoId = dedicatedVideo.type === 'exact_verse' 
-    ? dedicatedVideo.videoId 
-    : masterTimestamp.videoId;
+  // Determine Active Audio Stream with Guaranteed Non-Blank Playback
+  let activeVideoId = masterTimestamp.videoId;
+  let activeStartSec = masterTimestamp.startSeconds;
+  let activeEndSec = masterTimestamp.endSeconds;
+  let totalDuration = Math.max(25, masterTimestamp.duration || 60);
 
-  const activeStartSec = dedicatedVideo.type === 'exact_verse' ? 0 : masterTimestamp.startSeconds;
-  const activeEndSec = dedicatedVideo.type === 'exact_verse' ? 240 : masterTimestamp.endSeconds;
-  const totalDuration = dedicatedVideo.type === 'exact_verse' ? 120 : masterTimestamp.duration;
+  if (audioSourceMode === 'dedicated' || (audioSourceMode === 'auto' && dedicatedVideo.type === 'exact_verse')) {
+    activeVideoId = dedicatedVideo.videoId;
+    activeStartSec = 0;
+    activeEndSec = 180;
+    totalDuration = 80;
+  } else {
+    activeVideoId = MASTER_VIDEO_ID;
+    activeStartSec = masterTimestamp.startSeconds;
+    activeEndSec = masterTimestamp.endSeconds;
+    totalDuration = Math.max(30, masterTimestamp.duration);
+  }
 
   // Reset audio & timer when changing verse
   useEffect(() => {
@@ -494,7 +505,7 @@ export default function ScriptureReader({
           <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-[#c5a059]/15 to-amber-600/10 animate-pulse pointer-events-none" />
         )}
 
-        {/* Top Track Row: [ Vinyl Icon ] [ Track Meta & Animated Waveform ] [ Loop Toggle ] */}
+        {/* Top Track Row: [ Vinyl Icon ] [ Track Meta & Animated Waveform ] [ Loop & Stream Mode ] */}
         <div className="flex items-center justify-between gap-3 relative z-10">
           
           <div className="flex items-center gap-3 min-w-0">
@@ -545,22 +556,41 @@ export default function ScriptureReader({
             </div>
           </div>
 
-          {/* Repeat / Loop Badge Button */}
-          <button
-            onClick={() => {
-              setIsLooping(!isLooping);
-              sacredAudio.playNavChime(0.05);
-            }}
-            className={`px-3 py-1.5 rounded-xl text-xs font-sans flex items-center gap-1.5 transition-all cursor-pointer border shrink-0 ${
-              isLooping
-                ? 'bg-amber-500/20 text-[#f5eed9] border-amber-400/50 shadow-sm font-semibold'
-                : 'bg-[#090a0f]/60 text-[#c5a059]/60 border-[#c5a059]/20'
-            }`}
-            title="श्लोक समाप्त होने पर स्वतः दोहराएं"
-          >
-            <RotateCcw className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">दोहराएं {isLooping ? '✓' : ''}</span>
-          </button>
+          {/* Action Pills: Alternate Stream & Repeat Toggle */}
+          <div className="flex items-center gap-2 shrink-0">
+            {dedicatedVideo.type === 'exact_verse' && (
+              <button
+                onClick={() => {
+                  setAudioSourceMode(m => m === 'auto' || m === 'dedicated' ? 'master' : 'dedicated');
+                  setPlayerKey(k => k + 1);
+                  setElapsedSec(0);
+                  sacredAudio.playNavChime(0.06);
+                }}
+                className="px-2.5 py-1 rounded-xl text-[10px] font-mono border bg-[#090a0f]/70 border-[#c5a059]/30 text-[#e6c687] hover:border-[#c5a059] cursor-pointer hidden sm:flex items-center gap-1"
+                title="स्विच ऑडियो स्रोत"
+              >
+                <Radio className="w-3 h-3" />
+                <span>{audioSourceMode === 'master' ? 'महा-ट्रैक' : 'सटीक श्लोक'}</span>
+              </button>
+            )}
+
+            {/* Repeat / Loop Badge Button */}
+            <button
+              onClick={() => {
+                setIsLooping(!isLooping);
+                sacredAudio.playNavChime(0.05);
+              }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-sans flex items-center gap-1.5 transition-all cursor-pointer border ${
+                isLooping
+                  ? 'bg-amber-500/20 text-[#f5eed9] border-amber-400/50 shadow-sm font-semibold'
+                  : 'bg-[#090a0f]/60 text-[#c5a059]/60 border-[#c5a059]/20'
+              }`}
+              title="श्लोक समाप्त होने पर स्वतः दोहराएं"
+            >
+              <RotateCcw className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">दोहराएं {isLooping ? '✓' : ''}</span>
+            </button>
+          </div>
 
         </div>
 
