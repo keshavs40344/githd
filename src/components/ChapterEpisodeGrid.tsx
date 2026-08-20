@@ -1,15 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { BookOpen, Sparkles, Flame, Headphones, Compass, ArrowRight, Search, CheckCircle2 } from 'lucide-react';
+import Link from 'next/link';
+import { BookOpen, Sparkles, Flame, Headphones, Compass, ArrowRight, Search } from 'lucide-react';
 import { CHAPTERS, ChapterInfo } from '@/types/verse';
 import { getArtworkForChapter } from '@/data/krishnaArtworks';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useLanguage } from '@/context/LanguageContext';
 
 interface ChapterEpisodeGridProps {
-  onSelectChapter: (chapterNum: number) => void;
-  onDirectShloka: (chapterNum: number, verseNum: number) => void;
+  onSelectChapter?: (chapterNum: number) => void;
+  onDirectShloka?: (chapterNum: number, verseNum: number) => void;
 }
 
 const CHAPTER_METADATA: Record<number, {
@@ -156,14 +157,14 @@ export default function ChapterEpisodeGrid({
           </h1>
 
           <p className="text-xs sm:text-sm md:text-base text-[#c5a059]/90 font-serif leading-relaxed">
-            कुरुक्षेत्र के धर्मक्षेत्र में भगवान श्रीकृष्ण के श्रीमुख से प्रकट हुई दिव्य अमर वाणी। प्रत्येक अध्याय पर क्लिक करके उसके सभी श्लोक, प्रामाणिक यूट्यूब वाचन एवं १०-स्तरीय भाष्यों का रसास्वादन करें।
+            कुरुक्षेत्र के धर्मक्षेत्र में भगवान श्रीकृष्ण के श्रीमुख से प्रकट हुई दिव्य अमर वाणी। प्रत्येक अध्याय पर क्लिक करके उसके अलग वेब पेज, प्रामाणिक यूट्यूब वाचन एवं १०-स्तरीय भाष्यों का रसास्वादन करें।
           </p>
 
           {/* Quick Stats Bar */}
           <div className="pt-2 flex flex-wrap items-center gap-4 sm:gap-6 text-xs font-serif text-[#e6c687]">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
-              <span>१८ दिव्य अध्याय (18 Chapters)</span>
+              <span>१८ दिव्य अध्याय (18 Dedicated Web Pages)</span>
             </div>
             <div className="flex items-center gap-2">
               <span>🪔 ७०० मन्त्र स्वरूप श्लोक (700 Verses)</span>
@@ -219,20 +220,18 @@ export default function ChapterEpisodeGrid({
 
       </div>
 
-      {/* ── 18 ROYAL CHAPTER CARDS GRID (WITH HD KRISHNA ARTWORKS) ────────── */}
+      {/* ── 18 ROYAL CHAPTER CARDS GRID (WITH REAL BROWSER LINK /chapter/X) ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {filteredChapters.map(ch => {
           const meta = CHAPTER_METADATA[ch.number] || CHAPTER_METADATA[1];
           const artworkUrl = getArtworkForChapter(ch.number);
 
           return (
-            <div
+            <Link
               key={ch.number}
-              onClick={() => {
-                sacredAudio.playTempleBell(0.25);
-                onSelectChapter(ch.number);
-              }}
-              className="group relative rounded-3xl bg-gradient-to-b from-[#161828] via-[#0e101c] to-[#080910] border-2 border-[#c5a059]/25 hover:border-[#c5a059] shadow-xl hover:shadow-[0_12px_40px_rgba(212,175,55,0.25)] transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden hover:-translate-y-1"
+              href={`/chapter/${ch.number}`}
+              onClick={() => sacredAudio.playTempleBell(0.25)}
+              className="group relative rounded-3xl bg-gradient-to-b from-[#161828] via-[#0e101c] to-[#080910] border-2 border-[#c5a059]/25 hover:border-[#c5a059] shadow-xl hover:shadow-[0_12px_40px_rgba(212,175,55,0.25)] transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden hover:-translate-y-1 block"
             >
               
               {/* ── TOP THUMBNAIL BANNER (HD KRISHNA ARTWORK) ── */}
@@ -284,7 +283,7 @@ export default function ChapterEpisodeGrid({
                 {/* Bottom Action Footer */}
                 <div className="pt-3 border-t border-[#c5a059]/15 flex items-center justify-between text-xs font-serif text-[#e6c687] group-hover:text-[#f5eed9]">
                   <span className="flex items-center gap-1.5 font-bold">
-                    <span>अध्याय के श्लोक खोलें</span>
+                    <span>अध्याय {ch.number} का अलग पेज खोलें</span>
                   </span>
                   <div className="w-7 h-7 rounded-xl bg-[#c5a059]/20 group-hover:bg-[#c5a059] group-hover:text-[#090a0f] flex items-center justify-center transition-colors">
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -292,7 +291,7 @@ export default function ChapterEpisodeGrid({
                 </div>
               </div>
 
-            </div>
+            </Link>
           );
         })}
       </div>

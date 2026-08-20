@@ -1,6 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { 
   ArrowLeft, Play, BookOpen, Sparkles, Volume2, 
   Search, LayoutGrid, List, ChevronRight, Layers,
@@ -16,8 +18,8 @@ import { useLanguage } from '@/context/LanguageContext';
 interface ChapterDetailViewProps {
   chapterNum: number;
   verses: GitaVerse[];
-  onBack: () => void;
-  onSelectShloka: (verseNum: number) => void;
+  onBack?: () => void;
+  onSelectShloka?: (verseNum: number) => void;
 }
 
 export default function ChapterDetailView({
@@ -26,6 +28,7 @@ export default function ChapterDetailView({
   onBack,
   onSelectShloka
 }: ChapterDetailViewProps) {
+  const router = useRouter();
   const { t } = useLanguage();
   const [filterSearch, setFilterSearch] = useState('');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
@@ -61,16 +64,22 @@ export default function ChapterDetailView({
     );
   });
 
+  const handleBack = () => {
+    sacredAudio.playNavChime(0.08);
+    if (onBack) {
+      onBack();
+    } else {
+      router.push('/#scripture');
+    }
+  };
+
   return (
     <div className="space-y-6 sm:space-y-8 animate-fade-in pb-20">
       
       {/* ── TOP BREADCRUMB & BACK NAVIGATION ──────────────────────────────── */}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <button
-          onClick={() => {
-            sacredAudio.playNavChime(0.08);
-            onBack();
-          }}
+          onClick={handleBack}
           className="px-4 py-2 rounded-2xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/30 hover:border-[#c5a059] text-xs font-serif text-[#e6c687] hover:text-[#f5eed9] flex items-center gap-2 transition-all cursor-pointer shadow-md hover:scale-102 active:scale-98"
         >
           <ArrowLeft className="w-4 h-4" />
@@ -143,16 +152,14 @@ export default function ChapterDetailView({
 
           {/* Quick Action: Start From Shloka 1 */}
           <div className="pt-2 flex flex-wrap items-center gap-3">
-            <button
-              onClick={() => {
-                sacredAudio.playTempleBell(0.3);
-                onSelectShloka(1);
-              }}
+            <Link
+              href={`/chapter/${chapterNum}/1`}
+              onClick={() => sacredAudio.playTempleBell(0.3)}
               className="px-6 py-2.5 rounded-2xl bg-gradient-to-r from-[#d4af37] via-[#c5a059] to-amber-600 hover:from-[#e6c687] hover:to-[#d4af37] text-[#090a0f] font-serif font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-xl hover:scale-102 active:scale-95"
             >
               <Play className="w-4 h-4 fill-current" />
               <span>श्लोक १ से वाचन व अध्ययन प्रारंभ करें ▶️</span>
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -207,7 +214,7 @@ export default function ChapterDetailView({
 
       </div>
 
-      {/* ── CONDITIONAL VIEW: ROYAL BOX CARDS GRID (PRIMARY VIEW) ─────────── */}
+      {/* ── CONDITIONAL VIEW: ROYAL BOX CARDS GRID (PRIMARY VIEW WITH REAL LINKS) ── */}
       {viewMode === 'grid' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
           {displayedVerses.map(v => {
@@ -216,13 +223,11 @@ export default function ChapterDetailView({
             const artworkUrl = getArtworkForShloka(v.chapter, v.verse);
 
             return (
-              <div
+              <Link
                 key={v.verse}
-                onClick={() => {
-                  sacredAudio.playTempleBell(0.2);
-                  onSelectShloka(v.verse);
-                }}
-                className="group relative rounded-3xl bg-gradient-to-b from-[#161828] via-[#0d0f1b] to-[#080910] border-2 border-[#c5a059]/25 hover:border-[#c5a059] shadow-xl hover:shadow-[0_12px_40px_rgba(212,175,55,0.25)] transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden hover:-translate-y-1"
+                href={`/chapter/${v.chapter}/${v.verse}`}
+                onClick={() => sacredAudio.playTempleBell(0.2)}
+                className="group relative rounded-3xl bg-gradient-to-b from-[#161828] via-[#0d0f1b] to-[#080910] border-2 border-[#c5a059]/25 hover:border-[#c5a059] shadow-xl hover:shadow-[0_12px_40px_rgba(212,175,55,0.25)] transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden hover:-translate-y-1 block"
               >
                 
                 {/* ── SHLOKA ULTRA-HD KRISHNA ARTWORK BANNER ── */}
@@ -244,7 +249,7 @@ export default function ChapterDetailView({
                     </div>
                     <div className="flex flex-col drop-shadow-md">
                       <span className="text-xs font-devanagari font-bold text-[#f5eed9]">
-                        श्लोक {v.chapter}.{v.verse}
+                        श्लोक ${v.chapter}.${v.verse}
                       </span>
                       <span className="text-[10px] font-mono text-[#e6c687]">
                         {ts.formattedStart}
@@ -287,19 +292,19 @@ export default function ChapterDetailView({
                     </span>
 
                     <div className="flex items-center gap-1.5 text-[#e6c687] group-hover:text-[#f5eed9] font-bold group-hover:translate-x-0.5 transition-transform">
-                      <span>वाचन व भाष्य</span>
+                      <span>वाचन व सम्पूर्ण भाष्य खोलें</span>
                       <ChevronRight className="w-4 h-4" />
                     </div>
                   </div>
 
                 </div>
 
-              </div>
+              </Link>
             );
           })}
         </div>
       ) : (
-        /* ── ALTERNATE VIEW: STREAMLINED AUDIO TRACK LIST ─────────────────── */
+        /* ── ALTERNATE VIEW: STREAMLINED AUDIO TRACK LIST WITH REAL LINKS ── */
         <div className="space-y-3">
           {displayedVerses.map(v => {
             const ts = getMasterTimestampForVerse(v.chapter, v.verse);
@@ -307,13 +312,11 @@ export default function ChapterDetailView({
             const speaker = getSpeakerForVerse(v.chapter, v.verse);
 
             return (
-              <div
+              <Link
                 key={v.verse}
-                onClick={() => {
-                  sacredAudio.playTempleBell(0.2);
-                  onSelectShloka(v.verse);
-                }}
-                className="group rounded-2xl bg-gradient-to-r from-[#121422] via-[#0d0f19] to-[#151726] hover:from-[#1b1e32] hover:to-[#1a1d2e] border border-[#c5a059]/20 hover:border-[#c5a059]/60 p-4 sm:p-5 transition-all duration-200 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5"
+                href={`/chapter/${v.chapter}/${v.verse}`}
+                onClick={() => sacredAudio.playTempleBell(0.2)}
+                className="group rounded-2xl bg-gradient-to-r from-[#121422] via-[#0d0f19] to-[#151726] hover:from-[#1b1e32] hover:to-[#1a1d2e] border border-[#c5a059]/20 hover:border-[#c5a059]/60 p-4 sm:p-5 transition-all duration-200 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-md hover:shadow-xl hover:-translate-y-0.5 block"
               >
                 
                 {/* Left: Track Number + Shloka Verse Text */}
@@ -357,7 +360,7 @@ export default function ChapterDetailView({
                   </span>
                 </div>
 
-              </div>
+              </Link>
             );
           })}
         </div>
