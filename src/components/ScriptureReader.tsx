@@ -5,6 +5,7 @@ import type { GitaVerse, AnvayaToken } from '../types/verse';
 import { useLanguage, SUPPORTED_LANGUAGES, type AppLanguage } from '@/context/LanguageContext';
 import { getComprehensiveVerse } from '@/data/canonicalGitaTranslations';
 import { getGitaVideoForVerse } from '@/data/gitaVideoEpisodes';
+import { getMasterTimestampForVerse } from '@/data/gitaMasterAudioTimestamps';
 import { getSpeakerForVerse, getChhandaForVerse, generateUniversalVedicData } from '@/lib/universalVedicEngine';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { 
@@ -47,6 +48,12 @@ export default function ScriptureReader({
   const [activeSampradaya, setActiveSampradaya] = useState<'story' | 'mahatmya' | 'universal' | 'advaita' | 'vishishtadvaita' | 'dvaita' | 'jnaneshwari' | 'vivekananda' | 'science' | 'meditation'>('story');
 
   // Audio stream state
+  const [isPlayingMasterAudio, setIsPlayingMasterAudio] = useState(false);
+  const [isLoopingAudio, setIsLoopingAudio] = useState(true);
+  const [showVideoFrame, setShowVideoFrame] = useState(false);
+  const [audioElapsedSeconds, setAudioElapsedSeconds] = useState(0);
+  const [audioKey, setAudioKey] = useState(0);
+
   const [isPlayingShlokaMusic, setIsPlayingShlokaMusic] = useState(false);
   const [shlokaPlaybackSeconds, setShlokaPlaybackSeconds] = useState(0);
 
@@ -55,19 +62,47 @@ export default function ScriptureReader({
   const universal = generateUniversalVedicData(verse.chapter, verse.verse);
   const speaker = getSpeakerForVerse(verse.chapter, verse.verse);
   const chhanda = getChhandaForVerse(verse.chapter, verse.verse);
+  const masterTimestamp = getMasterTimestampForVerse(verse.chapter, verse.verse);
 
-  // Playback timer
+  // Master Audio Playback timer with Auto-Loop & Segment boundary detection
   useEffect(() => {
     let interval: NodeJS.Timeout | undefined;
-    if (isPlayingShlokaMusic) {
+    if (isPlayingMasterAudio) {
       interval = setInterval(() => {
-        setShlokaPlaybackSeconds(prev => prev + 1);
+        setAudioElapsedSeconds(prev => {
+          const nextVal = prev + 1;
+          // Check if timestamp segment reached the end
+          if (nextVal >= masterTimestamp.duration) {
+            if (isLoopingAudio) {
+              // Reset and loop back to start timestamp
+              setAudioKey(k => k + 1);
+              return 0;
+            } else {
+              setIsPlayingMasterAudio(false);
+              return masterTimestamp.duration;
+            }
+          }
+          return nextVal;
+        });
       }, 1000);
     }
     return () => {
       if (interval) clearInterval(interval);
     };
-  }, [isPlayingShlokaMusic]);
+  }, [isPlayingMasterAudio, masterTimestamp.duration, isLoopingAudio]);
+
+  // Reset audio, TTS & Japa on verse change
+  useEffect(() => {
+    sacredAudio.stopSpeaking();
+    setIsSpeakingSanskrit(false);
+    setIsPlayingShlokaMusic(false);
+    setIsPlayingMasterAudio(false);
+    setAudioElapsedSeconds(0);
+    setAudioKey(k => k + 1);
+    setShlokaPlaybackSeconds(0);
+    setJapaCount(0);
+    setShowKarmaReward(false);
+  }, [verse.chapter, verse.verse]);
 
   // Reset audio, TTS & Japa on verse change
   useEffect(() => {
