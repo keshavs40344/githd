@@ -44,7 +44,7 @@ export default function ScriptureReader({
   const [showKarmaReward, setShowKarmaReward] = useState(false);
 
   // Sampradaya Bhashya Active Tab
-  const [activeSampradaya, setActiveSampradaya] = useState<'universal' | 'story' | 'advaita' | 'vishishtadvaita' | 'dvaita' | 'jnaneshwari' | 'vivekananda' | 'science' | 'meditation'>('story');
+  const [activeSampradaya, setActiveSampradaya] = useState<'story' | 'mahatmya' | 'universal' | 'advaita' | 'vishishtadvaita' | 'dvaita' | 'jnaneshwari' | 'vivekananda' | 'science' | 'meditation'>('story');
 
   // Audio stream state
   const [isPlayingShlokaMusic, setIsPlayingShlokaMusic] = useState(false);
@@ -227,8 +227,9 @@ export default function ScriptureReader({
     return canonical?.translation?.hinglish || universalTrans?.hinglish || verse.translation_hi || verse.translation_en;
   };
 
-      const getActiveBhashya = () => {
+        const getActiveBhashya = () => {
     if (activeSampradaya === 'story') return universal.sampradaya_notes.story;
+    if (activeSampradaya === 'mahatmya') return universal.sampradaya_notes.mahatmya;
     if (activeSampradaya === 'advaita') return universal.sampradaya_notes.advaita;
     if (activeSampradaya === 'vishishtadvaita') return universal.sampradaya_notes.vishishtadvaita;
     if (activeSampradaya === 'dvaita') return universal.sampradaya_notes.dvaita;
@@ -708,7 +709,8 @@ export default function ScriptureReader({
           {/* Sampradaya Tabs */}
           <div className="flex items-center gap-1.5 bg-[#141622] border border-[#c5a059]/20 p-1.5 rounded-2xl overflow-x-auto custom-scrollbar max-w-full">
             {[
-              { id: 'story', label: '📖 सजीव कथा (Story)' },
+              { id: 'story', label: '📖 महाभारत सजीव कथा' },
+              { id: 'mahatmya', label: '🪔 भागवत माहात्म्य' },
               { id: 'universal', label: '🕉️ सर्वसम्मत' },
               { id: 'advaita', label: '🧘 शंकराचार्य' },
               { id: 'vishishtadvaita', label: '🪷 रामानुज' },
