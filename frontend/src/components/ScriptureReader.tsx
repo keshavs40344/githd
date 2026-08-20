@@ -2,9 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { 
-  Play, RotateCcw, BookOpen, 
+  Play, Pause, RotateCcw, BookOpen, 
   Bookmark, BookmarkCheck, Check, Copy, CheckCircle2,
-  MessageSquare, Flame, SkipBack, SkipForward, Sparkles, Youtube, Volume2
+  MessageSquare, Flame, SkipBack, SkipForward, Sparkles, Disc3, Music
 } from 'lucide-react';
 import { GitaVerse, AnvayaToken } from '@/types/verse';
 import { getComprehensiveVerse } from '@/data/canonicalGitaTranslations';
@@ -49,9 +49,11 @@ export default function ScriptureReader({
     'story' | 'mahatmya' | 'universal' | 'advaita' | 'vishishtadvaita' | 'dvaita' | 'jnaneshwari' | 'vivekananda' | 'science' | 'meditation'
   >('story');
 
-  // Dedicated Video Deck States
-  const [autoPlayEnabled, setAutoPlayEnabled] = useState(true);
-  const [videoKey, setVideoKey] = useState(0);
+  // Ultra-Sleek Animated Music Player States
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isLooping, setIsLooping] = useState(true);
+  const [elapsedSec, setElapsedSec] = useState(0);
+  const [audioStreamKey, setAudioStreamKey] = useState(0);
 
   const canonical = getComprehensiveVerse(verse.chapter, verse.verse);
   const universal = generateUniversalVedicData(verse.chapter, verse.verse);
@@ -62,7 +64,7 @@ export default function ScriptureReader({
   const masterTimestamp: MasterShlokaTimestamp = getMasterTimestampForVerse(verse.chapter, verse.verse);
   const dedicatedVideo = getGitaVideoForVerse(verse.chapter, verse.verse);
 
-  // Choose the best active video source (Exact Verse Video if available, else Master Timestamp Video)
+  // Active audio source
   const activeVideoId = dedicatedVideo.type === 'exact_verse' 
     ? dedicatedVideo.videoId 
     : masterTimestamp.videoId;
@@ -71,11 +73,38 @@ export default function ScriptureReader({
   const activeEndSec = dedicatedVideo.type === 'exact_verse' ? 240 : masterTimestamp.endSeconds;
   const totalDuration = dedicatedVideo.type === 'exact_verse' ? 120 : masterTimestamp.duration;
 
-  // Reset states on verse change
+  // Reset audio & timer when changing verse
   useEffect(() => {
-    setVideoKey(k => k + 1);
+    setIsPlaying(false);
+    setElapsedSec(0);
+    setAudioStreamKey(k => k + 1);
     setJapaCount(0);
   }, [verse.chapter, verse.verse]);
+
+  // Live Track Timer with Smooth Progress & Loop
+  useEffect(() => {
+    let timer: NodeJS.Timeout | undefined;
+    if (isPlaying) {
+      timer = setInterval(() => {
+        setElapsedSec(prev => {
+          const next = prev + 1;
+          if (next >= totalDuration) {
+            if (isLooping) {
+              setAudioStreamKey(k => k + 1);
+              return 0;
+            } else {
+              setIsPlaying(false);
+              return totalDuration;
+            }
+          }
+          return next;
+        });
+      }, 1000);
+    }
+    return () => {
+      if (timer) clearInterval(timer);
+    };
+  }, [isPlaying, totalDuration, isLooping]);
 
   // Sync bookmarks & contemplation
   useEffect(() => {
@@ -169,9 +198,20 @@ export default function ScriptureReader({
     sacredAudio.playNavChime(0.06);
   };
 
-  // Video Navigation Handlers
+  // Music Player Action Handlers
+  const togglePlay = () => {
+    if (!isPlaying) {
+      sacredAudio.playTempleBell(0.2);
+      setAudioStreamKey(k => k + 1);
+    }
+    setIsPlaying(!isPlaying);
+    sacredAudio.vibrate(25);
+  };
+
   const handlePrevVerse = () => {
     sacredAudio.playNavChime(0.08);
+    setIsPlaying(false);
+    setElapsedSec(0);
     if (onPrev) {
       onPrev();
     } else if (onNavigate) {
@@ -185,6 +225,8 @@ export default function ScriptureReader({
 
   const handleNextVerse = () => {
     sacredAudio.playNavChime(0.08);
+    setIsPlaying(false);
+    setElapsedSec(0);
     if (onNext) {
       onNext();
     } else if (onNavigate) {
@@ -192,9 +234,14 @@ export default function ScriptureReader({
     }
   };
 
-  const handleReplay = () => {
-    sacredAudio.playNavChime(0.06);
-    setVideoKey(k => k + 1);
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+    const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+    const newSec = Math.floor(ratio * totalDuration);
+    setElapsedSec(newSec);
+    setAudioStreamKey(k => k + 1);
+    sacredAudio.playNavChime(0.05);
   };
 
   const handleAskKrishna = () => {
@@ -213,6 +260,12 @@ export default function ScriptureReader({
       onWordClick(tok);
     }
     sacredAudio.playNavChime(0.06);
+  };
+
+  const formatSec = (sec: number) => {
+    const m = Math.floor(sec / 60);
+    const s = sec % 60;
+    return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
   };
 
   // Resolve active translation, bhashya, insight and anvaya tokens based on language
@@ -301,8 +354,11 @@ export default function ScriptureReader({
     large: 'text-2xl sm:text-3xl md:text-4xl leading-loose tracking-wider font-semibold'
   };
 
+  // Equalizer bar heights for dynamic animation
+  const barHeights = [40, 70, 95, 60, 85, 100, 75, 45, 90, 65, 80, 50, 95, 70, 85, 55];
+
   return (
-    <div className="w-full max-w-5xl mx-auto space-y-6 pb-20">
+    <div className="w-full max-w-5xl mx-auto space-y-5 pb-20">
       
       {/* ── TOP UTILITY TOOLBAR ────────────────────────────────────────────── */}
       <div className="flex flex-wrap items-center justify-between gap-3 px-3 sm:px-4 py-2.5 rounded-2xl bg-[#090a0f]/80 backdrop-blur-xl border border-[#c5a059]/20 shadow-md">
@@ -381,7 +437,7 @@ export default function ScriptureReader({
       </div>
 
       {/* ── TIER 1: SACRED SHLOKA ALTAR CARD (Devanagari, Speaker & Chhanda) ───── */}
-      <div className="relative rounded-3xl bg-gradient-to-b from-[#141622] via-[#0d0e16] to-[#07080c] border border-[#c5a059]/30 p-6 sm:p-10 shadow-2xl overflow-hidden space-y-6">
+      <div className="relative rounded-3xl bg-gradient-to-b from-[#141622] via-[#0d0e16] to-[#07080c] border border-[#c5a059]/30 p-6 sm:p-9 shadow-2xl overflow-hidden space-y-5">
         
         {/* Subtle Brass Corner Filigree */}
         <div className="absolute top-3 left-3 text-[#c5a059]/25 text-xs font-serif select-none pointer-events-none">𑁍</div>
@@ -390,20 +446,20 @@ export default function ScriptureReader({
         <div className="absolute bottom-3 right-3 text-[#c5a059]/25 text-xs font-serif select-none pointer-events-none">𑁍</div>
 
         {/* Inscription Header with Speaker & Chhanda */}
-        <div className="text-center space-y-2 relative z-10">
+        <div className="text-center space-y-1.5 relative z-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c5a059]/15 border border-[#c5a059]/30 text-xs font-serif text-[#e6c687]">
             <span>✨ {speaker.title}</span>
             <span>·</span>
             <span className="text-[11px] text-[#c5a059]/80">{chhanda}</span>
           </div>
-          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#c5a059]/50 to-transparent mx-auto mt-2" />
+          <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-[#c5a059]/50 to-transparent mx-auto mt-1.5" />
         </div>
 
         {/* Devanagari Sanskrit Verse */}
-        <div className="text-center py-2 relative z-10">
+        <div className="text-center py-1 relative z-10">
           <p className={`font-devanagari text-[#f5eed9] text-shadow-sm transition-all ${fontSizes[fontSizeLevel]}`}>
             {verse.devanagari.split('\n').map((line, idx) => (
-              <span key={idx} className="block py-1">
+              <span key={idx} className="block py-0.5">
                 {line}
               </span>
             ))}
@@ -411,7 +467,7 @@ export default function ScriptureReader({
         </div>
 
         {/* IAST Transliteration */}
-        <div className="text-center relative z-10 border-t border-[#c5a059]/15 pt-4">
+        <div className="text-center relative z-10 border-t border-[#c5a059]/15 pt-3">
           <p className="text-xs sm:text-sm md:text-base text-[#c5a059]/85 font-serif italic tracking-wide max-w-2xl mx-auto leading-relaxed">
             {verse.iast}
           </p>
@@ -421,7 +477,7 @@ export default function ScriptureReader({
         <div className="pt-2 border-t border-[#c5a059]/15 flex items-center justify-end">
           <button
             onClick={handleAskKrishna}
-            className="w-full sm:w-auto px-4 py-2 rounded-2xl bg-gradient-to-r from-[#e6c687]/15 via-[#c5a059]/20 to-amber-600/15 border border-[#c5a059]/40 hover:border-[#c5a059] text-xs font-serif text-[#e6c687] flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-102 shadow-md"
+            className="w-full sm:w-auto px-4 py-1.5 rounded-2xl bg-gradient-to-r from-[#e6c687]/15 via-[#c5a059]/20 to-amber-600/15 border border-[#c5a059]/40 hover:border-[#c5a059] text-xs font-serif text-[#e6c687] flex items-center justify-center gap-2 transition-all cursor-pointer hover:scale-102 shadow-md"
           >
             <MessageSquare className="w-3.5 h-3.5 text-[#e6c687]" />
             <span>इस श्लोक पर कृष्ण AI से दिव्य संवाद करें 🪔</span>
@@ -430,98 +486,174 @@ export default function ScriptureReader({
 
       </div>
 
-      {/* ── DEDICATED INDEPENDENT YOUTUBE VIDEO & REAL CHANTING DECK ───────── */}
-      <div className="relative rounded-3xl bg-gradient-to-b from-[#161826] via-[#0d0e17] to-[#121420] border-2 border-[#c5a059]/40 p-4 sm:p-7 shadow-[0_12px_45px_rgba(0,0,0,0.9)] overflow-hidden space-y-5">
+      {/* ── ULTRA-SLEEK ANIMATED SACRED MUSIC PLAYER (SHORT, COMPACT & VIBRANT) ─ */}
+      <div className="relative rounded-3xl bg-gradient-to-r from-[#141624] via-[#0e101b] to-[#181a29] border-2 border-[#c5a059]/35 p-4 sm:p-5 shadow-[0_10px_35px_rgba(0,0,0,0.85)] overflow-hidden space-y-3.5 ring-1 ring-[#f5eed9]/10">
         
-        {/* Header with Title, Singer, Exact Timestamps */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#c5a059]/20 pb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-2xl bg-red-600/20 border border-red-500/40 flex items-center justify-center text-red-400 shadow-md">
-              <Youtube className="w-6 h-6" />
+        {/* Radiant golden backdrop aura when playing */}
+        {isPlaying && (
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 via-[#c5a059]/15 to-amber-600/10 animate-pulse pointer-events-none" />
+        )}
+
+        {/* Top Track Row: [ Vinyl Icon ] [ Track Meta & Animated Waveform ] [ Loop Toggle ] */}
+        <div className="flex items-center justify-between gap-3 relative z-10">
+          
+          <div className="flex items-center gap-3 min-w-0">
+            {/* Spinning Golden Mandala Vinyl Disc */}
+            <div className={`w-12 h-12 rounded-2xl shrink-0 flex items-center justify-center transition-all duration-300 shadow-xl border ${
+              isPlaying 
+                ? 'bg-gradient-to-br from-amber-400 via-[#c5a059] to-amber-500 text-[#090a0f] border-[#f5eed9] shadow-[0_0_20px_rgba(245,158,11,0.6)] animate-[spin_5s_linear_infinite]' 
+                : 'bg-[#1a1d2c] text-[#c5a059] border-[#c5a059]/30'
+            }`}>
+              <Disc3 className="w-6 h-6" />
             </div>
-            <div>
+
+            {/* Track Info & Equalizer Animation */}
+            <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <h4 className="text-base sm:text-lg font-serif font-bold text-[#f5eed9]">
-                  पावन श्लोक दर्शन एवं प्रामाणिक वाचन
-                </h4>
-                <span className="px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-[10px] font-mono text-amber-300 font-bold">
-                  यथार्थ ध्वनि
+                <span className="text-sm font-serif font-bold text-[#f5eed9] truncate">
+                  श्रीमद्भगवद्गीता · अध्याय {verse.chapter}, श्लोक {verse.verse}
+                </span>
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-[10px] font-mono text-emerald-300 font-bold shrink-0">
+                  मूल ध्वनि
                 </span>
               </div>
-              <p className="text-xs text-[#c5a059]/80 font-sans mt-0.5">
-                स्वर: शैलेन्द्र भारती • समय: <span className="font-mono text-[#e6c687] font-semibold">{masterTimestamp.formattedStart}</span> ({totalDuration}s)
-              </p>
+              
+              <div className="flex items-center gap-2 mt-0.5">
+                <p className="text-[11px] text-[#c5a059]/80 font-sans truncate">
+                  स्वर: शैलेन्द्र भारती • {masterTimestamp.formattedStart}
+                </p>
+
+                {/* 16-Bar Animated Soundwave Equalizer */}
+                <div className="flex items-end gap-0.5 h-3.5 pl-1.5">
+                  {barHeights.map((h, i) => (
+                    <span
+                      key={i}
+                      className={`w-[2.5px] rounded-full transition-all duration-150 ${
+                        isPlaying 
+                          ? 'bg-gradient-to-t from-amber-400 to-[#fef08a] shadow-[0_0_4px_rgba(245,158,11,0.8)]' 
+                          : 'bg-[#c5a059]/30'
+                      }`}
+                      style={{
+                        height: isPlaying ? `${Math.max(20, Math.floor(Math.sin((elapsedSec * 2) + i) * 40 + 50))}%` : '20%',
+                        transitionDelay: `${i * 20}ms`
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Autoplay Toggle */}
+          {/* Repeat / Loop Badge Button */}
           <button
             onClick={() => {
-              setAutoPlayEnabled(!autoPlayEnabled);
+              setIsLooping(!isLooping);
               sacredAudio.playNavChime(0.05);
             }}
-            className={`px-3 py-1.5 rounded-xl text-xs font-sans flex items-center gap-1.5 transition-all cursor-pointer border self-start sm:self-center ${
-              autoPlayEnabled
-                ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40 shadow-sm'
+            className={`px-3 py-1.5 rounded-xl text-xs font-sans flex items-center gap-1.5 transition-all cursor-pointer border shrink-0 ${
+              isLooping
+                ? 'bg-amber-500/20 text-[#f5eed9] border-amber-400/50 shadow-sm font-semibold'
                 : 'bg-[#090a0f]/60 text-[#c5a059]/60 border-[#c5a059]/20'
             }`}
+            title="श्लोक समाप्त होने पर स्वतः दोहराएं"
           >
-            <Volume2 className="w-3.5 h-3.5" />
-            <span>ऑटो-प्ले {autoPlayEnabled ? 'सक्रिय' : 'बंद'}</span>
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">दोहराएं {isLooping ? '✓' : ''}</span>
           </button>
+
         </div>
 
-        {/* The Exact Embedded YouTube Video Frame (Starts and Ends Exactly on Shloka) */}
-        <div className="relative rounded-2xl overflow-hidden border border-[#c5a059]/50 shadow-2xl bg-black aspect-video w-full">
-          <iframe
-            key={videoKey}
-            src={`https://www.youtube-nocookie.com/embed/${activeVideoId}?start=${activeStartSec}&end=${activeEndSec}&autoplay=${autoPlayEnabled ? 1 : 0}&controls=1&enablejsapi=1&rel=0&modestbranding=1`}
-            title={`श्रीमद्भगवद्गीता अध्याय ${verse.chapter}, श्लोक ${verse.verse}`}
-            className="w-full h-full"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+        {/* Interactive Smooth Timeline Scrub Line */}
+        <div className="space-y-1 relative z-10">
+          <div 
+            onClick={handleSeek}
+            className="w-full h-2 bg-[#090a12] rounded-full overflow-hidden border border-[#c5a059]/30 p-0.5 cursor-pointer relative group"
+            title="क्लिक कर ऑडियो सीख (Seek) करें"
+          >
+            <div
+              className="h-full bg-gradient-to-r from-amber-500 via-[#c5a059] to-[#fef08a] transition-all duration-200 rounded-full shadow-[0_0_10px_rgba(245,158,11,0.6)] group-hover:brightness-125"
+              style={{
+                width: `${Math.min(100, (elapsedSec / Math.max(1, totalDuration)) * 100)}%`
+              }}
+            />
+          </div>
+
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#c5a059]/80 px-0.5">
+            <span className="flex items-center gap-1">
+              <span className={`w-1.5 h-1.5 rounded-full ${isPlaying ? 'bg-amber-400 animate-ping' : 'bg-[#c5a059]/40'}`} />
+              {formatSec(elapsedSec)}
+            </span>
+            <span>
+              अवधि: {formatSec(totalDuration)} ({Math.max(0, totalDuration - elapsedSec)}s शेष)
+            </span>
+          </div>
         </div>
 
-        {/* Navigation Controls: [ ⏮️ PREV SHLOKA ] [ 🔄 REPLAY ] [ NEXT SHLOKA ⏭️ ] */}
-        <div className="flex items-center justify-between gap-3 pt-2">
+        {/* Compact Trio Controls: [ ⏮️ PREV ] [ ▶️ PLAY / ⏸️ PAUSE ] [ NEXT ⏭️ ] */}
+        <div className="flex items-center justify-between gap-3 relative z-10 pt-0.5">
           
           {/* Previous Shloka Button */}
           <button
             onClick={handlePrevVerse}
-            className="flex-1 py-3 px-3 rounded-2xl bg-[#1c1e2e] hover:bg-[#262a40] text-[#c5a059] hover:text-[#f5eed9] border border-[#c5a059]/30 hover:border-[#c5a059] text-xs sm:text-sm font-serif font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg active:scale-98"
+            className="flex-1 py-2.5 px-3 rounded-2xl bg-[#1b1e2c] hover:bg-[#25293d] text-[#c5a059] hover:text-[#f5eed9] border border-[#c5a059]/30 hover:border-[#c5a059] text-xs font-serif font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-md active:scale-95 group"
+            title="पिछला श्लोक"
           >
-            <SkipBack className="w-4 h-4" />
+            <SkipBack className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
             <span>पिछला श्लोक</span>
           </button>
 
-          {/* Replay Shloka Button */}
+          {/* Main Play / Pause Button with Golden Glow */}
           <button
-            onClick={handleReplay}
-            className="py-3 px-4 rounded-2xl bg-[#141624] hover:bg-[#1f2338] text-[#e6c687] border border-[#c5a059]/30 hover:border-[#c5a059] text-xs font-serif flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-md active:scale-98"
-            title="श्लोक को पुनः आरम्भ से चलाएं"
+            onClick={togglePlay}
+            className={`px-6 sm:px-8 py-2.5 rounded-2xl font-serif font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xl active:scale-95 shrink-0 ${
+              isPlaying
+                ? 'bg-gradient-to-r from-amber-400 via-[#c5a059] to-amber-500 text-[#090a0f] ring-2 ring-[#f5eed9]/50 shadow-[0_0_20px_rgba(245,158,11,0.7)] animate-pulse'
+                : 'bg-gradient-to-r from-[#d4af37] via-[#c5a059] to-[#b89340] hover:from-[#e6c687] hover:to-[#d4af37] text-[#090a0f] ring-1 ring-[#c5a059]/50 hover:scale-102 shadow-[0_4px_15px_rgba(197,160,89,0.4)]'
+            }`}
           >
-            <RotateCcw className="w-4 h-4" />
-            <span className="hidden sm:inline">पुनः आरम्भ</span>
+            {isPlaying ? (
+              <>
+                <Pause className="w-4 h-4 fill-current" />
+                <span>रोकें (Pause)</span>
+              </>
+            ) : (
+              <>
+                <Play className="w-4 h-4 fill-current ml-0.5" />
+                <span>श्लोक वाचन सुनें ▶️</span>
+              </>
+            )}
           </button>
 
           {/* Next Shloka Button */}
           <button
             onClick={handleNextVerse}
-            className="flex-1 py-3 px-3 rounded-2xl bg-gradient-to-r from-[#d4af37] via-[#c5a059] to-[#b89340] hover:from-[#e6c687] hover:to-[#d4af37] text-[#090a0f] text-xs sm:text-sm font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg active:scale-98"
+            className="flex-1 py-2.5 px-3 rounded-2xl bg-gradient-to-r from-[#d4af37]/20 via-[#c5a059]/30 to-[#b89340]/20 hover:from-[#d4af37]/30 hover:to-[#c5a059]/40 text-[#f5eed9] border border-[#c5a059]/40 hover:border-[#c5a059] text-xs font-serif font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-md active:scale-95 group"
+            title="अगला श्लोक"
           >
             <span>अगला श्लोक</span>
-            <SkipForward className="w-4 h-4" />
+            <SkipForward className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
           </button>
 
         </div>
 
+        {/* ── SEAMLESS ZERO-CLUTTER AUDIO STREAM BRIDGE (HIDDEN BACKGROUND IFRAME) ── */}
+        {isPlaying && (
+          <div className="w-0 h-0 opacity-0 pointer-events-none overflow-hidden absolute">
+            <iframe
+              key={audioStreamKey}
+              src={`https://www.youtube-nocookie.com/embed/${activeVideoId}?start=${activeStartSec + elapsedSec}&end=${activeEndSec}&autoplay=1&controls=0&enablejsapi=1&rel=0`}
+              title="Sacred Audio Bridge"
+              allow="autoplay; encrypted-media"
+            />
+          </div>
+        )}
+
       </div>
 
       {/* ── REALISTIC ANIMATED JAPA MALA BEAD COUNTER ─────────────────────── */}
-      <div className="rounded-3xl bg-[#0d0e16]/95 border border-[#c5a059]/25 p-4 sm:p-6 shadow-xl space-y-4">
+      <div className="rounded-3xl bg-[#0d0e16]/95 border border-[#c5a059]/25 p-4 sm:p-5 shadow-xl space-y-3.5">
         
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-[#c5a059]/15 border border-[#c5a059]/30 flex items-center justify-center text-[#e6c687] text-lg">
@@ -559,7 +691,7 @@ export default function ScriptureReader({
             {/* Main Chant Tap Button */}
             <button
               onClick={handleJapaChant}
-              className="px-5 py-2 rounded-2xl bg-gradient-to-r from-[#d4af37] to-[#c5a059] text-[#090a0f] font-serif font-bold text-xs shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
+              className="px-4 py-1.5 rounded-2xl bg-gradient-to-r from-[#d4af37] to-[#c5a059] text-[#090a0f] font-serif font-bold text-xs shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center gap-2"
             >
               <span>जप स्पर्श ({japaCount}/{japaTarget})</span>
             </button>
@@ -567,7 +699,7 @@ export default function ScriptureReader({
             {japaCount > 0 && (
               <button
                 onClick={resetJapa}
-                className="p-2 rounded-xl bg-[#141622] text-[#c5a059]/60 hover:text-[#f5eed9] border border-[#c5a059]/20 cursor-pointer"
+                className="p-1.5 rounded-xl bg-[#141622] text-[#c5a059]/60 hover:text-[#f5eed9] border border-[#c5a059]/20 cursor-pointer"
                 title="Reset Japa"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -578,14 +710,14 @@ export default function ScriptureReader({
         </div>
 
         {/* Visual Japa Bead Progress Bar */}
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <div className="flex items-center justify-between text-[10px] font-mono text-[#c5a059]/70">
             <span>साधना प्रगति (Mala Progress)</span>
             <span>{Math.min(100, Math.round((japaCount / japaTarget) * 100))}%</span>
           </div>
-          <div className="w-full h-2.5 bg-[#141622] rounded-full overflow-hidden border border-[#c5a059]/20 p-0.5">
+          <div className="w-full h-2 bg-[#141622] rounded-full overflow-hidden border border-[#c5a059]/20 p-0.5">
             <div 
-              className="h-full bg-gradient-to-r from-[#c5a059] via-[#e6c687] to-amber-400 transition-all duration-200 rounded-full shadow-[0_0_10px_rgba(230,198,135,0.5)]"
+              className="h-full bg-gradient-to-r from-[#c5a059] via-[#e6c687] to-amber-400 transition-all duration-200 rounded-full shadow-[0_0_8px_rgba(230,198,135,0.5)]"
               style={{ width: `${Math.min(100, (japaCount / japaTarget) * 100)}%` }}
             />
           </div>
@@ -594,7 +726,7 @@ export default function ScriptureReader({
       </div>
 
       {/* ── TIER 3: WORD-BY-WORD ANVAYA (पदच्छेद एवं शब्दार्थ) ───────── */}
-      <div className="space-y-3">
+      <div className="space-y-2.5">
         <div className="flex items-center justify-between px-1">
           <h3 className="text-xs font-serif uppercase tracking-widest text-[#e6c687] font-bold flex items-center gap-2">
             <span>🔍 पदच्छेद एवं व्याकरणिक शब्दार्थ (Word Anatomy)</span>
@@ -626,8 +758,8 @@ export default function ScriptureReader({
       </div>
 
       {/* ── TIER 2: TRANSLATION (प्रामाणिक भावार्थ) ─────────────────────────── */}
-      <div className="rounded-3xl bg-[#0f111a]/95 border border-[#c5a059]/25 p-5 sm:p-7 shadow-xl space-y-3">
-        <div className="flex items-center justify-between border-b border-[#c5a059]/15 pb-2.5">
+      <div className="rounded-3xl bg-[#0f111a]/95 border border-[#c5a059]/25 p-4 sm:p-6 shadow-xl space-y-2.5">
+        <div className="flex items-center justify-between border-b border-[#c5a059]/15 pb-2">
           <div className="flex items-center gap-2 text-xs font-serif uppercase tracking-widest text-[#e6c687] font-bold">
             <Sparkles className="w-3.5 h-3.5 text-[#c5a059]" />
             <span>प्रामाणिक सरल अनुवाद ({language.toUpperCase()})</span>
@@ -644,7 +776,7 @@ export default function ScriptureReader({
       </div>
 
       {/* ── TIER 4: 10-DIMENSIONAL DEEP COMMENTARY TABS ───────────────────────── */}
-      <div className="rounded-3xl bg-[#0d0e16]/95 border border-[#c5a059]/25 p-5 sm:p-7 shadow-xl space-y-4">
+      <div className="rounded-3xl bg-[#0d0e16]/95 border border-[#c5a059]/25 p-4 sm:p-6 shadow-xl space-y-3.5">
         
         {/* Horizontal Scrolling Commentary Tabs Bar */}
         <div className="flex items-center gap-1.5 overflow-x-auto pb-2 custom-scrollbar border-b border-[#c5a059]/15">
@@ -685,7 +817,7 @@ export default function ScriptureReader({
       </div>
 
       {/* ── TIER 5: PRACTICAL BLUEPRINT (जीवन सूत्र) ────────────────────────── */}
-      <div className="rounded-3xl bg-gradient-to-r from-amber-500/10 via-[#c5a059]/15 to-amber-500/10 border border-[#c5a059]/30 p-5 sm:p-6 shadow-xl space-y-2">
+      <div className="rounded-3xl bg-gradient-to-r from-amber-500/10 via-[#c5a059]/15 to-amber-500/10 border border-[#c5a059]/30 p-4 sm:p-5 shadow-xl space-y-1.5">
         <div className="flex items-center gap-2 text-xs font-serif uppercase tracking-widest text-[#e6c687] font-bold">
           <Flame className="w-3.5 h-3.5 text-amber-400" />
           <span>२१वीं सदी का व्यावहारिक जीवन सूत्र (Actionable Blueprint)</span>
