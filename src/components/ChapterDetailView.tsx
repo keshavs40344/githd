@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { 
   ArrowLeft, Play, BookOpen, Sparkles, Volume2, 
   Search, LayoutGrid, List, ChevronRight, Layers,
-  Compass, Flame, Disc3, Award, Image as ImageIcon
+  Compass, Flame, Disc3, Award
 } from 'lucide-react';
 import { CHAPTERS, GitaVerse } from '@/types/verse';
 import { getMasterTimestampForVerse } from '@/data/gitaMasterAudioTimestamps';
-import { getGitaVideoForVerse } from '@/data/gitaVideoEpisodes';
+import { getArtworkForShloka } from '@/data/krishnaArtworks';
 import { getSpeakerForVerse } from '@/lib/universalVedicEngine';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useLanguage } from '@/context/LanguageContext';
@@ -213,13 +213,7 @@ export default function ChapterDetailView({
           {displayedVerses.map(v => {
             const ts = getMasterTimestampForVerse(v.chapter, v.verse);
             const speaker = getSpeakerForVerse(v.chapter, v.verse);
-            const dedicatedVideo = getGitaVideoForVerse(v.chapter, v.verse);
-
-            // High-Definition YouTube Thumbnail URL for Shloka
-            const videoThumbId = dedicatedVideo.type === 'exact_verse' 
-              ? dedicatedVideo.videoId 
-              : ts.videoId;
-            const thumbUrl = `https://img.youtube.com/vi/${videoThumbId}/hqdefault.jpg`;
+            const artworkUrl = getArtworkForShloka(v.chapter, v.verse);
 
             return (
               <div
@@ -231,23 +225,19 @@ export default function ChapterDetailView({
                 className="group relative rounded-3xl bg-gradient-to-b from-[#161828] via-[#0d0f1b] to-[#080910] border-2 border-[#c5a059]/25 hover:border-[#c5a059] shadow-xl hover:shadow-[0_12px_40px_rgba(212,175,55,0.25)] transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden hover:-translate-y-1"
               >
                 
-                {/* ── SHLOKA HIGH-DEFINITION THUMBNAIL BANNER ── */}
+                {/* ── SHLOKA ULTRA-HD KRISHNA ARTWORK BANNER ── */}
                 <div className="relative w-full h-36 sm:h-40 overflow-hidden bg-black">
                   <img
-                    src={thumbUrl}
+                    src={artworkUrl}
                     alt={`श्लोक ${v.chapter}.${v.verse}`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-90 group-hover:brightness-100"
                     loading="lazy"
-                    onError={(e) => {
-                      // Fallback to high-res Krishna image if YouTube thumb fails
-                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80';
-                    }}
                   />
                   
                   {/* Subtle Gradient Shadow Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0d0f1b] via-[#0d0f1b]/50 to-transparent" />
 
-                  {/* Shloka Sankhya Emblem Badge on Thumbnail */}
+                  {/* Shloka Sankhya Emblem Badge on Artwork */}
                   <div className="absolute top-3 left-3 flex items-center gap-2">
                     <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-[#d4af37] via-[#c5a059] to-amber-600 group-hover:from-amber-400 group-hover:to-amber-500 text-[#090a0f] flex items-center justify-center font-mono font-bold text-base shadow-[0_0_15px_rgba(212,175,55,0.5)] group-hover:scale-105 transition-all">
                       {v.verse}
@@ -262,7 +252,7 @@ export default function ChapterDetailView({
                     </div>
                   </div>
 
-                  {/* Speaker Tag on Thumbnail */}
+                  {/* Speaker Tag on Artwork */}
                   <div className="absolute top-3 right-3 px-2.5 py-1 rounded-xl bg-black/75 backdrop-blur-md border border-[#c5a059]/30 text-[11px] font-serif text-[#e6c687] font-semibold truncate max-w-[130px] shadow-lg">
                     ✨ {speaker.name}
                   </div>
@@ -293,7 +283,7 @@ export default function ChapterDetailView({
                   <div className="pt-3 border-t border-[#c5a059]/15 flex items-center justify-between text-xs font-serif">
                     <span className="text-[11px] text-emerald-400 font-mono font-bold flex items-center gap-1">
                       <Volume2 className="w-3.5 h-3.5" />
-                      <span>प्रामाणिक वाचन</span>
+                      <span>यूट्यूब प्रामाणिक वाचन</span>
                     </span>
 
                     <div className="flex items-center gap-1.5 text-[#e6c687] group-hover:text-[#f5eed9] font-bold group-hover:translate-x-0.5 transition-transform">
