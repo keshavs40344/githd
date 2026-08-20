@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Play, Pause, RotateCcw, BookOpen, 
   Bookmark, BookmarkCheck, Check, Copy, CheckCircle2,
-  MessageSquare, Flame, SkipBack, SkipForward, Sparkles, Disc3, Music
+  MessageSquare, Flame, SkipBack, SkipForward, Sparkles, Disc3, Volume2, VolumeX
 } from 'lucide-react';
 import { GitaVerse, AnvayaToken } from '@/types/verse';
 import { getComprehensiveVerse } from '@/data/canonicalGitaTranslations';
@@ -49,11 +49,11 @@ export default function ScriptureReader({
     'story' | 'mahatmya' | 'universal' | 'advaita' | 'vishishtadvaita' | 'dvaita' | 'jnaneshwari' | 'vivekananda' | 'science' | 'meditation'
   >('story');
 
-  // Ultra-Sleek Animated Music Player States
+  // Ultra-Reliable Music Player States
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLooping, setIsLooping] = useState(true);
   const [elapsedSec, setElapsedSec] = useState(0);
-  const [audioStreamKey, setAudioStreamKey] = useState(0);
+  const [playerKey, setPlayerKey] = useState(0);
 
   const canonical = getComprehensiveVerse(verse.chapter, verse.verse);
   const universal = generateUniversalVedicData(verse.chapter, verse.verse);
@@ -77,7 +77,7 @@ export default function ScriptureReader({
   useEffect(() => {
     setIsPlaying(false);
     setElapsedSec(0);
-    setAudioStreamKey(k => k + 1);
+    setPlayerKey(k => k + 1);
     setJapaCount(0);
   }, [verse.chapter, verse.verse]);
 
@@ -90,7 +90,7 @@ export default function ScriptureReader({
           const next = prev + 1;
           if (next >= totalDuration) {
             if (isLooping) {
-              setAudioStreamKey(k => k + 1);
+              setPlayerKey(k => k + 1);
               return 0;
             } else {
               setIsPlaying(false);
@@ -202,7 +202,7 @@ export default function ScriptureReader({
   const togglePlay = () => {
     if (!isPlaying) {
       sacredAudio.playTempleBell(0.2);
-      setAudioStreamKey(k => k + 1);
+      setPlayerKey(k => k + 1);
     }
     setIsPlaying(!isPlaying);
     sacredAudio.vibrate(25);
@@ -240,7 +240,7 @@ export default function ScriptureReader({
     const ratio = Math.max(0, Math.min(1, clickX / rect.width));
     const newSec = Math.floor(ratio * totalDuration);
     setElapsedSec(newSec);
-    setAudioStreamKey(k => k + 1);
+    setPlayerKey(k => k + 1);
     sacredAudio.playNavChime(0.05);
   };
 
@@ -486,7 +486,7 @@ export default function ScriptureReader({
 
       </div>
 
-      {/* ── ULTRA-SLEEK ANIMATED SACRED MUSIC PLAYER (SHORT, COMPACT & VIBRANT) ─ */}
+      {/* ── ULTRA-SLEEK ANIMATED SACRED MUSIC PLAYER (COMPACT, SHORT & GUARANTEED AUDIO) ─ */}
       <div className="relative rounded-3xl bg-gradient-to-r from-[#141624] via-[#0e101b] to-[#181a29] border-2 border-[#c5a059]/35 p-4 sm:p-5 shadow-[0_10px_35px_rgba(0,0,0,0.85)] overflow-hidden space-y-3.5 ring-1 ring-[#f5eed9]/10">
         
         {/* Radiant golden backdrop aura when playing */}
@@ -513,8 +513,9 @@ export default function ScriptureReader({
                 <span className="text-sm font-serif font-bold text-[#f5eed9] truncate">
                   श्रीमद्भगवद्गीता · अध्याय {verse.chapter}, श्लोक {verse.verse}
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-[10px] font-mono text-emerald-300 font-bold shrink-0">
-                  मूल ध्वनि
+                <span className="px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-[10px] font-mono text-emerald-300 font-bold shrink-0 flex items-center gap-1">
+                  <Volume2 className="w-3 h-3" />
+                  <span>प्रामाणिक स्वर</span>
                 </span>
               </div>
               
@@ -636,15 +637,19 @@ export default function ScriptureReader({
 
         </div>
 
-        {/* ── SEAMLESS ZERO-CLUTTER AUDIO STREAM BRIDGE (HIDDEN BACKGROUND IFRAME) ── */}
+        {/* ── GUARANTEED AUDIO STREAM FRAME (AUDIO-OPTIMIZED EMBEDDED PLAYER) ── */}
         {isPlaying && (
-          <div className="w-0 h-0 opacity-0 pointer-events-none overflow-hidden absolute">
-            <iframe
-              key={audioStreamKey}
-              src={`https://www.youtube-nocookie.com/embed/${activeVideoId}?start=${activeStartSec + elapsedSec}&end=${activeEndSec}&autoplay=1&controls=0&enablejsapi=1&rel=0`}
-              title="Sacred Audio Bridge"
-              allow="autoplay; encrypted-media"
-            />
+          <div className="mt-2 rounded-xl overflow-hidden border border-[#c5a059]/30 shadow-inner bg-black/90">
+            <div className="w-full h-16 sm:h-20 max-w-xl mx-auto flex items-center justify-center">
+              <iframe
+                key={playerKey}
+                src={`https://www.youtube.com/embed/${activeVideoId}?start=${activeStartSec + elapsedSec}&end=${activeEndSec}&autoplay=1&mute=0&controls=1&enablejsapi=1&rel=0&modestbranding=1&playsinline=1`}
+                title={`Audio Stream: Chapter ${verse.chapter}, Verse ${verse.verse}`}
+                className="w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
           </div>
         )}
 
