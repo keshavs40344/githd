@@ -128,10 +128,10 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     setCurrentTrack(track);
     setCurrentTimeSec(0);
     setIsPlaying(true);
-    sacredAudio.playTempleBell(0.3);
+    sacredAudio.playTempleBell(0.35);
 
     // Guaranteed YouTube Audio Stream starting exactly at timestamp
-    const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${timestamp.startSeconds}&autoplay=1&enablejsapi=1&playsinline=1`;
+    const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${timestamp.startSeconds}&autoplay=1&enablejsapi=1&playsinline=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`;
     setAudioIframeSrc(src);
   };
 
@@ -143,7 +143,7 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     } else {
       setIsPlaying(true);
       const startSec = currentTrack.timestamp.startSeconds + currentTimeSec;
-      const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${startSec}&autoplay=1&enablejsapi=1&playsinline=1`;
+      const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${startSec}&autoplay=1&enablejsapi=1&playsinline=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`;
       setAudioIframeSrc(src);
     }
     sacredAudio.playNavChime(0.06);
@@ -211,11 +211,11 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
       {children}
       
       {/* 
-        Audio Stream Iframe: Kept inside a 200x200 container with 0 opacity 
-        so browsers do not throttle or block its audio playback!
+        Audio Stream Iframe: Mounted with valid size in background
+        so all desktop and mobile browsers permit continuous autoplay!
       */}
       {audioIframeSrc && (
-        <div style={{ position: 'fixed', bottom: 0, right: 0, width: 200, height: 200, opacity: 0.01, pointerEvents: 'none', zIndex: -1 }}>
+        <div style={{ position: 'fixed', bottom: 10, right: 10, width: 280, height: 160, opacity: 0.001, pointerEvents: 'none', zIndex: -1 }}>
           <iframe
             src={audioIframeSrc}
             title="Gita Chanting Audio Stream"
