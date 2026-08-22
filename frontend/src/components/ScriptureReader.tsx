@@ -7,7 +7,8 @@ import {
   Play, Pause, ArrowLeft, Volume2, 
   Sparkles, BookOpen, Bookmark, BookmarkCheck, Copy, Check, 
   MessageSquare, Flame, Image as ImageIcon,
-  Search, Download, Award, ChevronDown, ChevronUp
+  Search, Download, Award, ChevronDown, ChevronUp,
+  Type, Sliders, Share2, Compass, Sun, Moon, Maximize2
 } from 'lucide-react';
 import { GitaVerse, CHAPTERS } from '@/types/verse';
 import { getMasterTimestampForVerse, MASTER_VIDEO_ID } from '@/data/gitaMasterAudioTimestamps';
@@ -118,9 +119,11 @@ export default function ScriptureReader({
   
   const [activeTab, setActiveTab] = useState<'study' | 'gallery'>('study');
   const [activeSampradaya, setActiveSampradaya] = useState<string>('universal');
+  const [fontSizeLevel, setFontSizeLevel] = useState<'normal' | 'large' | 'xlarge'>('normal');
   const [copied, setCopied] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [showDedicatedPlayer, setShowDedicatedPlayer] = useState(false);
+  const [isKaraokeMode, setIsKaraokeMode] = useState(true);
 
   const chapterInfo = CHAPTERS.find(c => c.number === verse.chapter) || CHAPTERS[0];
   const chapterTheme = getChapterTheme(verse.chapter);
@@ -204,13 +207,25 @@ export default function ScriptureReader({
 
   const currentAcharya = ACHARYA_LIST.find(a => a.id === activeSampradaya) || ACHARYA_LIST[0];
 
+  // Font size classes
+  const fontClass = 
+    fontSizeLevel === 'xlarge' ? 'text-2xl sm:text-4xl md:text-5xl leading-loose' :
+    fontSizeLevel === 'large' ? 'text-xl sm:text-3xl md:text-4xl leading-relaxed' :
+    'text-lg sm:text-2xl md:text-3xl leading-relaxed';
+
+  // Words list for Karaoke Synchronized Highlighting
+  const shlokaWords = verse.devanagari.replace(/[।॥\n]/g, ' ').split(/\s+/).filter(w => w.trim().length > 0);
+  const currentWordIndex = isCurrentVersePlaying && shlokaWords.length > 0
+    ? Math.min(shlokaWords.length - 1, Math.floor((currentTimeSec / durationSec) * shlokaWords.length))
+    : -1;
+
   return (
     <div className="relative min-h-screen bg-[#090b14]">
       
       <div className="relative z-10 max-w-4xl mx-auto space-y-6 animate-fade-in px-2 sm:px-4 pb-32 pt-2">
         
-        {/* ── TOP UTILITY BAR (THEMED BORDER) ────────────────────────────────── */}
-        <div className={`flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0f111c]/95 backdrop-blur-xl border-2 ${chapterTheme.borderClass} shadow-2xl`}>
+        {/* ── TOP ULTRA LUXURY HUD BAR ───────────────────────────────────────── */}
+        <div className={`flex flex-wrap items-center justify-between gap-3 p-3 sm:p-3.5 rounded-3xl bg-[#0f111c]/95 backdrop-blur-2xl border-2 ${chapterTheme.borderClass} shadow-2xl`}>
           
           <Link
             href={`/chapter/${verse.chapter}`}
@@ -218,32 +233,43 @@ export default function ScriptureReader({
             className="inline-flex items-center gap-2 text-xs font-serif text-[#e6c687] hover:text-[#f5eed9] transition-colors group"
           >
             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
-            <span>अध्याय {verse.chapter} ({chapterInfo.name_sanskrit})</span>
+            <span className="font-semibold">अध्याय {verse.chapter} ({chapterInfo.name_sanskrit})</span>
           </Link>
 
           <div className="flex items-center gap-1.5 sm:gap-2">
             
-            <button
-              onClick={() => { setIsSearchModalOpen(true); sacredAudio.playNavChime(0.05); }}
-              className="p-2 rounded-xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#c5a059] hover:text-[#f5eed9] transition-colors cursor-pointer flex items-center gap-1 text-xs font-serif"
-              title="खोजें (Ctrl+K)"
-            >
-              <Search className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">खोजें</span>
-            </button>
+            {/* Font Size Adjuster HUD */}
+            <div className="flex items-center bg-[#141624] border border-[#c5a059]/25 p-0.5 rounded-xl">
+              <button
+                onClick={() => setFontSizeLevel('normal')}
+                className={`px-2 py-1 rounded-lg text-[11px] font-sans font-bold cursor-pointer transition-all ${
+                  fontSizeLevel === 'normal' ? `${chapterTheme.buttonBg}` : 'text-[#c5a059]/70 hover:text-white'
+                }`}
+                title="सामान्य फॉन्ट"
+              >
+                A
+              </button>
+              <button
+                onClick={() => setFontSizeLevel('large')}
+                className={`px-2 py-1 rounded-lg text-xs font-sans font-bold cursor-pointer transition-all ${
+                  fontSizeLevel === 'large' ? `${chapterTheme.buttonBg}` : 'text-[#c5a059]/70 hover:text-white'
+                }`}
+                title="बड़ा फॉन्ट"
+              >
+                A+
+              </button>
+              <button
+                onClick={() => setFontSizeLevel('xlarge')}
+                className={`px-2 py-1 rounded-lg text-sm font-sans font-bold cursor-pointer transition-all ${
+                  fontSizeLevel === 'xlarge' ? `${chapterTheme.buttonBg}` : 'text-[#c5a059]/70 hover:text-white'
+                }`}
+                title="अति विशाल फॉन्ट (पाठक मोड)"
+              >
+                A++
+              </button>
+            </div>
 
-            <button
-              onClick={() => {
-                setActiveCardGeneratorVerse(verse);
-                sacredAudio.playNavChime(0.08);
-              }}
-              className="p-2 rounded-xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#e6c687] hover:text-[#f5eed9] transition-colors cursor-pointer flex items-center gap-1 text-xs font-serif"
-              title="वॉलपेपर कार्ड बनाएं"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">कार्ड</span>
-            </button>
-
+            {/* Tab Switcher */}
             <div className="flex items-center bg-[#141624] border border-[#c5a059]/30 p-0.5 rounded-xl">
               <button
                 onClick={() => { setActiveTab('study'); sacredAudio.playNavChime(0.05); }}
@@ -267,6 +293,18 @@ export default function ScriptureReader({
                 <span>दर्शन</span>
               </button>
             </div>
+
+            <button
+              onClick={() => {
+                setActiveCardGeneratorVerse(verse);
+                sacredAudio.playNavChime(0.08);
+              }}
+              className="p-2 rounded-xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#e6c687] hover:text-[#f5eed9] transition-colors cursor-pointer flex items-center gap-1 text-xs font-serif"
+              title="वॉलपेपर कार्ड बनाएं"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span className="hidden sm:inline">कार्ड</span>
+            </button>
 
             <button
               onClick={copyVerse}
@@ -294,7 +332,7 @@ export default function ScriptureReader({
         {activeTab === 'gallery' ? (
           /* ── SACRED VISUAL DARSHAN MODE ────────────────────────────────────── */
           <div className="space-y-6 animate-fade-in">
-            <div className={`relative rounded-3xl overflow-hidden bg-black border-2 ${chapterTheme.borderClass} shadow-2xl h-80 sm:h-[420px]`}>
+            <div className={`relative rounded-3xl overflow-hidden bg-black border-2 ${chapterTheme.borderClass} shadow-2xl h-80 sm:h-[450px]`}>
               <SacredArtworkImage
                 src={artwork.url}
                 alt={artwork.title}
@@ -330,7 +368,7 @@ export default function ScriptureReader({
             
             {/* ── CARD 1: SACRED SANSKRIT ALTAR IN CHAPTER SIGNATURE COLOR ─────── */}
             <div 
-              className={`relative rounded-3xl bg-gradient-to-b from-[#141624]/95 via-[#0e101a]/95 to-[#090a12]/95 backdrop-blur-2xl border-2 ${chapterTheme.borderClass} shadow-2xl p-6 sm:p-8 space-y-5 text-center overflow-hidden`}
+              className={`relative rounded-3xl bg-gradient-to-b from-[#141624]/98 via-[#0e101a]/98 to-[#090a12]/98 backdrop-blur-2xl border-2 ${chapterTheme.borderClass} shadow-2xl p-6 sm:p-8 space-y-5 text-center overflow-hidden`}
               style={{ boxShadow: `0 8px 35px ${chapterTheme.glowColor}` }}
             >
               
@@ -348,14 +386,33 @@ export default function ScriptureReader({
                 </div>
               </div>
 
-              {/* Sacred Sanskrit Verse */}
+              {/* Sacred Sanskrit Verse with Luminous Karaoke Glow */}
               <div className="py-2">
-                <p className="font-devanagari text-xl sm:text-2xl md:text-3xl text-[#f5eed9] font-medium leading-relaxed tracking-wide drop-shadow-md">
-                  {verse.devanagari.split('\n').map((line, idx) => (
-                    <span key={idx} className="block py-1">
-                      {line}
-                    </span>
-                  ))}
+                <p className={`font-devanagari ${fontClass} font-medium tracking-wide drop-shadow-md`}>
+                  {verse.devanagari.split('\n').map((line, lineIdx) => {
+                    const lineWords = line.split(/\s+/);
+                    return (
+                      <span key={lineIdx} className="block py-1">
+                        {lineWords.map((word, wordIdx) => {
+                          const globalIdx = shlokaWords.indexOf(word.replace(/[।॥]/g, '').trim());
+                          const isHighlighted = isCurrentVersePlaying && isKaraokeMode && globalIdx === currentWordIndex;
+
+                          return (
+                            <span
+                              key={wordIdx}
+                              className={`transition-all duration-300 inline-block px-1 ${
+                                isHighlighted
+                                  ? 'text-yellow-300 font-bold scale-110 drop-shadow-[0_0_15px_rgba(253,224,71,0.9)] bg-amber-500/20 rounded-lg'
+                                  : 'text-[#f5eed9]'
+                              }`}
+                            >
+                              {word}
+                            </span>
+                          );
+                        })}
+                      </span>
+                    );
+                  })}
                 </p>
               </div>
 
@@ -389,7 +446,7 @@ export default function ScriptureReader({
                           शास्त्रीय संगीत वाचन (स्वर: शैलेन्द्र भारती)
                         </span>
                         <span className="text-[10px] font-sans block" style={{ color: chapterTheme.accentHex }}>
-                          {isCurrentVersePlaying ? '▶️ लाइव वाचन चल रहा है...' : 'क्लिक करके प्रामाणिक धुन सुनें'}
+                          {isCurrentVersePlaying ? '▶️ लाइव वाचन व श्लोक काराओके चल रहा है...' : 'क्लिक करके प्रामाणिक धुन सुनें'}
                         </span>
                       </div>
                     </div>
