@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { 
   BookOpen, HeartHandshake, Sparkles, MessageSquare, 
-  HelpCircle, Compass, Flame, ArrowRight, Users
+  HelpCircle, Compass, Flame, ArrowRight, Users, ShieldCheck, Radio
 } from 'lucide-react';
 import ChapterEpisodeGrid from '@/components/ChapterEpisodeGrid';
 import EmotionalSanctuary from '@/components/EmotionalSanctuary';
@@ -11,6 +11,7 @@ import SacredJapaMala from '@/components/SacredJapaMala';
 import KrishnaAIMentor from '@/components/KrishnaAIMentor';
 import WhyChooseDharmaOS from '@/components/WhyChooseDharmaOS';
 import FamilyDevoteeSanctuary from '@/components/FamilyDevoteeSanctuary';
+import DailyVerseSpotlight from '@/components/DailyVerseSpotlight';
 import { sacredAudio } from '@/lib/sacredSounds';
 
 interface MasterDharmaHubProps {
@@ -60,8 +61,11 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
   ];
 
   return (
-    <div className="space-y-6 sm:space-y-8 max-w-7xl mx-auto pb-32">
+    <div className="space-y-6 sm:space-y-8 max-w-7xl mx-auto px-2 sm:px-4 pb-32 pt-2">
       
+      {/* ── LIVE DAILY VERSE SPOTLIGHT HERO ─────────────────────────────────── */}
+      <DailyVerseSpotlight />
+
       {/* ── TOP GRAND SACRED NAVIGATION HUB TABS ───────────────────────────── */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5 bg-[#0d0f19]/90 backdrop-blur-2xl p-2.5 sm:p-3.5 rounded-3xl border-2 border-[#c5a059]/30 shadow-2xl">
         {HUB_TABS.map(tab => {
