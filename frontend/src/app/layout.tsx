@@ -8,6 +8,8 @@ import GlobalAudioDock from '@/components/GlobalAudioDock';
 import EnterpriseSearchModal from '@/components/EnterpriseSearchModal';
 import SanskritLexiconDrawer from '@/components/SanskritLexiconDrawer';
 import ShlokaCardGeneratorModal from '@/components/ShlokaCardGeneratorModal';
+import GlobalRoyalHeader from '@/components/GlobalRoyalHeader';
+import GlobalRoyalFooter from '@/components/GlobalRoyalFooter';
 
 const dmSans = DM_Sans({ 
   subsets: ['latin'], 
@@ -77,11 +79,18 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
-      <body className="bg-[#090a0f] text-[#f5eed9] min-h-screen selection:bg-amber-500/30 selection:text-white">
+      <body className="bg-[#090a0f] text-[#f5eed9] min-h-screen selection:bg-amber-500/30 selection:text-white flex flex-col justify-between">
         <LanguageProvider>
           <GlobalAudioProvider>
-            <main className="min-h-screen">{children}</main>
             
+            {/* Global Royal Header Sticky Nav */}
+            <GlobalRoyalHeader />
+
+            <main className="flex-1">{children}</main>
+            
+            {/* Global Royal Footer */}
+            <GlobalRoyalFooter />
+
             {/* Global Persistent Floating Audio Dock */}
             <GlobalAudioDock />
 
