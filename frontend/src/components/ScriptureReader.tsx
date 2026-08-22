@@ -6,18 +6,18 @@ import Link from 'next/link';
 import { 
   Play, Pause, ArrowLeft, Volume2, 
   Sparkles, BookOpen, Bookmark, BookmarkCheck, Copy, Check, 
-  MessageSquare, Flame, Image as ImageIcon, Music,
-  Search, Share2, Download, Award, Compass, ChevronRight,
-  Disc3, Shield
+  MessageSquare, Flame, Image as ImageIcon,
+  Search, Download, Award, ChevronDown, ChevronUp
 } from 'lucide-react';
 import { GitaVerse, CHAPTERS } from '@/types/verse';
-import { getMasterTimestampForVerse } from '@/data/gitaMasterAudioTimestamps';
+import { getMasterTimestampForVerse, MASTER_VIDEO_ID } from '@/data/gitaMasterAudioTimestamps';
 import { getArtworkForShloka, getArtworkDetailsForShloka, KRISHNA_ARTWORKS } from '@/data/krishnaArtworks';
 import { getSpeakerForVerse, getChhandaForVerse, generateUniversalVedicData } from '@/lib/universalVedicEngine';
 import { getCanonicalVerseData } from '@/data/canonicalGitaTranslations';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useLanguage } from '@/context/LanguageContext';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
+import SacredArtworkImage from '@/components/SacredArtworkImage';
 import ShlokaPronunciationTrainer from '@/components/ShlokaPronunciationTrainer';
 
 interface ScriptureReaderProps {
@@ -40,7 +40,6 @@ interface AcharyaBhashyaItem {
   tradition: string;
   icon: string;
   tagline: string;
-  color: string;
 }
 
 const ACHARYA_LIST: AcharyaBhashyaItem[] = [
@@ -49,56 +48,49 @@ const ACHARYA_LIST: AcharyaBhashyaItem[] = [
     name: 'समग्र वैदिक सार',
     tradition: 'सारगर्भित समन्वय',
     icon: '🪔',
-    tagline: 'सम्पूर्ण दर्शनों का एकीकृत निचोड़',
-    color: 'from-amber-500/20 to-yellow-600/20'
+    tagline: 'सम्पूर्ण दर्शनों का एकीकृत निचोड़'
   },
   {
     id: 'advaita',
     name: 'आदि शंकराचार्य',
     tradition: 'अद्वैत वेदान्त (Non-Dualism)',
     icon: '🕉️',
-    tagline: 'ब्रह्म सत्यं जगन्मिथ्या — आत्मा ही परब्रह्म है',
-    color: 'from-orange-500/20 to-amber-600/20'
+    tagline: 'ब्रह्म सत्यं जगन्मिथ्या — आत्मा ही परब्रह्म है'
   },
   {
     id: 'vishishtadvaita',
     name: 'रामानुजाचार्य',
-    tradition: 'विशिष्टाद्वैत वेदान्त (Qualified Non-Dualism)',
+    tradition: 'विशिष्टाद्वैत वेदान्त',
     icon: '🌸',
-    tagline: 'परम शरणागति एवं भगवान की अहैतुकी कृपा',
-    color: 'from-emerald-500/20 to-teal-600/20'
+    tagline: 'परम शरणागति एवं भगवान की अहैतुकी कृपा'
   },
   {
     id: 'dvaita',
     name: 'मध्वाचार्य',
     tradition: 'द्वैत वेदान्त (Dualism)',
     icon: '🔱',
-    tagline: 'जीवात्मा और परमात्मा का नित्य भेद एवं भक्ति',
-    color: 'from-blue-500/20 to-indigo-600/20'
+    tagline: 'जीवात्मा और परमात्मा का नित्य भेद एवं भक्ति'
   },
   {
     id: 'jnaneshwari',
     name: 'संत ज्ञानेश्वर',
-    tradition: 'ज्ञानेश्वरी भावार्थ (Mystic Bhakti)',
+    tradition: 'ज्ञानेश्वरी भावार्थ',
     icon: '✨',
-    tagline: 'मधुर काव्यमयी अमृतमयी भगवद् व्याख्या',
-    color: 'from-purple-500/20 to-pink-600/20'
+    tagline: 'मधुर काव्यमयी अमृतमयी भगवद् व्याख्या'
   },
   {
     id: 'vivekananda',
     name: 'स्वामी विवेकानंद',
-    tradition: 'व्यावहारिक वेदान्त (Practical Vedanta)',
+    tradition: 'व्यावहारिक वेदान्त',
     icon: '⚡',
-    tagline: 'उठो, जागो और लक्ष्य प्राप्ति तक रुको मत',
-    color: 'from-rose-500/20 to-red-600/20'
+    tagline: 'उठो, जागो और लक्ष्य प्राप्ति तक रुको मत'
   },
   {
     id: 'science',
     name: 'आधुनिक चेतना विज्ञान',
-    tradition: 'Quantum Consciousness & Neuro-Vedanta',
+    tradition: 'Quantum Consciousness',
     icon: '🔬',
-    tagline: 'चेतना, ऊर्जा एवं आधुनिक वैज्ञानिक दृष्टिकोण',
-    color: 'from-cyan-500/20 to-blue-600/20'
+    tagline: 'चेतना, ऊर्जा एवं आधुनिक वैज्ञानिक दृष्टिकोण'
   }
 ];
 
@@ -123,12 +115,11 @@ export default function ScriptureReader({
     setActiveCardGeneratorVerse 
   } = useGlobalAudio();
   
-  // Local Visual Tab State
   const [activeTab, setActiveTab] = useState<'study' | 'gallery'>('study');
   const [activeSampradaya, setActiveSampradaya] = useState<string>('universal');
   const [copied, setCopied] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [selectedGalleryImg, setSelectedGalleryImg] = useState<string | null>(null);
+  const [showDedicatedPlayer, setShowDedicatedPlayer] = useState(false);
 
   const chapterInfo = CHAPTERS.find(c => c.number === verse.chapter) || CHAPTERS[0];
   const masterTimestamp = getMasterTimestampForVerse(verse.chapter, verse.verse);
@@ -148,7 +139,6 @@ export default function ScriptureReader({
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
-  // Bookmark check
   useEffect(() => {
     try {
       const saved = localStorage.getItem('gita_bookmarks');
@@ -205,7 +195,6 @@ export default function ScriptureReader({
     if (activeSampradaya === 'dvaita') return universal.sampradaya_notes.dvaita;
     if (activeSampradaya === 'jnaneshwari') return universal.sampradaya_notes.jnaneshwari;
     if (activeSampradaya === 'vivekananda') return universal.sampradaya_notes.vivekananda;
-    if (activeSampradaya === 'story') return universal.sampradaya_notes.story;
     if (activeSampradaya === 'science') return universal.sampradaya_notes.science;
     
     return canonical?.deep_bhashya?.hi || canonical?.deep_bhashya?.hinglish || universal.sampradaya_notes.universal;
@@ -214,22 +203,11 @@ export default function ScriptureReader({
   const currentAcharya = ACHARYA_LIST.find(a => a.id === activeSampradaya) || ACHARYA_LIST[0];
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen bg-[#090b14]">
       
-      {/* ── SACRED UNIQUE BACKGROUND IMAGE FOR EVERY SHLOKA ───────────────── */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <img
-          src={artwork.url}
-          alt={artwork.title}
-          className="w-full h-full object-cover filter brightness-[0.22] blur-sm scale-105 transition-all duration-1000"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#090b14]/90 via-[#090b14]/95 to-[#090b14]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent" />
-      </div>
-
       <div className="relative z-10 max-w-4xl mx-auto space-y-6 animate-fade-in px-2 sm:px-4 pb-32 pt-2">
         
-        {/* ── TOP UTILITY BAR: CLEAN BREADCRUMB, SEARCH & CONTROLS ───────────── */}
+        {/* ── TOP UTILITY BAR ────────────────────────────────────────────────── */}
         <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/30 shadow-2xl">
           
           <Link
@@ -241,10 +219,8 @@ export default function ScriptureReader({
             <span>अध्याय {verse.chapter} ({chapterInfo.name_sanskrit})</span>
           </Link>
 
-          {/* View Mode Toggle & Utilities */}
           <div className="flex items-center gap-1.5 sm:gap-2">
             
-            {/* Search Trigger */}
             <button
               onClick={() => { setIsSearchModalOpen(true); sacredAudio.playNavChime(0.05); }}
               className="p-2 rounded-xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#c5a059] hover:text-[#f5eed9] transition-colors cursor-pointer flex items-center gap-1 text-xs font-serif"
@@ -254,7 +230,6 @@ export default function ScriptureReader({
               <span className="hidden sm:inline">खोजें</span>
             </button>
 
-            {/* Social Wallpaper / Card Creator */}
             <button
               onClick={() => {
                 setActiveCardGeneratorVerse(verse);
@@ -267,7 +242,6 @@ export default function ScriptureReader({
               <span className="hidden sm:inline">कार्ड</span>
             </button>
 
-            {/* Study vs Gallery Tab Pills */}
             <div className="flex items-center bg-[#141624] border border-[#c5a059]/30 p-0.5 rounded-xl">
               <button
                 onClick={() => { setActiveTab('study'); sacredAudio.playNavChime(0.05); }}
@@ -316,15 +290,15 @@ export default function ScriptureReader({
         </div>
 
         {activeTab === 'gallery' ? (
-          /* ── SACRED VISUAL DARSHAN & WALLPAPER GALLERY MODE ───────────────── */
+          /* ── SACRED VISUAL DARSHAN MODE ────────────────────────────────────── */
           <div className="space-y-6 animate-fade-in">
-            
-            {/* Main Shloka Artwork Hero */}
-            <div className="relative rounded-3xl overflow-hidden bg-black border-2 border-[#c5a059]/50 shadow-2xl group">
-              <img
-                src={selectedGalleryImg || artwork.url}
+            <div className="relative rounded-3xl overflow-hidden bg-black border-2 border-[#c5a059]/50 shadow-2xl h-80 sm:h-[420px]">
+              <SacredArtworkImage
+                src={artwork.url}
                 alt={artwork.title}
-                className="w-full h-80 sm:h-[480px] object-cover filter brightness-95 group-hover:scale-102 transition-transform duration-700"
+                chapter={verse.chapter}
+                verse={verse.verse}
+                className="w-full h-full"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-10 space-y-2">
                 <div className="flex items-center gap-2">
@@ -347,47 +321,6 @@ export default function ScriptureReader({
                 </p>
               </div>
             </div>
-
-            {/* Full HD Krishna Artworks Collection */}
-            <div className="p-5 rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/30 space-y-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-sm font-serif font-bold text-[#f5eed9]">
-                  अन्य दिव्य श्रीकृष्ण चित्र संग्रह ({KRISHNA_ARTWORKS.length} Artworks)
-                </h3>
-                <span className="text-[11px] text-[#c5a059]/70 font-sans">
-                  क्लिक करके वॉलपेपर बदलें
-                </span>
-              </div>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                {KRISHNA_ARTWORKS.map((art) => (
-                  <div
-                    key={art.id}
-                    onClick={() => {
-                      setSelectedGalleryImg(art.url);
-                      sacredAudio.playNavChime(0.08);
-                    }}
-                    className={`rounded-2xl overflow-hidden border transition-all cursor-pointer relative group ${
-                      (selectedGalleryImg === art.url || (!selectedGalleryImg && artwork.url === art.url))
-                        ? 'border-[#c5a059] ring-2 ring-[#c5a059]/50 shadow-lg scale-102'
-                        : 'border-[#c5a059]/20 hover:border-[#c5a059]/60'
-                    }`}
-                  >
-                    <img
-                      src={art.url}
-                      alt={art.title}
-                      className="w-full h-28 object-cover group-hover:scale-105 transition-transform"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-2 text-center">
-                      <p className="text-[11px] font-devanagari font-bold text-[#f5eed9]">
-                        {art.title}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         ) : (
           /* ── MAIN STUDY & SACRED READING MODE ──────────────────────────────── */
@@ -396,11 +329,6 @@ export default function ScriptureReader({
             {/* ── CARD 1: SACRED SANSKRIT ALTAR ───────────────────────────────── */}
             <div className="relative rounded-3xl bg-gradient-to-b from-[#141624]/95 via-[#0e101a]/95 to-[#090a12]/95 backdrop-blur-2xl border-2 border-[#c5a059]/40 shadow-2xl p-6 sm:p-8 space-y-5 text-center overflow-hidden">
               
-              {/* Ambient Background Glow when Playing */}
-              {isCurrentVersePlaying && (
-                <div className="absolute inset-0 bg-amber-500/5 animate-pulse pointer-events-none" />
-              )}
-
               {/* Royal Chapter & Shloka Numbering Banner */}
               <div className="flex flex-wrap items-center justify-center gap-2">
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c5a059]/20 border border-[#c5a059]/50 text-xs font-serif text-[#f5eed9] shadow-md">
@@ -433,7 +361,7 @@ export default function ScriptureReader({
                 </p>
               </div>
 
-              {/* ── PURE CLASSICAL AUDIO MUSIC PLAYER DECK (NO YOUTUBE VIDEO CLUTTER) ── */}
+              {/* ── GUARANTEED CLASSICAL AUDIO CHANTING DECK ─────────────────── */}
               <div className="pt-4 max-w-xl mx-auto">
                 <div className="p-3.5 sm:p-4 rounded-2xl bg-[#0b0d18]/90 border border-[#c5a059]/35 shadow-inner space-y-3">
                   
@@ -461,22 +389,16 @@ export default function ScriptureReader({
                       </div>
                     </div>
 
-                    {/* Dynamic Equalizer Bars */}
-                    <div className="flex items-end gap-1 h-4 shrink-0">
-                      {[40, 90, 60, 100, 75, 45, 80].map((h, i) => (
-                        <span
-                          key={i}
-                          className="w-1 rounded-full bg-[#c5a059] transition-all"
-                          style={{
-                            height: isCurrentVersePlaying ? `${Math.max(20, (h * ((i % 3) + 1)) % 100)}%` : '20%',
-                            animationDuration: `${0.4 + i * 0.1}s`
-                          }}
-                        />
-                      ))}
-                    </div>
+                    <button
+                      onClick={() => setShowDedicatedPlayer(!showDedicatedPlayer)}
+                      className="px-3 py-1.5 rounded-xl bg-[#141624] border border-[#c5a059]/30 text-xs font-serif text-[#e6c687] hover:text-[#f5eed9] flex items-center gap-1 cursor-pointer"
+                    >
+                      <span>{showDedicatedPlayer ? 'प्लेयर छिपाएं' : 'प्लेयर खोलें'}</span>
+                      {showDedicatedPlayer ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                    </button>
                   </div>
 
-                  {/* Progress Line & Timestamps */}
+                  {/* Progress Line */}
                   <div className="space-y-1">
                     <div className="w-full h-1.5 rounded-full bg-[#141829] overflow-hidden">
                       <div
@@ -490,12 +412,23 @@ export default function ScriptureReader({
                     </div>
                   </div>
 
+                  {/* Visible Embedded Player if expanded */}
+                  {showDedicatedPlayer && (
+                    <div className="pt-2 aspect-video w-full rounded-xl overflow-hidden bg-black border border-[#c5a059]/20">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${masterTimestamp.startSeconds}&autoplay=1&controls=1&enablejsapi=1`}
+                        title="Gita Shloka Audio"
+                        className="w-full h-full"
+                        allow="autoplay; encrypted-media"
+                      />
+                    </div>
+                  )}
+
                 </div>
               </div>
 
             </div>
 
-            
             {/* ── CARD: AI SANSKRIT PRONUNCIATION TRAINER ────────────────────── */}
             <ShlokaPronunciationTrainer
               devanagari={verse.devanagari}
@@ -513,7 +446,6 @@ export default function ScriptureReader({
                 </h3>
               </div>
 
-              {/* Hindi Translation */}
               <div className="p-4 rounded-2xl bg-[#141624]/90 border border-[#c5a059]/20">
                 <span className="text-[10px] font-sans font-bold text-[#c5a059] uppercase tracking-wider block mb-1">
                   हिन्दी अनुवाद:
@@ -523,7 +455,6 @@ export default function ScriptureReader({
                 </p>
               </div>
 
-              {/* English Translation */}
               {verse.translation_en && (
                 <div className="p-4 rounded-2xl bg-[#141624]/90 border border-[#c5a059]/20">
                   <span className="text-[10px] font-sans font-bold text-[#c5a059] uppercase tracking-wider block mb-1">
@@ -580,10 +511,9 @@ export default function ScriptureReader({
               </div>
             )}
 
-            {/* ── CARD 4: ENTERPRISE CLASSICAL COMMENTARIES (प्रामाणिक शास्त्रीय भाष्य) ── */}
+            {/* ── CARD 4: ENTERPRISE CLASSICAL COMMENTARIES ────────────────────── */}
             <div className="rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/30 p-5 sm:p-7 shadow-2xl space-y-5">
               
-              {/* Header */}
               <div className="flex items-center justify-between border-b border-[#c5a059]/20 pb-3">
                 <div className="flex items-center gap-2">
                   <Award className="w-5 h-5 text-[#c5a059]" />
@@ -633,7 +563,6 @@ export default function ScriptureReader({
               {/* Commentary Viewport Card */}
               <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-b from-[#141829]/95 to-[#0e111d]/95 border-2 border-[#c5a059]/30 shadow-xl space-y-4">
                 
-                {/* Active Acharya Banner */}
                 <div className="flex items-center justify-between border-b border-[#c5a059]/20 pb-3">
                   <div className="flex items-center gap-2.5">
                     <span className="text-2xl">{currentAcharya.icon}</span>
@@ -648,7 +577,6 @@ export default function ScriptureReader({
                   </div>
                 </div>
 
-                {/* Main Bhashya Prose */}
                 <div className="prose prose-invert max-w-none">
                   <p className="text-xs sm:text-sm text-[#f5eed9]/95 font-serif leading-relaxed whitespace-pre-line">
                     {getActiveBhashyaContent()}

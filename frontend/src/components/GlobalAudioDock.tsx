@@ -4,11 +4,12 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { 
   Play, Pause, SkipBack, SkipForward, Volume2, X, 
-  ChevronUp, ChevronDown, Clock, Sparkles, SlidersHorizontal, 
+  ChevronUp, ChevronDown, Sparkles, SlidersHorizontal, 
   ExternalLink, Disc3, Music 
 } from 'lucide-react';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
 import { sacredAudio } from '@/lib/sacredSounds';
+import { MASTER_VIDEO_ID } from '@/data/gitaMasterAudioTimestamps';
 
 const DEVANAGARI_DIGITS = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
 function toDevanagariNum(num: number): string {
@@ -26,6 +27,8 @@ export default function GlobalAudioDock() {
     prevTrack 
   } = useGlobalAudio();
 
+  const [showEmbeddedPlayer, setShowEmbeddedPlayer] = useState(false);
+
   if (!currentTrack) return null;
 
   const durationSec = currentTrack.timestamp.duration || 60;
@@ -39,23 +42,46 @@ export default function GlobalAudioDock() {
 
   return (
     <div className="fixed bottom-4 left-3 right-3 sm:left-auto sm:right-6 sm:max-w-md z-50 animate-fade-in">
+      
+      {/* Expandable Embedded Video/Sound Player */}
+      {showEmbeddedPlayer && (
+        <div className="mb-3 rounded-2xl bg-[#090b14]/95 backdrop-blur-2xl border border-[#c5a059]/40 p-3 shadow-2xl space-y-2 animate-fade-in">
+          <div className="flex items-center justify-between text-xs font-serif text-[#f5eed9]">
+            <span>प्रामाणिक शास्त्रीय वाचन (स्वर: शैलेन्द्र भारती)</span>
+            <button
+              onClick={() => setShowEmbeddedPlayer(false)}
+              className="text-[#c5a059] hover:text-[#f5eed9] p-1 cursor-pointer"
+            >
+              <ChevronDown className="w-4 h-4" />
+            </button>
+          </div>
+          <div className="aspect-video w-full rounded-xl overflow-hidden bg-black border border-[#c5a059]/20">
+            <iframe
+              src={`https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${currentTrack.timestamp.startSeconds}&autoplay=1&controls=1&enablejsapi=1`}
+              title="Gita Shloka Audio"
+              className="w-full h-full"
+              allow="autoplay; encrypted-media"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Floating Audio Pill Dock */}
       <div className="relative rounded-full bg-[#0a0c16]/95 backdrop-blur-2xl border-2 border-[#c5a059]/40 p-2 sm:p-2.5 shadow-[0_10px_35px_rgba(0,0,0,0.9)] flex items-center justify-between gap-3 ring-1 ring-[#f5eed9]/20">
         
-        {/* Spinning Album Artwork + Track Meta */}
+        {/* Track Meta & Link */}
         <Link
           href={`/chapter/${currentTrack.chapter}/${currentTrack.verse}`}
           className="flex items-center gap-2.5 min-w-0 group cursor-pointer"
           onClick={() => sacredAudio.playNavChime(0.06)}
         >
-          {/* Spinning Krishna Disc */}
-          <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-[#c5a059]/60 shrink-0 shadow-md ${
+          {/* Spinning Sacred Avatar Disc */}
+          <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-amber-400 via-[#c5a059] to-amber-600 p-0.5 shrink-0 shadow-md ${
             isPlaying ? 'animate-[spin_6s_linear_infinite]' : ''
           }`}>
-            <img
-              src={currentTrack.artwork.url}
-              alt="Krishna Artwork"
-              className="w-full h-full object-cover"
-            />
+            <div className="w-full h-full rounded-full bg-[#090b14] flex items-center justify-center text-sm font-bold text-amber-300">
+              ॐ
+            </div>
           </div>
 
           <div className="min-w-0 space-y-0.5">
@@ -66,7 +92,7 @@ export default function GlobalAudioDock() {
               </span>
             </div>
             
-            {/* Dynamic Equalizer & Artist Badge */}
+            {/* Equalizer & Time */}
             <div className="flex items-center gap-1.5">
               <div className="flex items-end gap-0.5 h-2">
                 {[40, 90, 60, 100, 75, 45, 80].map((h, i) => (
@@ -87,10 +113,9 @@ export default function GlobalAudioDock() {
           </div>
         </Link>
 
-        {/* Controls: [ Prev ] [ Play/Pause ] [ Next ] [ Close ] */}
+        {/* Controls: [ Prev ] [ Play/Pause ] [ Next ] [ Expand Player ] [ Close ] */}
         <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
           
-          {/* Prev Shloka */}
           <button
             onClick={prevTrack}
             className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#e6c687] flex items-center justify-center transition-all cursor-pointer"
@@ -99,7 +124,6 @@ export default function GlobalAudioDock() {
             <SkipBack className="w-3.5 h-3.5" />
           </button>
 
-          {/* Main Play/Pause Button */}
           <button
             onClick={togglePlayPause}
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-amber-400 via-[#c5a059] to-amber-500 text-black flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.6)] hover:scale-110 active:scale-95 transition-transform cursor-pointer border border-[#f5eed9]"
@@ -108,7 +132,6 @@ export default function GlobalAudioDock() {
             {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
           </button>
 
-          {/* Next Shloka */}
           <button
             onClick={nextTrack}
             className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#e6c687] flex items-center justify-center transition-all cursor-pointer"
@@ -117,7 +140,14 @@ export default function GlobalAudioDock() {
             <SkipForward className="w-3.5 h-3.5" />
           </button>
 
-          {/* Close / Stop */}
+          <button
+            onClick={() => setShowEmbeddedPlayer(!showEmbeddedPlayer)}
+            className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#c5a059] flex items-center justify-center transition-all cursor-pointer"
+            title="विस्तृत प्लेयर खोलें"
+          >
+            {showEmbeddedPlayer ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
+          </button>
+
           <button
             onClick={stopAudio}
             className="w-6 h-6 rounded-full text-[#c5a059]/50 hover:text-[#f5eed9] hover:bg-red-500/20 flex items-center justify-center transition-colors ml-0.5 cursor-pointer"
