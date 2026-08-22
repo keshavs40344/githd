@@ -3,13 +3,14 @@
 import React, { useState } from 'react';
 import { 
   BookOpen, HeartHandshake, Sparkles, MessageSquare, 
-  HelpCircle, Compass, Flame, ArrowRight
+  HelpCircle, Compass, Flame, ArrowRight, Users
 } from 'lucide-react';
 import ChapterEpisodeGrid from '@/components/ChapterEpisodeGrid';
 import EmotionalSanctuary from '@/components/EmotionalSanctuary';
 import SacredJapaMala from '@/components/SacredJapaMala';
 import KrishnaAIMentor from '@/components/KrishnaAIMentor';
 import WhyChooseDharmaOS from '@/components/WhyChooseDharmaOS';
+import FamilyDevoteeSanctuary from '@/components/FamilyDevoteeSanctuary';
 import { sacredAudio } from '@/lib/sacredSounds';
 
 interface MasterDharmaHubProps {
@@ -17,7 +18,7 @@ interface MasterDharmaHubProps {
 }
 
 export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
-  const [activeHubTab, setActiveHubTab] = useState<'scripture' | 'healer' | 'sadhana' | 'mentor' | 'why'>('scripture');
+  const [activeHubTab, setActiveHubTab] = useState<'scripture' | 'family' | 'healer' | 'sadhana' | 'mentor' | 'why'>('scripture');
 
   const HUB_TABS = [
     {
@@ -25,6 +26,12 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
       label: '१८ अध्याय व श्लोक',
       sublabel: '700 Verses & Chapters',
       icon: '📖'
+    },
+    {
+      id: 'family',
+      label: 'परिवार व भक्त मण्डल',
+      sublabel: 'Ad-Free Sanskar & Radio',
+      icon: '🪔'
     },
     {
       id: 'healer',
@@ -48,7 +55,7 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
       id: 'why',
       label: 'क्यों चुनें Dharma.OS?',
       sublabel: 'Why Us vs Google / AI',
-      icon: '🪔'
+      icon: '👑'
     }
   ];
 
@@ -56,7 +63,7 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
     <div className="space-y-6 sm:space-y-8 max-w-7xl mx-auto pb-32">
       
       {/* ── TOP GRAND SACRED NAVIGATION HUB TABS ───────────────────────────── */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3 bg-[#0d0f19]/90 backdrop-blur-2xl p-3 sm:p-4 rounded-3xl border-2 border-[#c5a059]/30 shadow-2xl">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5 bg-[#0d0f19]/90 backdrop-blur-2xl p-2.5 sm:p-3.5 rounded-3xl border-2 border-[#c5a059]/30 shadow-2xl">
         {HUB_TABS.map(tab => {
           const isSelected = activeHubTab === tab.id;
           return (
@@ -66,7 +73,7 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
                 setActiveHubTab(tab.id as any);
                 sacredAudio.playNavChime(0.06);
               }}
-              className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between space-y-1 ${
+              className={`p-2.5 sm:p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between space-y-1 ${
                 isSelected
                   ? 'bg-gradient-to-r from-amber-400 to-yellow-500 text-black border-yellow-200 font-bold shadow-[0_4px_20px_rgba(245,158,11,0.4)] scale-102'
                   : 'bg-[#141624]/90 text-[#e6c687] border-[#c5a059]/20 hover:border-[#c5a059] hover:bg-[#1a1e33]'
@@ -74,12 +81,12 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
             >
               <div className="flex items-center justify-between">
                 <span className="text-lg">{tab.icon}</span>
-                {isSelected && <span className="w-2 h-2 rounded-full bg-black" />}
+                {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-black" />}
               </div>
               <span className="text-xs font-devanagari font-bold block truncate">
                 {tab.label}
               </span>
-              <span className={`text-[10px] block truncate ${isSelected ? 'text-black/80' : 'text-[#c5a059]/70'}`}>
+              <span className={`text-[9px] block truncate ${isSelected ? 'text-black/80' : 'text-[#c5a059]/70'}`}>
                 {tab.sublabel}
               </span>
             </button>
@@ -93,8 +100,17 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
           <div className="space-y-8">
             <ChapterEpisodeGrid />
             <div className="pt-6">
+              <FamilyDevoteeSanctuary />
+            </div>
+            <div className="pt-6">
               <WhyChooseDharmaOS />
             </div>
+          </div>
+        )}
+
+        {activeHubTab === 'family' && (
+          <div className="max-w-5xl mx-auto">
+            <FamilyDevoteeSanctuary />
           </div>
         )}
 
