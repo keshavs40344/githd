@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
-import { getMasterTimestampForVerse, MasterShlokaTimestamp } from '@/data/gitaMasterAudioTimestamps';
+import { getMasterTimestampForVerse, MasterShlokaTimestamp, MASTER_VIDEO_ID } from '@/data/gitaMasterAudioTimestamps';
 import { getArtworkDetailsForShloka, KrishnaArt } from '@/data/krishnaArtworks';
 import { getSpeakerForVerse, SpeakerInfo } from '@/lib/universalVedicEngine';
 import { CHAPTERS } from '@/types/verse';
@@ -20,16 +20,16 @@ export interface ActiveTrack {
 interface GlobalAudioContextType {
   currentTrack: ActiveTrack | null;
   isPlaying: boolean;
-  audioMode: 'vedic_voice' | 'youtube_master' | 'flute_bgm' | 'none';
   playbackSpeed: number;
   autoPlayNext: boolean;
-  sleepTimerRemaining: number | null; // seconds remaining
+  sleepTimerRemaining: number | null;
   isSearchModalOpen: boolean;
   selectedLexiconWord: any | null;
   activeCardGeneratorVerse: any | null;
+  currentTimeSec: number;
   
   // Actions
-  playTrack: (chapter: number, verse: number, devanagari?: string, translation_hi?: string, mode?: 'vedic_voice' | 'youtube_master' | 'flute_bgm') => void;
+  playTrack: (chapter: number, verse: number, devanagari?: string, translation_hi?: string) => void;
   togglePlayPause: () => void;
   stopAudio: () => void;
   nextTrack: () => void;
@@ -37,7 +37,6 @@ interface GlobalAudioContextType {
   setPlaybackSpeed: (speed: number) => void;
   setAutoPlayNext: (val: boolean) => void;
   setSleepTimer: (minutes: number | null) => void;
-  setAudioMode: (mode: 'vedic_voice' | 'youtube_master' | 'flute_bgm' | 'none') => void;
   setIsSearchModalOpen: (open: boolean) => void;
   setSelectedLexiconWord: (word: any | null) => void;
   setActiveCardGeneratorVerse: (verse: any | null) => void;
@@ -48,11 +47,14 @@ const GlobalAudioContext = createContext<GlobalAudioContextType | undefined>(und
 export function GlobalAudioProvider({ children }: { children: React.ReactNode }) {
   const [currentTrack, setCurrentTrack] = useState<ActiveTrack | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audioMode, setAudioMode] = useState<'vedic_voice' | 'youtube_master' | 'flute_bgm' | 'none'>('none');
   const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
   const [autoPlayNext, setAutoPlayNext] = useState(true);
   const [sleepTimerRemaining, setSleepTimerRemaining] = useState<number | null>(null);
+  const [currentTimeSec, setCurrentTimeSec] = useState(0);
   
+  // Hidden background audio iframe container
+  const [audioIframeSrc, setAudioIframeSrc] = useState<string | null>(null);
+
   // Enterprise UI Drawers State
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [selectedLexiconWord, setSelectedLexiconWord] = useState<any | null>(null);
@@ -72,7 +74,26 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     return () => clearInterval(timer);
   }, [sleepTimerRemaining]);
 
-  // Global Keyboard Shortcuts (Ctrl+K for Search, Space for Audio)
+  // Track timer progress
+  useEffect(() => {
+    if (!isPlaying || !currentTrack) return;
+    const interval = setInterval(() => {
+      setCurrentTimeSec(prev => {
+        if (prev >= currentTrack.timestamp.duration) {
+          if (autoPlayNext) {
+            nextTrack();
+          } else {
+            setIsPlaying(false);
+          }
+          return 0;
+        }
+        return prev + 1;
+      });
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [isPlaying, currentTrack, autoPlayNext]);
+
+  // Global Keyboard Shortcuts (Ctrl+K for Search)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -88,8 +109,7 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     chapter: number,
     verse: number,
     devanagari?: string,
-    translation_hi?: string,
-    mode: 'vedic_voice' | 'youtube_master' | 'flute_bgm' = 'vedic_voice'
+    translation_hi?: string
   ) => {
     const timestamp = getMasterTimestampForVerse(chapter, verse);
     const artwork = getArtworkDetailsForShloka(chapter, verse);
@@ -106,63 +126,50 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     };
 
     setCurrentTrack(track);
-    setAudioMode(mode);
+    setCurrentTimeSec(0);
     setIsPlaying(true);
     sacredAudio.playTempleBell(0.3);
 
-    if (mode === 'vedic_voice' && typeof window !== 'undefined' && devanagari) {
-      window.speechSynthesis.cancel();
-      const textToSpeak = `${devanagari}. अर्थ: ${translation_hi || ''}`;
-      const utterance = new SpeechSynthesisUtterance(textToSpeak);
-      utterance.lang = 'hi-IN';
-      utterance.rate = 0.85 * playbackSpeed;
-      utterance.onend = () => {
-        if (autoPlayNext) {
-          nextTrack();
-        } else {
-          setIsPlaying(false);
-        }
-      };
-      window.speechSynthesis.speak(utterance);
-    }
+    // Stream Pure Background Audio via YouTube Embed with zero UI clutter
+    const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${timestamp.startSeconds}&autoplay=1&enablejsapi=1&controls=0&playsinline=1`;
+    setAudioIframeSrc(src);
   };
 
   const togglePlayPause = () => {
     if (!currentTrack) return;
     if (isPlaying) {
-      if (typeof window !== 'undefined') window.speechSynthesis.cancel();
       setIsPlaying(false);
+      setAudioIframeSrc(null);
     } else {
       setIsPlaying(true);
-      if (audioMode === 'vedic_voice' && currentTrack.devanagari) {
-        playTrack(currentTrack.chapter, currentTrack.verse, currentTrack.devanagari, currentTrack.translation_hi, 'vedic_voice');
-      }
+      const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${currentTrack.timestamp.startSeconds + currentTimeSec}&autoplay=1&enablejsapi=1&controls=0&playsinline=1`;
+      setAudioIframeSrc(src);
     }
     sacredAudio.playNavChime(0.06);
   };
 
   const stopAudio = () => {
-    if (typeof window !== 'undefined') window.speechSynthesis.cancel();
     setIsPlaying(false);
-    setAudioMode('none');
+    setAudioIframeSrc(null);
+    setCurrentTimeSec(0);
   };
 
   const nextTrack = () => {
     if (!currentTrack) return;
     const chInfo = CHAPTERS.find(c => c.number === currentTrack.chapter) || CHAPTERS[0];
     if (currentTrack.verse < chInfo.verses_count) {
-      playTrack(currentTrack.chapter, currentTrack.verse + 1, currentTrack.devanagari, currentTrack.translation_hi, audioMode === 'none' ? 'vedic_voice' : audioMode);
+      playTrack(currentTrack.chapter, currentTrack.verse + 1, currentTrack.devanagari, currentTrack.translation_hi);
     } else if (currentTrack.chapter < 18) {
-      playTrack(currentTrack.chapter + 1, 1, undefined, undefined, audioMode === 'none' ? 'vedic_voice' : audioMode);
+      playTrack(currentTrack.chapter + 1, 1);
     }
   };
 
   const prevTrack = () => {
     if (!currentTrack) return;
     if (currentTrack.verse > 1) {
-      playTrack(currentTrack.chapter, currentTrack.verse - 1, currentTrack.devanagari, currentTrack.translation_hi, audioMode === 'none' ? 'vedic_voice' : audioMode);
+      playTrack(currentTrack.chapter, currentTrack.verse - 1, currentTrack.devanagari, currentTrack.translation_hi);
     } else if (currentTrack.chapter > 1) {
-      playTrack(currentTrack.chapter - 1, 1, undefined, undefined, audioMode === 'none' ? 'vedic_voice' : audioMode);
+      playTrack(currentTrack.chapter - 1, 1);
     }
   };
 
@@ -180,13 +187,13 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
       value={{
         currentTrack,
         isPlaying,
-        audioMode,
         playbackSpeed,
         autoPlayNext,
         sleepTimerRemaining,
         isSearchModalOpen,
         selectedLexiconWord,
         activeCardGeneratorVerse,
+        currentTimeSec,
         playTrack,
         togglePlayPause,
         stopAudio,
@@ -195,13 +202,23 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
         setPlaybackSpeed,
         setAutoPlayNext,
         setSleepTimer,
-        setAudioMode,
         setIsSearchModalOpen,
         setSelectedLexiconWord,
         setActiveCardGeneratorVerse
       }}
     >
       {children}
+      
+      {/* Hidden Pure Background YouTube Audio Stream Container */}
+      {audioIframeSrc && (
+        <div style={{ position: 'fixed', top: -9999, left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }}>
+          <iframe
+            src={audioIframeSrc}
+            title="Gita Chanting Audio Stream"
+            allow="autoplay"
+          />
+        </div>
+      )}
     </GlobalAudioContext.Provider>
   );
 }

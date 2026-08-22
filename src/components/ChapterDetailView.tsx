@@ -325,7 +325,7 @@ export default function ChapterDetailView({
                           if (isPlayingThis) {
                             togglePlayPause();
                           } else {
-                            playTrack(v.chapter, v.verse, v.devanagari, v.translation_hi, 'vedic_voice');
+                            playTrack(v.chapter, v.verse, v.devanagari, v.translation_hi);
                           }
                         }}
                         className={`p-1.5 rounded-lg backdrop-blur-md border transition-colors cursor-pointer ${
@@ -400,7 +400,7 @@ export default function ChapterDetailView({
                         if (isPlayingThis) {
                           togglePlayPause();
                         } else {
-                          playTrack(v.chapter, v.verse, v.devanagari, v.translation_hi, 'vedic_voice');
+                          playTrack(v.chapter, v.verse, v.devanagari, v.translation_hi);
                         }
                       }}
                       className={`px-3 py-1.5 rounded-xl border text-xs font-serif flex items-center gap-1.5 transition-all cursor-pointer ${
