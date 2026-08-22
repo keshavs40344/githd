@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { EPISODES } from '@/data/episodes';
+import { getArtworkForChapter } from '@/data/krishnaArtworks';
 import type { Episode, EpisodeTheme } from '@/types/episode';
 import EpisodeDetailModal from './EpisodeDetailModal';
 import { 
@@ -328,9 +329,9 @@ export default function EpisodeExplorer() {
               {/* Card Image Banner */}
               <div className="relative h-44 w-full overflow-hidden bg-obsidian-950">
                 <img
-                  src={episode.image_url}
+                  src={getArtworkForChapter(episode.chapter) || episode.image_url}
                   alt={episode.title_en}
-                  className="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 filter brightness-90 group-hover:brightness-105 transition-all duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-obsidian-900 via-obsidian-900/40 to-transparent" />
 
