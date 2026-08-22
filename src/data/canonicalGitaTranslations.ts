@@ -176,3 +176,8 @@ export function getComprehensiveVerse(chapter: number, verse: number): Comprehen
   const key = `${chapter}_${verse}`;
   return CANONICAL_TRANSLATIONS[key] || null;
 }
+
+
+export function getCanonicalVerseData(chapter: number, verse: number): ComprehensiveVerseTranslation | null {
+  return CANONICAL_TRANSLATIONS[`${chapter}_${verse}`] || null;
+}
