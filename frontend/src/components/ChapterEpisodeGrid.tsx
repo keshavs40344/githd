@@ -17,6 +17,11 @@ const CRISIS_PILLS = [
   { label: '🪔 परम समर्पण', chapter: 18, verse: 66 },
 ];
 
+const DEVANAGARI_DIGITS = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+function toDevanagariNum(num: number): string {
+  return num.toString().split('').map(d => DEVANAGARI_DIGITS[parseInt(d, 10)] || d).join('');
+}
+
 export default function ChapterEpisodeGrid() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'karma' | 'bhakti' | 'jnana' | 'moksha'>('all');
@@ -47,7 +52,7 @@ export default function ChapterEpisodeGrid() {
         <div className="space-y-3 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c5a059]/15 border border-[#c5a059]/30 text-xs font-serif text-[#e6c687]">
             <Sparkles className="w-3.5 h-3.5 text-[#c5a059]" />
-            <span>सम्पूर्ण १८ अध्याय • ७०० प्रामाणिक श्लोक • Global Audio</span>
+            <span>सम्पूर्ण १८ अध्याय • ७०० प्रामाणिक श्लोक • Distinct Sacred Backgrounds</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-devanagari font-bold text-[#f5eed9] leading-tight">
@@ -91,7 +96,7 @@ export default function ChapterEpisodeGrid() {
           </span>
           <button
             onClick={() => setIsSearchModalOpen(true)}
-            className="text-[11px] text-[#c5a059] hover:text-[#f5eed9] font-sans"
+            className="text-[11px] text-[#c5a059] hover:text-[#f5eed9] font-sans cursor-pointer"
           >
             सभी खोजें →
           </button>
@@ -105,7 +110,7 @@ export default function ChapterEpisodeGrid() {
               onClick={() => sacredAudio.playTempleBell(0.2)}
               className="px-3 py-1.5 rounded-xl bg-[#141624] hover:bg-[#c5a059] text-[#e6c687] hover:text-black border border-[#c5a059]/25 text-xs font-serif shrink-0 transition-all cursor-pointer shadow-sm hover:scale-102"
             >
-              {p.label} (श्लोक {p.chapter}.{p.verse})
+              {p.label} (श्लोक {toDevanagariNum(p.chapter)}.{toDevanagariNum(p.verse)})
             </Link>
           ))}
         </div>
@@ -154,7 +159,7 @@ export default function ChapterEpisodeGrid() {
 
       </div>
 
-      {/* ── 18 CHAPTER CARDS GRID (CLEAN, SIMPLE, HD KRISHNA ARTWORKS) ───── */}
+      {/* ── 18 CHAPTER CARDS GRID (CLEAN, SIMPLE, HD KRISHNA ARTWORKS & NUMBERING) ───── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {filteredChapters.map(ch => {
           const artwork = getArtworkDetailsForChapter(ch.number);
@@ -178,18 +183,20 @@ export default function ChapterEpisodeGrid() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/40 to-transparent" />
 
                 {/* Chapter Number Badge */}
-                <div className="absolute top-3 left-3 px-3 py-1 rounded-xl bg-black/75 backdrop-blur-md border border-[#c5a059]/40 text-xs font-mono font-bold text-[#e6c687]">
-                  अध्याय {ch.number}
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-xl bg-black/80 backdrop-blur-md border border-[#c5a059]/50 text-xs font-mono font-bold text-[#e6c687] flex items-center gap-1.5 shadow-md">
+                  <span>अध्याय {toDevanagariNum(ch.number)}</span>
+                  <span className="text-[#c5a059]/60">•</span>
+                  <span className="text-[11px] text-[#f5eed9]">Ch {ch.number}</span>
                 </div>
 
-                <div className="absolute top-3 right-3 px-2 py-0.5 rounded-lg bg-black/75 backdrop-blur-md border border-[#c5a059]/30 text-[10px] font-mono text-[#f5eed9]">
+                <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-lg bg-black/80 backdrop-blur-md border border-[#c5a059]/30 text-[10px] font-mono text-[#f5eed9]">
                   {ch.verses_count} श्लोक
                 </div>
 
                 {/* Title */}
                 <div className="absolute bottom-2 left-4 right-4">
                   <h3 className="text-lg font-devanagari font-bold text-[#f5eed9] group-hover:text-[#e6c687] transition-colors truncate">
-                    {ch.name_sanskrit}
+                    ॥ {ch.name_sanskrit} ॥
                   </h3>
                   <p className="text-[11px] text-[#c5a059] font-serif italic truncate">
                     {ch.name_en}
