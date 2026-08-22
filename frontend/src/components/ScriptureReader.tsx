@@ -4,12 +4,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { 
-  Play, Pause, SkipBack, SkipForward, ArrowLeft, Volume2, 
+  Play, Pause, SkipBack, SkipForward, ArrowLeft, Volume2, VolumeX,
   Sparkles, BookOpen, Bookmark, BookmarkCheck, Copy, Check, 
-  MessageSquare, Flame, Image as ImageIcon, Music, RefreshCw
+  MessageSquare, Flame, Image as ImageIcon, Music, Disc3,
+  ChevronDown, ChevronUp, Radio, Wand2, Maximize2
 } from 'lucide-react';
-import { GitaVerse } from '@/types/verse';
-import { CHAPTERS } from '@/types/verse';
+import { GitaVerse, CHAPTERS } from '@/types/verse';
 import { getMasterTimestampForVerse, MASTER_VIDEO_ID } from '@/data/gitaMasterAudioTimestamps';
 import { getArtworkForShloka, getArtworkDetailsForShloka, KRISHNA_ARTWORKS } from '@/data/krishnaArtworks';
 import { getSpeakerForVerse, getChhandaForVerse, generateUniversalVedicData } from '@/lib/universalVedicEngine';
@@ -38,16 +38,17 @@ export default function ScriptureReader({
   const { language, setLanguage, t } = useLanguage();
   
   // Audio state
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
-  const [isSpeakingAI, setIsSpeakingAI] = useState(false);
-  const [isBgMusicPlaying, setIsBgMusicPlaying] = useState(false);
+  const [isPlayingYouTube, setIsPlayingYouTube] = useState(false);
+  const [isSpeakingVedic, setIsSpeakingVedic] = useState(false);
+  const [isFluteBgmPlaying, setIsFluteBgmPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
   
   // Visual tab state
   const [activeTab, setActiveTab] = useState<'study' | 'gallery'>('study');
   const [activeSampradaya, setActiveSampradaya] = useState<string>('universal');
   const [copied, setCopied] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [fontSize, setFontSize] = useState<'base' | 'lg' | 'xl'>('lg');
+  const [selectedGalleryImg, setSelectedGalleryImg] = useState<string | null>(null);
 
   const chapterInfo = CHAPTERS.find(c => c.number === verse.chapter) || CHAPTERS[0];
   const masterTimestamp = getMasterTimestampForVerse(verse.chapter, verse.verse);
@@ -56,6 +57,9 @@ export default function ScriptureReader({
   const canonical = getCanonicalVerseData(verse.chapter, verse.verse);
   const universal = generateUniversalVedicData(verse.chapter, verse.verse);
   const artwork = getArtworkDetailsForShloka(verse.chapter, verse.verse);
+
+  // Equalizer bar heights
+  const isAnyAudioPlaying = isPlayingYouTube || isSpeakingVedic || isFluteBgmPlaying;
 
   // Bookmark check
   useEffect(() => {
@@ -88,9 +92,9 @@ export default function ScriptureReader({
   const speakSanskritVerse = () => {
     if (typeof window === 'undefined') return;
     
-    if (isSpeakingAI) {
+    if (isSpeakingVedic) {
       window.speechSynthesis.cancel();
-      setIsSpeakingAI(false);
+      setIsSpeakingVedic(false);
       return;
     }
 
@@ -100,14 +104,20 @@ export default function ScriptureReader({
     const textToSpeak = `${verse.devanagari}. अर्थ: ${verse.translation_hi || ''}`;
     const utterance = new SpeechSynthesisUtterance(textToSpeak);
     utterance.lang = 'hi-IN';
-    utterance.rate = 0.85;
+    utterance.rate = 0.82;
     utterance.pitch = 1.0;
 
-    utterance.onstart = () => setIsSpeakingAI(true);
-    utterance.onend = () => setIsSpeakingAI(false);
-    utterance.onerror = () => setIsSpeakingAI(false);
+    utterance.onstart = () => setIsSpeakingVedic(true);
+    utterance.onend = () => setIsSpeakingVedic(false);
+    utterance.onerror = () => setIsSpeakingVedic(false);
 
     window.speechSynthesis.speak(utterance);
+  };
+
+  // Toggle Ambient Flute / Tanpura BGM
+  const toggleFluteBgm = () => {
+    sacredAudio.playFluteChime(0.3);
+    setIsFluteBgmPlaying(!isFluteBgmPlaying);
   };
 
   const copyVerse = () => {
@@ -147,22 +157,24 @@ https://githd.vercel.app/chapter/${verse.chapter}/${verse.verse}`;
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 animate-fade-in px-2 sm:px-4 pb-24">
+    <div className="max-w-4xl mx-auto space-y-6 animate-fade-in px-2 sm:px-4 pb-32">
       
-      {/* ── TOP BREADCRUMB & UTILITY BAR ──────────────────────────────────── */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0f111c] border border-[#c5a059]/25 shadow-md">
+      {/* ── TOP UTILITY BAR: CLEAN BREADCRUMB & CONTROLS ───────────────────── */}
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/25 shadow-md">
         
         <Link
           href={`/chapter/${verse.chapter}`}
           onClick={() => sacredAudio.playNavChime(0.06)}
-          className="inline-flex items-center gap-2 text-xs font-serif text-[#e6c687] hover:text-[#f5eed9] transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-serif text-[#e6c687] hover:text-[#f5eed9] transition-colors group"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
           <span>अध्याय {verse.chapter} ({chapterInfo.name_sanskrit})</span>
         </Link>
 
-        {/* View Mode Toggle: [ पाठ व भाष्य ] [ दिव्य चित्र दर्शन ] */}
+        {/* View Mode Toggle & Utilities */}
         <div className="flex items-center gap-2">
+          
+          {/* Study vs Gallery Tab Pills */}
           <div className="flex items-center bg-[#141624] border border-[#c5a059]/25 p-0.5 rounded-xl">
             <button
               onClick={() => { setActiveTab('study'); sacredAudio.playNavChime(0.05); }}
@@ -211,50 +223,61 @@ https://githd.vercel.app/chapter/${verse.chapter}/${verse.verse}`;
       </div>
 
       {activeTab === 'gallery' ? (
-        /* ── SACRED VISUAL DARSHAN & WALLPAPER MODE ───────────────────────── */
-        <div className="space-y-5 animate-fade-in">
-          <div className="relative rounded-3xl overflow-hidden bg-black border-2 border-[#c5a059]/40 shadow-2xl">
+        /* ── SACRED VISUAL DARSHAN & WALLPAPER GALLERY MODE ───────────────── */
+        <div className="space-y-6 animate-fade-in">
+          
+          {/* Main Shloka Artwork Hero */}
+          <div className="relative rounded-3xl overflow-hidden bg-black border-2 border-[#c5a059]/40 shadow-2xl group">
             <img
-              src={artwork.url}
+              src={selectedGalleryImg || artwork.url}
               alt={artwork.title}
-              className="w-full h-80 sm:h-[480px] object-cover filter brightness-95"
+              className="w-full h-80 sm:h-[480px] object-cover filter brightness-95 group-hover:scale-102 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent flex flex-col justify-end p-6 sm:p-10 space-y-2">
-              <span className="px-3 py-1 rounded-full bg-[#c5a059] text-[#090a0f] text-xs font-mono font-bold w-max">
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-10 space-y-2">
+              <span className="px-3 py-1 rounded-full bg-[#c5a059] text-[#090a0f] text-xs font-mono font-bold w-max shadow-md">
                 अध्याय {verse.chapter} • श्लोक {verse.verse}
               </span>
-              <h2 className="text-2xl sm:text-4xl font-devanagari font-bold text-[#f5eed9]">
+              <h2 className="text-2xl sm:text-4xl font-devanagari font-bold text-[#f5eed9] drop-shadow-lg">
                 {artwork.title}
               </h2>
-              <p className="text-xs sm:text-sm text-[#e6c687] font-serif max-w-2xl">
+              <p className="text-xs sm:text-sm text-[#e6c687] font-serif max-w-2xl drop-shadow">
                 {artwork.subtitle}
               </p>
             </div>
           </div>
 
-          {/* More Artworks Carousel / Grid */}
+          {/* Full HD Krishna Artworks Collection */}
           <div className="p-5 rounded-3xl bg-[#0f111c] border border-[#c5a059]/25 space-y-4">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-serif font-bold text-[#f5eed9]">
-                अन्य दिव्य चित्र संग्रह (Sacred Krishna Artworks)
+                अन्य दिव्य श्रीकृष्ण चित्र संग्रह ({KRISHNA_ARTWORKS.length} Artworks)
               </h3>
               <span className="text-[11px] text-[#c5a059]/70 font-sans">
-                {KRISHNA_ARTWORKS.length} चित्र उपलब्ध
+                क्लिक करके वॉलपेपर बदलें
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {KRISHNA_ARTWORKS.slice(0, 6).map((art, idx) => (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              {KRISHNA_ARTWORKS.map((art) => (
                 <div
                   key={art.id}
-                  className="rounded-xl overflow-hidden border border-[#c5a059]/20 relative group cursor-pointer"
+                  onClick={() => {
+                    setSelectedGalleryImg(art.url);
+                    sacredAudio.playNavChime(0.08);
+                  }}
+                  className={`rounded-2xl overflow-hidden border transition-all cursor-pointer relative group ${
+                    (selectedGalleryImg === art.url || (!selectedGalleryImg && artwork.url === art.url))
+                      ? 'border-[#c5a059] ring-2 ring-[#c5a059]/50 shadow-lg scale-102'
+                      : 'border-[#c5a059]/20 hover:border-[#c5a059]/60'
+                  }`}
                 >
                   <img
                     src={art.url}
                     alt={art.title}
                     className="w-full h-28 object-cover group-hover:scale-105 transition-transform"
+                    loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-2 text-center">
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-2 text-center">
                     <p className="text-[11px] font-devanagari font-bold text-[#f5eed9]">
                       {art.title}
                     </p>
@@ -268,9 +291,14 @@ https://githd.vercel.app/chapter/${verse.chapter}/${verse.verse}`;
         /* ── MAIN STUDY & SACRED READING MODE ──────────────────────────────── */
         <div className="space-y-6">
           
-          {/* ── CARD 1: DEVANAGARI SANSKRIT ALTAR ─────────────────────────── */}
-          <div className="relative rounded-3xl bg-gradient-to-b from-[#141624] via-[#0e101a] to-[#090a12] border-2 border-[#c5a059]/35 shadow-2xl p-6 sm:p-8 space-y-5 text-center">
+          {/* ── CARD 1: SACRED SANSKRIT ALTAR ─────────────────────────────── */}
+          <div className="relative rounded-3xl bg-gradient-to-b from-[#141624] via-[#0e101a] to-[#090a12] border-2 border-[#c5a059]/35 shadow-2xl p-6 sm:p-8 space-y-5 text-center overflow-hidden">
             
+            {/* Ambient Background Glow when Playing */}
+            {isAnyAudioPlaying && (
+              <div className="absolute inset-0 bg-amber-500/5 animate-pulse pointer-events-none" />
+            )}
+
             {/* Speaker & Chhanda Header */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c5a059]/15 border border-[#c5a059]/30 text-xs font-serif text-[#e6c687]">
               <span>✨ {speaker.title}</span>
@@ -278,7 +306,7 @@ https://githd.vercel.app/chapter/${verse.chapter}/${verse.verse}`;
               <span className="text-[11px] text-[#c5a059]/80">{chhanda}</span>
             </div>
 
-            {/* Sacred Sanskrit Verse Lines */}
+            {/* Sacred Sanskrit Verse */}
             <div className="py-2">
               <p className="font-devanagari text-xl sm:text-2xl md:text-3xl text-[#f5eed9] font-medium leading-relaxed tracking-wide">
                 {verse.devanagari.split('\n').map((line, idx) => (
@@ -296,39 +324,58 @@ https://githd.vercel.app/chapter/${verse.chapter}/${verse.verse}`;
               </p>
             </div>
 
-            {/* Quick Audio Controls Inside Verse Card */}
-            <div className="pt-3 flex flex-wrap items-center justify-center gap-3">
-              {/* Listen to Voice */}
+            {/* ── DELUXE-STYLE AUDIO CONTROL PILLS ──────────────────────────── */}
+            <div className="pt-3 flex flex-wrap items-center justify-center gap-2.5">
+              
+              {/* Pill 1: Instant Vedic Speech Chanter */}
               <button
                 onClick={speakSanskritVerse}
-                className={`px-4 py-2 rounded-2xl border text-xs font-serif font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-md ${
-                  isSpeakingAI
-                    ? 'bg-amber-500 text-[#090a0f] border-amber-300 font-bold animate-pulse'
-                    : 'bg-[#1a1d2e] hover:bg-[#252a42] text-[#e6c687] border-[#c5a059]/30 hover:border-[#c5a059]'
+                className={`h-9 px-4 rounded-full text-xs font-serif font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-md ${
+                  isSpeakingVedic
+                    ? 'bg-amber-500 text-black border border-amber-300 font-bold shadow-[0_0_15px_rgba(245,158,11,0.6)] scale-105'
+                    : 'bg-[#1a1d2e] hover:bg-[#252a42] text-[#e6c687] border border-[#c5a059]/30 hover:border-[#c5a059] hover:scale-102'
                 }`}
               >
-                <Volume2 className="w-4 h-4" />
-                <span>{isSpeakingAI ? 'स्वर वाचन चल रहा है...' : 'संस्कृत स्वर वाचन सुनें 🪔'}</span>
+                <Volume2 className="w-3.5 h-3.5" />
+                <span>{isSpeakingVedic ? 'स्वर वाचन चल रहा है...' : 'संस्कृत स्वर वाचन 🪔'}</span>
               </button>
 
-              {/* YouTube Master Track Toggle */}
+              {/* Pill 2: YouTube Master Chanting Video Player */}
               <button
-                onClick={() => setIsPlayingAudio(!isPlayingAudio)}
-                className={`px-4 py-2 rounded-2xl border text-xs font-serif font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-md ${
-                  isPlayingAudio
-                    ? 'bg-[#c5a059] text-[#090a0f] border-[#f5eed9] font-bold'
-                    : 'bg-gradient-to-r from-[#d4af37] to-[#c5a059] text-[#090a0f] border-[#f5eed9]'
+                onClick={() => {
+                  setIsPlayingYouTube(!isPlayingYouTube);
+                  sacredAudio.playNavChime(0.08);
+                }}
+                className={`h-9 px-4 rounded-full text-xs font-serif font-semibold flex items-center gap-2 transition-all cursor-pointer shadow-md ${
+                  isPlayingYouTube
+                    ? 'bg-[#c5a059] text-[#090a0f] border border-[#f5eed9] font-bold shadow-[0_0_15px_rgba(197,160,89,0.5)]'
+                    : 'bg-gradient-to-r from-[#d4af37] to-[#c5a059] hover:from-[#e6c687] hover:to-[#d4af37] text-[#090a0f] border border-[#f5eed9] hover:scale-102'
                 }`}
               >
-                <Play className="w-4 h-4 fill-current" />
-                <span>{isPlayingAudio ? 'यूट्यूब प्लेयर छिपाएं' : 'यूट्यूब प्रामाणिक वाचन देखें ▶️'}</span>
+                <Play className="w-3.5 h-3.5 fill-current" />
+                <span>{isPlayingYouTube ? 'यूट्यूब प्लेयर छिपाएं' : 'यूट्यूब प्रामाणिक वाचन ▶️'}</span>
               </button>
+
+              {/* Pill 3: Divine Flute Ambience BGM */}
+              <button
+                onClick={toggleFluteBgm}
+                className={`h-9 px-3.5 rounded-full text-xs font-serif transition-all cursor-pointer flex items-center gap-1.5 border ${
+                  isFluteBgmPlaying
+                    ? 'bg-emerald-600/30 text-emerald-300 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.3)]'
+                    : 'bg-[#141624] text-[#c5a059]/70 hover:text-[#f5eed9] border-[#c5a059]/20 hover:scale-102'
+                }`}
+                title="दिव्य बाँसुरी ध्वनि"
+              >
+                <Music className="w-3.5 h-3.5" />
+                <span>बाँसुरी BGM {isFluteBgmPlaying ? '✓' : ''}</span>
+              </button>
+
             </div>
 
           </div>
 
-          {/* ── CARD 2: GUARANTEED VISIBLE YOUTUBE PLAYER ───────────────────── */}
-          {isPlayingAudio && (
+          {/* ── CARD 2: GUARANTEED VISIBLE YOUTUBE MASTER PLAYER ────────────── */}
+          {isPlayingYouTube && (
             <div className="rounded-3xl bg-[#0a0b12] border-2 border-[#c5a059]/40 p-4 sm:p-5 shadow-2xl space-y-3 animate-fade-in">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -355,7 +402,7 @@ https://githd.vercel.app/chapter/${verse.chapter}/${verse.verse}`;
             </div>
           )}
 
-          {/* ── CARD 3: HINDI & ENGLISH TRANSLATION ──────────────────────────── */}
+          {/* ── CARD 3: HINDI & ENGLISH TRANSLATIONS ─────────────────────────── */}
           <div className="rounded-3xl bg-[#0f111c] border border-[#c5a059]/25 p-5 sm:p-6 shadow-xl space-y-4">
             <div className="flex items-center gap-2">
               <BookOpen className="w-4 h-4 text-[#c5a059]" />
@@ -401,7 +448,7 @@ https://githd.vercel.app/chapter/${verse.chapter}/${verse.verse}`;
                 {canonical.word_anvaya.map((token, idx) => (
                   <div
                     key={idx}
-                    className="p-2.5 rounded-xl bg-[#141624] border border-[#c5a059]/15 space-y-1"
+                    className="p-2.5 rounded-xl bg-[#141624] border border-[#c5a059]/15 space-y-1 hover:border-[#c5a059]/40 transition-colors"
                   >
                     <span className="text-xs font-devanagari font-bold text-[#e6c687] block">
                       {token.word}
@@ -490,45 +537,100 @@ https://githd.vercel.app/chapter/${verse.chapter}/${verse.verse}`;
         </div>
       )}
 
-      {/* ── BOTTOM STICKY NAVIGATION BAR (PREV / NEXT SHLOKA) ──────────────── */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 p-3 bg-[#08090f]/90 backdrop-blur-xl border-t border-[#c5a059]/30 shadow-2xl">
-        <div className="max-w-4xl mx-auto flex items-center justify-between gap-3">
+      {/* ── DELUXE-INSPIRED FLOATING SACRED MUSIC DOCK (ANIMATED, COMPACT & ROYAL) ─ */}
+      <div className="fixed bottom-4 left-3 right-3 sm:left-auto sm:right-6 sm:max-w-md z-50 animate-bounce-subtle">
+        <div className="relative rounded-full bg-[#0a0c16]/90 backdrop-blur-2xl border border-[#c5a059]/40 p-2 sm:p-2.5 shadow-[0_10px_35px_rgba(0,0,0,0.85)] flex items-center justify-between gap-3 ring-1 ring-[#f5eed9]/20">
           
-          <button
-            onClick={() => {
-              if (onPrev) {
-                onPrev();
-              } else if (verse.verse > 1) {
-                router.push(`/chapter/${verse.chapter}/${verse.verse - 1}`);
-              }
-              sacredAudio.playNavChime(0.06);
-            }}
-            disabled={verse.chapter === 1 && verse.verse === 1}
-            className="px-4 py-2 rounded-xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/30 text-xs font-serif text-[#e6c687] disabled:opacity-30 disabled:pointer-events-none flex items-center gap-1.5 transition-all cursor-pointer"
-          >
-            <SkipBack className="w-3.5 h-3.5" />
-            <span>पिछला श्लोक</span>
-          </button>
+          {/* Spinning Sacred Krishna Disc */}
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-[#c5a059]/50 shrink-0 shadow-md ${
+              isAnyAudioPlaying ? 'animate-[spin_6s_linear_infinite]' : ''
+            }`}>
+              <img
+                src={artwork.url}
+                alt="Krishna Disc"
+                className="w-full h-full object-cover"
+              />
+            </div>
 
-          <span className="text-xs font-mono font-bold text-[#c5a059]">
-            श्लोक {verse.chapter}.{verse.verse}
-          </span>
+            <div className="min-w-0 space-y-0.5">
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="text-[11px] font-mono font-bold text-[#f5eed9] truncate">
+                  अध्याय {verse.chapter} · श्लोक {verse.verse}
+                </span>
+              </div>
+              
+              {/* Dynamic Animated Equalizer Bars */}
+              <div className="flex items-end gap-0.5 h-2.5">
+                {[40, 90, 60, 100, 75, 45, 80].map((h, i) => (
+                  <span
+                    key={i}
+                    className="w-0.5 rounded-full bg-[#c5a059] transition-all"
+                    style={{
+                      height: isAnyAudioPlaying ? `${Math.max(25, (h * ((i % 3) + 1)) % 100)}%` : '20%',
+                      animationDuration: `${0.4 + i * 0.1}s`
+                    }}
+                  />
+                ))}
+                <span className="text-[9px] text-[#c5a059]/80 font-sans ml-1 truncate hidden sm:inline">
+                  {speaker.name}
+                </span>
+              </div>
+            </div>
+          </div>
 
-          <button
-            onClick={() => {
-              if (onNext) {
-                onNext();
-              } else if (verse.verse < chapterInfo.verses_count) {
-                router.push(`/chapter/${verse.chapter}/${verse.verse + 1}`);
-              }
-              sacredAudio.playNavChime(0.06);
-            }}
-            disabled={verse.chapter === 18 && verse.verse === chapterInfo.verses_count}
-            className="px-4 py-2 rounded-xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/30 text-xs font-serif text-[#e6c687] disabled:opacity-30 disabled:pointer-events-none flex items-center gap-1.5 transition-all cursor-pointer"
-          >
-            <span>अगला श्लोक</span>
-            <SkipForward className="w-3.5 h-3.5" />
-          </button>
+          {/* Quick Controls: [ Prev ] [ PLAY/PAUSE ] [ Next ] */}
+          <div className="flex items-center gap-1.5 shrink-0">
+            
+            {/* Prev Shloka Button */}
+            <button
+              onClick={() => {
+                if (onPrev) {
+                  onPrev();
+                } else if (verse.verse > 1) {
+                  router.push(`/chapter/${verse.chapter}/${verse.verse - 1}`);
+                }
+                sacredAudio.playNavChime(0.06);
+              }}
+              disabled={verse.chapter === 1 && verse.verse === 1}
+              className="w-8 h-8 rounded-full bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#e6c687] flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
+              title="पिछला श्लोक"
+            >
+              <SkipBack className="w-3.5 h-3.5" />
+            </button>
+
+            {/* Glowing Golden Play/Pause Button */}
+            <button
+              onClick={speakSanskritVerse}
+              className="w-10 h-10 rounded-full bg-gradient-to-r from-amber-400 via-[#c5a059] to-amber-500 text-black flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.6)] hover:scale-110 active:scale-95 transition-transform cursor-pointer border border-[#f5eed9]"
+              title={isSpeakingVedic ? 'रोकें' : 'संस्कृत स्वर सुनें'}
+            >
+              {isSpeakingVedic ? (
+                <Pause className="w-4 h-4 fill-current" />
+              ) : (
+                <Play className="w-4 h-4 fill-current ml-0.5" />
+              )}
+            </button>
+
+            {/* Next Shloka Button */}
+            <button
+              onClick={() => {
+                if (onNext) {
+                  onNext();
+                } else if (verse.verse < chapterInfo.verses_count) {
+                  router.push(`/chapter/${verse.chapter}/${verse.verse + 1}`);
+                }
+                sacredAudio.playNavChime(0.06);
+              }}
+              disabled={verse.chapter === 18 && verse.verse === chapterInfo.verses_count}
+              className="w-8 h-8 rounded-full bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#e6c687] flex items-center justify-center disabled:opacity-30 disabled:pointer-events-none transition-all cursor-pointer"
+              title="अगला श्लोक"
+            >
+              <SkipForward className="w-3.5 h-3.5" />
+            </button>
+
+          </div>
 
         </div>
       </div>
