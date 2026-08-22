@@ -2,6 +2,18 @@
 
 import React, { useState } from 'react';
 
+// Reliable fallback HD Vedic/Spiritual images from Unsplash & Pixabay (CDN, always available)
+const FALLBACK_ARTWORKS = [
+  'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80',
+];
+
 interface SacredArtworkImageProps {
   src?: string;
   alt: string;
@@ -17,30 +29,36 @@ export default function SacredArtworkImage({
   chapter = 1,
   verse = 1
 }: SacredArtworkImageProps) {
-  const [imageError, setImageError] = useState(false);
+  const [currentSrcIndex, setCurrentSrcIndex] = useState(-1); // -1 means use `src` prop
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [allFailed, setAllFailed] = useState(false);
 
-  // If image fails to load, render a gorgeous golden Vedic canvas
-  if (imageError || !src) {
+  // Which src are we currently using?
+  const activeSrc = currentSrcIndex === -1
+    ? src
+    : FALLBACK_ARTWORKS[currentSrcIndex % FALLBACK_ARTWORKS.length];
+
+  const handleError = () => {
+    const nextIdx = currentSrcIndex + 1;
+    if (nextIdx < FALLBACK_ARTWORKS.length) {
+      setCurrentSrcIndex(nextIdx);
+      setImageLoaded(false);
+    } else {
+      setAllFailed(true);
+    }
+  };
+
+  // Sacred OM fallback canvas when ALL images fail
+  if (allFailed || !activeSrc) {
     return (
-      <div className={`relative overflow-hidden bg-gradient-to-br from-[#1c1409] via-[#0d0f19] to-[#120e06] flex flex-col items-center justify-center p-4 border border-[#c5a059]/40 text-center ${className}`}>
-        {/* Sacred Golden Radial */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500/30 via-amber-900/15 to-transparent pointer-events-none" />
-        
-        {/* Golden Sanskrit OM Calligraphy */}
-        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#d4af37] via-[#c5a059] to-amber-700 p-0.5 shadow-[0_0_25px_rgba(212,175,55,0.5)] flex items-center justify-center relative z-10 shrink-0">
-          <div className="w-full h-full bg-[#0a0c16] rounded-2xl flex items-center justify-center">
-            <span className="font-devanagari text-3xl font-bold text-amber-300 drop-shadow">ॐ</span>
+      <div className={`relative overflow-hidden bg-gradient-to-br from-[#1c1409] via-[#0d0f19] to-[#120e06] flex flex-col items-center justify-center p-4 ${className}`}>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.25),transparent_70%)]" />
+        <div className="relative z-10 flex flex-col items-center gap-2 text-center">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d4af37] to-amber-700 flex items-center justify-center shadow-[0_0_25px_rgba(212,175,55,0.5)]">
+            <span className="font-devanagari text-3xl font-black text-[#07080d]">ॐ</span>
           </div>
-        </div>
-
-        <div className="relative z-10 mt-2 space-y-0.5 max-w-[90%]">
-          <span className="text-[11px] font-mono font-bold text-amber-300 tracking-widest uppercase block truncate">
-            ॥ श्रीमद्भगवद्गीता ॥
-          </span>
-          <span className="text-xs font-devanagari font-bold text-[#f5eed9] line-clamp-1 block">
-            {alt || `अध्याय ${chapter}`}
-          </span>
+          <span className="text-[10px] font-mono text-amber-400 font-bold tracking-widest">॥ श्रीमद्भगवद्गीता ॥</span>
+          <span className="text-xs font-devanagari font-bold text-[#f5eed9]/90 line-clamp-2">{alt || `अध्याय ${chapter}`}</span>
         </div>
       </div>
     );
@@ -48,21 +66,22 @@ export default function SacredArtworkImage({
 
   return (
     <div className={`relative overflow-hidden bg-[#090b14] ${className}`}>
-      {/* Loading Skeleton */}
+      {/* Loading Skeleton Shimmer */}
       {!imageLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-r from-[#141624] via-[#1c1f33] to-[#141624] animate-pulse" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141624] via-[#1c2033] to-[#141624] animate-pulse" />
       )}
 
-      {/* Full 100% Brightness & Vivid Quality HD Artwork */}
       <img
-        src={src}
+        key={activeSrc}
+        src={activeSrc}
         alt={alt}
         onLoad={() => setImageLoaded(true)}
-        onError={() => setImageError(true)}
-        className={`w-full h-full object-cover transition-all duration-500 ${
-          imageLoaded ? 'opacity-100 scale-100 filter brightness-100 contrast-105' : 'opacity-0 scale-95'
+        onError={handleError}
+        className={`w-full h-full object-cover transition-all duration-700 ${
+          imageLoaded ? 'opacity-100 scale-100 brightness-100 contrast-[1.05]' : 'opacity-0 scale-105'
         }`}
         loading="lazy"
+        decoding="async"
       />
     </div>
   );

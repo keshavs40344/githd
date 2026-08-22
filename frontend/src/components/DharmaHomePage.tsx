@@ -10,7 +10,7 @@ import {
   Moon, Sun, HeartHandshake, Compass, Trophy, Bell,
   Music, Eye, TrendingUp, Lightbulb
 } from 'lucide-react';
-import Link2 from 'next/link';
+
 import { CHAPTERS } from '@/types/verse';
 import { getChapterTheme } from '@/data/chapterThemes';
 import { getMasterTimestampForVerse } from '@/data/gitaMasterAudioTimestamps';
