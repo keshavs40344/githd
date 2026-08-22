@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Sparkles, ArrowRight, Search, Flame } from 'lucide-react';
 import { CHAPTERS } from '@/types/verse';
-import { getArtworkDetailsForChapter } from '@/data/krishnaArtworks';
+import { getChapterTheme } from '@/data/chapterThemes';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
 import SacredArtworkImage from '@/components/SacredArtworkImage';
@@ -53,7 +53,7 @@ export default function ChapterEpisodeGrid() {
         <div className="space-y-3 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c5a059]/15 border border-[#c5a059]/30 text-xs font-serif text-[#e6c687]">
             <Sparkles className="w-3.5 h-3.5 text-[#c5a059]" />
-            <span>सम्पूर्ण १८ अध्याय • ७०० प्रामाणिक श्लोक • Distinct Sacred Backgrounds</span>
+            <span>सम्पूर्ण १८ अध्याय • १८ विशेष रंग व पावन भाव • ७०० श्लोक</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-devanagari font-bold text-[#f5eed9] leading-tight">
@@ -61,7 +61,7 @@ export default function ChapterEpisodeGrid() {
           </h1>
 
           <p className="text-xs sm:text-sm text-[#f5eed9]/80 font-serif leading-relaxed">
-            भगवान श्रीकृष्ण द्वारा अर्जुन को दिया गया दिव्य अमर उपदेश। किसी भी अध्याय पर क्लिक करें और उसके सम्पूर्ण श्लोक, प्रामाणिक वाचन, व्याख्या एवं दिव्य चित्रों का रसास्वादन करें।
+            भगवान श्रीकृष्ण द्वारा अर्जुन को दिया गया दिव्य अमर उपदेश। प्रत्येक अध्याय अपने विशेष दिव्य रंग, बॉर्डर और एचडी चित्रों से सुसज्जित है।
           </p>
 
           {/* Quick AI Search Trigger Button */}
@@ -83,7 +83,7 @@ export default function ChapterEpisodeGrid() {
         <div className="hidden md:flex flex-col items-center justify-center p-5 rounded-2xl bg-[#090a12] border border-[#c5a059]/30 text-center shadow-lg">
           <span className="text-2xl">🪔</span>
           <span className="text-sm font-serif font-bold text-[#e6c687] mt-1">१८ दिव्य अध्याय</span>
-          <span className="text-[11px] text-[#c5a059]/70">700 Classical Verses</span>
+          <span className="text-[11px] text-[#c5a059]/70">700 Thematic Verses</span>
         </div>
 
       </div>
@@ -160,61 +160,63 @@ export default function ChapterEpisodeGrid() {
 
       </div>
 
-      {/* ── 18 CHAPTER CARDS GRID (FAIL-SAFE VEDIC ARTWORKS) ───────────────── */}
+      {/* ── 18 CHAPTER CARDS WITH DISTINCT COLOURS & BORDERS ──────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {filteredChapters.map(ch => {
-          const artwork = getArtworkDetailsForChapter(ch.number);
+          const theme = getChapterTheme(ch.number);
 
           return (
             <Link
               key={ch.number}
               href={`/chapter/${ch.number}`}
               onClick={() => sacredAudio.playTempleBell(0.25)}
-              className="group rounded-3xl bg-[#0f111c] border border-[#c5a059]/25 hover:border-[#c5a059] shadow-xl hover:shadow-[0_10px_35px_rgba(197,160,89,0.2)] transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden hover:-translate-y-1 block"
+              className={`group rounded-3xl bg-[#0f111c] border-2 ${theme.borderClass} ${theme.borderHoverClass} shadow-xl hover:shadow-[0_10px_35px_rgba(0,0,0,0.8)] transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden hover:-translate-y-1 block`}
+              style={{ boxShadow: `0 8px 30px ${theme.glowColor}` }}
             >
               
-              {/* Fail-safe Sacred Artwork Thumbnail */}
+              {/* Full Brightness HD Sacred Artwork Thumbnail */}
               <div className="relative w-full h-44 overflow-hidden bg-black">
                 <SacredArtworkImage
-                  src={artwork.url}
+                  src={theme.imageUrl}
                   alt={ch.name_sanskrit}
                   chapter={ch.number}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-90 group-hover:brightness-100"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/30 to-transparent" />
 
-                {/* Chapter Number Badge */}
-                <div className="absolute top-3 left-3 px-3 py-1 rounded-xl bg-black/80 backdrop-blur-md border border-[#c5a059]/50 text-xs font-mono font-bold text-[#e6c687] flex items-center gap-1.5 shadow-md">
+                {/* Chapter Number Badge in Theme Color */}
+                <div className={`absolute top-3 left-3 px-3 py-1 rounded-xl bg-black/85 backdrop-blur-md border ${theme.borderClass} text-xs font-mono font-bold ${theme.badgeText} flex items-center gap-1.5 shadow-md`}>
+                  <span>{theme.icon}</span>
                   <span>अध्याय {toDevanagariNum(ch.number)}</span>
-                  <span className="text-[#c5a059]/60">•</span>
+                  <span className="opacity-60">•</span>
                   <span className="text-[11px] text-[#f5eed9]">Ch {ch.number}</span>
                 </div>
 
-                <div className="absolute top-3 right-3 px-2.5 py-0.5 rounded-lg bg-black/80 backdrop-blur-md border border-[#c5a059]/30 text-[10px] font-mono text-[#f5eed9]">
+                <div className={`absolute top-3 right-3 px-2.5 py-0.5 rounded-lg bg-black/85 backdrop-blur-md border ${theme.borderClass} text-[10px] font-mono ${theme.badgeText}`}>
                   {ch.verses_count} श्लोक
                 </div>
 
-                {/* Title */}
+                {/* Title in Devanagari */}
                 <div className="absolute bottom-2 left-4 right-4">
-                  <h3 className="text-lg font-devanagari font-bold text-[#f5eed9] group-hover:text-[#e6c687] transition-colors truncate">
+                  <h3 className="text-lg font-devanagari font-bold text-[#f5eed9] group-hover:text-white transition-colors truncate">
                     ॥ {ch.name_sanskrit} ॥
                   </h3>
-                  <p className="text-[11px] text-[#c5a059] font-serif italic truncate">
+                  <p className="text-[11px] font-serif italic truncate" style={{ color: theme.accentHex }}>
                     {ch.name_en}
                   </p>
                 </div>
               </div>
 
-              {/* Card Body */}
+              {/* Card Body with Themed Accent */}
               <div className="p-4 sm:p-5 space-y-3 flex-1 flex flex-col justify-between">
-                <p className="text-xs text-[#f5eed9]/80 font-serif leading-relaxed line-clamp-2">
-                  {ch.summary_hi || artwork.subtitle}
+                <p className="text-xs text-[#f5eed9]/85 font-serif leading-relaxed line-clamp-2">
+                  {ch.summary_hi || theme.sutra}
                 </p>
 
-                {/* Footer Action */}
-                <div className="pt-3 border-t border-[#c5a059]/15 flex items-center justify-between text-xs font-serif text-[#e6c687] group-hover:text-[#f5eed9]">
+                {/* Footer Action in Distinct Theme Color */}
+                <div className={`pt-3 border-t border-[#c5a059]/15 flex items-center justify-between text-xs font-serif ${theme.badgeText} group-hover:text-[#f5eed9]`}>
                   <span className="font-semibold">सम्पूर्ण अध्याय व श्लोक खोलें</span>
-                  <div className="w-7 h-7 rounded-xl bg-[#c5a059]/20 group-hover:bg-[#c5a059] group-hover:text-[#090a0f] flex items-center justify-center transition-colors">
+                  <div className={`w-7 h-7 rounded-xl ${theme.badgeBg} group-hover:${theme.buttonBg} flex items-center justify-center transition-colors`}>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </div>
                 </div>

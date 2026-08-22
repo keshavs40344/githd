@@ -11,7 +11,8 @@ import {
 } from 'lucide-react';
 import { GitaVerse, CHAPTERS } from '@/types/verse';
 import { getMasterTimestampForVerse, MASTER_VIDEO_ID } from '@/data/gitaMasterAudioTimestamps';
-import { getArtworkForShloka, getArtworkDetailsForShloka, KRISHNA_ARTWORKS } from '@/data/krishnaArtworks';
+import { getArtworkDetailsForShloka } from '@/data/krishnaArtworks';
+import { getChapterTheme } from '@/data/chapterThemes';
 import { getSpeakerForVerse, getChhandaForVerse, generateUniversalVedicData } from '@/lib/universalVedicEngine';
 import { getCanonicalVerseData } from '@/data/canonicalGitaTranslations';
 import { sacredAudio } from '@/lib/sacredSounds';
@@ -122,6 +123,7 @@ export default function ScriptureReader({
   const [showDedicatedPlayer, setShowDedicatedPlayer] = useState(false);
 
   const chapterInfo = CHAPTERS.find(c => c.number === verse.chapter) || CHAPTERS[0];
+  const chapterTheme = getChapterTheme(verse.chapter);
   const masterTimestamp = getMasterTimestampForVerse(verse.chapter, verse.verse);
   const speaker = getSpeakerForVerse(verse.chapter, verse.verse);
   const chhanda = getChhandaForVerse(verse.chapter, verse.verse);
@@ -207,8 +209,8 @@ export default function ScriptureReader({
       
       <div className="relative z-10 max-w-4xl mx-auto space-y-6 animate-fade-in px-2 sm:px-4 pb-32 pt-2">
         
-        {/* ── TOP UTILITY BAR ────────────────────────────────────────────────── */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/30 shadow-2xl">
+        {/* ── TOP UTILITY BAR (THEMED BORDER) ────────────────────────────────── */}
+        <div className={`flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-[#0f111c]/95 backdrop-blur-xl border-2 ${chapterTheme.borderClass} shadow-2xl`}>
           
           <Link
             href={`/chapter/${verse.chapter}`}
@@ -247,7 +249,7 @@ export default function ScriptureReader({
                 onClick={() => { setActiveTab('study'); sacredAudio.playNavChime(0.05); }}
                 className={`px-2.5 sm:px-3 py-1 rounded-lg text-xs font-serif transition-all cursor-pointer ${
                   activeTab === 'study'
-                    ? 'bg-[#c5a059] text-[#090a0f] font-bold shadow-sm'
+                    ? `${chapterTheme.buttonBg} font-bold shadow-sm`
                     : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
                 }`}
               >
@@ -257,7 +259,7 @@ export default function ScriptureReader({
                 onClick={() => { setActiveTab('gallery'); sacredAudio.playNavChime(0.05); }}
                 className={`px-2.5 sm:px-3 py-1 rounded-lg text-xs font-serif transition-all cursor-pointer flex items-center gap-1 ${
                   activeTab === 'gallery'
-                    ? 'bg-[#c5a059] text-[#090a0f] font-bold shadow-sm'
+                    ? `${chapterTheme.buttonBg} font-bold shadow-sm`
                     : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
                 }`}
               >
@@ -278,7 +280,7 @@ export default function ScriptureReader({
               onClick={toggleBookmark}
               className={`p-2 rounded-xl border transition-all cursor-pointer ${
                 isBookmarked
-                  ? 'bg-[#c5a059] text-[#090a0f] border-[#c5a059]'
+                  ? `${chapterTheme.buttonBg}`
                   : 'bg-[#141624] hover:bg-[#1f2238] text-[#c5a059]/70 border-[#c5a059]/25 hover:text-[#f5eed9]'
               }`}
               title="बुकमार्क करें"
@@ -292,7 +294,7 @@ export default function ScriptureReader({
         {activeTab === 'gallery' ? (
           /* ── SACRED VISUAL DARSHAN MODE ────────────────────────────────────── */
           <div className="space-y-6 animate-fade-in">
-            <div className="relative rounded-3xl overflow-hidden bg-black border-2 border-[#c5a059]/50 shadow-2xl h-80 sm:h-[420px]">
+            <div className={`relative rounded-3xl overflow-hidden bg-black border-2 ${chapterTheme.borderClass} shadow-2xl h-80 sm:h-[420px]`}>
               <SacredArtworkImage
                 src={artwork.url}
                 alt={artwork.title}
@@ -302,12 +304,12 @@ export default function ScriptureReader({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-6 sm:p-10 space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="px-3 py-1 rounded-full bg-[#c5a059] text-[#090a0f] text-xs font-mono font-bold w-max shadow-md">
+                  <span className={`px-3 py-1 rounded-full ${chapterTheme.buttonBg} text-xs font-mono font-bold w-max shadow-md`}>
                     ॥ अध्याय {toDevanagariNum(verse.chapter)} · श्लोक {toDevanagariNum(verse.verse)} ॥
                   </span>
                   <button
                     onClick={() => setActiveCardGeneratorVerse(verse)}
-                    className="px-3 py-1 rounded-full bg-black/60 hover:bg-black/90 border border-[#c5a059]/40 text-[#f5eed9] text-xs font-serif flex items-center gap-1 cursor-pointer"
+                    className="px-3 py-1 rounded-full bg-black/70 hover:bg-black border border-[#c5a059]/40 text-[#f5eed9] text-xs font-serif flex items-center gap-1 cursor-pointer"
                   >
                     <Download className="w-3 h-3 text-[#c5a059]" />
                     <span>वॉलपेपर डाउनलोड</span>
@@ -326,15 +328,18 @@ export default function ScriptureReader({
           /* ── MAIN STUDY & SACRED READING MODE ──────────────────────────────── */
           <div className="space-y-6">
             
-            {/* ── CARD 1: SACRED SANSKRIT ALTAR ───────────────────────────────── */}
-            <div className="relative rounded-3xl bg-gradient-to-b from-[#141624]/95 via-[#0e101a]/95 to-[#090a12]/95 backdrop-blur-2xl border-2 border-[#c5a059]/40 shadow-2xl p-6 sm:p-8 space-y-5 text-center overflow-hidden">
+            {/* ── CARD 1: SACRED SANSKRIT ALTAR IN CHAPTER SIGNATURE COLOR ─────── */}
+            <div 
+              className={`relative rounded-3xl bg-gradient-to-b from-[#141624]/95 via-[#0e101a]/95 to-[#090a12]/95 backdrop-blur-2xl border-2 ${chapterTheme.borderClass} shadow-2xl p-6 sm:p-8 space-y-5 text-center overflow-hidden`}
+              style={{ boxShadow: `0 8px 35px ${chapterTheme.glowColor}` }}
+            >
               
               {/* Royal Chapter & Shloka Numbering Banner */}
               <div className="flex flex-wrap items-center justify-center gap-2">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#c5a059]/20 border border-[#c5a059]/50 text-xs font-serif text-[#f5eed9] shadow-md">
-                  <span className="font-bold font-mono text-amber-300">॥ अध्याय {toDevanagariNum(verse.chapter)} · श्लोक {toDevanagariNum(verse.verse)} ॥</span>
-                  <span className="text-[#c5a059]/60">•</span>
-                  <span className="text-[11px] font-mono text-[#e6c687]">Chapter {verse.chapter}, Verse {verse.verse}</span>
+                <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full ${chapterTheme.badgeBg} border ${chapterTheme.borderClass} text-xs font-serif ${chapterTheme.badgeText} shadow-md`}>
+                  <span className="font-bold font-mono">॥ अध्याय {toDevanagariNum(verse.chapter)} · श्लोक {toDevanagariNum(verse.verse)} ॥</span>
+                  <span className="opacity-60">•</span>
+                  <span className="text-[11px] font-mono text-[#f5eed9]">Chapter {verse.chapter}, Verse {verse.verse}</span>
                 </div>
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#141624] border border-[#c5a059]/30 text-[11px] font-serif text-[#e6c687]">
                   <span>✨ {speaker.title}</span>
@@ -356,20 +361,20 @@ export default function ScriptureReader({
 
               {/* IAST English Transliteration */}
               <div className="pt-2 border-t border-[#c5a059]/20 max-w-2xl mx-auto">
-                <p className="text-xs sm:text-sm text-[#c5a059]/90 font-serif italic tracking-wide leading-relaxed">
+                <p className="text-xs sm:text-sm font-serif italic tracking-wide leading-relaxed" style={{ color: chapterTheme.accentHex }}>
                   {verse.iast}
                 </p>
               </div>
 
               {/* ── GUARANTEED CLASSICAL AUDIO CHANTING DECK ─────────────────── */}
               <div className="pt-4 max-w-xl mx-auto">
-                <div className="p-3.5 sm:p-4 rounded-2xl bg-[#0b0d18]/90 border border-[#c5a059]/35 shadow-inner space-y-3">
+                <div className={`p-3.5 sm:p-4 rounded-2xl bg-[#0b0d18]/95 border-2 ${chapterTheme.borderClass} shadow-inner space-y-3`}>
                   
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-2.5">
                       <button
                         onClick={handlePlayPureMusic}
-                        className="w-11 h-11 rounded-full bg-gradient-to-r from-amber-400 via-[#c5a059] to-amber-500 text-black flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.6)] hover:scale-105 active:scale-95 transition-transform cursor-pointer border border-[#f5eed9] shrink-0"
+                        className={`w-11 h-11 rounded-full ${chapterTheme.buttonBg} flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform cursor-pointer border border-[#f5eed9] shrink-0`}
                         title={isCurrentVersePlaying ? 'रोकें' : 'प्रामाणिक संगीत वाचन सुनें'}
                       >
                         {isCurrentVersePlaying ? (
@@ -383,7 +388,7 @@ export default function ScriptureReader({
                         <span className="text-xs font-serif font-bold text-[#f5eed9] block">
                           शास्त्रीय संगीत वाचन (स्वर: शैलेन्द्र भारती)
                         </span>
-                        <span className="text-[10px] text-[#c5a059]/80 font-sans block">
+                        <span className="text-[10px] font-sans block" style={{ color: chapterTheme.accentHex }}>
                           {isCurrentVersePlaying ? '▶️ लाइव वाचन चल रहा है...' : 'क्लिक करके प्रामाणिक धुन सुनें'}
                         </span>
                       </div>
@@ -398,12 +403,15 @@ export default function ScriptureReader({
                     </button>
                   </div>
 
-                  {/* Progress Line */}
+                  {/* Progress Line in Chapter Theme Color */}
                   <div className="space-y-1">
                     <div className="w-full h-1.5 rounded-full bg-[#141829] overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-[#c5a059] to-amber-400 transition-all duration-300"
-                        style={{ width: `${isCurrentVersePlaying ? progressPercent : 0}%` }}
+                        className="h-full transition-all duration-300"
+                        style={{ 
+                          width: `${isCurrentVersePlaying ? progressPercent : 0}%`,
+                          backgroundColor: chapterTheme.primaryColor
+                        }}
                       />
                     </div>
                     <div className="flex items-center justify-between text-[10px] font-mono text-[#c5a059]/70">
@@ -438,7 +446,7 @@ export default function ScriptureReader({
             />
 
             {/* ── CARD 2: HINDI & ENGLISH TRANSLATIONS ─────────────────────────── */}
-            <div className="rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/30 p-5 sm:p-6 shadow-xl space-y-4">
+            <div className={`rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border-2 ${chapterTheme.borderClass} p-5 sm:p-6 shadow-xl space-y-4`}>
               <div className="flex items-center gap-2">
                 <BookOpen className="w-4 h-4 text-[#c5a059]" />
                 <h3 className="text-sm font-serif font-bold text-[#f5eed9]">
@@ -447,7 +455,7 @@ export default function ScriptureReader({
               </div>
 
               <div className="p-4 rounded-2xl bg-[#141624]/90 border border-[#c5a059]/20">
-                <span className="text-[10px] font-sans font-bold text-[#c5a059] uppercase tracking-wider block mb-1">
+                <span className="text-[10px] font-sans font-bold uppercase tracking-wider block mb-1" style={{ color: chapterTheme.accentHex }}>
                   हिन्दी अनुवाद:
                 </span>
                 <p className="text-sm sm:text-base text-[#f5eed9] font-serif leading-relaxed">
@@ -457,7 +465,7 @@ export default function ScriptureReader({
 
               {verse.translation_en && (
                 <div className="p-4 rounded-2xl bg-[#141624]/90 border border-[#c5a059]/20">
-                  <span className="text-[10px] font-sans font-bold text-[#c5a059] uppercase tracking-wider block mb-1">
+                  <span className="text-[10px] font-sans font-bold uppercase tracking-wider block mb-1" style={{ color: chapterTheme.accentHex }}>
                     English Translation:
                   </span>
                   <p className="text-xs sm:text-sm text-[#f5eed9]/90 font-serif leading-relaxed italic">
@@ -469,7 +477,7 @@ export default function ScriptureReader({
 
             {/* ── CARD 3: WORD-BY-WORD ANVAYA WITH INTERACTIVE LEXICON ────────── */}
             {canonical?.word_anvaya && (
-              <div className="rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/30 p-5 sm:p-6 shadow-xl space-y-3.5">
+              <div className={`rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border-2 ${chapterTheme.borderClass} p-5 sm:p-6 shadow-xl space-y-3.5`}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-[#c5a059]" />
@@ -512,7 +520,7 @@ export default function ScriptureReader({
             )}
 
             {/* ── CARD 4: ENTERPRISE CLASSICAL COMMENTARIES ────────────────────── */}
-            <div className="rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/30 p-5 sm:p-7 shadow-2xl space-y-5">
+            <div className={`rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border-2 ${chapterTheme.borderClass} p-5 sm:p-7 shadow-2xl space-y-5`}>
               
               <div className="flex items-center justify-between border-b border-[#c5a059]/20 pb-3">
                 <div className="flex items-center gap-2">
@@ -541,7 +549,7 @@ export default function ScriptureReader({
                       }}
                       className={`p-2.5 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between space-y-1 ${
                         isSelected
-                          ? 'bg-[#c5a059] text-black border-[#f5eed9] shadow-lg scale-102 font-semibold'
+                          ? `${chapterTheme.buttonBg} shadow-lg scale-102 font-semibold`
                           : 'bg-[#141624]/90 text-[#e6c687] border-[#c5a059]/25 hover:border-[#c5a059] hover:bg-[#1a1e33]'
                       }`}
                     >
@@ -587,8 +595,8 @@ export default function ScriptureReader({
             </div>
 
             {/* ── CARD 5: ACTIONABLE LIFE BLUEPRINT ───────────────────────────── */}
-            <div className="rounded-3xl bg-gradient-to-r from-amber-500/15 via-[#c5a059]/20 to-amber-500/15 backdrop-blur-xl border border-[#c5a059]/40 p-5 shadow-xl space-y-2">
-              <div className="flex items-center gap-2 text-xs font-serif uppercase tracking-widest text-[#e6c687] font-bold">
+            <div className={`rounded-3xl bg-gradient-to-r from-amber-500/15 via-[#c5a059]/20 to-amber-500/15 backdrop-blur-xl border-2 ${chapterTheme.borderClass} p-5 shadow-xl space-y-2`}>
+              <div className="flex items-center gap-2 text-xs font-serif uppercase tracking-widest font-bold" style={{ color: chapterTheme.accentHex }}>
                 <Flame className="w-4 h-4 text-amber-400" />
                 <span>२१वीं सदी का व्यावहारिक जीवन सूत्र (Actionable Blueprint)</span>
               </div>
@@ -601,7 +609,7 @@ export default function ScriptureReader({
             <div className="text-center pt-2 flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={handleAskKrishna}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-gradient-to-r from-[#d4af37] via-[#c5a059] to-amber-600 text-[#090a0f] font-serif font-bold text-xs sm:text-sm shadow-xl hover:scale-102 transition-transform cursor-pointer"
+                className={`inline-flex items-center gap-2 px-6 py-3 rounded-2xl ${chapterTheme.buttonBg} font-serif font-bold text-xs sm:text-sm shadow-xl hover:scale-102 transition-transform cursor-pointer`}
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
                 <span>इस श्लोक पर कृष्ण AI से दिव्य संवाद करें 🪔</span>

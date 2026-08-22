@@ -9,7 +9,8 @@ import {
 } from 'lucide-react';
 import { CHAPTERS, GitaVerse } from '@/types/verse';
 import { getMasterTimestampForVerse } from '@/data/gitaMasterAudioTimestamps';
-import { getArtworkForChapter, getArtworkForShloka } from '@/data/krishnaArtworks';
+import { getArtworkForShloka } from '@/data/krishnaArtworks';
+import { getChapterTheme } from '@/data/chapterThemes';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
 import SacredArtworkImage from '@/components/SacredArtworkImage';
@@ -38,7 +39,7 @@ export default function ChapterDetailView({
   const [activeVerseRange, setActiveVerseRange] = useState<string>('all');
 
   const chapterInfo = CHAPTERS.find(c => c.number === chapterNum) || CHAPTERS[0];
-  const chapterArtwork = getArtworkForChapter(chapterNum);
+  const chapterTheme = getChapterTheme(chapterNum);
   
   const chapterVerses = verses.filter(v => v.chapter === chapterNum);
 
@@ -76,16 +77,19 @@ export default function ChapterDetailView({
   return (
     <div className="relative min-h-screen">
       
-      {/* Background Ambience */}
+      {/* Background Ambience in Chapter Theme Tint */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#090b14]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#090b14]/90 via-[#090b14]/95 to-[#090b14]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent" />
+        <div 
+          className="absolute inset-0 pointer-events-none opacity-20"
+          style={{ background: `radial-gradient(ellipse at top, ${chapterTheme.primaryColor} 0%, transparent 70%)` }}
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto space-y-6 animate-fade-in px-2 sm:px-4 pb-32 pt-2">
         
         {/* ── TOP NAV BAR ───────────────────────────────────────────────────── */}
-        <div className="flex flex-wrap items-center justify-between gap-3 bg-[#0d0f19]/90 backdrop-blur-xl p-3 rounded-2xl border border-[#c5a059]/30 shadow-2xl">
+        <div className={`flex flex-wrap items-center justify-between gap-3 bg-[#0d0f19]/95 backdrop-blur-xl p-3 rounded-2xl border-2 ${chapterTheme.borderClass} shadow-2xl`}>
           <button
             onClick={handleBack}
             className="px-4 py-2 rounded-2xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/30 text-xs font-serif text-[#e6c687] hover:text-[#f5eed9] flex items-center gap-2 transition-all cursor-pointer shadow-md"
@@ -111,7 +115,7 @@ export default function ChapterDetailView({
                 onClick={() => { setViewMode('grid'); sacredAudio.playNavChime(0.05); }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-serif transition-all cursor-pointer flex items-center gap-1.5 ${
                   viewMode === 'grid'
-                    ? 'bg-[#c5a059] text-[#090a0f] font-bold shadow-sm'
+                    ? `${chapterTheme.buttonBg} font-bold shadow-sm`
                     : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
                 }`}
               >
@@ -122,7 +126,7 @@ export default function ChapterDetailView({
                 onClick={() => { setViewMode('list'); sacredAudio.playNavChime(0.05); }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-serif transition-all cursor-pointer flex items-center gap-1.5 ${
                   viewMode === 'list'
-                    ? 'bg-[#c5a059] text-[#090a0f] font-bold shadow-sm'
+                    ? `${chapterTheme.buttonBg} font-bold shadow-sm`
                     : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
                 }`}
               >
@@ -133,7 +137,7 @@ export default function ChapterDetailView({
                 onClick={() => { setViewMode('gallery'); sacredAudio.playNavChime(0.05); }}
                 className={`px-2.5 py-1 rounded-lg text-xs font-serif transition-all cursor-pointer flex items-center gap-1.5 ${
                   viewMode === 'gallery'
-                    ? 'bg-[#c5a059] text-[#090a0f] font-bold shadow-sm'
+                    ? `${chapterTheme.buttonBg} font-bold shadow-sm`
                     : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
                 }`}
               >
@@ -142,27 +146,28 @@ export default function ChapterDetailView({
               </button>
             </div>
 
-            <span className="text-xs font-mono text-[#c5a059] px-3 py-1.5 rounded-xl bg-[#141624] border border-[#c5a059]/25">
+            <span className={`text-xs font-mono px-3 py-1.5 rounded-xl bg-[#141624] border ${chapterTheme.borderClass} ${chapterTheme.badgeText}`}>
               {chapterInfo.verses_count} श्लोक
             </span>
           </div>
         </div>
 
-        {/* ── CHAPTER HERO BANNER (CLEAN & ROYAL HD KRISHNA THUMBNAIL) ───────── */}
-        <div className="relative rounded-3xl bg-[#0f111c]/90 backdrop-blur-2xl border-2 border-[#c5a059]/40 shadow-2xl overflow-hidden">
+        {/* ── CHAPTER HERO BANNER (100% BRIGHT HD ARTWORK) ──────────────────── */}
+        <div className={`relative rounded-3xl bg-[#0f111c]/90 backdrop-blur-2xl border-2 ${chapterTheme.borderClass} shadow-2xl overflow-hidden`}>
           <div className="relative w-full h-52 sm:h-72 overflow-hidden bg-black">
             <SacredArtworkImage
-              src={chapterArtwork}
+              src={chapterTheme.imageUrl}
               alt={chapterInfo.name_sanskrit}
               chapter={chapterNum}
-              className="w-full h-full object-cover filter brightness-75 hover:scale-102 transition-transform duration-700"
+              className="w-full h-full object-cover filter brightness-100 contrast-105 hover:scale-102 transition-transform duration-700"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/50 to-transparent" />
             
             <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-8 sm:right-8 space-y-2">
               <div className="flex items-center gap-2">
-                <span className="px-3.5 py-1 rounded-full bg-[#c5a059] text-[#090a0f] text-xs font-mono font-bold shadow-lg">
-                  ॥ अध्याय {toDevanagariNum(chapterNum)} • CHAPTER {chapterNum} ॥
+                <span className={`px-3.5 py-1 rounded-full ${chapterTheme.buttonBg} text-xs font-mono font-bold shadow-lg flex items-center gap-1.5`}>
+                  <span>{chapterTheme.icon}</span>
+                  <span>॥ अध्याय {toDevanagariNum(chapterNum)} • CHAPTER {chapterNum} ॥</span>
                 </span>
                 <span className="text-xs font-serif text-[#e6c687] italic">
                   {chapterInfo.name_en}
@@ -174,14 +179,14 @@ export default function ChapterDetailView({
               </h1>
 
               <p className="text-xs sm:text-sm text-[#f5eed9]/90 font-serif max-w-3xl line-clamp-2 drop-shadow">
-                {chapterInfo.summary_hi}
+                {chapterInfo.summary_hi || chapterTheme.sutra}
               </p>
             </div>
           </div>
         </div>
 
         {/* ── QUICK SEARCH & VERSE JUMP TABS ─────────────────────────────────── */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#0d0f19]/90 backdrop-blur-xl p-3 sm:p-4 rounded-2xl border border-[#c5a059]/30">
+        <div className={`flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#0d0f19]/90 backdrop-blur-xl p-3 sm:p-4 rounded-2xl border ${chapterTheme.borderClass}`}>
           
           {/* Search */}
           <div className="relative w-full sm:w-72">
@@ -206,8 +211,8 @@ export default function ChapterDetailView({
                 }}
                 className={`px-3 py-1 rounded-xl text-xs font-mono font-semibold transition-all cursor-pointer border shrink-0 ${
                   activeVerseRange === r
-                    ? 'bg-[#c5a059] text-[#090a0f] font-bold shadow-md'
-                    : 'bg-[#141624] text-[#c5a059]/70 hover:text-[#f5eed9] border-[#c5a059]/20'
+                    ? `${chapterTheme.buttonBg} font-bold shadow-md`
+                    : `bg-[#141624] ${chapterTheme.badgeText} border-[#c5a059]/20 hover:text-white`
                 }`}
               >
                 {r === 'all' ? 'सम्पूर्ण' : `श्लोक ${r}`}
@@ -216,7 +221,7 @@ export default function ChapterDetailView({
           </div>
         </div>
 
-        {/* ── 3 DISTINCT DISPLAY MODES ─────────────────────────────────────── */}
+        {/* ── ALL SHLOKAS IN THIS CHAPTER INHERIT THE EXACT CHAPTER COLOR ───── */}
         {viewMode === 'gallery' ? (
           /* ── MODE 1: SACRED KRISHNA ARTWORKS GALLERY ── */
           <div className="space-y-4">
@@ -228,7 +233,7 @@ export default function ChapterDetailView({
                     key={v.verse}
                     href={`/chapter/${v.chapter}/${v.verse}`}
                     onClick={() => sacredAudio.playTempleBell(0.2)}
-                    className="group relative rounded-3xl overflow-hidden bg-black border border-[#c5a059]/30 hover:border-[#c5a059] shadow-xl transition-all duration-300 block"
+                    className={`group relative rounded-3xl overflow-hidden bg-black border-2 ${chapterTheme.borderClass} ${chapterTheme.borderHoverClass} shadow-xl transition-all duration-300 block`}
                   >
                     <div className="h-60 w-full overflow-hidden">
                       <SacredArtworkImage
@@ -241,7 +246,7 @@ export default function ChapterDetailView({
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-4">
                       <div className="flex items-center justify-between">
-                        <span className="px-2.5 py-0.5 rounded-lg bg-[#c5a059] text-[#090a0f] font-mono font-bold text-xs">
+                        <span className={`px-2.5 py-0.5 rounded-lg ${chapterTheme.buttonBg} font-mono font-bold text-xs`}>
                           ॥ श्लोक {toDevanagariNum(v.chapter)}.{toDevanagariNum(v.verse)} ॥
                         </span>
                         <span className="text-xs font-serif text-[#e6c687] flex items-center gap-1">
@@ -259,7 +264,7 @@ export default function ChapterDetailView({
             </div>
           </div>
         ) : viewMode === 'grid' ? (
-          /* ── MODE 2: ROYAL BOX CARDS ── */
+          /* ── MODE 2: ROYAL BOX CARDS (SAME COLOR BORDER FOR ALL SHLOKAS) ── */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {displayedVerses.map(v => {
               const ts = getMasterTimestampForVerse(v.chapter, v.verse);
@@ -269,7 +274,8 @@ export default function ChapterDetailView({
               return (
                 <div
                   key={v.verse}
-                  className="group rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/25 hover:border-[#c5a059] shadow-xl hover:shadow-[0_10px_35px_rgba(197,160,89,0.2)] transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1"
+                  className={`group rounded-3xl bg-[#0f111c]/95 backdrop-blur-xl border-2 ${chapterTheme.borderClass} ${chapterTheme.borderHoverClass} shadow-xl hover:shadow-[0_10px_35px_rgba(0,0,0,0.8)] transition-all duration-300 flex flex-col justify-between overflow-hidden hover:-translate-y-1`}
+                  style={{ boxShadow: `0 4px 20px ${chapterTheme.glowColor}` }}
                 >
                   {/* Thumbnail */}
                   <div className="relative w-full h-36 overflow-hidden bg-black">
@@ -278,20 +284,20 @@ export default function ChapterDetailView({
                       alt={`श्लोक ${v.chapter}.${v.verse}`}
                       chapter={v.chapter}
                       verse={v.verse}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-90 group-hover:brightness-100"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/40 to-transparent" />
 
-                    {/* Emblem with Royal Numbering */}
+                    {/* Emblem with Royal Numbering in Chapter Color */}
                     <div className="absolute top-3 left-3 flex items-center gap-2">
-                      <div className="w-9 h-9 rounded-xl bg-[#c5a059] text-[#090a0f] flex items-center justify-center font-mono font-bold text-sm shadow-md">
+                      <div className={`w-9 h-9 rounded-xl ${chapterTheme.buttonBg} flex items-center justify-center font-mono font-bold text-sm shadow-md`}>
                         {v.verse}
                       </div>
                       <div className="flex flex-col">
                         <span className="text-xs font-devanagari font-bold text-[#f5eed9]">
                           ॥ श्लोक {toDevanagariNum(v.chapter)}.{toDevanagariNum(v.verse)} ॥
                         </span>
-                        <span className="text-[10px] font-mono text-[#e6c687]">
+                        <span className={`text-[10px] font-mono ${chapterTheme.badgeText}`}>
                           Verse {v.chapter}.{v.verse} • {ts.formattedStart}
                         </span>
                       </div>
@@ -304,7 +310,7 @@ export default function ChapterDetailView({
                           e.stopPropagation();
                           setActiveCardGeneratorVerse(v);
                         }}
-                        className="p-1.5 rounded-lg bg-black/75 backdrop-blur-md border border-[#c5a059]/30 text-[#e6c687] hover:text-[#f5eed9] transition-colors cursor-pointer"
+                        className={`p-1.5 rounded-lg bg-black/80 backdrop-blur-md border ${chapterTheme.borderClass} text-[#e6c687] hover:text-[#f5eed9] transition-colors cursor-pointer`}
                         title="कार्ड बनाएं"
                       >
                         <Download className="w-3 h-3" />
@@ -320,8 +326,8 @@ export default function ChapterDetailView({
                         }}
                         className={`p-1.5 rounded-lg backdrop-blur-md border transition-colors cursor-pointer ${
                           isPlayingThis
-                            ? 'bg-amber-500 text-black border-amber-300'
-                            : 'bg-black/75 border-[#c5a059]/30 text-[#c5a059] hover:text-[#f5eed9]'
+                            ? `${chapterTheme.buttonBg} font-bold shadow-md`
+                            : `bg-black/80 border ${chapterTheme.borderClass} ${chapterTheme.badgeText} hover:text-white`
                         }`}
                         title={isPlayingThis ? 'रोकें' : 'स्वर सुनें'}
                       >
@@ -336,7 +342,7 @@ export default function ChapterDetailView({
                       <p className="font-devanagari text-sm text-[#f5eed9] font-medium line-clamp-2 leading-relaxed">
                         {v.devanagari}
                       </p>
-                      <p className="text-xs text-[#c5a059]/90 font-serif line-clamp-2 leading-relaxed">
+                      <p className="text-xs font-serif line-clamp-2 leading-relaxed" style={{ color: chapterTheme.accentHex }}>
                         {v.translation_hi}
                       </p>
                     </div>
@@ -345,10 +351,10 @@ export default function ChapterDetailView({
                     <Link
                       href={`/chapter/${v.chapter}/${v.verse}`}
                       onClick={() => sacredAudio.playTempleBell(0.2)}
-                      className="pt-3 border-t border-[#c5a059]/15 flex items-center justify-between text-xs font-serif text-[#e6c687] group-hover:text-[#f5eed9]"
+                      className={`pt-3 border-t border-[#c5a059]/15 flex items-center justify-between text-xs font-serif ${chapterTheme.badgeText} group-hover:text-white`}
                     >
-                      <span>सम्पूर्ण भाष्य व अर्थ खोलें</span>
-                      <div className="w-6 h-6 rounded-lg bg-[#c5a059]/20 group-hover:bg-[#c5a059] group-hover:text-[#090a0f] flex items-center justify-center transition-colors">
+                      <span>सम्पूर्ण भाष्य, उच्चारण व अर्थ खोलें</span>
+                      <div className={`w-6 h-6 rounded-lg ${chapterTheme.badgeBg} group-hover:${chapterTheme.buttonBg} flex items-center justify-center transition-colors`}>
                         <ChevronRight className="w-3.5 h-3.5" />
                       </div>
                     </Link>
@@ -366,10 +372,10 @@ export default function ChapterDetailView({
               return (
                 <div
                   key={v.verse}
-                  className="p-4 rounded-2xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/20 hover:border-[#c5a059] flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-200 shadow-md"
+                  className={`p-4 rounded-2xl bg-[#0f111c]/90 backdrop-blur-xl border-2 ${chapterTheme.borderClass} ${chapterTheme.borderHoverClass} flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition-all duration-200 shadow-md`}
                 >
                   <div className="flex items-start gap-3 min-w-0">
-                    <div className="w-9 h-9 rounded-xl bg-[#141624] border border-[#c5a059]/30 text-[#e6c687] flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5">
+                    <div className={`w-9 h-9 rounded-xl ${chapterTheme.buttonBg} flex items-center justify-center font-mono font-bold text-xs shrink-0 mt-0.5`}>
                       {v.verse}
                     </div>
 
@@ -377,7 +383,7 @@ export default function ChapterDetailView({
                       <p className="font-devanagari text-sm text-[#f5eed9] font-medium truncate">
                         ॥ श्लोक {toDevanagariNum(v.chapter)}.{toDevanagariNum(v.verse)} ॥ {v.devanagari}
                       </p>
-                      <p className="text-xs text-[#c5a059]/80 font-serif line-clamp-1">
+                      <p className="text-xs font-serif line-clamp-1" style={{ color: chapterTheme.accentHex }}>
                         {v.translation_hi}
                       </p>
                     </div>
@@ -394,8 +400,8 @@ export default function ChapterDetailView({
                       }}
                       className={`px-3 py-1.5 rounded-xl border text-xs font-serif flex items-center gap-1.5 transition-all cursor-pointer ${
                         isPlayingThis
-                          ? 'bg-amber-500 text-black border-amber-300 font-bold'
-                          : 'bg-[#141624] text-[#c5a059] border-[#c5a059]/30 hover:text-[#f5eed9]'
+                          ? `${chapterTheme.buttonBg} font-bold shadow-md`
+                          : `bg-[#141624] ${chapterTheme.badgeText} border ${chapterTheme.borderClass} hover:text-white`
                       }`}
                     >
                       {isPlayingThis ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Volume2 className="w-3.5 h-3.5" />}
@@ -405,7 +411,7 @@ export default function ChapterDetailView({
                     <Link
                       href={`/chapter/${v.chapter}/${v.verse}`}
                       onClick={() => sacredAudio.playTempleBell(0.2)}
-                      className="px-3.5 py-1.5 rounded-xl bg-[#c5a059] hover:bg-[#e6c687] text-[#090a0f] font-serif font-bold text-xs flex items-center gap-1 transition-colors shadow-md"
+                      className={`px-3.5 py-1.5 rounded-xl ${chapterTheme.buttonBg} font-serif font-bold text-xs flex items-center gap-1 transition-colors shadow-md`}
                     >
                       <span>अध्ययन</span>
                       <ChevronRight className="w-3.5 h-3.5" />
