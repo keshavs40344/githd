@@ -12,6 +12,7 @@ import KrishnaAIMentor from '@/components/KrishnaAIMentor';
 import WhyChooseDharmaOS from '@/components/WhyChooseDharmaOS';
 import FamilyDevoteeSanctuary from '@/components/FamilyDevoteeSanctuary';
 import DailyVerseSpotlight from '@/components/DailyVerseSpotlight';
+import HundredDilemmaSanctuary from '@/components/HundredDilemmaSanctuary';
 import { sacredAudio } from '@/lib/sacredSounds';
 
 interface MasterDharmaHubProps {
@@ -19,7 +20,7 @@ interface MasterDharmaHubProps {
 }
 
 export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
-  const [activeHubTab, setActiveHubTab] = useState<'scripture' | 'family' | 'healer' | 'sadhana' | 'mentor' | 'why'>('scripture');
+  const [activeHubTab, setActiveHubTab] = useState<'scripture' | 'dilemmas' | 'family' | 'healer' | 'sadhana' | 'mentor' | 'why'>('scripture');
 
   const HUB_TABS = [
     {
@@ -27,6 +28,12 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
       label: '१८ अध्याय व श्लोक',
       sublabel: '700 Verses & Chapters',
       icon: '📖'
+    },
+    {
+      id: 'dilemmas',
+      label: '१०८ समस्याएं व समाधान',
+      sublabel: '108 Life Dilemmas Matrix',
+      icon: '🎯'
     },
     {
       id: 'family',
@@ -67,7 +74,7 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
       <DailyVerseSpotlight />
 
       {/* ── TOP GRAND SACRED NAVIGATION HUB TABS ───────────────────────────── */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-2.5 bg-[#0d0f19]/90 backdrop-blur-2xl p-2.5 sm:p-3.5 rounded-3xl border-2 border-[#c5a059]/30 shadow-2xl">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-2 sm:gap-2.5 bg-[#0d0f19]/90 backdrop-blur-2xl p-2.5 sm:p-3.5 rounded-3xl border-2 border-[#c5a059]/30 shadow-2xl">
         {HUB_TABS.map(tab => {
           const isSelected = activeHubTab === tab.id;
           return (
@@ -104,11 +111,20 @@ export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
           <div className="space-y-8">
             <ChapterEpisodeGrid />
             <div className="pt-6">
+              <HundredDilemmaSanctuary />
+            </div>
+            <div className="pt-6">
               <FamilyDevoteeSanctuary />
             </div>
             <div className="pt-6">
               <WhyChooseDharmaOS />
             </div>
+          </div>
+        )}
+
+        {activeHubTab === 'dilemmas' && (
+          <div className="max-w-5xl mx-auto">
+            <HundredDilemmaSanctuary />
           </div>
         )}
 
