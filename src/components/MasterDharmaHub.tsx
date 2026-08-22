@@ -1,129 +1,127 @@
 'use client';
 
 import React, { useState } from 'react';
+import { 
+  BookOpen, HeartHandshake, Sparkles, MessageSquare, 
+  HelpCircle, Compass, Flame, ArrowRight
+} from 'lucide-react';
 import ChapterEpisodeGrid from '@/components/ChapterEpisodeGrid';
 import EmotionalSanctuary from '@/components/EmotionalSanctuary';
 import SacredJapaMala from '@/components/SacredJapaMala';
 import KrishnaAIMentor from '@/components/KrishnaAIMentor';
-import { BookOpen, Heart, Sparkles, MessageSquare } from 'lucide-react';
+import WhyChooseDharmaOS from '@/components/WhyChooseDharmaOS';
 import { sacredAudio } from '@/lib/sacredSounds';
-import type { GitaVerse } from '@/types/verse';
 
 interface MasterDharmaHubProps {
-  verses?: GitaVerse[];
+  verses?: any[];
 }
 
 export default function MasterDharmaHub({ verses }: MasterDharmaHubProps) {
-  const [activeHubTab, setActiveHubTab] = useState<'scripture' | 'healer' | 'sadhana' | 'mentor'>('scripture');
+  const [activeHubTab, setActiveHubTab] = useState<'scripture' | 'healer' | 'sadhana' | 'mentor' | 'why'>('scripture');
+
+  const HUB_TABS = [
+    {
+      id: 'scripture',
+      label: '१८ अध्याय व श्लोक',
+      sublabel: '700 Verses & Chapters',
+      icon: '📖'
+    },
+    {
+      id: 'healer',
+      label: 'मानसिक शांति व हीलर',
+      sublabel: 'Emotional Crisis Sanctuary',
+      icon: '❤️'
+    },
+    {
+      id: 'sadhana',
+      label: '१०८ जप माला व साधना',
+      sublabel: 'Daily Habit & Streak',
+      icon: '✨'
+    },
+    {
+      id: 'mentor',
+      label: 'कृष्ण AI मेंटर',
+      sublabel: 'Direct Krishna Dialogue',
+      icon: '💬'
+    },
+    {
+      id: 'why',
+      label: 'क्यों चुनें Dharma.OS?',
+      sublabel: 'Why Us vs Google / AI',
+      icon: '🪔'
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-[#090a0f] text-[#f5eed9]">
+    <div className="space-y-6 sm:space-y-8 max-w-7xl mx-auto pb-32">
       
-      {/* ── TOP LUXURY NAVIGATION HEADER ───────────────────────────────────── */}
-      <header className="sticky top-0 z-40 bg-[#090b14]/90 backdrop-blur-xl border-b border-[#c5a059]/25 shadow-2xl">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          
-          {/* Logo Emblem */}
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 via-[#c5a059] to-amber-600 p-0.5 shadow-[0_0_20px_rgba(212,175,55,0.4)] flex items-center justify-center shrink-0">
-              <div className="w-full h-full bg-[#0a0c16] rounded-2xl flex items-center justify-center">
-                <span className="font-devanagari text-xl font-bold text-amber-300">ॐ</span>
+      {/* ── TOP GRAND SACRED NAVIGATION HUB TABS ───────────────────────────── */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3 bg-[#0d0f19]/90 backdrop-blur-2xl p-3 sm:p-4 rounded-3xl border-2 border-[#c5a059]/30 shadow-2xl">
+        {HUB_TABS.map(tab => {
+          const isSelected = activeHubTab === tab.id;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => {
+                setActiveHubTab(tab.id as any);
+                sacredAudio.playNavChime(0.06);
+              }}
+              className={`p-3 rounded-2xl border text-left transition-all cursor-pointer flex flex-col justify-between space-y-1 ${
+                isSelected
+                  ? 'bg-gradient-to-r from-amber-400 to-yellow-500 text-black border-yellow-200 font-bold shadow-[0_4px_20px_rgba(245,158,11,0.4)] scale-102'
+                  : 'bg-[#141624]/90 text-[#e6c687] border-[#c5a059]/20 hover:border-[#c5a059] hover:bg-[#1a1e33]'
+              }`}
+            >
+              <div className="flex items-center justify-between">
+                <span className="text-lg">{tab.icon}</span>
+                {isSelected && <span className="w-2 h-2 rounded-full bg-black" />}
               </div>
-            </div>
-            <div>
-              <h1 className="text-lg font-devanagari font-bold text-[#f5eed9] leading-none">
-                DHARMA.OS
-              </h1>
-              <span className="text-[10px] font-mono text-[#c5a059] tracking-wider uppercase">
-                श्रीमद्भगवद्गीता महामंदिर
+              <span className="text-xs font-devanagari font-bold block truncate">
+                {tab.label}
               </span>
-            </div>
-          </div>
-
-          {/* 4 Core Human Sanctum Hub Tabs */}
-          <div className="flex items-center bg-[#141624] border border-[#c5a059]/30 p-1 rounded-2xl overflow-x-auto max-w-full custom-scrollbar">
-            <button
-              onClick={() => { setActiveHubTab('scripture'); sacredAudio.playNavChime(0.05); }}
-              className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-serif transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
-                activeHubTab === 'scripture'
-                  ? 'bg-[#c5a059] text-black font-bold shadow-md'
-                  : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
-              }`}
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>१८ अध्याय व श्लोक</span>
+              <span className={`text-[10px] block truncate ${isSelected ? 'text-black/80' : 'text-[#c5a059]/70'}`}>
+                {tab.sublabel}
+              </span>
             </button>
+          );
+        })}
+      </div>
 
-            <button
-              onClick={() => { setActiveHubTab('healer'); sacredAudio.playNavChime(0.05); }}
-              className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-serif transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
-                activeHubTab === 'healer'
-                  ? 'bg-[#c5a059] text-black font-bold shadow-md'
-                  : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
-              }`}
-            >
-              <Heart className="w-3.5 h-3.5 text-rose-400" />
-              <span>मानसिक शांति व हीलर</span>
-            </button>
-
-            <button
-              onClick={() => { setActiveHubTab('sadhana'); sacredAudio.playNavChime(0.05); }}
-              className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-serif transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
-                activeHubTab === 'sadhana'
-                  ? 'bg-[#c5a059] text-black font-bold shadow-md'
-                  : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-              <span>१०८ जप माला</span>
-            </button>
-
-            <button
-              onClick={() => { setActiveHubTab('mentor'); sacredAudio.playNavChime(0.05); }}
-              className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-serif transition-all cursor-pointer flex items-center gap-1.5 shrink-0 ${
-                activeHubTab === 'mentor'
-                  ? 'bg-[#c5a059] text-black font-bold shadow-md'
-                  : 'text-[#c5a059]/70 hover:text-[#f5eed9]'
-              }`}
-            >
-              <MessageSquare className="w-3.5 h-3.5 text-cyan-300" />
-              <span>कृष्ण AI मेंटर</span>
-            </button>
-          </div>
-
-        </div>
-      </header>
-
-      {/* ── MAIN CONTENT VIEWPORT ──────────────────────────────────────────── */}
-      <main className="max-w-7xl mx-auto px-3 sm:px-6 py-6 sm:py-8 pb-32">
+      {/* ── ACTIVE HUB TAB CONTENT ─────────────────────────────────────────── */}
+      <div className="animate-fade-in">
         {activeHubTab === 'scripture' && (
-          <div className="space-y-10">
+          <div className="space-y-8">
             <ChapterEpisodeGrid />
-            <EmotionalSanctuary />
-            <SacredJapaMala />
+            <div className="pt-6">
+              <WhyChooseDharmaOS />
+            </div>
           </div>
         )}
 
         {activeHubTab === 'healer' && (
-          <div className="space-y-8 animate-fade-in">
+          <div className="max-w-4xl mx-auto">
             <EmotionalSanctuary />
-            <ChapterEpisodeGrid />
           </div>
         )}
 
         {activeHubTab === 'sadhana' && (
-          <div className="space-y-8 animate-fade-in">
+          <div className="max-w-4xl mx-auto">
             <SacredJapaMala />
-            <EmotionalSanctuary />
           </div>
         )}
 
         {activeHubTab === 'mentor' && (
-          <div className="space-y-8 animate-fade-in">
+          <div className="max-w-4xl mx-auto">
             <KrishnaAIMentor />
           </div>
         )}
-      </main>
+
+        {activeHubTab === 'why' && (
+          <div className="max-w-5xl mx-auto">
+            <WhyChooseDharmaOS />
+          </div>
+        )}
+      </div>
 
     </div>
   );
