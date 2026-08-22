@@ -2,14 +2,25 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { BookOpen, Sparkles, ArrowRight, Search, Image as ImageIcon } from 'lucide-react';
+import { BookOpen, Sparkles, ArrowRight, Search, Flame, Compass } from 'lucide-react';
 import { CHAPTERS } from '@/types/verse';
-import { getArtworkForChapter, getArtworkDetailsForChapter } from '@/data/krishnaArtworks';
+import { getArtworkDetailsForChapter } from '@/data/krishnaArtworks';
 import { sacredAudio } from '@/lib/sacredSounds';
+import { useGlobalAudio } from '@/context/GlobalAudioContext';
+
+const CRISIS_PILLS = [
+  { label: '🔥 क्रोध निवारण', chapter: 2, verse: 63 },
+  { label: '🌧️ अवसाद व चिंता', chapter: 2, verse: 14 },
+  { label: '🎯 कर्म व करियर', chapter: 2, verse: 47 },
+  { label: '🧘 मन की एकाग्रता', chapter: 6, verse: 35 },
+  { label: '⚡ आत्मविश्वास', chapter: 4, verse: 40 },
+  { label: '🪔 परम समर्पण', chapter: 18, verse: 66 },
+];
 
 export default function ChapterEpisodeGrid() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'karma' | 'bhakti' | 'jnana' | 'moksha'>('all');
+  const { setIsSearchModalOpen } = useGlobalAudio();
 
   const filteredChapters = CHAPTERS.filter(ch => {
     const matchesSearch = 
@@ -36,7 +47,7 @@ export default function ChapterEpisodeGrid() {
         <div className="space-y-3 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#c5a059]/15 border border-[#c5a059]/30 text-xs font-serif text-[#e6c687]">
             <Sparkles className="w-3.5 h-3.5 text-[#c5a059]" />
-            <span>सम्पूर्ण १८ अध्याय • ७०० प्रामाणिक श्लोक</span>
+            <span>सम्पूर्ण १८ अध्याय • ७०० प्रामाणिक श्लोक • Global Audio</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-devanagari font-bold text-[#f5eed9] leading-tight">
@@ -46,15 +57,58 @@ export default function ChapterEpisodeGrid() {
           <p className="text-xs sm:text-sm text-[#f5eed9]/80 font-serif leading-relaxed">
             भगवान श्रीकृष्ण द्वारा अर्जुन को दिया गया दिव्य अमर उपदेश। किसी भी अध्याय पर क्लिक करें और उसके सम्पूर्ण श्लोक, प्रामाणिक वाचन, व्याख्या एवं दिव्य चित्रों का रसास्वादन करें।
           </p>
+
+          {/* Quick AI Search Trigger Button */}
+          <div className="pt-2">
+            <button
+              onClick={() => {
+                setIsSearchModalOpen(true);
+                sacredAudio.playNavChime(0.08);
+              }}
+              className="px-4 py-2 rounded-2xl bg-[#c5a059] hover:bg-[#e6c687] text-black text-xs font-serif font-bold flex items-center gap-2 shadow-lg cursor-pointer transition-transform hover:scale-102"
+            >
+              <Search className="w-3.5 h-3.5" />
+              <span>समस्या से गीता समाधान खोजें (Ctrl+K) 🪔</span>
+            </button>
+          </div>
         </div>
 
         {/* Quick Badge */}
         <div className="hidden md:flex flex-col items-center justify-center p-5 rounded-2xl bg-[#090a12] border border-[#c5a059]/30 text-center shadow-lg">
           <span className="text-2xl">🪔</span>
           <span className="text-sm font-serif font-bold text-[#e6c687] mt-1">१८ दिव्य अध्याय</span>
-          <span className="text-[11px] text-[#c5a059]/70">Separate Pages & Audio</span>
+          <span className="text-[11px] text-[#c5a059]/70">700 Classical Verses</span>
         </div>
 
+      </div>
+
+      {/* ── CRISIS DILEMMA SHORTCUT PILLS ─────────────────────────────────── */}
+      <div className="p-3 sm:p-4 rounded-2xl bg-[#0f111c] border border-[#c5a059]/20 space-y-2">
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-serif font-bold text-[#e6c687] flex items-center gap-1.5">
+            <Flame className="w-3.5 h-3.5 text-amber-400" />
+            <span>दैनिक जीवन की समस्याओं का गीता समाधान:</span>
+          </span>
+          <button
+            onClick={() => setIsSearchModalOpen(true)}
+            className="text-[11px] text-[#c5a059] hover:text-[#f5eed9] font-sans"
+          >
+            सभी खोजें →
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
+          {CRISIS_PILLS.map((p, i) => (
+            <Link
+              key={i}
+              href={`/chapter/${p.chapter}/${p.verse}`}
+              onClick={() => sacredAudio.playTempleBell(0.2)}
+              className="px-3 py-1.5 rounded-xl bg-[#141624] hover:bg-[#c5a059] text-[#e6c687] hover:text-black border border-[#c5a059]/25 text-xs font-serif shrink-0 transition-all cursor-pointer shadow-sm hover:scale-102"
+            >
+              {p.label} (श्लोक {p.chapter}.{p.verse})
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* ── SEARCH & FILTER CONTROLS ─────────────────────────────────────── */}

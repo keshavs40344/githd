@@ -4,6 +4,11 @@ import type { Metadata, Viewport } from 'next';
 import FloatingAudioBGM from '@/components/FloatingAudioBGM';
 import PWAInstallBanner from '@/components/PWAInstallBanner';
 import { LanguageProvider } from '@/context/LanguageContext';
+import { GlobalAudioProvider } from '@/context/GlobalAudioContext';
+import GlobalAudioDock from '@/components/GlobalAudioDock';
+import EnterpriseSearchModal from '@/components/EnterpriseSearchModal';
+import SanskritLexiconDrawer from '@/components/SanskritLexiconDrawer';
+import ShlokaCardGeneratorModal from '@/components/ShlokaCardGeneratorModal';
 
 const dmSans = DM_Sans({ 
   subsets: ['latin'], 
@@ -31,7 +36,7 @@ const notoSansDevanagari = Noto_Sans_Devanagari({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharma-os.vercel.app';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://githd.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -92,7 +97,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Schema.org Structured Data
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebApplication',
@@ -117,16 +121,29 @@ export default function RootLayout({
       </head>
       <body className="bg-obsidian-950 text-gold-100 min-h-screen selection:bg-gold-500/30 selection:text-gold-100">
         <LanguageProvider>
-          <main className="min-h-screen">{children}</main>
-          
-          {/* Background Sacred Flute & Mantra Player */}
-          <FloatingAudioBGM />
-          
-          {/* PWA 1-Click Install Banner */}
-          <PWAInstallBanner />
+          <GlobalAudioProvider>
+            <main className="min-h-screen">{children}</main>
+            
+            {/* Global Persistent Floating Audio Dock */}
+            <GlobalAudioDock />
+
+            {/* Enterprise Crisis & Semantic Search Modal (Ctrl+K) */}
+            <EnterpriseSearchModal />
+
+            {/* Sanskrit Lexicon & Grammar Breakdown Sheet */}
+            <SanskritLexiconDrawer />
+
+            {/* HD Wallpaper & Social Quote Card Generator */}
+            <ShlokaCardGeneratorModal />
+
+            {/* Background Flute & Ambience */}
+            <FloatingAudioBGM />
+            
+            {/* PWA 1-Click Install Banner */}
+            <PWAInstallBanner />
+          </GlobalAudioProvider>
         </LanguageProvider>
       </body>
     </html>
   );
 }
-
