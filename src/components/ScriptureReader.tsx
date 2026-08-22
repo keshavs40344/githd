@@ -18,6 +18,7 @@ import { getCanonicalVerseData } from '@/data/canonicalGitaTranslations';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useLanguage } from '@/context/LanguageContext';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
+import ShlokaPronunciationTrainer from '@/components/ShlokaPronunciationTrainer';
 
 interface ScriptureReaderProps {
   verse: GitaVerse;
@@ -493,6 +494,15 @@ export default function ScriptureReader({
               </div>
 
             </div>
+
+            
+            {/* ── CARD: AI SANSKRIT PRONUNCIATION TRAINER ────────────────────── */}
+            <ShlokaPronunciationTrainer
+              devanagari={verse.devanagari}
+              iast={verse.iast}
+              chapter={verse.chapter}
+              verse={verse.verse}
+            />
 
             {/* ── CARD 2: HINDI & ENGLISH TRANSLATIONS ─────────────────────────── */}
             <div className="rounded-3xl bg-[#0f111c]/90 backdrop-blur-xl border border-[#c5a059]/30 p-5 sm:p-6 shadow-xl space-y-4">
