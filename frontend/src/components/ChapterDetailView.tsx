@@ -5,14 +5,14 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { 
   ArrowLeft, Play, Pause, Volume2, Search, LayoutGrid, 
-  List, ChevronRight, Layers, Image as ImageIcon, Sparkles, Download
+  List, ChevronRight, Image as ImageIcon, Download
 } from 'lucide-react';
 import { CHAPTERS, GitaVerse } from '@/types/verse';
 import { getMasterTimestampForVerse } from '@/data/gitaMasterAudioTimestamps';
-import { getArtworkForChapter, getArtworkForShloka, KRISHNA_ARTWORKS } from '@/data/krishnaArtworks';
-import { getSpeakerForVerse } from '@/lib/universalVedicEngine';
+import { getArtworkForChapter, getArtworkForShloka } from '@/data/krishnaArtworks';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
+import SacredArtworkImage from '@/components/SacredArtworkImage';
 
 interface ChapterDetailViewProps {
   chapterNum: number;
@@ -29,8 +29,7 @@ function toDevanagariNum(num: number): string {
 export default function ChapterDetailView({
   chapterNum,
   verses,
-  onBack,
-  onSelectShloka
+  onBack
 }: ChapterDetailViewProps) {
   const router = useRouter();
   const { currentTrack, isPlaying, playTrack, togglePlayPause, setIsSearchModalOpen, setActiveCardGeneratorVerse } = useGlobalAudio();
@@ -41,10 +40,8 @@ export default function ChapterDetailView({
   const chapterInfo = CHAPTERS.find(c => c.number === chapterNum) || CHAPTERS[0];
   const chapterArtwork = getArtworkForChapter(chapterNum);
   
-  // Filter shlokas belonging to this chapter
   const chapterVerses = verses.filter(v => v.chapter === chapterNum);
 
-  // Group verses into 10-verse quick jumps
   const rangeOptions = ['all'];
   for (let i = 1; i <= chapterInfo.verses_count; i += 10) {
     const end = Math.min(i + 9, chapterInfo.verses_count);
@@ -79,13 +76,8 @@ export default function ChapterDetailView({
   return (
     <div className="relative min-h-screen">
       
-      {/* ── SACRED UNIQUE BACKGROUND IMAGE FOR EVERY CHAPTER ───────────────── */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <img
-          src={chapterArtwork}
-          alt={chapterInfo.name_sanskrit}
-          className="w-full h-full object-cover filter brightness-[0.20] blur-sm scale-105 transition-all duration-1000"
-        />
+      {/* Background Ambience */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden bg-[#090b14]">
         <div className="absolute inset-0 bg-gradient-to-b from-[#090b14]/90 via-[#090b14]/95 to-[#090b14]" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent" />
       </div>
@@ -159,9 +151,10 @@ export default function ChapterDetailView({
         {/* ── CHAPTER HERO BANNER (CLEAN & ROYAL HD KRISHNA THUMBNAIL) ───────── */}
         <div className="relative rounded-3xl bg-[#0f111c]/90 backdrop-blur-2xl border-2 border-[#c5a059]/40 shadow-2xl overflow-hidden">
           <div className="relative w-full h-52 sm:h-72 overflow-hidden bg-black">
-            <img
+            <SacredArtworkImage
               src={chapterArtwork}
               alt={chapterInfo.name_sanskrit}
+              chapter={chapterNum}
               className="w-full h-full object-cover filter brightness-75 hover:scale-102 transition-transform duration-700"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/60 to-transparent" />
@@ -227,11 +220,6 @@ export default function ChapterDetailView({
         {viewMode === 'gallery' ? (
           /* ── MODE 1: SACRED KRISHNA ARTWORKS GALLERY ── */
           <div className="space-y-4">
-            <div className="p-4 rounded-2xl bg-[#141624]/90 backdrop-blur-xl border border-[#c5a059]/30 text-xs font-serif text-[#e6c687] flex items-center justify-between">
-              <span>✨ दिव्य श्रीकृष्ण छवि दीर्घा • ध्यान एवं दर्शन</span>
-              <span className="text-[11px] text-[#c5a059]/70">क्लिक करके श्लोक अध्ययन खोलें</span>
-            </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {displayedVerses.map(v => {
                 const artworkUrl = getArtworkForShloka(v.chapter, v.verse);
@@ -243,11 +231,12 @@ export default function ChapterDetailView({
                     className="group relative rounded-3xl overflow-hidden bg-black border border-[#c5a059]/30 hover:border-[#c5a059] shadow-xl transition-all duration-300 block"
                   >
                     <div className="h-60 w-full overflow-hidden">
-                      <img
+                      <SacredArtworkImage
                         src={artworkUrl}
                         alt={`श्लोक ${v.chapter}.${v.verse}`}
+                        chapter={v.chapter}
+                        verse={v.verse}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
                       />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-end p-4">
@@ -270,7 +259,7 @@ export default function ChapterDetailView({
             </div>
           </div>
         ) : viewMode === 'grid' ? (
-          /* ── MODE 2: ROYAL BOX CARDS (CLEAN & CRISP) ── */
+          /* ── MODE 2: ROYAL BOX CARDS ── */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {displayedVerses.map(v => {
               const ts = getMasterTimestampForVerse(v.chapter, v.verse);
@@ -284,11 +273,12 @@ export default function ChapterDetailView({
                 >
                   {/* Thumbnail */}
                   <div className="relative w-full h-36 overflow-hidden bg-black">
-                    <img
+                    <SacredArtworkImage
                       src={artworkUrl}
                       alt={`श्लोक ${v.chapter}.${v.verse}`}
+                      chapter={v.chapter}
+                      verse={v.verse}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-90 group-hover:brightness-100"
-                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/50 to-transparent" />
 
@@ -371,7 +361,6 @@ export default function ChapterDetailView({
           /* ── MODE 3: SIMPLE FAST-TRACK STREAMLINED LIST ── */
           <div className="space-y-3">
             {displayedVerses.map(v => {
-              const ts = getMasterTimestampForVerse(v.chapter, v.verse);
               const isPlayingThis = currentTrack?.chapter === v.chapter && currentTrack?.verse === v.verse && isPlaying;
 
               return (

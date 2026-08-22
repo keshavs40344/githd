@@ -52,7 +52,7 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
   const [sleepTimerRemaining, setSleepTimerRemaining] = useState<number | null>(null);
   const [currentTimeSec, setCurrentTimeSec] = useState(0);
   
-  // Hidden background audio iframe container
+  // Active streaming src
   const [audioIframeSrc, setAudioIframeSrc] = useState<string | null>(null);
 
   // Enterprise UI Drawers State
@@ -74,7 +74,7 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     return () => clearInterval(timer);
   }, [sleepTimerRemaining]);
 
-  // Track timer progress
+  // Track progress timer
   useEffect(() => {
     if (!isPlaying || !currentTrack) return;
     const interval = setInterval(() => {
@@ -93,7 +93,7 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     return () => clearInterval(interval);
   }, [isPlaying, currentTrack, autoPlayNext]);
 
-  // Global Keyboard Shortcuts (Ctrl+K for Search)
+  // Global Keyboard Shortcuts (Ctrl+K)
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
@@ -130,8 +130,8 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     setIsPlaying(true);
     sacredAudio.playTempleBell(0.3);
 
-    // Stream Pure Background Audio via YouTube Embed with zero UI clutter
-    const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${timestamp.startSeconds}&autoplay=1&enablejsapi=1&controls=0&playsinline=1`;
+    // Guaranteed YouTube Audio Stream starting exactly at timestamp
+    const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${timestamp.startSeconds}&autoplay=1&enablejsapi=1&playsinline=1`;
     setAudioIframeSrc(src);
   };
 
@@ -142,7 +142,8 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
       setAudioIframeSrc(null);
     } else {
       setIsPlaying(true);
-      const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${currentTrack.timestamp.startSeconds + currentTimeSec}&autoplay=1&enablejsapi=1&controls=0&playsinline=1`;
+      const startSec = currentTrack.timestamp.startSeconds + currentTimeSec;
+      const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${startSec}&autoplay=1&enablejsapi=1&playsinline=1`;
       setAudioIframeSrc(src);
     }
     sacredAudio.playNavChime(0.06);
@@ -158,7 +159,7 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     if (!currentTrack) return;
     const chInfo = CHAPTERS.find(c => c.number === currentTrack.chapter) || CHAPTERS[0];
     if (currentTrack.verse < chInfo.verses_count) {
-      playTrack(currentTrack.chapter, currentTrack.verse + 1, currentTrack.devanagari, currentTrack.translation_hi);
+      playTrack(currentTrack.chapter, currentTrack.verse + 1);
     } else if (currentTrack.chapter < 18) {
       playTrack(currentTrack.chapter + 1, 1);
     }
@@ -167,7 +168,7 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
   const prevTrack = () => {
     if (!currentTrack) return;
     if (currentTrack.verse > 1) {
-      playTrack(currentTrack.chapter, currentTrack.verse - 1, currentTrack.devanagari, currentTrack.translation_hi);
+      playTrack(currentTrack.chapter, currentTrack.verse - 1);
     } else if (currentTrack.chapter > 1) {
       playTrack(currentTrack.chapter - 1, 1);
     }
@@ -209,13 +210,16 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     >
       {children}
       
-      {/* Hidden Pure Background YouTube Audio Stream Container */}
+      {/* 
+        Audio Stream Iframe: Kept inside a 200x200 container with 0 opacity 
+        so browsers do not throttle or block its audio playback!
+      */}
       {audioIframeSrc && (
-        <div style={{ position: 'fixed', top: -9999, left: -9999, width: 1, height: 1, opacity: 0, pointerEvents: 'none' }}>
+        <div style={{ position: 'fixed', bottom: 0, right: 0, width: 200, height: 200, opacity: 0.01, pointerEvents: 'none', zIndex: -1 }}>
           <iframe
             src={audioIframeSrc}
             title="Gita Chanting Audio Stream"
-            allow="autoplay"
+            allow="autoplay; encrypted-media"
           />
         </div>
       )}

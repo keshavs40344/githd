@@ -2,11 +2,12 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { BookOpen, Sparkles, ArrowRight, Search, Flame, Compass } from 'lucide-react';
+import { Sparkles, ArrowRight, Search, Flame } from 'lucide-react';
 import { CHAPTERS } from '@/types/verse';
 import { getArtworkDetailsForChapter } from '@/data/krishnaArtworks';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
+import SacredArtworkImage from '@/components/SacredArtworkImage';
 
 const CRISIS_PILLS = [
   { label: '🔥 क्रोध निवारण', chapter: 2, verse: 63 },
@@ -159,7 +160,7 @@ export default function ChapterEpisodeGrid() {
 
       </div>
 
-      {/* ── 18 CHAPTER CARDS GRID (CLEAN, SIMPLE, HD KRISHNA ARTWORKS & NUMBERING) ───── */}
+      {/* ── 18 CHAPTER CARDS GRID (FAIL-SAFE VEDIC ARTWORKS) ───────────────── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {filteredChapters.map(ch => {
           const artwork = getArtworkDetailsForChapter(ch.number);
@@ -172,13 +173,13 @@ export default function ChapterEpisodeGrid() {
               className="group rounded-3xl bg-[#0f111c] border border-[#c5a059]/25 hover:border-[#c5a059] shadow-xl hover:shadow-[0_10px_35px_rgba(197,160,89,0.2)] transition-all duration-300 cursor-pointer flex flex-col justify-between overflow-hidden hover:-translate-y-1 block"
             >
               
-              {/* HD Krishna Artwork Thumbnail */}
+              {/* Fail-safe Sacred Artwork Thumbnail */}
               <div className="relative w-full h-44 overflow-hidden bg-black">
-                <img
+                <SacredArtworkImage
                   src={artwork.url}
                   alt={ch.name_sanskrit}
+                  chapter={ch.number}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-90 group-hover:brightness-100"
-                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f111c] via-[#0f111c]/40 to-transparent" />
 
