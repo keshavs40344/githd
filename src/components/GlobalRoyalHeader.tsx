@@ -1,5 +1,7 @@
 'use client';
 
+import AutonomousSwarmModal from '@/components/AutonomousSwarmModal';
+
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -89,6 +91,7 @@ export default function GlobalRoyalHeader() {
         <div className="flex items-center gap-2">
           
           {/* 24/7 Akhanda Radio Quick Trigger */}
+          <AutonomousSwarmModal />
           <button
             onClick={handleOpenRadio}
             className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-400/20 via-yellow-400/20 to-amber-500/20 hover:from-amber-400 hover:to-yellow-400 text-yellow-300 hover:text-black border border-amber-400/40 text-xs font-serif font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
