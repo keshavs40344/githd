@@ -20,7 +20,7 @@ import { useGlobalAudio } from '@/context/GlobalAudioContext';
 import SacredArtworkImage from '@/components/SacredArtworkImage';
 import EmotionalSanctuary from '@/components/EmotionalSanctuary';
 import SacredJapaMala from '@/components/SacredJapaMala';
-import KrishnaAIMentor from '@/components/KrishnaAIMentor';
+import KrishnaAIChat from '@/components/KrishnaAIChat';
 import FamilyDevoteeSanctuary from '@/components/FamilyDevoteeSanctuary';
 import WhyChooseDharmaOS from '@/components/WhyChooseDharmaOS';
 import { HUNDRED_LIFE_DILEMMAS } from '@/data/hundredLifeDilemmas';
@@ -599,7 +599,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
         {/* ── TAB: MENTOR ───────────────────────────────────────────────── */}
         {activeTab === 'mentor' && (
           <div className="max-w-4xl mx-auto animate-fade-in">
-            <KrishnaAIMentor />
+            <KrishnaAIChat />
           </div>
         )}
 
