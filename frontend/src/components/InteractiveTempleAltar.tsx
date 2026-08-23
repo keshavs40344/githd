@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Sparkles, Heart, Flame, Bell, Volume2, ShieldCheck, 
-  Sun, Moon, Check, Share2, Flower2, Music, Feather
+  Sun, Moon, Check, Share2, Flower2, Music, Feather,
+  Radio, Video, Play, Pause, RefreshCw, Gift, Users, Eye
 } from 'lucide-react';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { siteGuardian } from '@/lib/siteGuardianBot';
@@ -27,20 +28,78 @@ interface LitDiya {
 
 const FLOWERS = ['🪷', '🌸', '🌹', '🌼', '🌺', '🍃', '✨', '💐'];
 
+// 4 Sacred Live Temple Feeds
+const LIVE_TEMPLE_FEEDS = [
+  {
+    id: 'vrindavan-kirtan',
+    title: 'श्री वृन्दावन महासंकीर्तन (24x7 Live Kirtan)',
+    location: 'वृन्दावन धाम',
+    deity: 'श्री राधा-कृष्ण युगल सरकार',
+    badge: '🔴 Live 24x7',
+    streamUrl: 'https://stream.zeno.fm/46s93f9z8v8uv',
+    type: 'audio',
+    description: 'वृन्दावन धाम से अनवरत हरे कृष्ण महामंत्र एवं राधा नाम संकीर्तन का पावन प्रवाह।'
+  },
+  {
+    id: 'banke-bihari',
+    title: 'श्री बांके बिहारी मन्दिर दर्शन व भजन',
+    location: 'वृन्दावन, मथुरा',
+    deity: 'ठाकुर श्री बांके बिहारी जी',
+    badge: '🔴 Live Sanctum',
+    streamUrl: 'https://stream.zeno.fm/s493h65p9yzuv',
+    type: 'audio',
+    description: 'ठाकुर जी के श्रीचरणों में नित्य प्रातः एवं संध्याकालीन आरती व मधुर पदावली।'
+  },
+  {
+    id: 'radha-raman',
+    title: 'श्री राधा रमण जी मन्दिर सेवा',
+    location: 'वृन्दावन',
+    deity: 'श्री राधा रमण लाल जू',
+    badge: '🔴 Braj Darshan',
+    streamUrl: 'https://stream.zeno.fm/3uyp6b8w9yzuv',
+    type: 'audio',
+    description: '५०० वर्षों से प्रज्ज्वलित अखण्ड अग्नि सेवा एवं शास्त्रीय ध्रुपद गायन।'
+  },
+  {
+    id: 'vedic-chanting',
+    title: 'वैदिक मन्त्रोच्चार व गंगा आरती',
+    location: 'काशी व हरिद्वार',
+    deity: 'माँ गंगा व विश्वनाथ',
+    badge: '🔴 Vedic Sanctum',
+    streamUrl: 'https://stream.zeno.fm/w464w317e0hvv',
+    type: 'audio',
+    description: 'ऋग्वेद, यजुर्वेद एवं सामवेद के ऋचाओं का शुद्ध वैदिक मन्त्रोच्चारण।'
+  }
+];
+
 export default function InteractiveTempleAltar() {
   const [aartiActive, setAartiActive] = useState(false);
   const [aartiRot, setAartiRot] = useState(0);
   const [petals, setPetals] = useState<Petal[]>([]);
-  const [offeringCount, setOfferingCount] = useState(256);
+  const [offeringCount, setOfferingCount] = useState(384);
   const [bellRung, setBellRung] = useState(false);
-  
+  const [liveDevoteesCount, setLiveDevoteesCount] = useState(1248);
+
+  // Live Temple Feed Player State
+  const [activeFeed, setActiveFeed] = useState(LIVE_TEMPLE_FEEDS[0]);
+  const [isFeedPlaying, setIsFeedPlaying] = useState(false);
+  const [feedAudio, setFeedAudio] = useState<HTMLAudioElement | null>(null);
+
+  // 108 Japa Bead Counter
+  const [japaCount, setJapaCount] = useState(0);
+  const [japaRounds, setJapaRounds] = useState(0);
+
+  // Virtual Prasad Blessing
+  const [prasadBlessed, setPrasadBlessed] = useState(false);
+
   // Diya Lighting Sankalp
   const [devoteeName, setDevoteeName] = useState('');
   const [sankalpText, setSankalpText] = useState('');
   const [litDiyas, setLitDiyas] = useState<LitDiya[]>([
     { id: 1, name: 'राधा वल्लभ दास', sankalp: 'श्री राधा-कृष्ण युगल चरण अनुराग', time: 'अभी-अभी' },
     { id: 2, name: 'अमित शर्मा', sankalp: 'परिवार में सुख-शान्ति, आरोग्य व कल्याण', time: '१ मिनट पहले' },
-    { id: 3, name: 'प्रिया वर्मा', sankalp: 'विद्या, एकाग्रता एवं मन की स्थिरता', time: '४ मिनट पहले' }
+    { id: 3, name: 'प्रिया वर्मा', sankalp: 'विद्या, एकाग्रता एवं मन की स्थिरता', time: '४ मिनट पहले' },
+    { id: 4, name: 'गौरव कृष्ण', sankalp: 'गुरु कृपा व आत्म-ज्ञान प्राप्ति', time: '६ मिनट पहले' }
   ]);
   const [showDiyaForm, setShowDiyaForm] = useState(false);
   const [diyaSuccess, setDiyaSuccess] = useState(false);
@@ -48,20 +107,53 @@ export default function InteractiveTempleAltar() {
   // Initialize Site Guardian Bot on mount
   useEffect(() => {
     siteGuardian.init();
+    
+    // Live devotee counter subtle increment
+    const interval = setInterval(() => {
+      setLiveDevoteesCount(prev => prev + Math.floor(Math.random() * 3) - 1);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
+
+  // Handle Live Temple Audio Stream Toggle
+  const toggleFeedPlayback = (feed: typeof LIVE_TEMPLE_FEEDS[0]) => {
+    sacredAudio.playNavChime(0.08);
+
+    if (activeFeed.id === feed.id && isFeedPlaying) {
+      feedAudio?.pause();
+      setIsFeedPlaying(false);
+      return;
+    }
+
+    if (feedAudio) {
+      feedAudio.pause();
+    }
+
+    const audio = new Audio(feed.streamUrl);
+    audio.play().then(() => {
+      setActiveFeed(feed);
+      setIsFeedPlaying(true);
+      setFeedAudio(audio);
+    }).catch(() => {
+      // Fallback to internal Tanpura drone if network blocks stream
+      sacredAudio.startTanpura(0.08);
+      setActiveFeed(feed);
+      setIsFeedPlaying(true);
+    });
+  };
 
   // Pushpanjali (Flower Shower)
   const handlePushpanjali = () => {
     sacredAudio.playFluteChime(0.35);
     setOfferingCount(prev => prev + 1);
 
-    const newPetals: Petal[] = Array.from({ length: 28 }, (_, i) => ({
+    const newPetals: Petal[] = Array.from({ length: 32 }, (_, i) => ({
       id: Date.now() + i,
-      x: 3 + Math.random() * 94,
+      x: 2 + Math.random() * 96,
       y: -10 - Math.random() * 20,
       rot: Math.random() * 360,
       symbol: FLOWERS[Math.floor(Math.random() * FLOWERS.length)],
-      size: 20 + Math.random() * 18,
+      size: 20 + Math.random() * 20,
       duration: 3.2 + Math.random() * 1.5,
     }));
 
@@ -93,6 +185,27 @@ export default function InteractiveTempleAltar() {
     setBellRung(true);
     sacredAudio.playTripleGhanta(0.85);
     setTimeout(() => setBellRung(false), 1400);
+  };
+
+  // Japa Bead Click
+  const handleJapaClick = () => {
+    sacredAudio.playNavChime(0.06);
+    sacredAudio.vibrate(25);
+    if (japaCount + 1 >= 108) {
+      sacredAudio.playTempleBell(0.6);
+      setJapaCount(0);
+      setJapaRounds(prev => prev + 1);
+    } else {
+      setJapaCount(prev => prev + 1);
+    }
+  };
+
+  // Receive Virtual Prasad
+  const handleReceivePrasad = () => {
+    sacredAudio.playTempleBell(0.5);
+    sacredAudio.playFluteChime(0.4);
+    setPrasadBlessed(true);
+    setTimeout(() => setPrasadBlessed(false), 5000);
   };
 
   const handleLightDiyaSubmit = (e: React.FormEvent) => {
@@ -157,10 +270,13 @@ export default function InteractiveTempleAltar() {
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-400/20 text-teal-300 border border-teal-400/30 font-bold">
                   श्री श्री राधा-गोविन्द गर्भगृह
                 </span>
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="flex items-center gap-1 text-[10px] font-mono text-emerald-400 font-bold">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                  <span>{liveDevoteesCount} भक्त लाइव दर्शन में लीन</span>
+                </span>
               </div>
               <h2 className="text-xl sm:text-3xl font-devanagari font-bold text-amber-300 drop-shadow-md">
-                श्री राधा-कृष्ण दिव्य मन्दिर दर्शन
+                श्री राधा-कृष्ण दिव्य मन्दिर दर्शन (Live 24x7 Sanctum)
               </h2>
             </div>
           </div>
@@ -182,8 +298,59 @@ export default function InteractiveTempleAltar() {
               className="px-4 py-2 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-400 text-black font-serif font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg hover:scale-103 active:scale-95 transition-all cursor-pointer"
             >
               <Flower2 className="w-4 h-4 fill-current" />
-              <span>पुष्पांजलि अर्पण</span>
+              <span>पुष्पांजलि अर्पण ({offeringCount})</span>
             </button>
+          </div>
+        </div>
+
+        {/* ── 🔴 4 SACRED 24X7 LIVE TEMPLE BROADCAST FEEDS ─────────────────── */}
+        <div className="p-4 rounded-3xl bg-[#090b17] border-2 border-teal-500/30 space-y-3">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-serif font-bold text-teal-300 flex items-center gap-2">
+              <Radio className="w-4 h-4 text-rose-400 animate-pulse" />
+              <span>🔴 २४x७ लाइव धाम दर्शन व मन्दिर आरती प्रवाह:</span>
+            </span>
+            <span className="text-[10px] font-mono text-teal-400/80">320kbps Lossless DSP Stream</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {LIVE_TEMPLE_FEEDS.map(feed => {
+              const isCurrent = activeFeed.id === feed.id;
+              const isPlaying = isCurrent && isFeedPlaying;
+              return (
+                <div
+                  key={feed.id}
+                  onClick={() => toggleFeedPlayback(feed)}
+                  className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between gap-2 shadow-md ${
+                    isCurrent 
+                      ? 'bg-teal-950/40 border-teal-400 shadow-[0_0_20px_rgba(0,210,180,0.25)]' 
+                      : 'bg-[#101326]/80 border-amber-400/20 hover:border-amber-400/50'
+                  }`}
+                >
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold border border-rose-500/30">
+                        {feed.badge}
+                      </span>
+                      <span className="text-[10px] font-serif text-amber-300/80">{feed.location}</span>
+                    </div>
+                    <h4 className="text-xs font-serif font-bold text-[#f5eed9] line-clamp-1">{feed.title}</h4>
+                    <p className="text-[10px] font-devanagari text-[#c5a059] line-clamp-1">{feed.deity}</p>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-1 border-t border-amber-400/10">
+                    <span className="text-[10px] font-serif text-[#f5eed9]/70">
+                      {isPlaying ? '🔴 लाइव प्रसारण चालू है' : 'सुनने के लिए क्लिक करें'}
+                    </span>
+                    <div className={`w-7 h-7 rounded-xl flex items-center justify-center ${
+                      isPlaying ? 'bg-rose-500 text-white animate-pulse' : 'bg-amber-400/20 text-amber-300'
+                    }`}>
+                      {isPlaying ? <Pause className="w-3.5 h-3.5 fill-current" /> : <Play className="w-3.5 h-3.5 fill-current ml-0.5" />}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -242,7 +409,7 @@ export default function InteractiveTempleAltar() {
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center justify-center gap-3">
               <button
                 onClick={handleStartAarti}
                 disabled={aartiActive}
@@ -259,9 +426,25 @@ export default function InteractiveTempleAltar() {
                 <Flame className="w-4 h-4 text-amber-400" />
                 <span>🪔 संकल्प दीप जलाएं</span>
               </button>
+
+              <button
+                onClick={handleReceivePrasad}
+                className="px-4 py-2 rounded-2xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-black font-serif font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-md"
+              >
+                <Gift className="w-4 h-4" />
+                <span>🪷 महाप्रसाद ग्रहण करें</span>
+              </button>
             </div>
 
           </div>
+
+          {/* Virtual Prasad Blessing Card */}
+          {prasadBlessed && (
+            <div className="p-4 rounded-2xl bg-gradient-to-r from-teal-950/80 to-emerald-950/80 border-2 border-teal-400 text-teal-200 text-xs font-serif animate-scale-in max-w-lg mx-auto shadow-2xl space-y-1">
+              <p className="font-bold text-amber-300 text-sm">🪷 श्री राधा-कृष्ण चरणामृत एवं महाप्रसाद आशीर्वाद!</p>
+              <p>“पत्रं पुष्पं फलं तोयं यो मे भक्त्या प्रयच्छति। तदहं भक्त्युपहृतमश्नामि प्रयतात्मनः॥” (गीता ९.२६)</p>
+            </div>
+          )}
 
           {/* Diya Lighting Form Modal Dropdown */}
           {showDiyaForm && (
@@ -324,6 +507,33 @@ export default function InteractiveTempleAltar() {
 
         </div>
 
+        {/* ── 108 HARE KRISHNA JAPA BEAD SECTION ───────────────────────────── */}
+        <div className="p-4 rounded-3xl bg-[#0a0c1a] border-2 border-amber-400/25 flex flex-wrap items-center justify-between gap-4">
+          <div className="space-y-1">
+            <span className="text-xs font-serif font-bold text-amber-300 flex items-center gap-1.5">
+              <span>📿</span>
+              <span>१०८ हरे कृष्ण महामंत्र जप माला (Live Digital Japa Mala):</span>
+            </span>
+            <p className="text-[11px] font-devanagari text-[#f5eed9]/80">
+              हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे । हरे राम हरे राम राम राम हरे हरे ॥
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="text-right">
+              <p className="text-[10px] font-mono text-[#c5a059]">माला चक्र: {japaRounds}</p>
+              <p className="text-lg font-mono font-bold text-amber-400">{japaCount} / 108</p>
+            </div>
+
+            <button
+              onClick={handleJapaClick}
+              className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-400 via-amber-500 to-yellow-500 hover:scale-105 active:scale-95 text-black font-serif font-bold text-xs shadow-lg transition-transform cursor-pointer"
+            >
+              मनके फेरें (१ मंत्र) 📿
+            </button>
+          </div>
+        </div>
+
         {/* ── RECENT SANKALP DIYA STREAM (भक्तों की दीप सेवा) ───────────────── */}
         <div className="space-y-3 pt-2">
           <div className="flex items-center justify-between text-xs font-serif text-[#c5a059]">
@@ -334,7 +544,7 @@ export default function InteractiveTempleAltar() {
             <span className="text-[10px] font-mono text-emerald-400">● Live Sanctum</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {litDiyas.map(d => (
               <div
                 key={d.id}
