@@ -11,8409 +11,8409 @@ export interface MasterShlokaTimestamp {
   embedUrl: string;
 }
 
-export const MASTER_VIDEO_ID = "28sptQICKCk";
-export const MASTER_VIDEO_TITLE = "संपूर्ण गीता | Bhagawad Geeta- All Chapters With Narration | Shailendra Bhartti";
+export const MASTER_VIDEO_ID = "6sX74H9jmVI";
+export const MASTER_VIDEO_TITLE = "श्रीमद्भगवद्गीता दिव्य पाठ • सम्पूर्ण १८ अध्याय | Bhagavad Gita Sacred Chanting";
 
 export const GITA_MASTER_TIMESTAMPS: Record<string, MasterShlokaTimestamp> = {
   "1_1": {
     "chapter": 1,
     "verse": 1,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50,
     "endSeconds": 113,
     "duration": 63,
     "formattedStart": "00:00:50",
     "formattedEnd": "00:01:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50&end=113&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50&end=113&autoplay=1&enablejsapi=1"
   },
   "1_2": {
     "chapter": 1,
     "verse": 2,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 113,
     "endSeconds": 176,
     "duration": 63,
     "formattedStart": "00:01:53",
     "formattedEnd": "00:02:56",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=113&end=176&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=113&end=176&autoplay=1&enablejsapi=1"
   },
   "1_3": {
     "chapter": 1,
     "verse": 3,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 176,
     "endSeconds": 239,
     "duration": 63,
     "formattedStart": "00:02:56",
     "formattedEnd": "00:03:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=176&end=239&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=176&end=239&autoplay=1&enablejsapi=1"
   },
   "1_4": {
     "chapter": 1,
     "verse": 4,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 239,
     "endSeconds": 302,
     "duration": 63,
     "formattedStart": "00:03:59",
     "formattedEnd": "00:05:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=239&end=302&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=239&end=302&autoplay=1&enablejsapi=1"
   },
   "1_5": {
     "chapter": 1,
     "verse": 5,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 302,
     "endSeconds": 365,
     "duration": 63,
     "formattedStart": "00:05:02",
     "formattedEnd": "00:06:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=302&end=365&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=302&end=365&autoplay=1&enablejsapi=1"
   },
   "1_6": {
     "chapter": 1,
     "verse": 6,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 365,
     "endSeconds": 428,
     "duration": 63,
     "formattedStart": "00:06:05",
     "formattedEnd": "00:07:08",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=365&end=428&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=365&end=428&autoplay=1&enablejsapi=1"
   },
   "1_7": {
     "chapter": 1,
     "verse": 7,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 428,
     "endSeconds": 491,
     "duration": 63,
     "formattedStart": "00:07:08",
     "formattedEnd": "00:08:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=428&end=491&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=428&end=491&autoplay=1&enablejsapi=1"
   },
   "1_8": {
     "chapter": 1,
     "verse": 8,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 491,
     "endSeconds": 554,
     "duration": 63,
     "formattedStart": "00:08:11",
     "formattedEnd": "00:09:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=491&end=554&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=491&end=554&autoplay=1&enablejsapi=1"
   },
   "1_9": {
     "chapter": 1,
     "verse": 9,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 554,
     "endSeconds": 617,
     "duration": 63,
     "formattedStart": "00:09:14",
     "formattedEnd": "00:10:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=554&end=617&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=554&end=617&autoplay=1&enablejsapi=1"
   },
   "1_10": {
     "chapter": 1,
     "verse": 10,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 617,
     "endSeconds": 680,
     "duration": 63,
     "formattedStart": "00:10:17",
     "formattedEnd": "00:11:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=617&end=680&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=617&end=680&autoplay=1&enablejsapi=1"
   },
   "1_11": {
     "chapter": 1,
     "verse": 11,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 680,
     "endSeconds": 743,
     "duration": 63,
     "formattedStart": "00:11:20",
     "formattedEnd": "00:12:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=680&end=743&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=680&end=743&autoplay=1&enablejsapi=1"
   },
   "1_12": {
     "chapter": 1,
     "verse": 12,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 743,
     "endSeconds": 806,
     "duration": 63,
     "formattedStart": "00:12:23",
     "formattedEnd": "00:13:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=743&end=806&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=743&end=806&autoplay=1&enablejsapi=1"
   },
   "1_13": {
     "chapter": 1,
     "verse": 13,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 806,
     "endSeconds": 869,
     "duration": 63,
     "formattedStart": "00:13:26",
     "formattedEnd": "00:14:29",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=806&end=869&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=806&end=869&autoplay=1&enablejsapi=1"
   },
   "1_14": {
     "chapter": 1,
     "verse": 14,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 869,
     "endSeconds": 932,
     "duration": 63,
     "formattedStart": "00:14:29",
     "formattedEnd": "00:15:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=869&end=932&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=869&end=932&autoplay=1&enablejsapi=1"
   },
   "1_15": {
     "chapter": 1,
     "verse": 15,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 932,
     "endSeconds": 995,
     "duration": 63,
     "formattedStart": "00:15:32",
     "formattedEnd": "00:16:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=932&end=995&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=932&end=995&autoplay=1&enablejsapi=1"
   },
   "1_16": {
     "chapter": 1,
     "verse": 16,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 995,
     "endSeconds": 1059,
     "duration": 64,
     "formattedStart": "00:16:35",
     "formattedEnd": "00:17:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=995&end=1059&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=995&end=1059&autoplay=1&enablejsapi=1"
   },
   "1_17": {
     "chapter": 1,
     "verse": 17,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1059,
     "endSeconds": 1122,
     "duration": 63,
     "formattedStart": "00:17:39",
     "formattedEnd": "00:18:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1059&end=1122&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1059&end=1122&autoplay=1&enablejsapi=1"
   },
   "1_18": {
     "chapter": 1,
     "verse": 18,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1122,
     "endSeconds": 1185,
     "duration": 63,
     "formattedStart": "00:18:42",
     "formattedEnd": "00:19:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1122&end=1185&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1122&end=1185&autoplay=1&enablejsapi=1"
   },
   "1_19": {
     "chapter": 1,
     "verse": 19,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1185,
     "endSeconds": 1248,
     "duration": 63,
     "formattedStart": "00:19:45",
     "formattedEnd": "00:20:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1185&end=1248&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1185&end=1248&autoplay=1&enablejsapi=1"
   },
   "1_20": {
     "chapter": 1,
     "verse": 20,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1248,
     "endSeconds": 1311,
     "duration": 63,
     "formattedStart": "00:20:48",
     "formattedEnd": "00:21:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1248&end=1311&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1248&end=1311&autoplay=1&enablejsapi=1"
   },
   "1_21": {
     "chapter": 1,
     "verse": 21,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1311,
     "endSeconds": 1374,
     "duration": 63,
     "formattedStart": "00:21:51",
     "formattedEnd": "00:22:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1311&end=1374&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1311&end=1374&autoplay=1&enablejsapi=1"
   },
   "1_22": {
     "chapter": 1,
     "verse": 22,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1374,
     "endSeconds": 1437,
     "duration": 63,
     "formattedStart": "00:22:54",
     "formattedEnd": "00:23:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1374&end=1437&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1374&end=1437&autoplay=1&enablejsapi=1"
   },
   "1_23": {
     "chapter": 1,
     "verse": 23,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1437,
     "endSeconds": 1500,
     "duration": 63,
     "formattedStart": "00:23:57",
     "formattedEnd": "00:25:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1437&end=1500&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1437&end=1500&autoplay=1&enablejsapi=1"
   },
   "1_24": {
     "chapter": 1,
     "verse": 24,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1500,
     "endSeconds": 1563,
     "duration": 63,
     "formattedStart": "00:25:00",
     "formattedEnd": "00:26:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1500&end=1563&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1500&end=1563&autoplay=1&enablejsapi=1"
   },
   "1_25": {
     "chapter": 1,
     "verse": 25,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1563,
     "endSeconds": 1626,
     "duration": 63,
     "formattedStart": "00:26:03",
     "formattedEnd": "00:27:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1563&end=1626&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1563&end=1626&autoplay=1&enablejsapi=1"
   },
   "1_26": {
     "chapter": 1,
     "verse": 26,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1626,
     "endSeconds": 1689,
     "duration": 63,
     "formattedStart": "00:27:06",
     "formattedEnd": "00:28:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1626&end=1689&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1626&end=1689&autoplay=1&enablejsapi=1"
   },
   "1_27": {
     "chapter": 1,
     "verse": 27,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1689,
     "endSeconds": 1752,
     "duration": 63,
     "formattedStart": "00:28:09",
     "formattedEnd": "00:29:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1689&end=1752&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1689&end=1752&autoplay=1&enablejsapi=1"
   },
   "1_28": {
     "chapter": 1,
     "verse": 28,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1752,
     "endSeconds": 1815,
     "duration": 63,
     "formattedStart": "00:29:12",
     "formattedEnd": "00:30:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1752&end=1815&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1752&end=1815&autoplay=1&enablejsapi=1"
   },
   "1_29": {
     "chapter": 1,
     "verse": 29,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1815,
     "endSeconds": 1878,
     "duration": 63,
     "formattedStart": "00:30:15",
     "formattedEnd": "00:31:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1815&end=1878&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1815&end=1878&autoplay=1&enablejsapi=1"
   },
   "1_30": {
     "chapter": 1,
     "verse": 30,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1878,
     "endSeconds": 1941,
     "duration": 63,
     "formattedStart": "00:31:18",
     "formattedEnd": "00:32:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1878&end=1941&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1878&end=1941&autoplay=1&enablejsapi=1"
   },
   "1_31": {
     "chapter": 1,
     "verse": 31,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 1941,
     "endSeconds": 2004,
     "duration": 63,
     "formattedStart": "00:32:21",
     "formattedEnd": "00:33:24",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=1941&end=2004&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=1941&end=2004&autoplay=1&enablejsapi=1"
   },
   "1_32": {
     "chapter": 1,
     "verse": 32,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2004,
     "endSeconds": 2068,
     "duration": 64,
     "formattedStart": "00:33:24",
     "formattedEnd": "00:34:28",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2004&end=2068&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2004&end=2068&autoplay=1&enablejsapi=1"
   },
   "1_33": {
     "chapter": 1,
     "verse": 33,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2068,
     "endSeconds": 2131,
     "duration": 63,
     "formattedStart": "00:34:28",
     "formattedEnd": "00:35:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2068&end=2131&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2068&end=2131&autoplay=1&enablejsapi=1"
   },
   "1_34": {
     "chapter": 1,
     "verse": 34,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2131,
     "endSeconds": 2194,
     "duration": 63,
     "formattedStart": "00:35:31",
     "formattedEnd": "00:36:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2131&end=2194&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2131&end=2194&autoplay=1&enablejsapi=1"
   },
   "1_35": {
     "chapter": 1,
     "verse": 35,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2194,
     "endSeconds": 2257,
     "duration": 63,
     "formattedStart": "00:36:34",
     "formattedEnd": "00:37:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2194&end=2257&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2194&end=2257&autoplay=1&enablejsapi=1"
   },
   "1_36": {
     "chapter": 1,
     "verse": 36,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2257,
     "endSeconds": 2320,
     "duration": 63,
     "formattedStart": "00:37:37",
     "formattedEnd": "00:38:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2257&end=2320&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2257&end=2320&autoplay=1&enablejsapi=1"
   },
   "1_37": {
     "chapter": 1,
     "verse": 37,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2320,
     "endSeconds": 2383,
     "duration": 63,
     "formattedStart": "00:38:40",
     "formattedEnd": "00:39:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2320&end=2383&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2320&end=2383&autoplay=1&enablejsapi=1"
   },
   "1_38": {
     "chapter": 1,
     "verse": 38,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2383,
     "endSeconds": 2446,
     "duration": 63,
     "formattedStart": "00:39:43",
     "formattedEnd": "00:40:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2383&end=2446&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2383&end=2446&autoplay=1&enablejsapi=1"
   },
   "1_39": {
     "chapter": 1,
     "verse": 39,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2446,
     "endSeconds": 2509,
     "duration": 63,
     "formattedStart": "00:40:46",
     "formattedEnd": "00:41:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2446&end=2509&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2446&end=2509&autoplay=1&enablejsapi=1"
   },
   "1_40": {
     "chapter": 1,
     "verse": 40,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2509,
     "endSeconds": 2572,
     "duration": 63,
     "formattedStart": "00:41:49",
     "formattedEnd": "00:42:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2509&end=2572&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2509&end=2572&autoplay=1&enablejsapi=1"
   },
   "1_41": {
     "chapter": 1,
     "verse": 41,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2572,
     "endSeconds": 2635,
     "duration": 63,
     "formattedStart": "00:42:52",
     "formattedEnd": "00:43:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2572&end=2635&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2572&end=2635&autoplay=1&enablejsapi=1"
   },
   "1_42": {
     "chapter": 1,
     "verse": 42,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2635,
     "endSeconds": 2698,
     "duration": 63,
     "formattedStart": "00:43:55",
     "formattedEnd": "00:44:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2635&end=2698&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2635&end=2698&autoplay=1&enablejsapi=1"
   },
   "1_43": {
     "chapter": 1,
     "verse": 43,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2698,
     "endSeconds": 2761,
     "duration": 63,
     "formattedStart": "00:44:58",
     "formattedEnd": "00:46:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2698&end=2761&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2698&end=2761&autoplay=1&enablejsapi=1"
   },
   "1_44": {
     "chapter": 1,
     "verse": 44,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2761,
     "endSeconds": 2824,
     "duration": 63,
     "formattedStart": "00:46:01",
     "formattedEnd": "00:47:04",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2761&end=2824&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2761&end=2824&autoplay=1&enablejsapi=1"
   },
   "1_45": {
     "chapter": 1,
     "verse": 45,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2824,
     "endSeconds": 2887,
     "duration": 63,
     "formattedStart": "00:47:04",
     "formattedEnd": "00:48:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2824&end=2887&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2824&end=2887&autoplay=1&enablejsapi=1"
   },
   "1_46": {
     "chapter": 1,
     "verse": 46,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2887,
     "endSeconds": 2950,
     "duration": 63,
     "formattedStart": "00:48:07",
     "formattedEnd": "00:49:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2887&end=2950&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2887&end=2950&autoplay=1&enablejsapi=1"
   },
   "1_47": {
     "chapter": 1,
     "verse": 47,
     "chapterName": "अर्जुनविषादयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 2950,
     "endSeconds": 3014,
     "duration": 64,
     "formattedStart": "00:49:10",
     "formattedEnd": "00:50:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=2950&end=3014&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=2950&end=3014&autoplay=1&enablejsapi=1"
   },
   "2_1": {
     "chapter": 2,
     "verse": 1,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3059,
     "endSeconds": 3128,
     "duration": 69,
     "formattedStart": "00:50:59",
     "formattedEnd": "00:52:08",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3059&end=3128&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3059&end=3128&autoplay=1&enablejsapi=1"
   },
   "2_2": {
     "chapter": 2,
     "verse": 2,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3128,
     "endSeconds": 3198,
     "duration": 70,
     "formattedStart": "00:52:08",
     "formattedEnd": "00:53:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3128&end=3198&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3128&end=3198&autoplay=1&enablejsapi=1"
   },
   "2_3": {
     "chapter": 2,
     "verse": 3,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3198,
     "endSeconds": 3267,
     "duration": 69,
     "formattedStart": "00:53:18",
     "formattedEnd": "00:54:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3198&end=3267&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3198&end=3267&autoplay=1&enablejsapi=1"
   },
   "2_4": {
     "chapter": 2,
     "verse": 4,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3267,
     "endSeconds": 3337,
     "duration": 70,
     "formattedStart": "00:54:27",
     "formattedEnd": "00:55:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3267&end=3337&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3267&end=3337&autoplay=1&enablejsapi=1"
   },
   "2_5": {
     "chapter": 2,
     "verse": 5,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3337,
     "endSeconds": 3407,
     "duration": 70,
     "formattedStart": "00:55:37",
     "formattedEnd": "00:56:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3337&end=3407&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3337&end=3407&autoplay=1&enablejsapi=1"
   },
   "2_6": {
     "chapter": 2,
     "verse": 6,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3407,
     "endSeconds": 3476,
     "duration": 69,
     "formattedStart": "00:56:47",
     "formattedEnd": "00:57:56",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3407&end=3476&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3407&end=3476&autoplay=1&enablejsapi=1"
   },
   "2_7": {
     "chapter": 2,
     "verse": 7,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3476,
     "endSeconds": 3546,
     "duration": 70,
     "formattedStart": "00:57:56",
     "formattedEnd": "00:59:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3476&end=3546&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3476&end=3546&autoplay=1&enablejsapi=1"
   },
   "2_8": {
     "chapter": 2,
     "verse": 8,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3546,
     "endSeconds": 3616,
     "duration": 70,
     "formattedStart": "00:59:06",
     "formattedEnd": "01:00:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3546&end=3616&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3546&end=3616&autoplay=1&enablejsapi=1"
   },
   "2_9": {
     "chapter": 2,
     "verse": 9,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3616,
     "endSeconds": 3685,
     "duration": 69,
     "formattedStart": "01:00:16",
     "formattedEnd": "01:01:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3616&end=3685&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3616&end=3685&autoplay=1&enablejsapi=1"
   },
   "2_10": {
     "chapter": 2,
     "verse": 10,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3685,
     "endSeconds": 3755,
     "duration": 70,
     "formattedStart": "01:01:25",
     "formattedEnd": "01:02:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3685&end=3755&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3685&end=3755&autoplay=1&enablejsapi=1"
   },
   "2_11": {
     "chapter": 2,
     "verse": 11,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3755,
     "endSeconds": 3824,
     "duration": 69,
     "formattedStart": "01:02:35",
     "formattedEnd": "01:03:44",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3755&end=3824&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3755&end=3824&autoplay=1&enablejsapi=1"
   },
   "2_12": {
     "chapter": 2,
     "verse": 12,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3824,
     "endSeconds": 3894,
     "duration": 70,
     "formattedStart": "01:03:44",
     "formattedEnd": "01:04:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3824&end=3894&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3824&end=3894&autoplay=1&enablejsapi=1"
   },
   "2_13": {
     "chapter": 2,
     "verse": 13,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3894,
     "endSeconds": 3964,
     "duration": 70,
     "formattedStart": "01:04:54",
     "formattedEnd": "01:06:04",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3894&end=3964&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3894&end=3964&autoplay=1&enablejsapi=1"
   },
   "2_14": {
     "chapter": 2,
     "verse": 14,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 3964,
     "endSeconds": 4033,
     "duration": 69,
     "formattedStart": "01:06:04",
     "formattedEnd": "01:07:13",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=3964&end=4033&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=3964&end=4033&autoplay=1&enablejsapi=1"
   },
   "2_15": {
     "chapter": 2,
     "verse": 15,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4033,
     "endSeconds": 4103,
     "duration": 70,
     "formattedStart": "01:07:13",
     "formattedEnd": "01:08:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4033&end=4103&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4033&end=4103&autoplay=1&enablejsapi=1"
   },
   "2_16": {
     "chapter": 2,
     "verse": 16,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4103,
     "endSeconds": 4173,
     "duration": 70,
     "formattedStart": "01:08:23",
     "formattedEnd": "01:09:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4103&end=4173&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4103&end=4173&autoplay=1&enablejsapi=1"
   },
   "2_17": {
     "chapter": 2,
     "verse": 17,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4173,
     "endSeconds": 4242,
     "duration": 69,
     "formattedStart": "01:09:33",
     "formattedEnd": "01:10:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4173&end=4242&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4173&end=4242&autoplay=1&enablejsapi=1"
   },
   "2_18": {
     "chapter": 2,
     "verse": 18,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4242,
     "endSeconds": 4312,
     "duration": 70,
     "formattedStart": "01:10:42",
     "formattedEnd": "01:11:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4242&end=4312&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4242&end=4312&autoplay=1&enablejsapi=1"
   },
   "2_19": {
     "chapter": 2,
     "verse": 19,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4312,
     "endSeconds": 4381,
     "duration": 69,
     "formattedStart": "01:11:52",
     "formattedEnd": "01:13:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4312&end=4381&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4312&end=4381&autoplay=1&enablejsapi=1"
   },
   "2_20": {
     "chapter": 2,
     "verse": 20,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4381,
     "endSeconds": 4451,
     "duration": 70,
     "formattedStart": "01:13:01",
     "formattedEnd": "01:14:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4381&end=4451&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4381&end=4451&autoplay=1&enablejsapi=1"
   },
   "2_21": {
     "chapter": 2,
     "verse": 21,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4451,
     "endSeconds": 4521,
     "duration": 70,
     "formattedStart": "01:14:11",
     "formattedEnd": "01:15:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4451&end=4521&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4451&end=4521&autoplay=1&enablejsapi=1"
   },
   "2_22": {
     "chapter": 2,
     "verse": 22,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4521,
     "endSeconds": 4590,
     "duration": 69,
     "formattedStart": "01:15:21",
     "formattedEnd": "01:16:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4521&end=4590&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4521&end=4590&autoplay=1&enablejsapi=1"
   },
   "2_23": {
     "chapter": 2,
     "verse": 23,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4590,
     "endSeconds": 4660,
     "duration": 70,
     "formattedStart": "01:16:30",
     "formattedEnd": "01:17:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4590&end=4660&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4590&end=4660&autoplay=1&enablejsapi=1"
   },
   "2_24": {
     "chapter": 2,
     "verse": 24,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4660,
     "endSeconds": 4730,
     "duration": 70,
     "formattedStart": "01:17:40",
     "formattedEnd": "01:18:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4660&end=4730&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4660&end=4730&autoplay=1&enablejsapi=1"
   },
   "2_25": {
     "chapter": 2,
     "verse": 25,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4730,
     "endSeconds": 4799,
     "duration": 69,
     "formattedStart": "01:18:50",
     "formattedEnd": "01:19:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4730&end=4799&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4730&end=4799&autoplay=1&enablejsapi=1"
   },
   "2_26": {
     "chapter": 2,
     "verse": 26,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4799,
     "endSeconds": 4869,
     "duration": 70,
     "formattedStart": "01:19:59",
     "formattedEnd": "01:21:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4799&end=4869&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4799&end=4869&autoplay=1&enablejsapi=1"
   },
   "2_27": {
     "chapter": 2,
     "verse": 27,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4869,
     "endSeconds": 4938,
     "duration": 69,
     "formattedStart": "01:21:09",
     "formattedEnd": "01:22:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4869&end=4938&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4869&end=4938&autoplay=1&enablejsapi=1"
   },
   "2_28": {
     "chapter": 2,
     "verse": 28,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 4938,
     "endSeconds": 5008,
     "duration": 70,
     "formattedStart": "01:22:18",
     "formattedEnd": "01:23:28",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=4938&end=5008&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=4938&end=5008&autoplay=1&enablejsapi=1"
   },
   "2_29": {
     "chapter": 2,
     "verse": 29,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5008,
     "endSeconds": 5078,
     "duration": 70,
     "formattedStart": "01:23:28",
     "formattedEnd": "01:24:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5008&end=5078&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5008&end=5078&autoplay=1&enablejsapi=1"
   },
   "2_30": {
     "chapter": 2,
     "verse": 30,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5078,
     "endSeconds": 5147,
     "duration": 69,
     "formattedStart": "01:24:38",
     "formattedEnd": "01:25:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5078&end=5147&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5078&end=5147&autoplay=1&enablejsapi=1"
   },
   "2_31": {
     "chapter": 2,
     "verse": 31,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5147,
     "endSeconds": 5217,
     "duration": 70,
     "formattedStart": "01:25:47",
     "formattedEnd": "01:26:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5147&end=5217&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5147&end=5217&autoplay=1&enablejsapi=1"
   },
   "2_32": {
     "chapter": 2,
     "verse": 32,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5217,
     "endSeconds": 5287,
     "duration": 70,
     "formattedStart": "01:26:57",
     "formattedEnd": "01:28:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5217&end=5287&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5217&end=5287&autoplay=1&enablejsapi=1"
   },
   "2_33": {
     "chapter": 2,
     "verse": 33,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5287,
     "endSeconds": 5356,
     "duration": 69,
     "formattedStart": "01:28:07",
     "formattedEnd": "01:29:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5287&end=5356&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5287&end=5356&autoplay=1&enablejsapi=1"
   },
   "2_34": {
     "chapter": 2,
     "verse": 34,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5356,
     "endSeconds": 5426,
     "duration": 70,
     "formattedStart": "01:29:16",
     "formattedEnd": "01:30:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5356&end=5426&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5356&end=5426&autoplay=1&enablejsapi=1"
   },
   "2_35": {
     "chapter": 2,
     "verse": 35,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5426,
     "endSeconds": 5495,
     "duration": 69,
     "formattedStart": "01:30:26",
     "formattedEnd": "01:31:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5426&end=5495&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5426&end=5495&autoplay=1&enablejsapi=1"
   },
   "2_36": {
     "chapter": 2,
     "verse": 36,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5495,
     "endSeconds": 5565,
     "duration": 70,
     "formattedStart": "01:31:35",
     "formattedEnd": "01:32:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5495&end=5565&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5495&end=5565&autoplay=1&enablejsapi=1"
   },
   "2_37": {
     "chapter": 2,
     "verse": 37,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5565,
     "endSeconds": 5635,
     "duration": 70,
     "formattedStart": "01:32:45",
     "formattedEnd": "01:33:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5565&end=5635&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5565&end=5635&autoplay=1&enablejsapi=1"
   },
   "2_38": {
     "chapter": 2,
     "verse": 38,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5635,
     "endSeconds": 5704,
     "duration": 69,
     "formattedStart": "01:33:55",
     "formattedEnd": "01:35:04",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5635&end=5704&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5635&end=5704&autoplay=1&enablejsapi=1"
   },
   "2_39": {
     "chapter": 2,
     "verse": 39,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5704,
     "endSeconds": 5774,
     "duration": 70,
     "formattedStart": "01:35:04",
     "formattedEnd": "01:36:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5704&end=5774&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5704&end=5774&autoplay=1&enablejsapi=1"
   },
   "2_40": {
     "chapter": 2,
     "verse": 40,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5774,
     "endSeconds": 5844,
     "duration": 70,
     "formattedStart": "01:36:14",
     "formattedEnd": "01:37:24",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5774&end=5844&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5774&end=5844&autoplay=1&enablejsapi=1"
   },
   "2_41": {
     "chapter": 2,
     "verse": 41,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5844,
     "endSeconds": 5913,
     "duration": 69,
     "formattedStart": "01:37:24",
     "formattedEnd": "01:38:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5844&end=5913&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5844&end=5913&autoplay=1&enablejsapi=1"
   },
   "2_42": {
     "chapter": 2,
     "verse": 42,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5913,
     "endSeconds": 5983,
     "duration": 70,
     "formattedStart": "01:38:33",
     "formattedEnd": "01:39:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5913&end=5983&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5913&end=5983&autoplay=1&enablejsapi=1"
   },
   "2_43": {
     "chapter": 2,
     "verse": 43,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 5983,
     "endSeconds": 6052,
     "duration": 69,
     "formattedStart": "01:39:43",
     "formattedEnd": "01:40:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=5983&end=6052&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=5983&end=6052&autoplay=1&enablejsapi=1"
   },
   "2_44": {
     "chapter": 2,
     "verse": 44,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6052,
     "endSeconds": 6122,
     "duration": 70,
     "formattedStart": "01:40:52",
     "formattedEnd": "01:42:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6052&end=6122&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6052&end=6122&autoplay=1&enablejsapi=1"
   },
   "2_45": {
     "chapter": 2,
     "verse": 45,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6122,
     "endSeconds": 6192,
     "duration": 70,
     "formattedStart": "01:42:02",
     "formattedEnd": "01:43:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6122&end=6192&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6122&end=6192&autoplay=1&enablejsapi=1"
   },
   "2_46": {
     "chapter": 2,
     "verse": 46,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6192,
     "endSeconds": 6261,
     "duration": 69,
     "formattedStart": "01:43:12",
     "formattedEnd": "01:44:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6192&end=6261&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6192&end=6261&autoplay=1&enablejsapi=1"
   },
   "2_47": {
     "chapter": 2,
     "verse": 47,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6261,
     "endSeconds": 6331,
     "duration": 70,
     "formattedStart": "01:44:21",
     "formattedEnd": "01:45:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6261&end=6331&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6261&end=6331&autoplay=1&enablejsapi=1"
   },
   "2_48": {
     "chapter": 2,
     "verse": 48,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6331,
     "endSeconds": 6401,
     "duration": 70,
     "formattedStart": "01:45:31",
     "formattedEnd": "01:46:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6331&end=6401&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6331&end=6401&autoplay=1&enablejsapi=1"
   },
   "2_49": {
     "chapter": 2,
     "verse": 49,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6401,
     "endSeconds": 6470,
     "duration": 69,
     "formattedStart": "01:46:41",
     "formattedEnd": "01:47:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6401&end=6470&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6401&end=6470&autoplay=1&enablejsapi=1"
   },
   "2_50": {
     "chapter": 2,
     "verse": 50,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6470,
     "endSeconds": 6540,
     "duration": 70,
     "formattedStart": "01:47:50",
     "formattedEnd": "01:49:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6470&end=6540&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6470&end=6540&autoplay=1&enablejsapi=1"
   },
   "2_51": {
     "chapter": 2,
     "verse": 51,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6540,
     "endSeconds": 6609,
     "duration": 69,
     "formattedStart": "01:49:00",
     "formattedEnd": "01:50:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6540&end=6609&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6540&end=6609&autoplay=1&enablejsapi=1"
   },
   "2_52": {
     "chapter": 2,
     "verse": 52,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6609,
     "endSeconds": 6679,
     "duration": 70,
     "formattedStart": "01:50:09",
     "formattedEnd": "01:51:19",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6609&end=6679&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6609&end=6679&autoplay=1&enablejsapi=1"
   },
   "2_53": {
     "chapter": 2,
     "verse": 53,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6679,
     "endSeconds": 6749,
     "duration": 70,
     "formattedStart": "01:51:19",
     "formattedEnd": "01:52:29",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6679&end=6749&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6679&end=6749&autoplay=1&enablejsapi=1"
   },
   "2_54": {
     "chapter": 2,
     "verse": 54,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6749,
     "endSeconds": 6818,
     "duration": 69,
     "formattedStart": "01:52:29",
     "formattedEnd": "01:53:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6749&end=6818&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6749&end=6818&autoplay=1&enablejsapi=1"
   },
   "2_55": {
     "chapter": 2,
     "verse": 55,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6818,
     "endSeconds": 6888,
     "duration": 70,
     "formattedStart": "01:53:38",
     "formattedEnd": "01:54:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6818&end=6888&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6818&end=6888&autoplay=1&enablejsapi=1"
   },
   "2_56": {
     "chapter": 2,
     "verse": 56,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6888,
     "endSeconds": 6958,
     "duration": 70,
     "formattedStart": "01:54:48",
     "formattedEnd": "01:55:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6888&end=6958&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6888&end=6958&autoplay=1&enablejsapi=1"
   },
   "2_57": {
     "chapter": 2,
     "verse": 57,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 6958,
     "endSeconds": 7027,
     "duration": 69,
     "formattedStart": "01:55:58",
     "formattedEnd": "01:57:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=6958&end=7027&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=6958&end=7027&autoplay=1&enablejsapi=1"
   },
   "2_58": {
     "chapter": 2,
     "verse": 58,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7027,
     "endSeconds": 7097,
     "duration": 70,
     "formattedStart": "01:57:07",
     "formattedEnd": "01:58:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7027&end=7097&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7027&end=7097&autoplay=1&enablejsapi=1"
   },
   "2_59": {
     "chapter": 2,
     "verse": 59,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7097,
     "endSeconds": 7166,
     "duration": 69,
     "formattedStart": "01:58:17",
     "formattedEnd": "01:59:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7097&end=7166&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7097&end=7166&autoplay=1&enablejsapi=1"
   },
   "2_60": {
     "chapter": 2,
     "verse": 60,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7166,
     "endSeconds": 7236,
     "duration": 70,
     "formattedStart": "01:59:26",
     "formattedEnd": "02:00:36",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7166&end=7236&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7166&end=7236&autoplay=1&enablejsapi=1"
   },
   "2_61": {
     "chapter": 2,
     "verse": 61,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7236,
     "endSeconds": 7306,
     "duration": 70,
     "formattedStart": "02:00:36",
     "formattedEnd": "02:01:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7236&end=7306&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7236&end=7306&autoplay=1&enablejsapi=1"
   },
   "2_62": {
     "chapter": 2,
     "verse": 62,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7306,
     "endSeconds": 7375,
     "duration": 69,
     "formattedStart": "02:01:46",
     "formattedEnd": "02:02:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7306&end=7375&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7306&end=7375&autoplay=1&enablejsapi=1"
   },
   "2_63": {
     "chapter": 2,
     "verse": 63,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7375,
     "endSeconds": 7445,
     "duration": 70,
     "formattedStart": "02:02:55",
     "formattedEnd": "02:04:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7375&end=7445&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7375&end=7445&autoplay=1&enablejsapi=1"
   },
   "2_64": {
     "chapter": 2,
     "verse": 64,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7445,
     "endSeconds": 7515,
     "duration": 70,
     "formattedStart": "02:04:05",
     "formattedEnd": "02:05:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7445&end=7515&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7445&end=7515&autoplay=1&enablejsapi=1"
   },
   "2_65": {
     "chapter": 2,
     "verse": 65,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7515,
     "endSeconds": 7584,
     "duration": 69,
     "formattedStart": "02:05:15",
     "formattedEnd": "02:06:24",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7515&end=7584&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7515&end=7584&autoplay=1&enablejsapi=1"
   },
   "2_66": {
     "chapter": 2,
     "verse": 66,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7584,
     "endSeconds": 7654,
     "duration": 70,
     "formattedStart": "02:06:24",
     "formattedEnd": "02:07:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7584&end=7654&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7584&end=7654&autoplay=1&enablejsapi=1"
   },
   "2_67": {
     "chapter": 2,
     "verse": 67,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7654,
     "endSeconds": 7723,
     "duration": 69,
     "formattedStart": "02:07:34",
     "formattedEnd": "02:08:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7654&end=7723&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7654&end=7723&autoplay=1&enablejsapi=1"
   },
   "2_68": {
     "chapter": 2,
     "verse": 68,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7723,
     "endSeconds": 7793,
     "duration": 70,
     "formattedStart": "02:08:43",
     "formattedEnd": "02:09:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7723&end=7793&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7723&end=7793&autoplay=1&enablejsapi=1"
   },
   "2_69": {
     "chapter": 2,
     "verse": 69,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7793,
     "endSeconds": 7863,
     "duration": 70,
     "formattedStart": "02:09:53",
     "formattedEnd": "02:11:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7793&end=7863&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7793&end=7863&autoplay=1&enablejsapi=1"
   },
   "2_70": {
     "chapter": 2,
     "verse": 70,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7863,
     "endSeconds": 7932,
     "duration": 69,
     "formattedStart": "02:11:03",
     "formattedEnd": "02:12:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7863&end=7932&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7863&end=7932&autoplay=1&enablejsapi=1"
   },
   "2_71": {
     "chapter": 2,
     "verse": 71,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 7932,
     "endSeconds": 8002,
     "duration": 70,
     "formattedStart": "02:12:12",
     "formattedEnd": "02:13:22",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=7932&end=8002&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=7932&end=8002&autoplay=1&enablejsapi=1"
   },
   "2_72": {
     "chapter": 2,
     "verse": 72,
     "chapterName": "सांख्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8002,
     "endSeconds": 8072,
     "duration": 70,
     "formattedStart": "02:13:22",
     "formattedEnd": "02:14:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8002&end=8072&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8002&end=8072&autoplay=1&enablejsapi=1"
   },
   "3_1": {
     "chapter": 3,
     "verse": 1,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8117,
     "endSeconds": 8186,
     "duration": 69,
     "formattedStart": "02:15:17",
     "formattedEnd": "02:16:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8117&end=8186&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8117&end=8186&autoplay=1&enablejsapi=1"
   },
   "3_2": {
     "chapter": 3,
     "verse": 2,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8186,
     "endSeconds": 8255,
     "duration": 69,
     "formattedStart": "02:16:26",
     "formattedEnd": "02:17:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8186&end=8255&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8186&end=8255&autoplay=1&enablejsapi=1"
   },
   "3_3": {
     "chapter": 3,
     "verse": 3,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8255,
     "endSeconds": 8325,
     "duration": 70,
     "formattedStart": "02:17:35",
     "formattedEnd": "02:18:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8255&end=8325&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8255&end=8325&autoplay=1&enablejsapi=1"
   },
   "3_4": {
     "chapter": 3,
     "verse": 4,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8325,
     "endSeconds": 8394,
     "duration": 69,
     "formattedStart": "02:18:45",
     "formattedEnd": "02:19:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8325&end=8394&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8325&end=8394&autoplay=1&enablejsapi=1"
   },
   "3_5": {
     "chapter": 3,
     "verse": 5,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8394,
     "endSeconds": 8463,
     "duration": 69,
     "formattedStart": "02:19:54",
     "formattedEnd": "02:21:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8394&end=8463&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8394&end=8463&autoplay=1&enablejsapi=1"
   },
   "3_6": {
     "chapter": 3,
     "verse": 6,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8463,
     "endSeconds": 8533,
     "duration": 70,
     "formattedStart": "02:21:03",
     "formattedEnd": "02:22:13",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8463&end=8533&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8463&end=8533&autoplay=1&enablejsapi=1"
   },
   "3_7": {
     "chapter": 3,
     "verse": 7,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8533,
     "endSeconds": 8602,
     "duration": 69,
     "formattedStart": "02:22:13",
     "formattedEnd": "02:23:22",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8533&end=8602&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8533&end=8602&autoplay=1&enablejsapi=1"
   },
   "3_8": {
     "chapter": 3,
     "verse": 8,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8602,
     "endSeconds": 8671,
     "duration": 69,
     "formattedStart": "02:23:22",
     "formattedEnd": "02:24:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8602&end=8671&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8602&end=8671&autoplay=1&enablejsapi=1"
   },
   "3_9": {
     "chapter": 3,
     "verse": 9,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8671,
     "endSeconds": 8741,
     "duration": 70,
     "formattedStart": "02:24:31",
     "formattedEnd": "02:25:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8671&end=8741&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8671&end=8741&autoplay=1&enablejsapi=1"
   },
   "3_10": {
     "chapter": 3,
     "verse": 10,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8741,
     "endSeconds": 8810,
     "duration": 69,
     "formattedStart": "02:25:41",
     "formattedEnd": "02:26:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8741&end=8810&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8741&end=8810&autoplay=1&enablejsapi=1"
   },
   "3_11": {
     "chapter": 3,
     "verse": 11,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8810,
     "endSeconds": 8879,
     "duration": 69,
     "formattedStart": "02:26:50",
     "formattedEnd": "02:27:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8810&end=8879&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8810&end=8879&autoplay=1&enablejsapi=1"
   },
   "3_12": {
     "chapter": 3,
     "verse": 12,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8879,
     "endSeconds": 8949,
     "duration": 70,
     "formattedStart": "02:27:59",
     "formattedEnd": "02:29:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8879&end=8949&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8879&end=8949&autoplay=1&enablejsapi=1"
   },
   "3_13": {
     "chapter": 3,
     "verse": 13,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 8949,
     "endSeconds": 9018,
     "duration": 69,
     "formattedStart": "02:29:09",
     "formattedEnd": "02:30:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=8949&end=9018&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=8949&end=9018&autoplay=1&enablejsapi=1"
   },
   "3_14": {
     "chapter": 3,
     "verse": 14,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9018,
     "endSeconds": 9087,
     "duration": 69,
     "formattedStart": "02:30:18",
     "formattedEnd": "02:31:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9018&end=9087&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9018&end=9087&autoplay=1&enablejsapi=1"
   },
   "3_15": {
     "chapter": 3,
     "verse": 15,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9087,
     "endSeconds": 9157,
     "duration": 70,
     "formattedStart": "02:31:27",
     "formattedEnd": "02:32:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9087&end=9157&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9087&end=9157&autoplay=1&enablejsapi=1"
   },
   "3_16": {
     "chapter": 3,
     "verse": 16,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9157,
     "endSeconds": 9226,
     "duration": 69,
     "formattedStart": "02:32:37",
     "formattedEnd": "02:33:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9157&end=9226&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9157&end=9226&autoplay=1&enablejsapi=1"
   },
   "3_17": {
     "chapter": 3,
     "verse": 17,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9226,
     "endSeconds": 9295,
     "duration": 69,
     "formattedStart": "02:33:46",
     "formattedEnd": "02:34:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9226&end=9295&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9226&end=9295&autoplay=1&enablejsapi=1"
   },
   "3_18": {
     "chapter": 3,
     "verse": 18,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9295,
     "endSeconds": 9365,
     "duration": 70,
     "formattedStart": "02:34:55",
     "formattedEnd": "02:36:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9295&end=9365&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9295&end=9365&autoplay=1&enablejsapi=1"
   },
   "3_19": {
     "chapter": 3,
     "verse": 19,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9365,
     "endSeconds": 9434,
     "duration": 69,
     "formattedStart": "02:36:05",
     "formattedEnd": "02:37:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9365&end=9434&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9365&end=9434&autoplay=1&enablejsapi=1"
   },
   "3_20": {
     "chapter": 3,
     "verse": 20,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9434,
     "endSeconds": 9503,
     "duration": 69,
     "formattedStart": "02:37:14",
     "formattedEnd": "02:38:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9434&end=9503&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9434&end=9503&autoplay=1&enablejsapi=1"
   },
   "3_21": {
     "chapter": 3,
     "verse": 21,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9503,
     "endSeconds": 9573,
     "duration": 70,
     "formattedStart": "02:38:23",
     "formattedEnd": "02:39:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9503&end=9573&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9503&end=9573&autoplay=1&enablejsapi=1"
   },
   "3_22": {
     "chapter": 3,
     "verse": 22,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9573,
     "endSeconds": 9642,
     "duration": 69,
     "formattedStart": "02:39:33",
     "formattedEnd": "02:40:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9573&end=9642&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9573&end=9642&autoplay=1&enablejsapi=1"
   },
   "3_23": {
     "chapter": 3,
     "verse": 23,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9642,
     "endSeconds": 9712,
     "duration": 70,
     "formattedStart": "02:40:42",
     "formattedEnd": "02:41:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9642&end=9712&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9642&end=9712&autoplay=1&enablejsapi=1"
   },
   "3_24": {
     "chapter": 3,
     "verse": 24,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9712,
     "endSeconds": 9781,
     "duration": 69,
     "formattedStart": "02:41:52",
     "formattedEnd": "02:43:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9712&end=9781&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9712&end=9781&autoplay=1&enablejsapi=1"
   },
   "3_25": {
     "chapter": 3,
     "verse": 25,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9781,
     "endSeconds": 9850,
     "duration": 69,
     "formattedStart": "02:43:01",
     "formattedEnd": "02:44:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9781&end=9850&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9781&end=9850&autoplay=1&enablejsapi=1"
   },
   "3_26": {
     "chapter": 3,
     "verse": 26,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9850,
     "endSeconds": 9920,
     "duration": 70,
     "formattedStart": "02:44:10",
     "formattedEnd": "02:45:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9850&end=9920&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9850&end=9920&autoplay=1&enablejsapi=1"
   },
   "3_27": {
     "chapter": 3,
     "verse": 27,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9920,
     "endSeconds": 9989,
     "duration": 69,
     "formattedStart": "02:45:20",
     "formattedEnd": "02:46:29",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9920&end=9989&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9920&end=9989&autoplay=1&enablejsapi=1"
   },
   "3_28": {
     "chapter": 3,
     "verse": 28,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 9989,
     "endSeconds": 10058,
     "duration": 69,
     "formattedStart": "02:46:29",
     "formattedEnd": "02:47:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=9989&end=10058&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=9989&end=10058&autoplay=1&enablejsapi=1"
   },
   "3_29": {
     "chapter": 3,
     "verse": 29,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10058,
     "endSeconds": 10128,
     "duration": 70,
     "formattedStart": "02:47:38",
     "formattedEnd": "02:48:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10058&end=10128&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10058&end=10128&autoplay=1&enablejsapi=1"
   },
   "3_30": {
     "chapter": 3,
     "verse": 30,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10128,
     "endSeconds": 10197,
     "duration": 69,
     "formattedStart": "02:48:48",
     "formattedEnd": "02:49:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10128&end=10197&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10128&end=10197&autoplay=1&enablejsapi=1"
   },
   "3_31": {
     "chapter": 3,
     "verse": 31,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10197,
     "endSeconds": 10266,
     "duration": 69,
     "formattedStart": "02:49:57",
     "formattedEnd": "02:51:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10197&end=10266&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10197&end=10266&autoplay=1&enablejsapi=1"
   },
   "3_32": {
     "chapter": 3,
     "verse": 32,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10266,
     "endSeconds": 10336,
     "duration": 70,
     "formattedStart": "02:51:06",
     "formattedEnd": "02:52:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10266&end=10336&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10266&end=10336&autoplay=1&enablejsapi=1"
   },
   "3_33": {
     "chapter": 3,
     "verse": 33,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10336,
     "endSeconds": 10405,
     "duration": 69,
     "formattedStart": "02:52:16",
     "formattedEnd": "02:53:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10336&end=10405&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10336&end=10405&autoplay=1&enablejsapi=1"
   },
   "3_34": {
     "chapter": 3,
     "verse": 34,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10405,
     "endSeconds": 10474,
     "duration": 69,
     "formattedStart": "02:53:25",
     "formattedEnd": "02:54:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10405&end=10474&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10405&end=10474&autoplay=1&enablejsapi=1"
   },
   "3_35": {
     "chapter": 3,
     "verse": 35,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10474,
     "endSeconds": 10544,
     "duration": 70,
     "formattedStart": "02:54:34",
     "formattedEnd": "02:55:44",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10474&end=10544&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10474&end=10544&autoplay=1&enablejsapi=1"
   },
   "3_36": {
     "chapter": 3,
     "verse": 36,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10544,
     "endSeconds": 10613,
     "duration": 69,
     "formattedStart": "02:55:44",
     "formattedEnd": "02:56:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10544&end=10613&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10544&end=10613&autoplay=1&enablejsapi=1"
   },
   "3_37": {
     "chapter": 3,
     "verse": 37,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10613,
     "endSeconds": 10682,
     "duration": 69,
     "formattedStart": "02:56:53",
     "formattedEnd": "02:58:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10613&end=10682&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10613&end=10682&autoplay=1&enablejsapi=1"
   },
   "3_38": {
     "chapter": 3,
     "verse": 38,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10682,
     "endSeconds": 10752,
     "duration": 70,
     "formattedStart": "02:58:02",
     "formattedEnd": "02:59:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10682&end=10752&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10682&end=10752&autoplay=1&enablejsapi=1"
   },
   "3_39": {
     "chapter": 3,
     "verse": 39,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10752,
     "endSeconds": 10821,
     "duration": 69,
     "formattedStart": "02:59:12",
     "formattedEnd": "03:00:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10752&end=10821&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10752&end=10821&autoplay=1&enablejsapi=1"
   },
   "3_40": {
     "chapter": 3,
     "verse": 40,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10821,
     "endSeconds": 10890,
     "duration": 69,
     "formattedStart": "03:00:21",
     "formattedEnd": "03:01:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10821&end=10890&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10821&end=10890&autoplay=1&enablejsapi=1"
   },
   "3_41": {
     "chapter": 3,
     "verse": 41,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10890,
     "endSeconds": 10960,
     "duration": 70,
     "formattedStart": "03:01:30",
     "formattedEnd": "03:02:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10890&end=10960&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10890&end=10960&autoplay=1&enablejsapi=1"
   },
   "3_42": {
     "chapter": 3,
     "verse": 42,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 10960,
     "endSeconds": 11029,
     "duration": 69,
     "formattedStart": "03:02:40",
     "formattedEnd": "03:03:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=10960&end=11029&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=10960&end=11029&autoplay=1&enablejsapi=1"
   },
   "3_43": {
     "chapter": 3,
     "verse": 43,
     "chapterName": "कर्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11029,
     "endSeconds": 11099,
     "duration": 70,
     "formattedStart": "03:03:49",
     "formattedEnd": "03:04:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11029&end=11099&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11029&end=11099&autoplay=1&enablejsapi=1"
   },
   "4_1": {
     "chapter": 4,
     "verse": 1,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11144,
     "endSeconds": 11215,
     "duration": 71,
     "formattedStart": "03:05:44",
     "formattedEnd": "03:06:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11144&end=11215&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11144&end=11215&autoplay=1&enablejsapi=1"
   },
   "4_2": {
     "chapter": 4,
     "verse": 2,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11215,
     "endSeconds": 11286,
     "duration": 71,
     "formattedStart": "03:06:55",
     "formattedEnd": "03:08:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11215&end=11286&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11215&end=11286&autoplay=1&enablejsapi=1"
   },
   "4_3": {
     "chapter": 4,
     "verse": 3,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11286,
     "endSeconds": 11358,
     "duration": 72,
     "formattedStart": "03:08:06",
     "formattedEnd": "03:09:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11286&end=11358&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11286&end=11358&autoplay=1&enablejsapi=1"
   },
   "4_4": {
     "chapter": 4,
     "verse": 4,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11358,
     "endSeconds": 11429,
     "duration": 71,
     "formattedStart": "03:09:18",
     "formattedEnd": "03:10:29",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11358&end=11429&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11358&end=11429&autoplay=1&enablejsapi=1"
   },
   "4_5": {
     "chapter": 4,
     "verse": 5,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11429,
     "endSeconds": 11501,
     "duration": 72,
     "formattedStart": "03:10:29",
     "formattedEnd": "03:11:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11429&end=11501&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11429&end=11501&autoplay=1&enablejsapi=1"
   },
   "4_6": {
     "chapter": 4,
     "verse": 6,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11501,
     "endSeconds": 11572,
     "duration": 71,
     "formattedStart": "03:11:41",
     "formattedEnd": "03:12:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11501&end=11572&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11501&end=11572&autoplay=1&enablejsapi=1"
   },
   "4_7": {
     "chapter": 4,
     "verse": 7,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11572,
     "endSeconds": 11643,
     "duration": 71,
     "formattedStart": "03:12:52",
     "formattedEnd": "03:14:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11572&end=11643&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11572&end=11643&autoplay=1&enablejsapi=1"
   },
   "4_8": {
     "chapter": 4,
     "verse": 8,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11643,
     "endSeconds": 11715,
     "duration": 72,
     "formattedStart": "03:14:03",
     "formattedEnd": "03:15:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11643&end=11715&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11643&end=11715&autoplay=1&enablejsapi=1"
   },
   "4_9": {
     "chapter": 4,
     "verse": 9,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11715,
     "endSeconds": 11786,
     "duration": 71,
     "formattedStart": "03:15:15",
     "formattedEnd": "03:16:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11715&end=11786&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11715&end=11786&autoplay=1&enablejsapi=1"
   },
   "4_10": {
     "chapter": 4,
     "verse": 10,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11786,
     "endSeconds": 11858,
     "duration": 72,
     "formattedStart": "03:16:26",
     "formattedEnd": "03:17:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11786&end=11858&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11786&end=11858&autoplay=1&enablejsapi=1"
   },
   "4_11": {
     "chapter": 4,
     "verse": 11,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11858,
     "endSeconds": 11929,
     "duration": 71,
     "formattedStart": "03:17:38",
     "formattedEnd": "03:18:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11858&end=11929&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11858&end=11929&autoplay=1&enablejsapi=1"
   },
   "4_12": {
     "chapter": 4,
     "verse": 12,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 11929,
     "endSeconds": 12000,
     "duration": 71,
     "formattedStart": "03:18:49",
     "formattedEnd": "03:20:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=11929&end=12000&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=11929&end=12000&autoplay=1&enablejsapi=1"
   },
   "4_13": {
     "chapter": 4,
     "verse": 13,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12000,
     "endSeconds": 12072,
     "duration": 72,
     "formattedStart": "03:20:00",
     "formattedEnd": "03:21:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12000&end=12072&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12000&end=12072&autoplay=1&enablejsapi=1"
   },
   "4_14": {
     "chapter": 4,
     "verse": 14,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12072,
     "endSeconds": 12143,
     "duration": 71,
     "formattedStart": "03:21:12",
     "formattedEnd": "03:22:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12072&end=12143&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12072&end=12143&autoplay=1&enablejsapi=1"
   },
   "4_15": {
     "chapter": 4,
     "verse": 15,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12143,
     "endSeconds": 12215,
     "duration": 72,
     "formattedStart": "03:22:23",
     "formattedEnd": "03:23:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12143&end=12215&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12143&end=12215&autoplay=1&enablejsapi=1"
   },
   "4_16": {
     "chapter": 4,
     "verse": 16,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12215,
     "endSeconds": 12286,
     "duration": 71,
     "formattedStart": "03:23:35",
     "formattedEnd": "03:24:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12215&end=12286&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12215&end=12286&autoplay=1&enablejsapi=1"
   },
   "4_17": {
     "chapter": 4,
     "verse": 17,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12286,
     "endSeconds": 12357,
     "duration": 71,
     "formattedStart": "03:24:46",
     "formattedEnd": "03:25:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12286&end=12357&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12286&end=12357&autoplay=1&enablejsapi=1"
   },
   "4_18": {
     "chapter": 4,
     "verse": 18,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12357,
     "endSeconds": 12429,
     "duration": 72,
     "formattedStart": "03:25:57",
     "formattedEnd": "03:27:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12357&end=12429&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12357&end=12429&autoplay=1&enablejsapi=1"
   },
   "4_19": {
     "chapter": 4,
     "verse": 19,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12429,
     "endSeconds": 12500,
     "duration": 71,
     "formattedStart": "03:27:09",
     "formattedEnd": "03:28:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12429&end=12500&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12429&end=12500&autoplay=1&enablejsapi=1"
   },
   "4_20": {
     "chapter": 4,
     "verse": 20,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12500,
     "endSeconds": 12572,
     "duration": 72,
     "formattedStart": "03:28:20",
     "formattedEnd": "03:29:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12500&end=12572&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12500&end=12572&autoplay=1&enablejsapi=1"
   },
   "4_21": {
     "chapter": 4,
     "verse": 21,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12572,
     "endSeconds": 12643,
     "duration": 71,
     "formattedStart": "03:29:32",
     "formattedEnd": "03:30:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12572&end=12643&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12572&end=12643&autoplay=1&enablejsapi=1"
   },
   "4_22": {
     "chapter": 4,
     "verse": 22,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12643,
     "endSeconds": 12714,
     "duration": 71,
     "formattedStart": "03:30:43",
     "formattedEnd": "03:31:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12643&end=12714&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12643&end=12714&autoplay=1&enablejsapi=1"
   },
   "4_23": {
     "chapter": 4,
     "verse": 23,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12714,
     "endSeconds": 12786,
     "duration": 72,
     "formattedStart": "03:31:54",
     "formattedEnd": "03:33:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12714&end=12786&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12714&end=12786&autoplay=1&enablejsapi=1"
   },
   "4_24": {
     "chapter": 4,
     "verse": 24,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12786,
     "endSeconds": 12857,
     "duration": 71,
     "formattedStart": "03:33:06",
     "formattedEnd": "03:34:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12786&end=12857&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12786&end=12857&autoplay=1&enablejsapi=1"
   },
   "4_25": {
     "chapter": 4,
     "verse": 25,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12857,
     "endSeconds": 12929,
     "duration": 72,
     "formattedStart": "03:34:17",
     "formattedEnd": "03:35:29",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12857&end=12929&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12857&end=12929&autoplay=1&enablejsapi=1"
   },
   "4_26": {
     "chapter": 4,
     "verse": 26,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 12929,
     "endSeconds": 13000,
     "duration": 71,
     "formattedStart": "03:35:29",
     "formattedEnd": "03:36:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=12929&end=13000&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=12929&end=13000&autoplay=1&enablejsapi=1"
   },
   "4_27": {
     "chapter": 4,
     "verse": 27,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13000,
     "endSeconds": 13071,
     "duration": 71,
     "formattedStart": "03:36:40",
     "formattedEnd": "03:37:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13000&end=13071&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13000&end=13071&autoplay=1&enablejsapi=1"
   },
   "4_28": {
     "chapter": 4,
     "verse": 28,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13071,
     "endSeconds": 13143,
     "duration": 72,
     "formattedStart": "03:37:51",
     "formattedEnd": "03:39:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13071&end=13143&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13071&end=13143&autoplay=1&enablejsapi=1"
   },
   "4_29": {
     "chapter": 4,
     "verse": 29,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13143,
     "endSeconds": 13214,
     "duration": 71,
     "formattedStart": "03:39:03",
     "formattedEnd": "03:40:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13143&end=13214&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13143&end=13214&autoplay=1&enablejsapi=1"
   },
   "4_30": {
     "chapter": 4,
     "verse": 30,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13214,
     "endSeconds": 13286,
     "duration": 72,
     "formattedStart": "03:40:14",
     "formattedEnd": "03:41:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13214&end=13286&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13214&end=13286&autoplay=1&enablejsapi=1"
   },
   "4_31": {
     "chapter": 4,
     "verse": 31,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13286,
     "endSeconds": 13357,
     "duration": 71,
     "formattedStart": "03:41:26",
     "formattedEnd": "03:42:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13286&end=13357&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13286&end=13357&autoplay=1&enablejsapi=1"
   },
   "4_32": {
     "chapter": 4,
     "verse": 32,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13357,
     "endSeconds": 13428,
     "duration": 71,
     "formattedStart": "03:42:37",
     "formattedEnd": "03:43:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13357&end=13428&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13357&end=13428&autoplay=1&enablejsapi=1"
   },
   "4_33": {
     "chapter": 4,
     "verse": 33,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13428,
     "endSeconds": 13500,
     "duration": 72,
     "formattedStart": "03:43:48",
     "formattedEnd": "03:45:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13428&end=13500&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13428&end=13500&autoplay=1&enablejsapi=1"
   },
   "4_34": {
     "chapter": 4,
     "verse": 34,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13500,
     "endSeconds": 13571,
     "duration": 71,
     "formattedStart": "03:45:00",
     "formattedEnd": "03:46:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13500&end=13571&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13500&end=13571&autoplay=1&enablejsapi=1"
   },
   "4_35": {
     "chapter": 4,
     "verse": 35,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13571,
     "endSeconds": 13643,
     "duration": 72,
     "formattedStart": "03:46:11",
     "formattedEnd": "03:47:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13571&end=13643&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13571&end=13643&autoplay=1&enablejsapi=1"
   },
   "4_36": {
     "chapter": 4,
     "verse": 36,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13643,
     "endSeconds": 13714,
     "duration": 71,
     "formattedStart": "03:47:23",
     "formattedEnd": "03:48:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13643&end=13714&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13643&end=13714&autoplay=1&enablejsapi=1"
   },
   "4_37": {
     "chapter": 4,
     "verse": 37,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13714,
     "endSeconds": 13785,
     "duration": 71,
     "formattedStart": "03:48:34",
     "formattedEnd": "03:49:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13714&end=13785&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13714&end=13785&autoplay=1&enablejsapi=1"
   },
   "4_38": {
     "chapter": 4,
     "verse": 38,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13785,
     "endSeconds": 13857,
     "duration": 72,
     "formattedStart": "03:49:45",
     "formattedEnd": "03:50:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13785&end=13857&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13785&end=13857&autoplay=1&enablejsapi=1"
   },
   "4_39": {
     "chapter": 4,
     "verse": 39,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13857,
     "endSeconds": 13928,
     "duration": 71,
     "formattedStart": "03:50:57",
     "formattedEnd": "03:52:08",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13857&end=13928&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13857&end=13928&autoplay=1&enablejsapi=1"
   },
   "4_40": {
     "chapter": 4,
     "verse": 40,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 13928,
     "endSeconds": 14000,
     "duration": 72,
     "formattedStart": "03:52:08",
     "formattedEnd": "03:53:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=13928&end=14000&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=13928&end=14000&autoplay=1&enablejsapi=1"
   },
   "4_41": {
     "chapter": 4,
     "verse": 41,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14000,
     "endSeconds": 14071,
     "duration": 71,
     "formattedStart": "03:53:20",
     "formattedEnd": "03:54:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14000&end=14071&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14000&end=14071&autoplay=1&enablejsapi=1"
   },
   "4_42": {
     "chapter": 4,
     "verse": 42,
     "chapterName": "ज्ञानकर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14071,
     "endSeconds": 14143,
     "duration": 72,
     "formattedStart": "03:54:31",
     "formattedEnd": "03:55:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14071&end=14143&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14071&end=14143&autoplay=1&enablejsapi=1"
   },
   "5_1": {
     "chapter": 5,
     "verse": 1,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14188,
     "endSeconds": 14258,
     "duration": 70,
     "formattedStart": "03:56:28",
     "formattedEnd": "03:57:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14188&end=14258&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14188&end=14258&autoplay=1&enablejsapi=1"
   },
   "5_2": {
     "chapter": 5,
     "verse": 2,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14258,
     "endSeconds": 14329,
     "duration": 71,
     "formattedStart": "03:57:38",
     "formattedEnd": "03:58:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14258&end=14329&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14258&end=14329&autoplay=1&enablejsapi=1"
   },
   "5_3": {
     "chapter": 5,
     "verse": 3,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14329,
     "endSeconds": 14399,
     "duration": 70,
     "formattedStart": "03:58:49",
     "formattedEnd": "03:59:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14329&end=14399&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14329&end=14399&autoplay=1&enablejsapi=1"
   },
   "5_4": {
     "chapter": 5,
     "verse": 4,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14399,
     "endSeconds": 14470,
     "duration": 71,
     "formattedStart": "03:59:59",
     "formattedEnd": "04:01:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14399&end=14470&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14399&end=14470&autoplay=1&enablejsapi=1"
   },
   "5_5": {
     "chapter": 5,
     "verse": 5,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14470,
     "endSeconds": 14541,
     "duration": 71,
     "formattedStart": "04:01:10",
     "formattedEnd": "04:02:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14470&end=14541&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14470&end=14541&autoplay=1&enablejsapi=1"
   },
   "5_6": {
     "chapter": 5,
     "verse": 6,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14541,
     "endSeconds": 14611,
     "duration": 70,
     "formattedStart": "04:02:21",
     "formattedEnd": "04:03:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14541&end=14611&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14541&end=14611&autoplay=1&enablejsapi=1"
   },
   "5_7": {
     "chapter": 5,
     "verse": 7,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14611,
     "endSeconds": 14682,
     "duration": 71,
     "formattedStart": "04:03:31",
     "formattedEnd": "04:04:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14611&end=14682&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14611&end=14682&autoplay=1&enablejsapi=1"
   },
   "5_8": {
     "chapter": 5,
     "verse": 8,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14682,
     "endSeconds": 14752,
     "duration": 70,
     "formattedStart": "04:04:42",
     "formattedEnd": "04:05:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14682&end=14752&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14682&end=14752&autoplay=1&enablejsapi=1"
   },
   "5_9": {
     "chapter": 5,
     "verse": 9,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14752,
     "endSeconds": 14823,
     "duration": 71,
     "formattedStart": "04:05:52",
     "formattedEnd": "04:07:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14752&end=14823&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14752&end=14823&autoplay=1&enablejsapi=1"
   },
   "5_10": {
     "chapter": 5,
     "verse": 10,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14823,
     "endSeconds": 14894,
     "duration": 71,
     "formattedStart": "04:07:03",
     "formattedEnd": "04:08:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14823&end=14894&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14823&end=14894&autoplay=1&enablejsapi=1"
   },
   "5_11": {
     "chapter": 5,
     "verse": 11,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14894,
     "endSeconds": 14964,
     "duration": 70,
     "formattedStart": "04:08:14",
     "formattedEnd": "04:09:24",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14894&end=14964&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14894&end=14964&autoplay=1&enablejsapi=1"
   },
   "5_12": {
     "chapter": 5,
     "verse": 12,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 14964,
     "endSeconds": 15035,
     "duration": 71,
     "formattedStart": "04:09:24",
     "formattedEnd": "04:10:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=14964&end=15035&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=14964&end=15035&autoplay=1&enablejsapi=1"
   },
   "5_13": {
     "chapter": 5,
     "verse": 13,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15035,
     "endSeconds": 15106,
     "duration": 71,
     "formattedStart": "04:10:35",
     "formattedEnd": "04:11:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15035&end=15106&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15035&end=15106&autoplay=1&enablejsapi=1"
   },
   "5_14": {
     "chapter": 5,
     "verse": 14,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15106,
     "endSeconds": 15176,
     "duration": 70,
     "formattedStart": "04:11:46",
     "formattedEnd": "04:12:56",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15106&end=15176&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15106&end=15176&autoplay=1&enablejsapi=1"
   },
   "5_15": {
     "chapter": 5,
     "verse": 15,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15176,
     "endSeconds": 15247,
     "duration": 71,
     "formattedStart": "04:12:56",
     "formattedEnd": "04:14:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15176&end=15247&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15176&end=15247&autoplay=1&enablejsapi=1"
   },
   "5_16": {
     "chapter": 5,
     "verse": 16,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15247,
     "endSeconds": 15317,
     "duration": 70,
     "formattedStart": "04:14:07",
     "formattedEnd": "04:15:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15247&end=15317&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15247&end=15317&autoplay=1&enablejsapi=1"
   },
   "5_17": {
     "chapter": 5,
     "verse": 17,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15317,
     "endSeconds": 15388,
     "duration": 71,
     "formattedStart": "04:15:17",
     "formattedEnd": "04:16:28",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15317&end=15388&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15317&end=15388&autoplay=1&enablejsapi=1"
   },
   "5_18": {
     "chapter": 5,
     "verse": 18,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15388,
     "endSeconds": 15459,
     "duration": 71,
     "formattedStart": "04:16:28",
     "formattedEnd": "04:17:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15388&end=15459&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15388&end=15459&autoplay=1&enablejsapi=1"
   },
   "5_19": {
     "chapter": 5,
     "verse": 19,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15459,
     "endSeconds": 15529,
     "duration": 70,
     "formattedStart": "04:17:39",
     "formattedEnd": "04:18:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15459&end=15529&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15459&end=15529&autoplay=1&enablejsapi=1"
   },
   "5_20": {
     "chapter": 5,
     "verse": 20,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15529,
     "endSeconds": 15600,
     "duration": 71,
     "formattedStart": "04:18:49",
     "formattedEnd": "04:20:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15529&end=15600&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15529&end=15600&autoplay=1&enablejsapi=1"
   },
   "5_21": {
     "chapter": 5,
     "verse": 21,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15600,
     "endSeconds": 15671,
     "duration": 71,
     "formattedStart": "04:20:00",
     "formattedEnd": "04:21:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15600&end=15671&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15600&end=15671&autoplay=1&enablejsapi=1"
   },
   "5_22": {
     "chapter": 5,
     "verse": 22,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15671,
     "endSeconds": 15741,
     "duration": 70,
     "formattedStart": "04:21:11",
     "formattedEnd": "04:22:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15671&end=15741&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15671&end=15741&autoplay=1&enablejsapi=1"
   },
   "5_23": {
     "chapter": 5,
     "verse": 23,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15741,
     "endSeconds": 15812,
     "duration": 71,
     "formattedStart": "04:22:21",
     "formattedEnd": "04:23:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15741&end=15812&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15741&end=15812&autoplay=1&enablejsapi=1"
   },
   "5_24": {
     "chapter": 5,
     "verse": 24,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15812,
     "endSeconds": 15882,
     "duration": 70,
     "formattedStart": "04:23:32",
     "formattedEnd": "04:24:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15812&end=15882&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15812&end=15882&autoplay=1&enablejsapi=1"
   },
   "5_25": {
     "chapter": 5,
     "verse": 25,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15882,
     "endSeconds": 15953,
     "duration": 71,
     "formattedStart": "04:24:42",
     "formattedEnd": "04:25:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15882&end=15953&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15882&end=15953&autoplay=1&enablejsapi=1"
   },
   "5_26": {
     "chapter": 5,
     "verse": 26,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 15953,
     "endSeconds": 16024,
     "duration": 71,
     "formattedStart": "04:25:53",
     "formattedEnd": "04:27:04",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=15953&end=16024&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=15953&end=16024&autoplay=1&enablejsapi=1"
   },
   "5_27": {
     "chapter": 5,
     "verse": 27,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16024,
     "endSeconds": 16094,
     "duration": 70,
     "formattedStart": "04:27:04",
     "formattedEnd": "04:28:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16024&end=16094&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16024&end=16094&autoplay=1&enablejsapi=1"
   },
   "5_28": {
     "chapter": 5,
     "verse": 28,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16094,
     "endSeconds": 16165,
     "duration": 71,
     "formattedStart": "04:28:14",
     "formattedEnd": "04:29:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16094&end=16165&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16094&end=16165&autoplay=1&enablejsapi=1"
   },
   "5_29": {
     "chapter": 5,
     "verse": 29,
     "chapterName": "कर्मसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16165,
     "endSeconds": 16236,
     "duration": 71,
     "formattedStart": "04:29:25",
     "formattedEnd": "04:30:36",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16165&end=16236&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16165&end=16236&autoplay=1&enablejsapi=1"
   },
   "6_1": {
     "chapter": 6,
     "verse": 1,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16281,
     "endSeconds": 16350,
     "duration": 69,
     "formattedStart": "04:31:21",
     "formattedEnd": "04:32:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16281&end=16350&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16281&end=16350&autoplay=1&enablejsapi=1"
   },
   "6_2": {
     "chapter": 6,
     "verse": 2,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16350,
     "endSeconds": 16419,
     "duration": 69,
     "formattedStart": "04:32:30",
     "formattedEnd": "04:33:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16350&end=16419&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16350&end=16419&autoplay=1&enablejsapi=1"
   },
   "6_3": {
     "chapter": 6,
     "verse": 3,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16419,
     "endSeconds": 16489,
     "duration": 70,
     "formattedStart": "04:33:39",
     "formattedEnd": "04:34:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16419&end=16489&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16419&end=16489&autoplay=1&enablejsapi=1"
   },
   "6_4": {
     "chapter": 6,
     "verse": 4,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16489,
     "endSeconds": 16558,
     "duration": 69,
     "formattedStart": "04:34:49",
     "formattedEnd": "04:35:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16489&end=16558&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16489&end=16558&autoplay=1&enablejsapi=1"
   },
   "6_5": {
     "chapter": 6,
     "verse": 5,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16558,
     "endSeconds": 16627,
     "duration": 69,
     "formattedStart": "04:35:58",
     "formattedEnd": "04:37:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16558&end=16627&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16558&end=16627&autoplay=1&enablejsapi=1"
   },
   "6_6": {
     "chapter": 6,
     "verse": 6,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16627,
     "endSeconds": 16697,
     "duration": 70,
     "formattedStart": "04:37:07",
     "formattedEnd": "04:38:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16627&end=16697&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16627&end=16697&autoplay=1&enablejsapi=1"
   },
   "6_7": {
     "chapter": 6,
     "verse": 7,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16697,
     "endSeconds": 16766,
     "duration": 69,
     "formattedStart": "04:38:17",
     "formattedEnd": "04:39:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16697&end=16766&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16697&end=16766&autoplay=1&enablejsapi=1"
   },
   "6_8": {
     "chapter": 6,
     "verse": 8,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16766,
     "endSeconds": 16835,
     "duration": 69,
     "formattedStart": "04:39:26",
     "formattedEnd": "04:40:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16766&end=16835&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16766&end=16835&autoplay=1&enablejsapi=1"
   },
   "6_9": {
     "chapter": 6,
     "verse": 9,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16835,
     "endSeconds": 16905,
     "duration": 70,
     "formattedStart": "04:40:35",
     "formattedEnd": "04:41:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16835&end=16905&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16835&end=16905&autoplay=1&enablejsapi=1"
   },
   "6_10": {
     "chapter": 6,
     "verse": 10,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16905,
     "endSeconds": 16974,
     "duration": 69,
     "formattedStart": "04:41:45",
     "formattedEnd": "04:42:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16905&end=16974&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16905&end=16974&autoplay=1&enablejsapi=1"
   },
   "6_11": {
     "chapter": 6,
     "verse": 11,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 16974,
     "endSeconds": 17043,
     "duration": 69,
     "formattedStart": "04:42:54",
     "formattedEnd": "04:44:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=16974&end=17043&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=16974&end=17043&autoplay=1&enablejsapi=1"
   },
   "6_12": {
     "chapter": 6,
     "verse": 12,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17043,
     "endSeconds": 17113,
     "duration": 70,
     "formattedStart": "04:44:03",
     "formattedEnd": "04:45:13",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17043&end=17113&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17043&end=17113&autoplay=1&enablejsapi=1"
   },
   "6_13": {
     "chapter": 6,
     "verse": 13,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17113,
     "endSeconds": 17182,
     "duration": 69,
     "formattedStart": "04:45:13",
     "formattedEnd": "04:46:22",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17113&end=17182&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17113&end=17182&autoplay=1&enablejsapi=1"
   },
   "6_14": {
     "chapter": 6,
     "verse": 14,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17182,
     "endSeconds": 17251,
     "duration": 69,
     "formattedStart": "04:46:22",
     "formattedEnd": "04:47:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17182&end=17251&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17182&end=17251&autoplay=1&enablejsapi=1"
   },
   "6_15": {
     "chapter": 6,
     "verse": 15,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17251,
     "endSeconds": 17321,
     "duration": 70,
     "formattedStart": "04:47:31",
     "formattedEnd": "04:48:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17251&end=17321&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17251&end=17321&autoplay=1&enablejsapi=1"
   },
   "6_16": {
     "chapter": 6,
     "verse": 16,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17321,
     "endSeconds": 17390,
     "duration": 69,
     "formattedStart": "04:48:41",
     "formattedEnd": "04:49:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17321&end=17390&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17321&end=17390&autoplay=1&enablejsapi=1"
   },
   "6_17": {
     "chapter": 6,
     "verse": 17,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17390,
     "endSeconds": 17459,
     "duration": 69,
     "formattedStart": "04:49:50",
     "formattedEnd": "04:50:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17390&end=17459&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17390&end=17459&autoplay=1&enablejsapi=1"
   },
   "6_18": {
     "chapter": 6,
     "verse": 18,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17459,
     "endSeconds": 17529,
     "duration": 70,
     "formattedStart": "04:50:59",
     "formattedEnd": "04:52:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17459&end=17529&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17459&end=17529&autoplay=1&enablejsapi=1"
   },
   "6_19": {
     "chapter": 6,
     "verse": 19,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17529,
     "endSeconds": 17598,
     "duration": 69,
     "formattedStart": "04:52:09",
     "formattedEnd": "04:53:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17529&end=17598&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17529&end=17598&autoplay=1&enablejsapi=1"
   },
   "6_20": {
     "chapter": 6,
     "verse": 20,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17598,
     "endSeconds": 17667,
     "duration": 69,
     "formattedStart": "04:53:18",
     "formattedEnd": "04:54:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17598&end=17667&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17598&end=17667&autoplay=1&enablejsapi=1"
   },
   "6_21": {
     "chapter": 6,
     "verse": 21,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17667,
     "endSeconds": 17737,
     "duration": 70,
     "formattedStart": "04:54:27",
     "formattedEnd": "04:55:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17667&end=17737&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17667&end=17737&autoplay=1&enablejsapi=1"
   },
   "6_22": {
     "chapter": 6,
     "verse": 22,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17737,
     "endSeconds": 17806,
     "duration": 69,
     "formattedStart": "04:55:37",
     "formattedEnd": "04:56:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17737&end=17806&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17737&end=17806&autoplay=1&enablejsapi=1"
   },
   "6_23": {
     "chapter": 6,
     "verse": 23,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17806,
     "endSeconds": 17875,
     "duration": 69,
     "formattedStart": "04:56:46",
     "formattedEnd": "04:57:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17806&end=17875&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17806&end=17875&autoplay=1&enablejsapi=1"
   },
   "6_24": {
     "chapter": 6,
     "verse": 24,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17875,
     "endSeconds": 17945,
     "duration": 70,
     "formattedStart": "04:57:55",
     "formattedEnd": "04:59:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17875&end=17945&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17875&end=17945&autoplay=1&enablejsapi=1"
   },
   "6_25": {
     "chapter": 6,
     "verse": 25,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 17945,
     "endSeconds": 18014,
     "duration": 69,
     "formattedStart": "04:59:05",
     "formattedEnd": "05:00:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=17945&end=18014&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=17945&end=18014&autoplay=1&enablejsapi=1"
   },
   "6_26": {
     "chapter": 6,
     "verse": 26,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18014,
     "endSeconds": 18083,
     "duration": 69,
     "formattedStart": "05:00:14",
     "formattedEnd": "05:01:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18014&end=18083&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18014&end=18083&autoplay=1&enablejsapi=1"
   },
   "6_27": {
     "chapter": 6,
     "verse": 27,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18083,
     "endSeconds": 18153,
     "duration": 70,
     "formattedStart": "05:01:23",
     "formattedEnd": "05:02:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18083&end=18153&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18083&end=18153&autoplay=1&enablejsapi=1"
   },
   "6_28": {
     "chapter": 6,
     "verse": 28,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18153,
     "endSeconds": 18222,
     "duration": 69,
     "formattedStart": "05:02:33",
     "formattedEnd": "05:03:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18153&end=18222&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18153&end=18222&autoplay=1&enablejsapi=1"
   },
   "6_29": {
     "chapter": 6,
     "verse": 29,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18222,
     "endSeconds": 18291,
     "duration": 69,
     "formattedStart": "05:03:42",
     "formattedEnd": "05:04:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18222&end=18291&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18222&end=18291&autoplay=1&enablejsapi=1"
   },
   "6_30": {
     "chapter": 6,
     "verse": 30,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18291,
     "endSeconds": 18361,
     "duration": 70,
     "formattedStart": "05:04:51",
     "formattedEnd": "05:06:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18291&end=18361&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18291&end=18361&autoplay=1&enablejsapi=1"
   },
   "6_31": {
     "chapter": 6,
     "verse": 31,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18361,
     "endSeconds": 18430,
     "duration": 69,
     "formattedStart": "05:06:01",
     "formattedEnd": "05:07:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18361&end=18430&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18361&end=18430&autoplay=1&enablejsapi=1"
   },
   "6_32": {
     "chapter": 6,
     "verse": 32,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18430,
     "endSeconds": 18499,
     "duration": 69,
     "formattedStart": "05:07:10",
     "formattedEnd": "05:08:19",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18430&end=18499&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18430&end=18499&autoplay=1&enablejsapi=1"
   },
   "6_33": {
     "chapter": 6,
     "verse": 33,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18499,
     "endSeconds": 18569,
     "duration": 70,
     "formattedStart": "05:08:19",
     "formattedEnd": "05:09:29",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18499&end=18569&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18499&end=18569&autoplay=1&enablejsapi=1"
   },
   "6_34": {
     "chapter": 6,
     "verse": 34,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18569,
     "endSeconds": 18638,
     "duration": 69,
     "formattedStart": "05:09:29",
     "formattedEnd": "05:10:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18569&end=18638&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18569&end=18638&autoplay=1&enablejsapi=1"
   },
   "6_35": {
     "chapter": 6,
     "verse": 35,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18638,
     "endSeconds": 18707,
     "duration": 69,
     "formattedStart": "05:10:38",
     "formattedEnd": "05:11:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18638&end=18707&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18638&end=18707&autoplay=1&enablejsapi=1"
   },
   "6_36": {
     "chapter": 6,
     "verse": 36,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18707,
     "endSeconds": 18777,
     "duration": 70,
     "formattedStart": "05:11:47",
     "formattedEnd": "05:12:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18707&end=18777&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18707&end=18777&autoplay=1&enablejsapi=1"
   },
   "6_37": {
     "chapter": 6,
     "verse": 37,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18777,
     "endSeconds": 18846,
     "duration": 69,
     "formattedStart": "05:12:57",
     "formattedEnd": "05:14:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18777&end=18846&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18777&end=18846&autoplay=1&enablejsapi=1"
   },
   "6_38": {
     "chapter": 6,
     "verse": 38,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18846,
     "endSeconds": 18915,
     "duration": 69,
     "formattedStart": "05:14:06",
     "formattedEnd": "05:15:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18846&end=18915&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18846&end=18915&autoplay=1&enablejsapi=1"
   },
   "6_39": {
     "chapter": 6,
     "verse": 39,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18915,
     "endSeconds": 18985,
     "duration": 70,
     "formattedStart": "05:15:15",
     "formattedEnd": "05:16:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18915&end=18985&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18915&end=18985&autoplay=1&enablejsapi=1"
   },
   "6_40": {
     "chapter": 6,
     "verse": 40,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 18985,
     "endSeconds": 19054,
     "duration": 69,
     "formattedStart": "05:16:25",
     "formattedEnd": "05:17:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=18985&end=19054&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=18985&end=19054&autoplay=1&enablejsapi=1"
   },
   "6_41": {
     "chapter": 6,
     "verse": 41,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19054,
     "endSeconds": 19123,
     "duration": 69,
     "formattedStart": "05:17:34",
     "formattedEnd": "05:18:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19054&end=19123&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19054&end=19123&autoplay=1&enablejsapi=1"
   },
   "6_42": {
     "chapter": 6,
     "verse": 42,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19123,
     "endSeconds": 19193,
     "duration": 70,
     "formattedStart": "05:18:43",
     "formattedEnd": "05:19:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19123&end=19193&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19123&end=19193&autoplay=1&enablejsapi=1"
   },
   "6_43": {
     "chapter": 6,
     "verse": 43,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19193,
     "endSeconds": 19262,
     "duration": 69,
     "formattedStart": "05:19:53",
     "formattedEnd": "05:21:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19193&end=19262&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19193&end=19262&autoplay=1&enablejsapi=1"
   },
   "6_44": {
     "chapter": 6,
     "verse": 44,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19262,
     "endSeconds": 19331,
     "duration": 69,
     "formattedStart": "05:21:02",
     "formattedEnd": "05:22:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19262&end=19331&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19262&end=19331&autoplay=1&enablejsapi=1"
   },
   "6_45": {
     "chapter": 6,
     "verse": 45,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19331,
     "endSeconds": 19401,
     "duration": 70,
     "formattedStart": "05:22:11",
     "formattedEnd": "05:23:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19331&end=19401&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19331&end=19401&autoplay=1&enablejsapi=1"
   },
   "6_46": {
     "chapter": 6,
     "verse": 46,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19401,
     "endSeconds": 19470,
     "duration": 69,
     "formattedStart": "05:23:21",
     "formattedEnd": "05:24:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19401&end=19470&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19401&end=19470&autoplay=1&enablejsapi=1"
   },
   "6_47": {
     "chapter": 6,
     "verse": 47,
     "chapterName": "ध्यानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19470,
     "endSeconds": 19540,
     "duration": 70,
     "formattedStart": "05:24:30",
     "formattedEnd": "05:25:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19470&end=19540&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19470&end=19540&autoplay=1&enablejsapi=1"
   },
   "7_1": {
     "chapter": 7,
     "verse": 1,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19585,
     "endSeconds": 19656,
     "duration": 71,
     "formattedStart": "05:26:25",
     "formattedEnd": "05:27:36",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19585&end=19656&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19585&end=19656&autoplay=1&enablejsapi=1"
   },
   "7_2": {
     "chapter": 7,
     "verse": 2,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19656,
     "endSeconds": 19727,
     "duration": 71,
     "formattedStart": "05:27:36",
     "formattedEnd": "05:28:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19656&end=19727&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19656&end=19727&autoplay=1&enablejsapi=1"
   },
   "7_3": {
     "chapter": 7,
     "verse": 3,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19727,
     "endSeconds": 19798,
     "duration": 71,
     "formattedStart": "05:28:47",
     "formattedEnd": "05:29:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19727&end=19798&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19727&end=19798&autoplay=1&enablejsapi=1"
   },
   "7_4": {
     "chapter": 7,
     "verse": 4,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19798,
     "endSeconds": 19869,
     "duration": 71,
     "formattedStart": "05:29:58",
     "formattedEnd": "05:31:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19798&end=19869&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19798&end=19869&autoplay=1&enablejsapi=1"
   },
   "7_5": {
     "chapter": 7,
     "verse": 5,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19869,
     "endSeconds": 19940,
     "duration": 71,
     "formattedStart": "05:31:09",
     "formattedEnd": "05:32:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19869&end=19940&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19869&end=19940&autoplay=1&enablejsapi=1"
   },
   "7_6": {
     "chapter": 7,
     "verse": 6,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 19940,
     "endSeconds": 20012,
     "duration": 72,
     "formattedStart": "05:32:20",
     "formattedEnd": "05:33:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=19940&end=20012&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=19940&end=20012&autoplay=1&enablejsapi=1"
   },
   "7_7": {
     "chapter": 7,
     "verse": 7,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20012,
     "endSeconds": 20083,
     "duration": 71,
     "formattedStart": "05:33:32",
     "formattedEnd": "05:34:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20012&end=20083&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20012&end=20083&autoplay=1&enablejsapi=1"
   },
   "7_8": {
     "chapter": 7,
     "verse": 8,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20083,
     "endSeconds": 20154,
     "duration": 71,
     "formattedStart": "05:34:43",
     "formattedEnd": "05:35:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20083&end=20154&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20083&end=20154&autoplay=1&enablejsapi=1"
   },
   "7_9": {
     "chapter": 7,
     "verse": 9,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20154,
     "endSeconds": 20225,
     "duration": 71,
     "formattedStart": "05:35:54",
     "formattedEnd": "05:37:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20154&end=20225&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20154&end=20225&autoplay=1&enablejsapi=1"
   },
   "7_10": {
     "chapter": 7,
     "verse": 10,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20225,
     "endSeconds": 20296,
     "duration": 71,
     "formattedStart": "05:37:05",
     "formattedEnd": "05:38:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20225&end=20296&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20225&end=20296&autoplay=1&enablejsapi=1"
   },
   "7_11": {
     "chapter": 7,
     "verse": 11,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20296,
     "endSeconds": 20367,
     "duration": 71,
     "formattedStart": "05:38:16",
     "formattedEnd": "05:39:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20296&end=20367&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20296&end=20367&autoplay=1&enablejsapi=1"
   },
   "7_12": {
     "chapter": 7,
     "verse": 12,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20367,
     "endSeconds": 20439,
     "duration": 72,
     "formattedStart": "05:39:27",
     "formattedEnd": "05:40:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20367&end=20439&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20367&end=20439&autoplay=1&enablejsapi=1"
   },
   "7_13": {
     "chapter": 7,
     "verse": 13,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20439,
     "endSeconds": 20510,
     "duration": 71,
     "formattedStart": "05:40:39",
     "formattedEnd": "05:41:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20439&end=20510&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20439&end=20510&autoplay=1&enablejsapi=1"
   },
   "7_14": {
     "chapter": 7,
     "verse": 14,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20510,
     "endSeconds": 20581,
     "duration": 71,
     "formattedStart": "05:41:50",
     "formattedEnd": "05:43:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20510&end=20581&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20510&end=20581&autoplay=1&enablejsapi=1"
   },
   "7_15": {
     "chapter": 7,
     "verse": 15,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20581,
     "endSeconds": 20652,
     "duration": 71,
     "formattedStart": "05:43:01",
     "formattedEnd": "05:44:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20581&end=20652&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20581&end=20652&autoplay=1&enablejsapi=1"
   },
   "7_16": {
     "chapter": 7,
     "verse": 16,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20652,
     "endSeconds": 20723,
     "duration": 71,
     "formattedStart": "05:44:12",
     "formattedEnd": "05:45:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20652&end=20723&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20652&end=20723&autoplay=1&enablejsapi=1"
   },
   "7_17": {
     "chapter": 7,
     "verse": 17,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20723,
     "endSeconds": 20794,
     "duration": 71,
     "formattedStart": "05:45:23",
     "formattedEnd": "05:46:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20723&end=20794&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20723&end=20794&autoplay=1&enablejsapi=1"
   },
   "7_18": {
     "chapter": 7,
     "verse": 18,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20794,
     "endSeconds": 20866,
     "duration": 72,
     "formattedStart": "05:46:34",
     "formattedEnd": "05:47:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20794&end=20866&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20794&end=20866&autoplay=1&enablejsapi=1"
   },
   "7_19": {
     "chapter": 7,
     "verse": 19,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20866,
     "endSeconds": 20937,
     "duration": 71,
     "formattedStart": "05:47:46",
     "formattedEnd": "05:48:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20866&end=20937&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20866&end=20937&autoplay=1&enablejsapi=1"
   },
   "7_20": {
     "chapter": 7,
     "verse": 20,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 20937,
     "endSeconds": 21008,
     "duration": 71,
     "formattedStart": "05:48:57",
     "formattedEnd": "05:50:08",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=20937&end=21008&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=20937&end=21008&autoplay=1&enablejsapi=1"
   },
   "7_21": {
     "chapter": 7,
     "verse": 21,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21008,
     "endSeconds": 21079,
     "duration": 71,
     "formattedStart": "05:50:08",
     "formattedEnd": "05:51:19",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21008&end=21079&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21008&end=21079&autoplay=1&enablejsapi=1"
   },
   "7_22": {
     "chapter": 7,
     "verse": 22,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21079,
     "endSeconds": 21150,
     "duration": 71,
     "formattedStart": "05:51:19",
     "formattedEnd": "05:52:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21079&end=21150&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21079&end=21150&autoplay=1&enablejsapi=1"
   },
   "7_23": {
     "chapter": 7,
     "verse": 23,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21150,
     "endSeconds": 21221,
     "duration": 71,
     "formattedStart": "05:52:30",
     "formattedEnd": "05:53:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21150&end=21221&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21150&end=21221&autoplay=1&enablejsapi=1"
   },
   "7_24": {
     "chapter": 7,
     "verse": 24,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21221,
     "endSeconds": 21293,
     "duration": 72,
     "formattedStart": "05:53:41",
     "formattedEnd": "05:54:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21221&end=21293&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21221&end=21293&autoplay=1&enablejsapi=1"
   },
   "7_25": {
     "chapter": 7,
     "verse": 25,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21293,
     "endSeconds": 21364,
     "duration": 71,
     "formattedStart": "05:54:53",
     "formattedEnd": "05:56:04",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21293&end=21364&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21293&end=21364&autoplay=1&enablejsapi=1"
   },
   "7_26": {
     "chapter": 7,
     "verse": 26,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21364,
     "endSeconds": 21435,
     "duration": 71,
     "formattedStart": "05:56:04",
     "formattedEnd": "05:57:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21364&end=21435&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21364&end=21435&autoplay=1&enablejsapi=1"
   },
   "7_27": {
     "chapter": 7,
     "verse": 27,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21435,
     "endSeconds": 21506,
     "duration": 71,
     "formattedStart": "05:57:15",
     "formattedEnd": "05:58:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21435&end=21506&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21435&end=21506&autoplay=1&enablejsapi=1"
   },
   "7_28": {
     "chapter": 7,
     "verse": 28,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21506,
     "endSeconds": 21577,
     "duration": 71,
     "formattedStart": "05:58:26",
     "formattedEnd": "05:59:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21506&end=21577&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21506&end=21577&autoplay=1&enablejsapi=1"
   },
   "7_29": {
     "chapter": 7,
     "verse": 29,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21577,
     "endSeconds": 21648,
     "duration": 71,
     "formattedStart": "05:59:37",
     "formattedEnd": "06:00:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21577&end=21648&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21577&end=21648&autoplay=1&enablejsapi=1"
   },
   "7_30": {
     "chapter": 7,
     "verse": 30,
     "chapterName": "ज्ञानविज्ञानयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21648,
     "endSeconds": 21720,
     "duration": 72,
     "formattedStart": "06:00:48",
     "formattedEnd": "06:02:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21648&end=21720&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21648&end=21720&autoplay=1&enablejsapi=1"
   },
   "8_1": {
     "chapter": 8,
     "verse": 1,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21765,
     "endSeconds": 21836,
     "duration": 71,
     "formattedStart": "06:02:45",
     "formattedEnd": "06:03:56",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21765&end=21836&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21765&end=21836&autoplay=1&enablejsapi=1"
   },
   "8_2": {
     "chapter": 8,
     "verse": 2,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21836,
     "endSeconds": 21908,
     "duration": 72,
     "formattedStart": "06:03:56",
     "formattedEnd": "06:05:08",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21836&end=21908&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21836&end=21908&autoplay=1&enablejsapi=1"
   },
   "8_3": {
     "chapter": 8,
     "verse": 3,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21908,
     "endSeconds": 21979,
     "duration": 71,
     "formattedStart": "06:05:08",
     "formattedEnd": "06:06:19",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21908&end=21979&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21908&end=21979&autoplay=1&enablejsapi=1"
   },
   "8_4": {
     "chapter": 8,
     "verse": 4,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 21979,
     "endSeconds": 22051,
     "duration": 72,
     "formattedStart": "06:06:19",
     "formattedEnd": "06:07:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=21979&end=22051&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=21979&end=22051&autoplay=1&enablejsapi=1"
   },
   "8_5": {
     "chapter": 8,
     "verse": 5,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22051,
     "endSeconds": 22123,
     "duration": 72,
     "formattedStart": "06:07:31",
     "formattedEnd": "06:08:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22051&end=22123&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22051&end=22123&autoplay=1&enablejsapi=1"
   },
   "8_6": {
     "chapter": 8,
     "verse": 6,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22123,
     "endSeconds": 22194,
     "duration": 71,
     "formattedStart": "06:08:43",
     "formattedEnd": "06:09:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22123&end=22194&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22123&end=22194&autoplay=1&enablejsapi=1"
   },
   "8_7": {
     "chapter": 8,
     "verse": 7,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22194,
     "endSeconds": 22266,
     "duration": 72,
     "formattedStart": "06:09:54",
     "formattedEnd": "06:11:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22194&end=22266&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22194&end=22266&autoplay=1&enablejsapi=1"
   },
   "8_8": {
     "chapter": 8,
     "verse": 8,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22266,
     "endSeconds": 22337,
     "duration": 71,
     "formattedStart": "06:11:06",
     "formattedEnd": "06:12:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22266&end=22337&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22266&end=22337&autoplay=1&enablejsapi=1"
   },
   "8_9": {
     "chapter": 8,
     "verse": 9,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22337,
     "endSeconds": 22409,
     "duration": 72,
     "formattedStart": "06:12:17",
     "formattedEnd": "06:13:29",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22337&end=22409&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22337&end=22409&autoplay=1&enablejsapi=1"
   },
   "8_10": {
     "chapter": 8,
     "verse": 10,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22409,
     "endSeconds": 22481,
     "duration": 72,
     "formattedStart": "06:13:29",
     "formattedEnd": "06:14:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22409&end=22481&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22409&end=22481&autoplay=1&enablejsapi=1"
   },
   "8_11": {
     "chapter": 8,
     "verse": 11,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22481,
     "endSeconds": 22552,
     "duration": 71,
     "formattedStart": "06:14:41",
     "formattedEnd": "06:15:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22481&end=22552&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22481&end=22552&autoplay=1&enablejsapi=1"
   },
   "8_12": {
     "chapter": 8,
     "verse": 12,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22552,
     "endSeconds": 22624,
     "duration": 72,
     "formattedStart": "06:15:52",
     "formattedEnd": "06:17:04",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22552&end=22624&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22552&end=22624&autoplay=1&enablejsapi=1"
   },
   "8_13": {
     "chapter": 8,
     "verse": 13,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22624,
     "endSeconds": 22695,
     "duration": 71,
     "formattedStart": "06:17:04",
     "formattedEnd": "06:18:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22624&end=22695&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22624&end=22695&autoplay=1&enablejsapi=1"
   },
   "8_14": {
     "chapter": 8,
     "verse": 14,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22695,
     "endSeconds": 22767,
     "duration": 72,
     "formattedStart": "06:18:15",
     "formattedEnd": "06:19:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22695&end=22767&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22695&end=22767&autoplay=1&enablejsapi=1"
   },
   "8_15": {
     "chapter": 8,
     "verse": 15,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22767,
     "endSeconds": 22839,
     "duration": 72,
     "formattedStart": "06:19:27",
     "formattedEnd": "06:20:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22767&end=22839&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22767&end=22839&autoplay=1&enablejsapi=1"
   },
   "8_16": {
     "chapter": 8,
     "verse": 16,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22839,
     "endSeconds": 22910,
     "duration": 71,
     "formattedStart": "06:20:39",
     "formattedEnd": "06:21:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22839&end=22910&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22839&end=22910&autoplay=1&enablejsapi=1"
   },
   "8_17": {
     "chapter": 8,
     "verse": 17,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22910,
     "endSeconds": 22982,
     "duration": 72,
     "formattedStart": "06:21:50",
     "formattedEnd": "06:23:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22910&end=22982&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22910&end=22982&autoplay=1&enablejsapi=1"
   },
   "8_18": {
     "chapter": 8,
     "verse": 18,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 22982,
     "endSeconds": 23053,
     "duration": 71,
     "formattedStart": "06:23:02",
     "formattedEnd": "06:24:13",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=22982&end=23053&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=22982&end=23053&autoplay=1&enablejsapi=1"
   },
   "8_19": {
     "chapter": 8,
     "verse": 19,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23053,
     "endSeconds": 23125,
     "duration": 72,
     "formattedStart": "06:24:13",
     "formattedEnd": "06:25:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23053&end=23125&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23053&end=23125&autoplay=1&enablejsapi=1"
   },
   "8_20": {
     "chapter": 8,
     "verse": 20,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23125,
     "endSeconds": 23197,
     "duration": 72,
     "formattedStart": "06:25:25",
     "formattedEnd": "06:26:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23125&end=23197&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23125&end=23197&autoplay=1&enablejsapi=1"
   },
   "8_21": {
     "chapter": 8,
     "verse": 21,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23197,
     "endSeconds": 23268,
     "duration": 71,
     "formattedStart": "06:26:37",
     "formattedEnd": "06:27:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23197&end=23268&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23197&end=23268&autoplay=1&enablejsapi=1"
   },
   "8_22": {
     "chapter": 8,
     "verse": 22,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23268,
     "endSeconds": 23340,
     "duration": 72,
     "formattedStart": "06:27:48",
     "formattedEnd": "06:29:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23268&end=23340&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23268&end=23340&autoplay=1&enablejsapi=1"
   },
   "8_23": {
     "chapter": 8,
     "verse": 23,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23340,
     "endSeconds": 23411,
     "duration": 71,
     "formattedStart": "06:29:00",
     "formattedEnd": "06:30:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23340&end=23411&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23340&end=23411&autoplay=1&enablejsapi=1"
   },
   "8_24": {
     "chapter": 8,
     "verse": 24,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23411,
     "endSeconds": 23483,
     "duration": 72,
     "formattedStart": "06:30:11",
     "formattedEnd": "06:31:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23411&end=23483&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23411&end=23483&autoplay=1&enablejsapi=1"
   },
   "8_25": {
     "chapter": 8,
     "verse": 25,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23483,
     "endSeconds": 23555,
     "duration": 72,
     "formattedStart": "06:31:23",
     "formattedEnd": "06:32:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23483&end=23555&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23483&end=23555&autoplay=1&enablejsapi=1"
   },
   "8_26": {
     "chapter": 8,
     "verse": 26,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23555,
     "endSeconds": 23626,
     "duration": 71,
     "formattedStart": "06:32:35",
     "formattedEnd": "06:33:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23555&end=23626&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23555&end=23626&autoplay=1&enablejsapi=1"
   },
   "8_27": {
     "chapter": 8,
     "verse": 27,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23626,
     "endSeconds": 23698,
     "duration": 72,
     "formattedStart": "06:33:46",
     "formattedEnd": "06:34:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23626&end=23698&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23626&end=23698&autoplay=1&enablejsapi=1"
   },
   "8_28": {
     "chapter": 8,
     "verse": 28,
     "chapterName": "अक्षरब्रह्मयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23698,
     "endSeconds": 23770,
     "duration": 72,
     "formattedStart": "06:34:58",
     "formattedEnd": "06:36:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23698&end=23770&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23698&end=23770&autoplay=1&enablejsapi=1"
   },
   "9_1": {
     "chapter": 9,
     "verse": 1,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23815,
     "endSeconds": 23890,
     "duration": 75,
     "formattedStart": "06:36:55",
     "formattedEnd": "06:38:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23815&end=23890&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23815&end=23890&autoplay=1&enablejsapi=1"
   },
   "9_2": {
     "chapter": 9,
     "verse": 2,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23890,
     "endSeconds": 23966,
     "duration": 76,
     "formattedStart": "06:38:10",
     "formattedEnd": "06:39:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23890&end=23966&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23890&end=23966&autoplay=1&enablejsapi=1"
   },
   "9_3": {
     "chapter": 9,
     "verse": 3,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 23966,
     "endSeconds": 24042,
     "duration": 76,
     "formattedStart": "06:39:26",
     "formattedEnd": "06:40:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=23966&end=24042&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=23966&end=24042&autoplay=1&enablejsapi=1"
   },
   "9_4": {
     "chapter": 9,
     "verse": 4,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24042,
     "endSeconds": 24118,
     "duration": 76,
     "formattedStart": "06:40:42",
     "formattedEnd": "06:41:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24042&end=24118&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24042&end=24118&autoplay=1&enablejsapi=1"
   },
   "9_5": {
     "chapter": 9,
     "verse": 5,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24118,
     "endSeconds": 24194,
     "duration": 76,
     "formattedStart": "06:41:58",
     "formattedEnd": "06:43:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24118&end=24194&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24118&end=24194&autoplay=1&enablejsapi=1"
   },
   "9_6": {
     "chapter": 9,
     "verse": 6,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24194,
     "endSeconds": 24270,
     "duration": 76,
     "formattedStart": "06:43:14",
     "formattedEnd": "06:44:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24194&end=24270&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24194&end=24270&autoplay=1&enablejsapi=1"
   },
   "9_7": {
     "chapter": 9,
     "verse": 7,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24270,
     "endSeconds": 24346,
     "duration": 76,
     "formattedStart": "06:44:30",
     "formattedEnd": "06:45:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24270&end=24346&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24270&end=24346&autoplay=1&enablejsapi=1"
   },
   "9_8": {
     "chapter": 9,
     "verse": 8,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24346,
     "endSeconds": 24422,
     "duration": 76,
     "formattedStart": "06:45:46",
     "formattedEnd": "06:47:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24346&end=24422&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24346&end=24422&autoplay=1&enablejsapi=1"
   },
   "9_9": {
     "chapter": 9,
     "verse": 9,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24422,
     "endSeconds": 24497,
     "duration": 75,
     "formattedStart": "06:47:02",
     "formattedEnd": "06:48:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24422&end=24497&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24422&end=24497&autoplay=1&enablejsapi=1"
   },
   "9_10": {
     "chapter": 9,
     "verse": 10,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24497,
     "endSeconds": 24573,
     "duration": 76,
     "formattedStart": "06:48:17",
     "formattedEnd": "06:49:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24497&end=24573&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24497&end=24573&autoplay=1&enablejsapi=1"
   },
   "9_11": {
     "chapter": 9,
     "verse": 11,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24573,
     "endSeconds": 24649,
     "duration": 76,
     "formattedStart": "06:49:33",
     "formattedEnd": "06:50:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24573&end=24649&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24573&end=24649&autoplay=1&enablejsapi=1"
   },
   "9_12": {
     "chapter": 9,
     "verse": 12,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24649,
     "endSeconds": 24725,
     "duration": 76,
     "formattedStart": "06:50:49",
     "formattedEnd": "06:52:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24649&end=24725&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24649&end=24725&autoplay=1&enablejsapi=1"
   },
   "9_13": {
     "chapter": 9,
     "verse": 13,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24725,
     "endSeconds": 24801,
     "duration": 76,
     "formattedStart": "06:52:05",
     "formattedEnd": "06:53:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24725&end=24801&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24725&end=24801&autoplay=1&enablejsapi=1"
   },
   "9_14": {
     "chapter": 9,
     "verse": 14,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24801,
     "endSeconds": 24877,
     "duration": 76,
     "formattedStart": "06:53:21",
     "formattedEnd": "06:54:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24801&end=24877&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24801&end=24877&autoplay=1&enablejsapi=1"
   },
   "9_15": {
     "chapter": 9,
     "verse": 15,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24877,
     "endSeconds": 24953,
     "duration": 76,
     "formattedStart": "06:54:37",
     "formattedEnd": "06:55:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24877&end=24953&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24877&end=24953&autoplay=1&enablejsapi=1"
   },
   "9_16": {
     "chapter": 9,
     "verse": 16,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 24953,
     "endSeconds": 25029,
     "duration": 76,
     "formattedStart": "06:55:53",
     "formattedEnd": "06:57:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=24953&end=25029&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=24953&end=25029&autoplay=1&enablejsapi=1"
   },
   "9_17": {
     "chapter": 9,
     "verse": 17,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25029,
     "endSeconds": 25105,
     "duration": 76,
     "formattedStart": "06:57:09",
     "formattedEnd": "06:58:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25029&end=25105&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25029&end=25105&autoplay=1&enablejsapi=1"
   },
   "9_18": {
     "chapter": 9,
     "verse": 18,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25105,
     "endSeconds": 25180,
     "duration": 75,
     "formattedStart": "06:58:25",
     "formattedEnd": "06:59:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25105&end=25180&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25105&end=25180&autoplay=1&enablejsapi=1"
   },
   "9_19": {
     "chapter": 9,
     "verse": 19,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25180,
     "endSeconds": 25256,
     "duration": 76,
     "formattedStart": "06:59:40",
     "formattedEnd": "07:00:56",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25180&end=25256&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25180&end=25256&autoplay=1&enablejsapi=1"
   },
   "9_20": {
     "chapter": 9,
     "verse": 20,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25256,
     "endSeconds": 25332,
     "duration": 76,
     "formattedStart": "07:00:56",
     "formattedEnd": "07:02:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25256&end=25332&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25256&end=25332&autoplay=1&enablejsapi=1"
   },
   "9_21": {
     "chapter": 9,
     "verse": 21,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25332,
     "endSeconds": 25408,
     "duration": 76,
     "formattedStart": "07:02:12",
     "formattedEnd": "07:03:28",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25332&end=25408&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25332&end=25408&autoplay=1&enablejsapi=1"
   },
   "9_22": {
     "chapter": 9,
     "verse": 22,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25408,
     "endSeconds": 25484,
     "duration": 76,
     "formattedStart": "07:03:28",
     "formattedEnd": "07:04:44",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25408&end=25484&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25408&end=25484&autoplay=1&enablejsapi=1"
   },
   "9_23": {
     "chapter": 9,
     "verse": 23,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25484,
     "endSeconds": 25560,
     "duration": 76,
     "formattedStart": "07:04:44",
     "formattedEnd": "07:06:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25484&end=25560&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25484&end=25560&autoplay=1&enablejsapi=1"
   },
   "9_24": {
     "chapter": 9,
     "verse": 24,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25560,
     "endSeconds": 25636,
     "duration": 76,
     "formattedStart": "07:06:00",
     "formattedEnd": "07:07:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25560&end=25636&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25560&end=25636&autoplay=1&enablejsapi=1"
   },
   "9_25": {
     "chapter": 9,
     "verse": 25,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25636,
     "endSeconds": 25712,
     "duration": 76,
     "formattedStart": "07:07:16",
     "formattedEnd": "07:08:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25636&end=25712&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25636&end=25712&autoplay=1&enablejsapi=1"
   },
   "9_26": {
     "chapter": 9,
     "verse": 26,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25712,
     "endSeconds": 25787,
     "duration": 75,
     "formattedStart": "07:08:32",
     "formattedEnd": "07:09:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25712&end=25787&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25712&end=25787&autoplay=1&enablejsapi=1"
   },
   "9_27": {
     "chapter": 9,
     "verse": 27,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25787,
     "endSeconds": 25863,
     "duration": 76,
     "formattedStart": "07:09:47",
     "formattedEnd": "07:11:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25787&end=25863&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25787&end=25863&autoplay=1&enablejsapi=1"
   },
   "9_28": {
     "chapter": 9,
     "verse": 28,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25863,
     "endSeconds": 25939,
     "duration": 76,
     "formattedStart": "07:11:03",
     "formattedEnd": "07:12:19",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25863&end=25939&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25863&end=25939&autoplay=1&enablejsapi=1"
   },
   "9_29": {
     "chapter": 9,
     "verse": 29,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 25939,
     "endSeconds": 26015,
     "duration": 76,
     "formattedStart": "07:12:19",
     "formattedEnd": "07:13:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=25939&end=26015&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=25939&end=26015&autoplay=1&enablejsapi=1"
   },
   "9_30": {
     "chapter": 9,
     "verse": 30,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26015,
     "endSeconds": 26091,
     "duration": 76,
     "formattedStart": "07:13:35",
     "formattedEnd": "07:14:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26015&end=26091&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26015&end=26091&autoplay=1&enablejsapi=1"
   },
   "9_31": {
     "chapter": 9,
     "verse": 31,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26091,
     "endSeconds": 26167,
     "duration": 76,
     "formattedStart": "07:14:51",
     "formattedEnd": "07:16:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26091&end=26167&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26091&end=26167&autoplay=1&enablejsapi=1"
   },
   "9_32": {
     "chapter": 9,
     "verse": 32,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26167,
     "endSeconds": 26243,
     "duration": 76,
     "formattedStart": "07:16:07",
     "formattedEnd": "07:17:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26167&end=26243&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26167&end=26243&autoplay=1&enablejsapi=1"
   },
   "9_33": {
     "chapter": 9,
     "verse": 33,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26243,
     "endSeconds": 26319,
     "duration": 76,
     "formattedStart": "07:17:23",
     "formattedEnd": "07:18:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26243&end=26319&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26243&end=26319&autoplay=1&enablejsapi=1"
   },
   "9_34": {
     "chapter": 9,
     "verse": 34,
     "chapterName": "राजविद्याराजगुह्ययोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26319,
     "endSeconds": 26395,
     "duration": 76,
     "formattedStart": "07:18:39",
     "formattedEnd": "07:19:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26319&end=26395&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26319&end=26395&autoplay=1&enablejsapi=1"
   },
   "10_1": {
     "chapter": 10,
     "verse": 1,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26440,
     "endSeconds": 26511,
     "duration": 71,
     "formattedStart": "07:20:40",
     "formattedEnd": "07:21:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26440&end=26511&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26440&end=26511&autoplay=1&enablejsapi=1"
   },
   "10_2": {
     "chapter": 10,
     "verse": 2,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26511,
     "endSeconds": 26583,
     "duration": 72,
     "formattedStart": "07:21:51",
     "formattedEnd": "07:23:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26511&end=26583&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26511&end=26583&autoplay=1&enablejsapi=1"
   },
   "10_3": {
     "chapter": 10,
     "verse": 3,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26583,
     "endSeconds": 26655,
     "duration": 72,
     "formattedStart": "07:23:03",
     "formattedEnd": "07:24:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26583&end=26655&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26583&end=26655&autoplay=1&enablejsapi=1"
   },
   "10_4": {
     "chapter": 10,
     "verse": 4,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26655,
     "endSeconds": 26727,
     "duration": 72,
     "formattedStart": "07:24:15",
     "formattedEnd": "07:25:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26655&end=26727&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26655&end=26727&autoplay=1&enablejsapi=1"
   },
   "10_5": {
     "chapter": 10,
     "verse": 5,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26727,
     "endSeconds": 26799,
     "duration": 72,
     "formattedStart": "07:25:27",
     "formattedEnd": "07:26:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26727&end=26799&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26727&end=26799&autoplay=1&enablejsapi=1"
   },
   "10_6": {
     "chapter": 10,
     "verse": 6,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26799,
     "endSeconds": 26871,
     "duration": 72,
     "formattedStart": "07:26:39",
     "formattedEnd": "07:27:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26799&end=26871&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26799&end=26871&autoplay=1&enablejsapi=1"
   },
   "10_7": {
     "chapter": 10,
     "verse": 7,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26871,
     "endSeconds": 26943,
     "duration": 72,
     "formattedStart": "07:27:51",
     "formattedEnd": "07:29:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26871&end=26943&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26871&end=26943&autoplay=1&enablejsapi=1"
   },
   "10_8": {
     "chapter": 10,
     "verse": 8,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 26943,
     "endSeconds": 27015,
     "duration": 72,
     "formattedStart": "07:29:03",
     "formattedEnd": "07:30:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=26943&end=27015&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=26943&end=27015&autoplay=1&enablejsapi=1"
   },
   "10_9": {
     "chapter": 10,
     "verse": 9,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27015,
     "endSeconds": 27087,
     "duration": 72,
     "formattedStart": "07:30:15",
     "formattedEnd": "07:31:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27015&end=27087&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27015&end=27087&autoplay=1&enablejsapi=1"
   },
   "10_10": {
     "chapter": 10,
     "verse": 10,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27087,
     "endSeconds": 27159,
     "duration": 72,
     "formattedStart": "07:31:27",
     "formattedEnd": "07:32:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27087&end=27159&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27087&end=27159&autoplay=1&enablejsapi=1"
   },
   "10_11": {
     "chapter": 10,
     "verse": 11,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27159,
     "endSeconds": 27231,
     "duration": 72,
     "formattedStart": "07:32:39",
     "formattedEnd": "07:33:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27159&end=27231&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27159&end=27231&autoplay=1&enablejsapi=1"
   },
   "10_12": {
     "chapter": 10,
     "verse": 12,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27231,
     "endSeconds": 27303,
     "duration": 72,
     "formattedStart": "07:33:51",
     "formattedEnd": "07:35:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27231&end=27303&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27231&end=27303&autoplay=1&enablejsapi=1"
   },
   "10_13": {
     "chapter": 10,
     "verse": 13,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27303,
     "endSeconds": 27375,
     "duration": 72,
     "formattedStart": "07:35:03",
     "formattedEnd": "07:36:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27303&end=27375&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27303&end=27375&autoplay=1&enablejsapi=1"
   },
   "10_14": {
     "chapter": 10,
     "verse": 14,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27375,
     "endSeconds": 27447,
     "duration": 72,
     "formattedStart": "07:36:15",
     "formattedEnd": "07:37:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27375&end=27447&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27375&end=27447&autoplay=1&enablejsapi=1"
   },
   "10_15": {
     "chapter": 10,
     "verse": 15,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27447,
     "endSeconds": 27519,
     "duration": 72,
     "formattedStart": "07:37:27",
     "formattedEnd": "07:38:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27447&end=27519&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27447&end=27519&autoplay=1&enablejsapi=1"
   },
   "10_16": {
     "chapter": 10,
     "verse": 16,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27519,
     "endSeconds": 27591,
     "duration": 72,
     "formattedStart": "07:38:39",
     "formattedEnd": "07:39:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27519&end=27591&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27519&end=27591&autoplay=1&enablejsapi=1"
   },
   "10_17": {
     "chapter": 10,
     "verse": 17,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27591,
     "endSeconds": 27663,
     "duration": 72,
     "formattedStart": "07:39:51",
     "formattedEnd": "07:41:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27591&end=27663&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27591&end=27663&autoplay=1&enablejsapi=1"
   },
   "10_18": {
     "chapter": 10,
     "verse": 18,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27663,
     "endSeconds": 27735,
     "duration": 72,
     "formattedStart": "07:41:03",
     "formattedEnd": "07:42:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27663&end=27735&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27663&end=27735&autoplay=1&enablejsapi=1"
   },
   "10_19": {
     "chapter": 10,
     "verse": 19,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27735,
     "endSeconds": 27807,
     "duration": 72,
     "formattedStart": "07:42:15",
     "formattedEnd": "07:43:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27735&end=27807&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27735&end=27807&autoplay=1&enablejsapi=1"
   },
   "10_20": {
     "chapter": 10,
     "verse": 20,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27807,
     "endSeconds": 27879,
     "duration": 72,
     "formattedStart": "07:43:27",
     "formattedEnd": "07:44:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27807&end=27879&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27807&end=27879&autoplay=1&enablejsapi=1"
   },
   "10_21": {
     "chapter": 10,
     "verse": 21,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27879,
     "endSeconds": 27951,
     "duration": 72,
     "formattedStart": "07:44:39",
     "formattedEnd": "07:45:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27879&end=27951&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27879&end=27951&autoplay=1&enablejsapi=1"
   },
   "10_22": {
     "chapter": 10,
     "verse": 22,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 27951,
     "endSeconds": 28022,
     "duration": 71,
     "formattedStart": "07:45:51",
     "formattedEnd": "07:47:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=27951&end=28022&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=27951&end=28022&autoplay=1&enablejsapi=1"
   },
   "10_23": {
     "chapter": 10,
     "verse": 23,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28022,
     "endSeconds": 28094,
     "duration": 72,
     "formattedStart": "07:47:02",
     "formattedEnd": "07:48:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28022&end=28094&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28022&end=28094&autoplay=1&enablejsapi=1"
   },
   "10_24": {
     "chapter": 10,
     "verse": 24,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28094,
     "endSeconds": 28166,
     "duration": 72,
     "formattedStart": "07:48:14",
     "formattedEnd": "07:49:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28094&end=28166&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28094&end=28166&autoplay=1&enablejsapi=1"
   },
   "10_25": {
     "chapter": 10,
     "verse": 25,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28166,
     "endSeconds": 28238,
     "duration": 72,
     "formattedStart": "07:49:26",
     "formattedEnd": "07:50:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28166&end=28238&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28166&end=28238&autoplay=1&enablejsapi=1"
   },
   "10_26": {
     "chapter": 10,
     "verse": 26,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28238,
     "endSeconds": 28310,
     "duration": 72,
     "formattedStart": "07:50:38",
     "formattedEnd": "07:51:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28238&end=28310&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28238&end=28310&autoplay=1&enablejsapi=1"
   },
   "10_27": {
     "chapter": 10,
     "verse": 27,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28310,
     "endSeconds": 28382,
     "duration": 72,
     "formattedStart": "07:51:50",
     "formattedEnd": "07:53:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28310&end=28382&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28310&end=28382&autoplay=1&enablejsapi=1"
   },
   "10_28": {
     "chapter": 10,
     "verse": 28,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28382,
     "endSeconds": 28454,
     "duration": 72,
     "formattedStart": "07:53:02",
     "formattedEnd": "07:54:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28382&end=28454&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28382&end=28454&autoplay=1&enablejsapi=1"
   },
   "10_29": {
     "chapter": 10,
     "verse": 29,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28454,
     "endSeconds": 28526,
     "duration": 72,
     "formattedStart": "07:54:14",
     "formattedEnd": "07:55:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28454&end=28526&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28454&end=28526&autoplay=1&enablejsapi=1"
   },
   "10_30": {
     "chapter": 10,
     "verse": 30,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28526,
     "endSeconds": 28598,
     "duration": 72,
     "formattedStart": "07:55:26",
     "formattedEnd": "07:56:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28526&end=28598&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28526&end=28598&autoplay=1&enablejsapi=1"
   },
   "10_31": {
     "chapter": 10,
     "verse": 31,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28598,
     "endSeconds": 28670,
     "duration": 72,
     "formattedStart": "07:56:38",
     "formattedEnd": "07:57:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28598&end=28670&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28598&end=28670&autoplay=1&enablejsapi=1"
   },
   "10_32": {
     "chapter": 10,
     "verse": 32,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28670,
     "endSeconds": 28742,
     "duration": 72,
     "formattedStart": "07:57:50",
     "formattedEnd": "07:59:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28670&end=28742&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28670&end=28742&autoplay=1&enablejsapi=1"
   },
   "10_33": {
     "chapter": 10,
     "verse": 33,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28742,
     "endSeconds": 28814,
     "duration": 72,
     "formattedStart": "07:59:02",
     "formattedEnd": "08:00:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28742&end=28814&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28742&end=28814&autoplay=1&enablejsapi=1"
   },
   "10_34": {
     "chapter": 10,
     "verse": 34,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28814,
     "endSeconds": 28886,
     "duration": 72,
     "formattedStart": "08:00:14",
     "formattedEnd": "08:01:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28814&end=28886&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28814&end=28886&autoplay=1&enablejsapi=1"
   },
   "10_35": {
     "chapter": 10,
     "verse": 35,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28886,
     "endSeconds": 28958,
     "duration": 72,
     "formattedStart": "08:01:26",
     "formattedEnd": "08:02:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28886&end=28958&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28886&end=28958&autoplay=1&enablejsapi=1"
   },
   "10_36": {
     "chapter": 10,
     "verse": 36,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 28958,
     "endSeconds": 29030,
     "duration": 72,
     "formattedStart": "08:02:38",
     "formattedEnd": "08:03:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=28958&end=29030&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=28958&end=29030&autoplay=1&enablejsapi=1"
   },
   "10_37": {
     "chapter": 10,
     "verse": 37,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29030,
     "endSeconds": 29102,
     "duration": 72,
     "formattedStart": "08:03:50",
     "formattedEnd": "08:05:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29030&end=29102&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29030&end=29102&autoplay=1&enablejsapi=1"
   },
   "10_38": {
     "chapter": 10,
     "verse": 38,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29102,
     "endSeconds": 29174,
     "duration": 72,
     "formattedStart": "08:05:02",
     "formattedEnd": "08:06:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29102&end=29174&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29102&end=29174&autoplay=1&enablejsapi=1"
   },
   "10_39": {
     "chapter": 10,
     "verse": 39,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29174,
     "endSeconds": 29246,
     "duration": 72,
     "formattedStart": "08:06:14",
     "formattedEnd": "08:07:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29174&end=29246&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29174&end=29246&autoplay=1&enablejsapi=1"
   },
   "10_40": {
     "chapter": 10,
     "verse": 40,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29246,
     "endSeconds": 29318,
     "duration": 72,
     "formattedStart": "08:07:26",
     "formattedEnd": "08:08:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29246&end=29318&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29246&end=29318&autoplay=1&enablejsapi=1"
   },
   "10_41": {
     "chapter": 10,
     "verse": 41,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29318,
     "endSeconds": 29390,
     "duration": 72,
     "formattedStart": "08:08:38",
     "formattedEnd": "08:09:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29318&end=29390&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29318&end=29390&autoplay=1&enablejsapi=1"
   },
   "10_42": {
     "chapter": 10,
     "verse": 42,
     "chapterName": "विभूतियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29390,
     "endSeconds": 29462,
     "duration": 72,
     "formattedStart": "08:09:50",
     "formattedEnd": "08:11:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29390&end=29462&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29390&end=29462&autoplay=1&enablejsapi=1"
   },
   "11_1": {
     "chapter": 11,
     "verse": 1,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29507,
     "endSeconds": 29579,
     "duration": 72,
     "formattedStart": "08:11:47",
     "formattedEnd": "08:12:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29507&end=29579&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29507&end=29579&autoplay=1&enablejsapi=1"
   },
   "11_2": {
     "chapter": 11,
     "verse": 2,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29579,
     "endSeconds": 29651,
     "duration": 72,
     "formattedStart": "08:12:59",
     "formattedEnd": "08:14:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29579&end=29651&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29579&end=29651&autoplay=1&enablejsapi=1"
   },
   "11_3": {
     "chapter": 11,
     "verse": 3,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29651,
     "endSeconds": 29724,
     "duration": 73,
     "formattedStart": "08:14:11",
     "formattedEnd": "08:15:24",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29651&end=29724&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29651&end=29724&autoplay=1&enablejsapi=1"
   },
   "11_4": {
     "chapter": 11,
     "verse": 4,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29724,
     "endSeconds": 29796,
     "duration": 72,
     "formattedStart": "08:15:24",
     "formattedEnd": "08:16:36",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29724&end=29796&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29724&end=29796&autoplay=1&enablejsapi=1"
   },
   "11_5": {
     "chapter": 11,
     "verse": 5,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29796,
     "endSeconds": 29869,
     "duration": 73,
     "formattedStart": "08:16:36",
     "formattedEnd": "08:17:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29796&end=29869&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29796&end=29869&autoplay=1&enablejsapi=1"
   },
   "11_6": {
     "chapter": 11,
     "verse": 6,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29869,
     "endSeconds": 29941,
     "duration": 72,
     "formattedStart": "08:17:49",
     "formattedEnd": "08:19:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29869&end=29941&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29869&end=29941&autoplay=1&enablejsapi=1"
   },
   "11_7": {
     "chapter": 11,
     "verse": 7,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 29941,
     "endSeconds": 30013,
     "duration": 72,
     "formattedStart": "08:19:01",
     "formattedEnd": "08:20:13",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=29941&end=30013&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=29941&end=30013&autoplay=1&enablejsapi=1"
   },
   "11_8": {
     "chapter": 11,
     "verse": 8,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30013,
     "endSeconds": 30086,
     "duration": 73,
     "formattedStart": "08:20:13",
     "formattedEnd": "08:21:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30013&end=30086&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30013&end=30086&autoplay=1&enablejsapi=1"
   },
   "11_9": {
     "chapter": 11,
     "verse": 9,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30086,
     "endSeconds": 30158,
     "duration": 72,
     "formattedStart": "08:21:26",
     "formattedEnd": "08:22:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30086&end=30158&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30086&end=30158&autoplay=1&enablejsapi=1"
   },
   "11_10": {
     "chapter": 11,
     "verse": 10,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30158,
     "endSeconds": 30231,
     "duration": 73,
     "formattedStart": "08:22:38",
     "formattedEnd": "08:23:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30158&end=30231&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30158&end=30231&autoplay=1&enablejsapi=1"
   },
   "11_11": {
     "chapter": 11,
     "verse": 11,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30231,
     "endSeconds": 30303,
     "duration": 72,
     "formattedStart": "08:23:51",
     "formattedEnd": "08:25:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30231&end=30303&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30231&end=30303&autoplay=1&enablejsapi=1"
   },
   "11_12": {
     "chapter": 11,
     "verse": 12,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30303,
     "endSeconds": 30376,
     "duration": 73,
     "formattedStart": "08:25:03",
     "formattedEnd": "08:26:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30303&end=30376&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30303&end=30376&autoplay=1&enablejsapi=1"
   },
   "11_13": {
     "chapter": 11,
     "verse": 13,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30376,
     "endSeconds": 30448,
     "duration": 72,
     "formattedStart": "08:26:16",
     "formattedEnd": "08:27:28",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30376&end=30448&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30376&end=30448&autoplay=1&enablejsapi=1"
   },
   "11_14": {
     "chapter": 11,
     "verse": 14,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30448,
     "endSeconds": 30520,
     "duration": 72,
     "formattedStart": "08:27:28",
     "formattedEnd": "08:28:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30448&end=30520&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30448&end=30520&autoplay=1&enablejsapi=1"
   },
   "11_15": {
     "chapter": 11,
     "verse": 15,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30520,
     "endSeconds": 30593,
     "duration": 73,
     "formattedStart": "08:28:40",
     "formattedEnd": "08:29:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30520&end=30593&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30520&end=30593&autoplay=1&enablejsapi=1"
   },
   "11_16": {
     "chapter": 11,
     "verse": 16,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30593,
     "endSeconds": 30665,
     "duration": 72,
     "formattedStart": "08:29:53",
     "formattedEnd": "08:31:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30593&end=30665&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30593&end=30665&autoplay=1&enablejsapi=1"
   },
   "11_17": {
     "chapter": 11,
     "verse": 17,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30665,
     "endSeconds": 30738,
     "duration": 73,
     "formattedStart": "08:31:05",
     "formattedEnd": "08:32:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30665&end=30738&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30665&end=30738&autoplay=1&enablejsapi=1"
   },
   "11_18": {
     "chapter": 11,
     "verse": 18,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30738,
     "endSeconds": 30810,
     "duration": 72,
     "formattedStart": "08:32:18",
     "formattedEnd": "08:33:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30738&end=30810&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30738&end=30810&autoplay=1&enablejsapi=1"
   },
   "11_19": {
     "chapter": 11,
     "verse": 19,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30810,
     "endSeconds": 30882,
     "duration": 72,
     "formattedStart": "08:33:30",
     "formattedEnd": "08:34:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30810&end=30882&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30810&end=30882&autoplay=1&enablejsapi=1"
   },
   "11_20": {
     "chapter": 11,
     "verse": 20,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30882,
     "endSeconds": 30955,
     "duration": 73,
     "formattedStart": "08:34:42",
     "formattedEnd": "08:35:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30882&end=30955&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30882&end=30955&autoplay=1&enablejsapi=1"
   },
   "11_21": {
     "chapter": 11,
     "verse": 21,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 30955,
     "endSeconds": 31027,
     "duration": 72,
     "formattedStart": "08:35:55",
     "formattedEnd": "08:37:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=30955&end=31027&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=30955&end=31027&autoplay=1&enablejsapi=1"
   },
   "11_22": {
     "chapter": 11,
     "verse": 22,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31027,
     "endSeconds": 31100,
     "duration": 73,
     "formattedStart": "08:37:07",
     "formattedEnd": "08:38:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31027&end=31100&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31027&end=31100&autoplay=1&enablejsapi=1"
   },
   "11_23": {
     "chapter": 11,
     "verse": 23,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31100,
     "endSeconds": 31172,
     "duration": 72,
     "formattedStart": "08:38:20",
     "formattedEnd": "08:39:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31100&end=31172&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31100&end=31172&autoplay=1&enablejsapi=1"
   },
   "11_24": {
     "chapter": 11,
     "verse": 24,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31172,
     "endSeconds": 31245,
     "duration": 73,
     "formattedStart": "08:39:32",
     "formattedEnd": "08:40:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31172&end=31245&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31172&end=31245&autoplay=1&enablejsapi=1"
   },
   "11_25": {
     "chapter": 11,
     "verse": 25,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31245,
     "endSeconds": 31317,
     "duration": 72,
     "formattedStart": "08:40:45",
     "formattedEnd": "08:41:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31245&end=31317&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31245&end=31317&autoplay=1&enablejsapi=1"
   },
   "11_26": {
     "chapter": 11,
     "verse": 26,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31317,
     "endSeconds": 31389,
     "duration": 72,
     "formattedStart": "08:41:57",
     "formattedEnd": "08:43:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31317&end=31389&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31317&end=31389&autoplay=1&enablejsapi=1"
   },
   "11_27": {
     "chapter": 11,
     "verse": 27,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31389,
     "endSeconds": 31462,
     "duration": 73,
     "formattedStart": "08:43:09",
     "formattedEnd": "08:44:22",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31389&end=31462&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31389&end=31462&autoplay=1&enablejsapi=1"
   },
   "11_28": {
     "chapter": 11,
     "verse": 28,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31462,
     "endSeconds": 31534,
     "duration": 72,
     "formattedStart": "08:44:22",
     "formattedEnd": "08:45:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31462&end=31534&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31462&end=31534&autoplay=1&enablejsapi=1"
   },
   "11_29": {
     "chapter": 11,
     "verse": 29,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31534,
     "endSeconds": 31607,
     "duration": 73,
     "formattedStart": "08:45:34",
     "formattedEnd": "08:46:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31534&end=31607&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31534&end=31607&autoplay=1&enablejsapi=1"
   },
   "11_30": {
     "chapter": 11,
     "verse": 30,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31607,
     "endSeconds": 31679,
     "duration": 72,
     "formattedStart": "08:46:47",
     "formattedEnd": "08:47:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31607&end=31679&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31607&end=31679&autoplay=1&enablejsapi=1"
   },
   "11_31": {
     "chapter": 11,
     "verse": 31,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31679,
     "endSeconds": 31751,
     "duration": 72,
     "formattedStart": "08:47:59",
     "formattedEnd": "08:49:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31679&end=31751&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31679&end=31751&autoplay=1&enablejsapi=1"
   },
   "11_32": {
     "chapter": 11,
     "verse": 32,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31751,
     "endSeconds": 31824,
     "duration": 73,
     "formattedStart": "08:49:11",
     "formattedEnd": "08:50:24",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31751&end=31824&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31751&end=31824&autoplay=1&enablejsapi=1"
   },
   "11_33": {
     "chapter": 11,
     "verse": 33,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31824,
     "endSeconds": 31896,
     "duration": 72,
     "formattedStart": "08:50:24",
     "formattedEnd": "08:51:36",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31824&end=31896&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31824&end=31896&autoplay=1&enablejsapi=1"
   },
   "11_34": {
     "chapter": 11,
     "verse": 34,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31896,
     "endSeconds": 31969,
     "duration": 73,
     "formattedStart": "08:51:36",
     "formattedEnd": "08:52:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31896&end=31969&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31896&end=31969&autoplay=1&enablejsapi=1"
   },
   "11_35": {
     "chapter": 11,
     "verse": 35,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 31969,
     "endSeconds": 32041,
     "duration": 72,
     "formattedStart": "08:52:49",
     "formattedEnd": "08:54:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=31969&end=32041&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=31969&end=32041&autoplay=1&enablejsapi=1"
   },
   "11_36": {
     "chapter": 11,
     "verse": 36,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32041,
     "endSeconds": 32114,
     "duration": 73,
     "formattedStart": "08:54:01",
     "formattedEnd": "08:55:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32041&end=32114&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32041&end=32114&autoplay=1&enablejsapi=1"
   },
   "11_37": {
     "chapter": 11,
     "verse": 37,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32114,
     "endSeconds": 32186,
     "duration": 72,
     "formattedStart": "08:55:14",
     "formattedEnd": "08:56:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32114&end=32186&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32114&end=32186&autoplay=1&enablejsapi=1"
   },
   "11_38": {
     "chapter": 11,
     "verse": 38,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32186,
     "endSeconds": 32258,
     "duration": 72,
     "formattedStart": "08:56:26",
     "formattedEnd": "08:57:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32186&end=32258&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32186&end=32258&autoplay=1&enablejsapi=1"
   },
   "11_39": {
     "chapter": 11,
     "verse": 39,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32258,
     "endSeconds": 32331,
     "duration": 73,
     "formattedStart": "08:57:38",
     "formattedEnd": "08:58:51",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32258&end=32331&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32258&end=32331&autoplay=1&enablejsapi=1"
   },
   "11_40": {
     "chapter": 11,
     "verse": 40,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32331,
     "endSeconds": 32403,
     "duration": 72,
     "formattedStart": "08:58:51",
     "formattedEnd": "09:00:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32331&end=32403&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32331&end=32403&autoplay=1&enablejsapi=1"
   },
   "11_41": {
     "chapter": 11,
     "verse": 41,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32403,
     "endSeconds": 32476,
     "duration": 73,
     "formattedStart": "09:00:03",
     "formattedEnd": "09:01:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32403&end=32476&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32403&end=32476&autoplay=1&enablejsapi=1"
   },
   "11_42": {
     "chapter": 11,
     "verse": 42,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32476,
     "endSeconds": 32548,
     "duration": 72,
     "formattedStart": "09:01:16",
     "formattedEnd": "09:02:28",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32476&end=32548&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32476&end=32548&autoplay=1&enablejsapi=1"
   },
   "11_43": {
     "chapter": 11,
     "verse": 43,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32548,
     "endSeconds": 32620,
     "duration": 72,
     "formattedStart": "09:02:28",
     "formattedEnd": "09:03:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32548&end=32620&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32548&end=32620&autoplay=1&enablejsapi=1"
   },
   "11_44": {
     "chapter": 11,
     "verse": 44,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32620,
     "endSeconds": 32693,
     "duration": 73,
     "formattedStart": "09:03:40",
     "formattedEnd": "09:04:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32620&end=32693&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32620&end=32693&autoplay=1&enablejsapi=1"
   },
   "11_45": {
     "chapter": 11,
     "verse": 45,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32693,
     "endSeconds": 32765,
     "duration": 72,
     "formattedStart": "09:04:53",
     "formattedEnd": "09:06:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32693&end=32765&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32693&end=32765&autoplay=1&enablejsapi=1"
   },
   "11_46": {
     "chapter": 11,
     "verse": 46,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32765,
     "endSeconds": 32838,
     "duration": 73,
     "formattedStart": "09:06:05",
     "formattedEnd": "09:07:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32765&end=32838&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32765&end=32838&autoplay=1&enablejsapi=1"
   },
   "11_47": {
     "chapter": 11,
     "verse": 47,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32838,
     "endSeconds": 32910,
     "duration": 72,
     "formattedStart": "09:07:18",
     "formattedEnd": "09:08:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32838&end=32910&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32838&end=32910&autoplay=1&enablejsapi=1"
   },
   "11_48": {
     "chapter": 11,
     "verse": 48,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32910,
     "endSeconds": 32983,
     "duration": 73,
     "formattedStart": "09:08:30",
     "formattedEnd": "09:09:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32910&end=32983&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32910&end=32983&autoplay=1&enablejsapi=1"
   },
   "11_49": {
     "chapter": 11,
     "verse": 49,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 32983,
     "endSeconds": 33055,
     "duration": 72,
     "formattedStart": "09:09:43",
     "formattedEnd": "09:10:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=32983&end=33055&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=32983&end=33055&autoplay=1&enablejsapi=1"
   },
   "11_50": {
     "chapter": 11,
     "verse": 50,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33055,
     "endSeconds": 33127,
     "duration": 72,
     "formattedStart": "09:10:55",
     "formattedEnd": "09:12:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33055&end=33127&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33055&end=33127&autoplay=1&enablejsapi=1"
   },
   "11_51": {
     "chapter": 11,
     "verse": 51,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33127,
     "endSeconds": 33200,
     "duration": 73,
     "formattedStart": "09:12:07",
     "formattedEnd": "09:13:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33127&end=33200&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33127&end=33200&autoplay=1&enablejsapi=1"
   },
   "11_52": {
     "chapter": 11,
     "verse": 52,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33200,
     "endSeconds": 33272,
     "duration": 72,
     "formattedStart": "09:13:20",
     "formattedEnd": "09:14:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33200&end=33272&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33200&end=33272&autoplay=1&enablejsapi=1"
   },
   "11_53": {
     "chapter": 11,
     "verse": 53,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33272,
     "endSeconds": 33345,
     "duration": 73,
     "formattedStart": "09:14:32",
     "formattedEnd": "09:15:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33272&end=33345&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33272&end=33345&autoplay=1&enablejsapi=1"
   },
   "11_54": {
     "chapter": 11,
     "verse": 54,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33345,
     "endSeconds": 33417,
     "duration": 72,
     "formattedStart": "09:15:45",
     "formattedEnd": "09:16:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33345&end=33417&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33345&end=33417&autoplay=1&enablejsapi=1"
   },
   "11_55": {
     "chapter": 11,
     "verse": 55,
     "chapterName": "विश्वरूपदर्शनयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33417,
     "endSeconds": 33490,
     "duration": 73,
     "formattedStart": "09:16:57",
     "formattedEnd": "09:18:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33417&end=33490&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33417&end=33490&autoplay=1&enablejsapi=1"
   },
   "12_1": {
     "chapter": 12,
     "verse": 1,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33535,
     "endSeconds": 33603,
     "duration": 68,
     "formattedStart": "09:18:55",
     "formattedEnd": "09:20:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33535&end=33603&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33535&end=33603&autoplay=1&enablejsapi=1"
   },
   "12_2": {
     "chapter": 12,
     "verse": 2,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33603,
     "endSeconds": 33672,
     "duration": 69,
     "formattedStart": "09:20:03",
     "formattedEnd": "09:21:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33603&end=33672&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33603&end=33672&autoplay=1&enablejsapi=1"
   },
   "12_3": {
     "chapter": 12,
     "verse": 3,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33672,
     "endSeconds": 33741,
     "duration": 69,
     "formattedStart": "09:21:12",
     "formattedEnd": "09:22:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33672&end=33741&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33672&end=33741&autoplay=1&enablejsapi=1"
   },
   "12_4": {
     "chapter": 12,
     "verse": 4,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33741,
     "endSeconds": 33810,
     "duration": 69,
     "formattedStart": "09:22:21",
     "formattedEnd": "09:23:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33741&end=33810&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33741&end=33810&autoplay=1&enablejsapi=1"
   },
   "12_5": {
     "chapter": 12,
     "verse": 5,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33810,
     "endSeconds": 33879,
     "duration": 69,
     "formattedStart": "09:23:30",
     "formattedEnd": "09:24:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33810&end=33879&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33810&end=33879&autoplay=1&enablejsapi=1"
   },
   "12_6": {
     "chapter": 12,
     "verse": 6,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33879,
     "endSeconds": 33948,
     "duration": 69,
     "formattedStart": "09:24:39",
     "formattedEnd": "09:25:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33879&end=33948&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33879&end=33948&autoplay=1&enablejsapi=1"
   },
   "12_7": {
     "chapter": 12,
     "verse": 7,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 33948,
     "endSeconds": 34017,
     "duration": 69,
     "formattedStart": "09:25:48",
     "formattedEnd": "09:26:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=33948&end=34017&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=33948&end=34017&autoplay=1&enablejsapi=1"
   },
   "12_8": {
     "chapter": 12,
     "verse": 8,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34017,
     "endSeconds": 34086,
     "duration": 69,
     "formattedStart": "09:26:57",
     "formattedEnd": "09:28:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34017&end=34086&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34017&end=34086&autoplay=1&enablejsapi=1"
   },
   "12_9": {
     "chapter": 12,
     "verse": 9,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34086,
     "endSeconds": 34155,
     "duration": 69,
     "formattedStart": "09:28:06",
     "formattedEnd": "09:29:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34086&end=34155&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34086&end=34155&autoplay=1&enablejsapi=1"
   },
   "12_10": {
     "chapter": 12,
     "verse": 10,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34155,
     "endSeconds": 34224,
     "duration": 69,
     "formattedStart": "09:29:15",
     "formattedEnd": "09:30:24",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34155&end=34224&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34155&end=34224&autoplay=1&enablejsapi=1"
   },
   "12_11": {
     "chapter": 12,
     "verse": 11,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34224,
     "endSeconds": 34292,
     "duration": 68,
     "formattedStart": "09:30:24",
     "formattedEnd": "09:31:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34224&end=34292&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34224&end=34292&autoplay=1&enablejsapi=1"
   },
   "12_12": {
     "chapter": 12,
     "verse": 12,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34292,
     "endSeconds": 34361,
     "duration": 69,
     "formattedStart": "09:31:32",
     "formattedEnd": "09:32:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34292&end=34361&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34292&end=34361&autoplay=1&enablejsapi=1"
   },
   "12_13": {
     "chapter": 12,
     "verse": 13,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34361,
     "endSeconds": 34430,
     "duration": 69,
     "formattedStart": "09:32:41",
     "formattedEnd": "09:33:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34361&end=34430&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34361&end=34430&autoplay=1&enablejsapi=1"
   },
   "12_14": {
     "chapter": 12,
     "verse": 14,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34430,
     "endSeconds": 34499,
     "duration": 69,
     "formattedStart": "09:33:50",
     "formattedEnd": "09:34:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34430&end=34499&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34430&end=34499&autoplay=1&enablejsapi=1"
   },
   "12_15": {
     "chapter": 12,
     "verse": 15,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34499,
     "endSeconds": 34568,
     "duration": 69,
     "formattedStart": "09:34:59",
     "formattedEnd": "09:36:08",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34499&end=34568&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34499&end=34568&autoplay=1&enablejsapi=1"
   },
   "12_16": {
     "chapter": 12,
     "verse": 16,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34568,
     "endSeconds": 34637,
     "duration": 69,
     "formattedStart": "09:36:08",
     "formattedEnd": "09:37:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34568&end=34637&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34568&end=34637&autoplay=1&enablejsapi=1"
   },
   "12_17": {
     "chapter": 12,
     "verse": 17,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34637,
     "endSeconds": 34706,
     "duration": 69,
     "formattedStart": "09:37:17",
     "formattedEnd": "09:38:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34637&end=34706&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34637&end=34706&autoplay=1&enablejsapi=1"
   },
   "12_18": {
     "chapter": 12,
     "verse": 18,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34706,
     "endSeconds": 34775,
     "duration": 69,
     "formattedStart": "09:38:26",
     "formattedEnd": "09:39:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34706&end=34775&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34706&end=34775&autoplay=1&enablejsapi=1"
   },
   "12_19": {
     "chapter": 12,
     "verse": 19,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34775,
     "endSeconds": 34844,
     "duration": 69,
     "formattedStart": "09:39:35",
     "formattedEnd": "09:40:44",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34775&end=34844&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34775&end=34844&autoplay=1&enablejsapi=1"
   },
   "12_20": {
     "chapter": 12,
     "verse": 20,
     "chapterName": "भक्तियोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34844,
     "endSeconds": 34913,
     "duration": 69,
     "formattedStart": "09:40:44",
     "formattedEnd": "09:41:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34844&end=34913&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34844&end=34913&autoplay=1&enablejsapi=1"
   },
   "13_1": {
     "chapter": 13,
     "verse": 1,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 34958,
     "endSeconds": 35035,
     "duration": 77,
     "formattedStart": "09:42:38",
     "formattedEnd": "09:43:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=34958&end=35035&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=34958&end=35035&autoplay=1&enablejsapi=1"
   },
   "13_2": {
     "chapter": 13,
     "verse": 2,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35035,
     "endSeconds": 35113,
     "duration": 78,
     "formattedStart": "09:43:55",
     "formattedEnd": "09:45:13",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35035&end=35113&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35035&end=35113&autoplay=1&enablejsapi=1"
   },
   "13_3": {
     "chapter": 13,
     "verse": 3,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35113,
     "endSeconds": 35190,
     "duration": 77,
     "formattedStart": "09:45:13",
     "formattedEnd": "09:46:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35113&end=35190&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35113&end=35190&autoplay=1&enablejsapi=1"
   },
   "13_4": {
     "chapter": 13,
     "verse": 4,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35190,
     "endSeconds": 35268,
     "duration": 78,
     "formattedStart": "09:46:30",
     "formattedEnd": "09:47:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35190&end=35268&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35190&end=35268&autoplay=1&enablejsapi=1"
   },
   "13_5": {
     "chapter": 13,
     "verse": 5,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35268,
     "endSeconds": 35345,
     "duration": 77,
     "formattedStart": "09:47:48",
     "formattedEnd": "09:49:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35268&end=35345&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35268&end=35345&autoplay=1&enablejsapi=1"
   },
   "13_6": {
     "chapter": 13,
     "verse": 6,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35345,
     "endSeconds": 35423,
     "duration": 78,
     "formattedStart": "09:49:05",
     "formattedEnd": "09:50:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35345&end=35423&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35345&end=35423&autoplay=1&enablejsapi=1"
   },
   "13_7": {
     "chapter": 13,
     "verse": 7,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35423,
     "endSeconds": 35500,
     "duration": 77,
     "formattedStart": "09:50:23",
     "formattedEnd": "09:51:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35423&end=35500&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35423&end=35500&autoplay=1&enablejsapi=1"
   },
   "13_8": {
     "chapter": 13,
     "verse": 8,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35500,
     "endSeconds": 35578,
     "duration": 78,
     "formattedStart": "09:51:40",
     "formattedEnd": "09:52:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35500&end=35578&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35500&end=35578&autoplay=1&enablejsapi=1"
   },
   "13_9": {
     "chapter": 13,
     "verse": 9,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35578,
     "endSeconds": 35655,
     "duration": 77,
     "formattedStart": "09:52:58",
     "formattedEnd": "09:54:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35578&end=35655&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35578&end=35655&autoplay=1&enablejsapi=1"
   },
   "13_10": {
     "chapter": 13,
     "verse": 10,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35655,
     "endSeconds": 35733,
     "duration": 78,
     "formattedStart": "09:54:15",
     "formattedEnd": "09:55:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35655&end=35733&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35655&end=35733&autoplay=1&enablejsapi=1"
   },
   "13_11": {
     "chapter": 13,
     "verse": 11,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35733,
     "endSeconds": 35810,
     "duration": 77,
     "formattedStart": "09:55:33",
     "formattedEnd": "09:56:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35733&end=35810&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35733&end=35810&autoplay=1&enablejsapi=1"
   },
   "13_12": {
     "chapter": 13,
     "verse": 12,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35810,
     "endSeconds": 35888,
     "duration": 78,
     "formattedStart": "09:56:50",
     "formattedEnd": "09:58:08",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35810&end=35888&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35810&end=35888&autoplay=1&enablejsapi=1"
   },
   "13_13": {
     "chapter": 13,
     "verse": 13,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35888,
     "endSeconds": 35965,
     "duration": 77,
     "formattedStart": "09:58:08",
     "formattedEnd": "09:59:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35888&end=35965&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35888&end=35965&autoplay=1&enablejsapi=1"
   },
   "13_14": {
     "chapter": 13,
     "verse": 14,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 35965,
     "endSeconds": 36043,
     "duration": 78,
     "formattedStart": "09:59:25",
     "formattedEnd": "10:00:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=35965&end=36043&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=35965&end=36043&autoplay=1&enablejsapi=1"
   },
   "13_15": {
     "chapter": 13,
     "verse": 15,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36043,
     "endSeconds": 36120,
     "duration": 77,
     "formattedStart": "10:00:43",
     "formattedEnd": "10:02:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36043&end=36120&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36043&end=36120&autoplay=1&enablejsapi=1"
   },
   "13_16": {
     "chapter": 13,
     "verse": 16,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36120,
     "endSeconds": 36198,
     "duration": 78,
     "formattedStart": "10:02:00",
     "formattedEnd": "10:03:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36120&end=36198&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36120&end=36198&autoplay=1&enablejsapi=1"
   },
   "13_17": {
     "chapter": 13,
     "verse": 17,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36198,
     "endSeconds": 36276,
     "duration": 78,
     "formattedStart": "10:03:18",
     "formattedEnd": "10:04:36",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36198&end=36276&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36198&end=36276&autoplay=1&enablejsapi=1"
   },
   "13_18": {
     "chapter": 13,
     "verse": 18,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36276,
     "endSeconds": 36353,
     "duration": 77,
     "formattedStart": "10:04:36",
     "formattedEnd": "10:05:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36276&end=36353&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36276&end=36353&autoplay=1&enablejsapi=1"
   },
   "13_19": {
     "chapter": 13,
     "verse": 19,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36353,
     "endSeconds": 36431,
     "duration": 78,
     "formattedStart": "10:05:53",
     "formattedEnd": "10:07:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36353&end=36431&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36353&end=36431&autoplay=1&enablejsapi=1"
   },
   "13_20": {
     "chapter": 13,
     "verse": 20,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36431,
     "endSeconds": 36508,
     "duration": 77,
     "formattedStart": "10:07:11",
     "formattedEnd": "10:08:28",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36431&end=36508&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36431&end=36508&autoplay=1&enablejsapi=1"
   },
   "13_21": {
     "chapter": 13,
     "verse": 21,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36508,
     "endSeconds": 36586,
     "duration": 78,
     "formattedStart": "10:08:28",
     "formattedEnd": "10:09:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36508&end=36586&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36508&end=36586&autoplay=1&enablejsapi=1"
   },
   "13_22": {
     "chapter": 13,
     "verse": 22,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36586,
     "endSeconds": 36663,
     "duration": 77,
     "formattedStart": "10:09:46",
     "formattedEnd": "10:11:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36586&end=36663&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36586&end=36663&autoplay=1&enablejsapi=1"
   },
   "13_23": {
     "chapter": 13,
     "verse": 23,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36663,
     "endSeconds": 36741,
     "duration": 78,
     "formattedStart": "10:11:03",
     "formattedEnd": "10:12:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36663&end=36741&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36663&end=36741&autoplay=1&enablejsapi=1"
   },
   "13_24": {
     "chapter": 13,
     "verse": 24,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36741,
     "endSeconds": 36818,
     "duration": 77,
     "formattedStart": "10:12:21",
     "formattedEnd": "10:13:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36741&end=36818&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36741&end=36818&autoplay=1&enablejsapi=1"
   },
   "13_25": {
     "chapter": 13,
     "verse": 25,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36818,
     "endSeconds": 36896,
     "duration": 78,
     "formattedStart": "10:13:38",
     "formattedEnd": "10:14:56",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36818&end=36896&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36818&end=36896&autoplay=1&enablejsapi=1"
   },
   "13_26": {
     "chapter": 13,
     "verse": 26,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36896,
     "endSeconds": 36973,
     "duration": 77,
     "formattedStart": "10:14:56",
     "formattedEnd": "10:16:13",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36896&end=36973&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36896&end=36973&autoplay=1&enablejsapi=1"
   },
   "13_27": {
     "chapter": 13,
     "verse": 27,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 36973,
     "endSeconds": 37051,
     "duration": 78,
     "formattedStart": "10:16:13",
     "formattedEnd": "10:17:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=36973&end=37051&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=36973&end=37051&autoplay=1&enablejsapi=1"
   },
   "13_28": {
     "chapter": 13,
     "verse": 28,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37051,
     "endSeconds": 37128,
     "duration": 77,
     "formattedStart": "10:17:31",
     "formattedEnd": "10:18:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37051&end=37128&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37051&end=37128&autoplay=1&enablejsapi=1"
   },
   "13_29": {
     "chapter": 13,
     "verse": 29,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37128,
     "endSeconds": 37206,
     "duration": 78,
     "formattedStart": "10:18:48",
     "formattedEnd": "10:20:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37128&end=37206&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37128&end=37206&autoplay=1&enablejsapi=1"
   },
   "13_30": {
     "chapter": 13,
     "verse": 30,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37206,
     "endSeconds": 37283,
     "duration": 77,
     "formattedStart": "10:20:06",
     "formattedEnd": "10:21:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37206&end=37283&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37206&end=37283&autoplay=1&enablejsapi=1"
   },
   "13_31": {
     "chapter": 13,
     "verse": 31,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37283,
     "endSeconds": 37361,
     "duration": 78,
     "formattedStart": "10:21:23",
     "formattedEnd": "10:22:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37283&end=37361&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37283&end=37361&autoplay=1&enablejsapi=1"
   },
   "13_32": {
     "chapter": 13,
     "verse": 32,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37361,
     "endSeconds": 37438,
     "duration": 77,
     "formattedStart": "10:22:41",
     "formattedEnd": "10:23:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37361&end=37438&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37361&end=37438&autoplay=1&enablejsapi=1"
   },
   "13_33": {
     "chapter": 13,
     "verse": 33,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37438,
     "endSeconds": 37516,
     "duration": 78,
     "formattedStart": "10:23:58",
     "formattedEnd": "10:25:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37438&end=37516&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37438&end=37516&autoplay=1&enablejsapi=1"
   },
   "13_34": {
     "chapter": 13,
     "verse": 34,
     "chapterName": "क्षेत्रक्षेत्रज्ञविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37516,
     "endSeconds": 37594,
     "duration": 78,
     "formattedStart": "10:25:16",
     "formattedEnd": "10:26:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37516&end=37594&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37516&end=37594&autoplay=1&enablejsapi=1"
   },
   "14_1": {
     "chapter": 14,
     "verse": 1,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37639,
     "endSeconds": 37713,
     "duration": 74,
     "formattedStart": "10:27:19",
     "formattedEnd": "10:28:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37639&end=37713&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37639&end=37713&autoplay=1&enablejsapi=1"
   },
   "14_2": {
     "chapter": 14,
     "verse": 2,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37713,
     "endSeconds": 37788,
     "duration": 75,
     "formattedStart": "10:28:33",
     "formattedEnd": "10:29:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37713&end=37788&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37713&end=37788&autoplay=1&enablejsapi=1"
   },
   "14_3": {
     "chapter": 14,
     "verse": 3,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37788,
     "endSeconds": 37863,
     "duration": 75,
     "formattedStart": "10:29:48",
     "formattedEnd": "10:31:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37788&end=37863&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37788&end=37863&autoplay=1&enablejsapi=1"
   },
   "14_4": {
     "chapter": 14,
     "verse": 4,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37863,
     "endSeconds": 37938,
     "duration": 75,
     "formattedStart": "10:31:03",
     "formattedEnd": "10:32:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37863&end=37938&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37863&end=37938&autoplay=1&enablejsapi=1"
   },
   "14_5": {
     "chapter": 14,
     "verse": 5,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 37938,
     "endSeconds": 38013,
     "duration": 75,
     "formattedStart": "10:32:18",
     "formattedEnd": "10:33:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=37938&end=38013&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=37938&end=38013&autoplay=1&enablejsapi=1"
   },
   "14_6": {
     "chapter": 14,
     "verse": 6,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38013,
     "endSeconds": 38087,
     "duration": 74,
     "formattedStart": "10:33:33",
     "formattedEnd": "10:34:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38013&end=38087&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38013&end=38087&autoplay=1&enablejsapi=1"
   },
   "14_7": {
     "chapter": 14,
     "verse": 7,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38087,
     "endSeconds": 38162,
     "duration": 75,
     "formattedStart": "10:34:47",
     "formattedEnd": "10:36:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38087&end=38162&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38087&end=38162&autoplay=1&enablejsapi=1"
   },
   "14_8": {
     "chapter": 14,
     "verse": 8,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38162,
     "endSeconds": 38237,
     "duration": 75,
     "formattedStart": "10:36:02",
     "formattedEnd": "10:37:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38162&end=38237&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38162&end=38237&autoplay=1&enablejsapi=1"
   },
   "14_9": {
     "chapter": 14,
     "verse": 9,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38237,
     "endSeconds": 38312,
     "duration": 75,
     "formattedStart": "10:37:17",
     "formattedEnd": "10:38:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38237&end=38312&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38237&end=38312&autoplay=1&enablejsapi=1"
   },
   "14_10": {
     "chapter": 14,
     "verse": 10,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38312,
     "endSeconds": 38387,
     "duration": 75,
     "formattedStart": "10:38:32",
     "formattedEnd": "10:39:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38312&end=38387&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38312&end=38387&autoplay=1&enablejsapi=1"
   },
   "14_11": {
     "chapter": 14,
     "verse": 11,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38387,
     "endSeconds": 38461,
     "duration": 74,
     "formattedStart": "10:39:47",
     "formattedEnd": "10:41:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38387&end=38461&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38387&end=38461&autoplay=1&enablejsapi=1"
   },
   "14_12": {
     "chapter": 14,
     "verse": 12,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38461,
     "endSeconds": 38536,
     "duration": 75,
     "formattedStart": "10:41:01",
     "formattedEnd": "10:42:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38461&end=38536&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38461&end=38536&autoplay=1&enablejsapi=1"
   },
   "14_13": {
     "chapter": 14,
     "verse": 13,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38536,
     "endSeconds": 38611,
     "duration": 75,
     "formattedStart": "10:42:16",
     "formattedEnd": "10:43:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38536&end=38611&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38536&end=38611&autoplay=1&enablejsapi=1"
   },
   "14_14": {
     "chapter": 14,
     "verse": 14,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38611,
     "endSeconds": 38686,
     "duration": 75,
     "formattedStart": "10:43:31",
     "formattedEnd": "10:44:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38611&end=38686&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38611&end=38686&autoplay=1&enablejsapi=1"
   },
   "14_15": {
     "chapter": 14,
     "verse": 15,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38686,
     "endSeconds": 38761,
     "duration": 75,
     "formattedStart": "10:44:46",
     "formattedEnd": "10:46:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38686&end=38761&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38686&end=38761&autoplay=1&enablejsapi=1"
   },
   "14_16": {
     "chapter": 14,
     "verse": 16,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38761,
     "endSeconds": 38836,
     "duration": 75,
     "formattedStart": "10:46:01",
     "formattedEnd": "10:47:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38761&end=38836&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38761&end=38836&autoplay=1&enablejsapi=1"
   },
   "14_17": {
     "chapter": 14,
     "verse": 17,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38836,
     "endSeconds": 38910,
     "duration": 74,
     "formattedStart": "10:47:16",
     "formattedEnd": "10:48:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38836&end=38910&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38836&end=38910&autoplay=1&enablejsapi=1"
   },
   "14_18": {
     "chapter": 14,
     "verse": 18,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38910,
     "endSeconds": 38985,
     "duration": 75,
     "formattedStart": "10:48:30",
     "formattedEnd": "10:49:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38910&end=38985&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38910&end=38985&autoplay=1&enablejsapi=1"
   },
   "14_19": {
     "chapter": 14,
     "verse": 19,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 38985,
     "endSeconds": 39060,
     "duration": 75,
     "formattedStart": "10:49:45",
     "formattedEnd": "10:51:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=38985&end=39060&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=38985&end=39060&autoplay=1&enablejsapi=1"
   },
   "14_20": {
     "chapter": 14,
     "verse": 20,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39060,
     "endSeconds": 39135,
     "duration": 75,
     "formattedStart": "10:51:00",
     "formattedEnd": "10:52:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39060&end=39135&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39060&end=39135&autoplay=1&enablejsapi=1"
   },
   "14_21": {
     "chapter": 14,
     "verse": 21,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39135,
     "endSeconds": 39210,
     "duration": 75,
     "formattedStart": "10:52:15",
     "formattedEnd": "10:53:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39135&end=39210&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39135&end=39210&autoplay=1&enablejsapi=1"
   },
   "14_22": {
     "chapter": 14,
     "verse": 22,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39210,
     "endSeconds": 39284,
     "duration": 74,
     "formattedStart": "10:53:30",
     "formattedEnd": "10:54:44",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39210&end=39284&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39210&end=39284&autoplay=1&enablejsapi=1"
   },
   "14_23": {
     "chapter": 14,
     "verse": 23,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39284,
     "endSeconds": 39359,
     "duration": 75,
     "formattedStart": "10:54:44",
     "formattedEnd": "10:55:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39284&end=39359&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39284&end=39359&autoplay=1&enablejsapi=1"
   },
   "14_24": {
     "chapter": 14,
     "verse": 24,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39359,
     "endSeconds": 39434,
     "duration": 75,
     "formattedStart": "10:55:59",
     "formattedEnd": "10:57:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39359&end=39434&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39359&end=39434&autoplay=1&enablejsapi=1"
   },
   "14_25": {
     "chapter": 14,
     "verse": 25,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39434,
     "endSeconds": 39509,
     "duration": 75,
     "formattedStart": "10:57:14",
     "formattedEnd": "10:58:29",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39434&end=39509&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39434&end=39509&autoplay=1&enablejsapi=1"
   },
   "14_26": {
     "chapter": 14,
     "verse": 26,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39509,
     "endSeconds": 39584,
     "duration": 75,
     "formattedStart": "10:58:29",
     "formattedEnd": "10:59:44",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39509&end=39584&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39509&end=39584&autoplay=1&enablejsapi=1"
   },
   "14_27": {
     "chapter": 14,
     "verse": 27,
     "chapterName": "गुणत्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39584,
     "endSeconds": 39659,
     "duration": 75,
     "formattedStart": "10:59:44",
     "formattedEnd": "11:00:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39584&end=39659&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39584&end=39659&autoplay=1&enablejsapi=1"
   },
   "15_1": {
     "chapter": 15,
     "verse": 1,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39704,
     "endSeconds": 39785,
     "duration": 81,
     "formattedStart": "11:01:44",
     "formattedEnd": "11:03:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39704&end=39785&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39704&end=39785&autoplay=1&enablejsapi=1"
   },
   "15_2": {
     "chapter": 15,
     "verse": 2,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39785,
     "endSeconds": 39867,
     "duration": 82,
     "formattedStart": "11:03:05",
     "formattedEnd": "11:04:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39785&end=39867&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39785&end=39867&autoplay=1&enablejsapi=1"
   },
   "15_3": {
     "chapter": 15,
     "verse": 3,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39867,
     "endSeconds": 39948,
     "duration": 81,
     "formattedStart": "11:04:27",
     "formattedEnd": "11:05:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39867&end=39948&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39867&end=39948&autoplay=1&enablejsapi=1"
   },
   "15_4": {
     "chapter": 15,
     "verse": 4,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 39948,
     "endSeconds": 40030,
     "duration": 82,
     "formattedStart": "11:05:48",
     "formattedEnd": "11:07:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=39948&end=40030&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=39948&end=40030&autoplay=1&enablejsapi=1"
   },
   "15_5": {
     "chapter": 15,
     "verse": 5,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40030,
     "endSeconds": 40112,
     "duration": 82,
     "formattedStart": "11:07:10",
     "formattedEnd": "11:08:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40030&end=40112&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40030&end=40112&autoplay=1&enablejsapi=1"
   },
   "15_6": {
     "chapter": 15,
     "verse": 6,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40112,
     "endSeconds": 40193,
     "duration": 81,
     "formattedStart": "11:08:32",
     "formattedEnd": "11:09:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40112&end=40193&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40112&end=40193&autoplay=1&enablejsapi=1"
   },
   "15_7": {
     "chapter": 15,
     "verse": 7,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40193,
     "endSeconds": 40275,
     "duration": 82,
     "formattedStart": "11:09:53",
     "formattedEnd": "11:11:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40193&end=40275&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40193&end=40275&autoplay=1&enablejsapi=1"
   },
   "15_8": {
     "chapter": 15,
     "verse": 8,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40275,
     "endSeconds": 40357,
     "duration": 82,
     "formattedStart": "11:11:15",
     "formattedEnd": "11:12:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40275&end=40357&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40275&end=40357&autoplay=1&enablejsapi=1"
   },
   "15_9": {
     "chapter": 15,
     "verse": 9,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40357,
     "endSeconds": 40438,
     "duration": 81,
     "formattedStart": "11:12:37",
     "formattedEnd": "11:13:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40357&end=40438&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40357&end=40438&autoplay=1&enablejsapi=1"
   },
   "15_10": {
     "chapter": 15,
     "verse": 10,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40438,
     "endSeconds": 40520,
     "duration": 82,
     "formattedStart": "11:13:58",
     "formattedEnd": "11:15:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40438&end=40520&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40438&end=40520&autoplay=1&enablejsapi=1"
   },
   "15_11": {
     "chapter": 15,
     "verse": 11,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40520,
     "endSeconds": 40602,
     "duration": 82,
     "formattedStart": "11:15:20",
     "formattedEnd": "11:16:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40520&end=40602&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40520&end=40602&autoplay=1&enablejsapi=1"
   },
   "15_12": {
     "chapter": 15,
     "verse": 12,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40602,
     "endSeconds": 40683,
     "duration": 81,
     "formattedStart": "11:16:42",
     "formattedEnd": "11:18:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40602&end=40683&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40602&end=40683&autoplay=1&enablejsapi=1"
   },
   "15_13": {
     "chapter": 15,
     "verse": 13,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40683,
     "endSeconds": 40765,
     "duration": 82,
     "formattedStart": "11:18:03",
     "formattedEnd": "11:19:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40683&end=40765&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40683&end=40765&autoplay=1&enablejsapi=1"
   },
   "15_14": {
     "chapter": 15,
     "verse": 14,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40765,
     "endSeconds": 40847,
     "duration": 82,
     "formattedStart": "11:19:25",
     "formattedEnd": "11:20:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40765&end=40847&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40765&end=40847&autoplay=1&enablejsapi=1"
   },
   "15_15": {
     "chapter": 15,
     "verse": 15,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40847,
     "endSeconds": 40928,
     "duration": 81,
     "formattedStart": "11:20:47",
     "formattedEnd": "11:22:08",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40847&end=40928&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40847&end=40928&autoplay=1&enablejsapi=1"
   },
   "15_16": {
     "chapter": 15,
     "verse": 16,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 40928,
     "endSeconds": 41010,
     "duration": 82,
     "formattedStart": "11:22:08",
     "formattedEnd": "11:23:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=40928&end=41010&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=40928&end=41010&autoplay=1&enablejsapi=1"
   },
   "15_17": {
     "chapter": 15,
     "verse": 17,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41010,
     "endSeconds": 41092,
     "duration": 82,
     "formattedStart": "11:23:30",
     "formattedEnd": "11:24:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41010&end=41092&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41010&end=41092&autoplay=1&enablejsapi=1"
   },
   "15_18": {
     "chapter": 15,
     "verse": 18,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41092,
     "endSeconds": 41173,
     "duration": 81,
     "formattedStart": "11:24:52",
     "formattedEnd": "11:26:13",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41092&end=41173&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41092&end=41173&autoplay=1&enablejsapi=1"
   },
   "15_19": {
     "chapter": 15,
     "verse": 19,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41173,
     "endSeconds": 41255,
     "duration": 82,
     "formattedStart": "11:26:13",
     "formattedEnd": "11:27:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41173&end=41255&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41173&end=41255&autoplay=1&enablejsapi=1"
   },
   "15_20": {
     "chapter": 15,
     "verse": 20,
     "chapterName": "पुरुषोत्तमयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41255,
     "endSeconds": 41337,
     "duration": 82,
     "formattedStart": "11:27:35",
     "formattedEnd": "11:28:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41255&end=41337&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41255&end=41337&autoplay=1&enablejsapi=1"
   },
   "16_1": {
     "chapter": 16,
     "verse": 1,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41382,
     "endSeconds": 41458,
     "duration": 76,
     "formattedStart": "11:29:42",
     "formattedEnd": "11:30:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41382&end=41458&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41382&end=41458&autoplay=1&enablejsapi=1"
   },
   "16_2": {
     "chapter": 16,
     "verse": 2,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41458,
     "endSeconds": 41535,
     "duration": 77,
     "formattedStart": "11:30:58",
     "formattedEnd": "11:32:15",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41458&end=41535&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41458&end=41535&autoplay=1&enablejsapi=1"
   },
   "16_3": {
     "chapter": 16,
     "verse": 3,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41535,
     "endSeconds": 41611,
     "duration": 76,
     "formattedStart": "11:32:15",
     "formattedEnd": "11:33:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41535&end=41611&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41535&end=41611&autoplay=1&enablejsapi=1"
   },
   "16_4": {
     "chapter": 16,
     "verse": 4,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41611,
     "endSeconds": 41688,
     "duration": 77,
     "formattedStart": "11:33:31",
     "formattedEnd": "11:34:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41611&end=41688&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41611&end=41688&autoplay=1&enablejsapi=1"
   },
   "16_5": {
     "chapter": 16,
     "verse": 5,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41688,
     "endSeconds": 41764,
     "duration": 76,
     "formattedStart": "11:34:48",
     "formattedEnd": "11:36:04",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41688&end=41764&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41688&end=41764&autoplay=1&enablejsapi=1"
   },
   "16_6": {
     "chapter": 16,
     "verse": 6,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41764,
     "endSeconds": 41841,
     "duration": 77,
     "formattedStart": "11:36:04",
     "formattedEnd": "11:37:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41764&end=41841&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41764&end=41841&autoplay=1&enablejsapi=1"
   },
   "16_7": {
     "chapter": 16,
     "verse": 7,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41841,
     "endSeconds": 41917,
     "duration": 76,
     "formattedStart": "11:37:21",
     "formattedEnd": "11:38:37",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41841&end=41917&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41841&end=41917&autoplay=1&enablejsapi=1"
   },
   "16_8": {
     "chapter": 16,
     "verse": 8,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41917,
     "endSeconds": 41994,
     "duration": 77,
     "formattedStart": "11:38:37",
     "formattedEnd": "11:39:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41917&end=41994&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41917&end=41994&autoplay=1&enablejsapi=1"
   },
   "16_9": {
     "chapter": 16,
     "verse": 9,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 41994,
     "endSeconds": 42070,
     "duration": 76,
     "formattedStart": "11:39:54",
     "formattedEnd": "11:41:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=41994&end=42070&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=41994&end=42070&autoplay=1&enablejsapi=1"
   },
   "16_10": {
     "chapter": 16,
     "verse": 10,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42070,
     "endSeconds": 42147,
     "duration": 77,
     "formattedStart": "11:41:10",
     "formattedEnd": "11:42:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42070&end=42147&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42070&end=42147&autoplay=1&enablejsapi=1"
   },
   "16_11": {
     "chapter": 16,
     "verse": 11,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42147,
     "endSeconds": 42223,
     "duration": 76,
     "formattedStart": "11:42:27",
     "formattedEnd": "11:43:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42147&end=42223&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42147&end=42223&autoplay=1&enablejsapi=1"
   },
   "16_12": {
     "chapter": 16,
     "verse": 12,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42223,
     "endSeconds": 42300,
     "duration": 77,
     "formattedStart": "11:43:43",
     "formattedEnd": "11:45:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42223&end=42300&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42223&end=42300&autoplay=1&enablejsapi=1"
   },
   "16_13": {
     "chapter": 16,
     "verse": 13,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42300,
     "endSeconds": 42376,
     "duration": 76,
     "formattedStart": "11:45:00",
     "formattedEnd": "11:46:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42300&end=42376&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42300&end=42376&autoplay=1&enablejsapi=1"
   },
   "16_14": {
     "chapter": 16,
     "verse": 14,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42376,
     "endSeconds": 42453,
     "duration": 77,
     "formattedStart": "11:46:16",
     "formattedEnd": "11:47:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42376&end=42453&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42376&end=42453&autoplay=1&enablejsapi=1"
   },
   "16_15": {
     "chapter": 16,
     "verse": 15,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42453,
     "endSeconds": 42529,
     "duration": 76,
     "formattedStart": "11:47:33",
     "formattedEnd": "11:48:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42453&end=42529&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42453&end=42529&autoplay=1&enablejsapi=1"
   },
   "16_16": {
     "chapter": 16,
     "verse": 16,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42529,
     "endSeconds": 42606,
     "duration": 77,
     "formattedStart": "11:48:49",
     "formattedEnd": "11:50:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42529&end=42606&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42529&end=42606&autoplay=1&enablejsapi=1"
   },
   "16_17": {
     "chapter": 16,
     "verse": 17,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42606,
     "endSeconds": 42682,
     "duration": 76,
     "formattedStart": "11:50:06",
     "formattedEnd": "11:51:22",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42606&end=42682&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42606&end=42682&autoplay=1&enablejsapi=1"
   },
   "16_18": {
     "chapter": 16,
     "verse": 18,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42682,
     "endSeconds": 42759,
     "duration": 77,
     "formattedStart": "11:51:22",
     "formattedEnd": "11:52:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42682&end=42759&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42682&end=42759&autoplay=1&enablejsapi=1"
   },
   "16_19": {
     "chapter": 16,
     "verse": 19,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42759,
     "endSeconds": 42835,
     "duration": 76,
     "formattedStart": "11:52:39",
     "formattedEnd": "11:53:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42759&end=42835&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42759&end=42835&autoplay=1&enablejsapi=1"
   },
   "16_20": {
     "chapter": 16,
     "verse": 20,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42835,
     "endSeconds": 42912,
     "duration": 77,
     "formattedStart": "11:53:55",
     "formattedEnd": "11:55:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42835&end=42912&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42835&end=42912&autoplay=1&enablejsapi=1"
   },
   "16_21": {
     "chapter": 16,
     "verse": 21,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42912,
     "endSeconds": 42988,
     "duration": 76,
     "formattedStart": "11:55:12",
     "formattedEnd": "11:56:28",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42912&end=42988&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42912&end=42988&autoplay=1&enablejsapi=1"
   },
   "16_22": {
     "chapter": 16,
     "verse": 22,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 42988,
     "endSeconds": 43065,
     "duration": 77,
     "formattedStart": "11:56:28",
     "formattedEnd": "11:57:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=42988&end=43065&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=42988&end=43065&autoplay=1&enablejsapi=1"
   },
   "16_23": {
     "chapter": 16,
     "verse": 23,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43065,
     "endSeconds": 43141,
     "duration": 76,
     "formattedStart": "11:57:45",
     "formattedEnd": "11:59:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43065&end=43141&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43065&end=43141&autoplay=1&enablejsapi=1"
   },
   "16_24": {
     "chapter": 16,
     "verse": 24,
     "chapterName": "दैवासुरसम्पद्विभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43141,
     "endSeconds": 43218,
     "duration": 77,
     "formattedStart": "11:59:01",
     "formattedEnd": "12:00:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43141&end=43218&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43141&end=43218&autoplay=1&enablejsapi=1"
   },
   "17_1": {
     "chapter": 17,
     "verse": 1,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43263,
     "endSeconds": 43341,
     "duration": 78,
     "formattedStart": "12:01:03",
     "formattedEnd": "12:02:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43263&end=43341&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43263&end=43341&autoplay=1&enablejsapi=1"
   },
   "17_2": {
     "chapter": 17,
     "verse": 2,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43341,
     "endSeconds": 43419,
     "duration": 78,
     "formattedStart": "12:02:21",
     "formattedEnd": "12:03:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43341&end=43419&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43341&end=43419&autoplay=1&enablejsapi=1"
   },
   "17_3": {
     "chapter": 17,
     "verse": 3,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43419,
     "endSeconds": 43498,
     "duration": 79,
     "formattedStart": "12:03:39",
     "formattedEnd": "12:04:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43419&end=43498&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43419&end=43498&autoplay=1&enablejsapi=1"
   },
   "17_4": {
     "chapter": 17,
     "verse": 4,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43498,
     "endSeconds": 43576,
     "duration": 78,
     "formattedStart": "12:04:58",
     "formattedEnd": "12:06:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43498&end=43576&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43498&end=43576&autoplay=1&enablejsapi=1"
   },
   "17_5": {
     "chapter": 17,
     "verse": 5,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43576,
     "endSeconds": 43655,
     "duration": 79,
     "formattedStart": "12:06:16",
     "formattedEnd": "12:07:35",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43576&end=43655&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43576&end=43655&autoplay=1&enablejsapi=1"
   },
   "17_6": {
     "chapter": 17,
     "verse": 6,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43655,
     "endSeconds": 43733,
     "duration": 78,
     "formattedStart": "12:07:35",
     "formattedEnd": "12:08:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43655&end=43733&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43655&end=43733&autoplay=1&enablejsapi=1"
   },
   "17_7": {
     "chapter": 17,
     "verse": 7,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43733,
     "endSeconds": 43812,
     "duration": 79,
     "formattedStart": "12:08:53",
     "formattedEnd": "12:10:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43733&end=43812&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43733&end=43812&autoplay=1&enablejsapi=1"
   },
   "17_8": {
     "chapter": 17,
     "verse": 8,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43812,
     "endSeconds": 43890,
     "duration": 78,
     "formattedStart": "12:10:12",
     "formattedEnd": "12:11:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43812&end=43890&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43812&end=43890&autoplay=1&enablejsapi=1"
   },
   "17_9": {
     "chapter": 17,
     "verse": 9,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43890,
     "endSeconds": 43968,
     "duration": 78,
     "formattedStart": "12:11:30",
     "formattedEnd": "12:12:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43890&end=43968&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43890&end=43968&autoplay=1&enablejsapi=1"
   },
   "17_10": {
     "chapter": 17,
     "verse": 10,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 43968,
     "endSeconds": 44047,
     "duration": 79,
     "formattedStart": "12:12:48",
     "formattedEnd": "12:14:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=43968&end=44047&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=43968&end=44047&autoplay=1&enablejsapi=1"
   },
   "17_11": {
     "chapter": 17,
     "verse": 11,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44047,
     "endSeconds": 44125,
     "duration": 78,
     "formattedStart": "12:14:07",
     "formattedEnd": "12:15:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44047&end=44125&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44047&end=44125&autoplay=1&enablejsapi=1"
   },
   "17_12": {
     "chapter": 17,
     "verse": 12,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44125,
     "endSeconds": 44204,
     "duration": 79,
     "formattedStart": "12:15:25",
     "formattedEnd": "12:16:44",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44125&end=44204&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44125&end=44204&autoplay=1&enablejsapi=1"
   },
   "17_13": {
     "chapter": 17,
     "verse": 13,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44204,
     "endSeconds": 44282,
     "duration": 78,
     "formattedStart": "12:16:44",
     "formattedEnd": "12:18:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44204&end=44282&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44204&end=44282&autoplay=1&enablejsapi=1"
   },
   "17_14": {
     "chapter": 17,
     "verse": 14,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44282,
     "endSeconds": 44361,
     "duration": 79,
     "formattedStart": "12:18:02",
     "formattedEnd": "12:19:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44282&end=44361&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44282&end=44361&autoplay=1&enablejsapi=1"
   },
   "17_15": {
     "chapter": 17,
     "verse": 15,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44361,
     "endSeconds": 44439,
     "duration": 78,
     "formattedStart": "12:19:21",
     "formattedEnd": "12:20:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44361&end=44439&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44361&end=44439&autoplay=1&enablejsapi=1"
   },
   "17_16": {
     "chapter": 17,
     "verse": 16,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44439,
     "endSeconds": 44517,
     "duration": 78,
     "formattedStart": "12:20:39",
     "formattedEnd": "12:21:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44439&end=44517&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44439&end=44517&autoplay=1&enablejsapi=1"
   },
   "17_17": {
     "chapter": 17,
     "verse": 17,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44517,
     "endSeconds": 44596,
     "duration": 79,
     "formattedStart": "12:21:57",
     "formattedEnd": "12:23:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44517&end=44596&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44517&end=44596&autoplay=1&enablejsapi=1"
   },
   "17_18": {
     "chapter": 17,
     "verse": 18,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44596,
     "endSeconds": 44674,
     "duration": 78,
     "formattedStart": "12:23:16",
     "formattedEnd": "12:24:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44596&end=44674&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44596&end=44674&autoplay=1&enablejsapi=1"
   },
   "17_19": {
     "chapter": 17,
     "verse": 19,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44674,
     "endSeconds": 44753,
     "duration": 79,
     "formattedStart": "12:24:34",
     "formattedEnd": "12:25:53",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44674&end=44753&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44674&end=44753&autoplay=1&enablejsapi=1"
   },
   "17_20": {
     "chapter": 17,
     "verse": 20,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44753,
     "endSeconds": 44831,
     "duration": 78,
     "formattedStart": "12:25:53",
     "formattedEnd": "12:27:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44753&end=44831&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44753&end=44831&autoplay=1&enablejsapi=1"
   },
   "17_21": {
     "chapter": 17,
     "verse": 21,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44831,
     "endSeconds": 44910,
     "duration": 79,
     "formattedStart": "12:27:11",
     "formattedEnd": "12:28:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44831&end=44910&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44831&end=44910&autoplay=1&enablejsapi=1"
   },
   "17_22": {
     "chapter": 17,
     "verse": 22,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44910,
     "endSeconds": 44988,
     "duration": 78,
     "formattedStart": "12:28:30",
     "formattedEnd": "12:29:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44910&end=44988&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44910&end=44988&autoplay=1&enablejsapi=1"
   },
   "17_23": {
     "chapter": 17,
     "verse": 23,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 44988,
     "endSeconds": 45066,
     "duration": 78,
     "formattedStart": "12:29:48",
     "formattedEnd": "12:31:06",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=44988&end=45066&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=44988&end=45066&autoplay=1&enablejsapi=1"
   },
   "17_24": {
     "chapter": 17,
     "verse": 24,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45066,
     "endSeconds": 45145,
     "duration": 79,
     "formattedStart": "12:31:06",
     "formattedEnd": "12:32:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45066&end=45145&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45066&end=45145&autoplay=1&enablejsapi=1"
   },
   "17_25": {
     "chapter": 17,
     "verse": 25,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45145,
     "endSeconds": 45223,
     "duration": 78,
     "formattedStart": "12:32:25",
     "formattedEnd": "12:33:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45145&end=45223&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45145&end=45223&autoplay=1&enablejsapi=1"
   },
   "17_26": {
     "chapter": 17,
     "verse": 26,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45223,
     "endSeconds": 45302,
     "duration": 79,
     "formattedStart": "12:33:43",
     "formattedEnd": "12:35:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45223&end=45302&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45223&end=45302&autoplay=1&enablejsapi=1"
   },
   "17_27": {
     "chapter": 17,
     "verse": 27,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45302,
     "endSeconds": 45380,
     "duration": 78,
     "formattedStart": "12:35:02",
     "formattedEnd": "12:36:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45302&end=45380&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45302&end=45380&autoplay=1&enablejsapi=1"
   },
   "17_28": {
     "chapter": 17,
     "verse": 28,
     "chapterName": "श्रद्धात्रयविभागयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45380,
     "endSeconds": 45459,
     "duration": 79,
     "formattedStart": "12:36:20",
     "formattedEnd": "12:37:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45380&end=45459&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45380&end=45459&autoplay=1&enablejsapi=1"
   },
   "18_1": {
     "chapter": 18,
     "verse": 1,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45504,
     "endSeconds": 45579,
     "duration": 75,
     "formattedStart": "12:38:24",
     "formattedEnd": "12:39:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45504&end=45579&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45504&end=45579&autoplay=1&enablejsapi=1"
   },
   "18_2": {
     "chapter": 18,
     "verse": 2,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45579,
     "endSeconds": 45655,
     "duration": 76,
     "formattedStart": "12:39:39",
     "formattedEnd": "12:40:55",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45579&end=45655&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45579&end=45655&autoplay=1&enablejsapi=1"
   },
   "18_3": {
     "chapter": 18,
     "verse": 3,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45655,
     "endSeconds": 45730,
     "duration": 75,
     "formattedStart": "12:40:55",
     "formattedEnd": "12:42:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45655&end=45730&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45655&end=45730&autoplay=1&enablejsapi=1"
   },
   "18_4": {
     "chapter": 18,
     "verse": 4,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45730,
     "endSeconds": 45806,
     "duration": 76,
     "formattedStart": "12:42:10",
     "formattedEnd": "12:43:26",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45730&end=45806&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45730&end=45806&autoplay=1&enablejsapi=1"
   },
   "18_5": {
     "chapter": 18,
     "verse": 5,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45806,
     "endSeconds": 45881,
     "duration": 75,
     "formattedStart": "12:43:26",
     "formattedEnd": "12:44:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45806&end=45881&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45806&end=45881&autoplay=1&enablejsapi=1"
   },
   "18_6": {
     "chapter": 18,
     "verse": 6,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45881,
     "endSeconds": 45957,
     "duration": 76,
     "formattedStart": "12:44:41",
     "formattedEnd": "12:45:57",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45881&end=45957&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45881&end=45957&autoplay=1&enablejsapi=1"
   },
   "18_7": {
     "chapter": 18,
     "verse": 7,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 45957,
     "endSeconds": 46032,
     "duration": 75,
     "formattedStart": "12:45:57",
     "formattedEnd": "12:47:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=45957&end=46032&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=45957&end=46032&autoplay=1&enablejsapi=1"
   },
   "18_8": {
     "chapter": 18,
     "verse": 8,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46032,
     "endSeconds": 46108,
     "duration": 76,
     "formattedStart": "12:47:12",
     "formattedEnd": "12:48:28",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46032&end=46108&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46032&end=46108&autoplay=1&enablejsapi=1"
   },
   "18_9": {
     "chapter": 18,
     "verse": 9,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46108,
     "endSeconds": 46183,
     "duration": 75,
     "formattedStart": "12:48:28",
     "formattedEnd": "12:49:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46108&end=46183&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46108&end=46183&autoplay=1&enablejsapi=1"
   },
   "18_10": {
     "chapter": 18,
     "verse": 10,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46183,
     "endSeconds": 46259,
     "duration": 76,
     "formattedStart": "12:49:43",
     "formattedEnd": "12:50:59",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46183&end=46259&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46183&end=46259&autoplay=1&enablejsapi=1"
   },
   "18_11": {
     "chapter": 18,
     "verse": 11,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46259,
     "endSeconds": 46334,
     "duration": 75,
     "formattedStart": "12:50:59",
     "formattedEnd": "12:52:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46259&end=46334&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46259&end=46334&autoplay=1&enablejsapi=1"
   },
   "18_12": {
     "chapter": 18,
     "verse": 12,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46334,
     "endSeconds": 46410,
     "duration": 76,
     "formattedStart": "12:52:14",
     "formattedEnd": "12:53:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46334&end=46410&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46334&end=46410&autoplay=1&enablejsapi=1"
   },
   "18_13": {
     "chapter": 18,
     "verse": 13,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46410,
     "endSeconds": 46486,
     "duration": 76,
     "formattedStart": "12:53:30",
     "formattedEnd": "12:54:46",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46410&end=46486&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46410&end=46486&autoplay=1&enablejsapi=1"
   },
   "18_14": {
     "chapter": 18,
     "verse": 14,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46486,
     "endSeconds": 46561,
     "duration": 75,
     "formattedStart": "12:54:46",
     "formattedEnd": "12:56:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46486&end=46561&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46486&end=46561&autoplay=1&enablejsapi=1"
   },
   "18_15": {
     "chapter": 18,
     "verse": 15,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46561,
     "endSeconds": 46637,
     "duration": 76,
     "formattedStart": "12:56:01",
     "formattedEnd": "12:57:17",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46561&end=46637&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46561&end=46637&autoplay=1&enablejsapi=1"
   },
   "18_16": {
     "chapter": 18,
     "verse": 16,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46637,
     "endSeconds": 46712,
     "duration": 75,
     "formattedStart": "12:57:17",
     "formattedEnd": "12:58:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46637&end=46712&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46637&end=46712&autoplay=1&enablejsapi=1"
   },
   "18_17": {
     "chapter": 18,
     "verse": 17,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46712,
     "endSeconds": 46788,
     "duration": 76,
     "formattedStart": "12:58:32",
     "formattedEnd": "12:59:48",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46712&end=46788&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46712&end=46788&autoplay=1&enablejsapi=1"
   },
   "18_18": {
     "chapter": 18,
     "verse": 18,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46788,
     "endSeconds": 46863,
     "duration": 75,
     "formattedStart": "12:59:48",
     "formattedEnd": "13:01:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46788&end=46863&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46788&end=46863&autoplay=1&enablejsapi=1"
   },
   "18_19": {
     "chapter": 18,
     "verse": 19,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46863,
     "endSeconds": 46939,
     "duration": 76,
     "formattedStart": "13:01:03",
     "formattedEnd": "13:02:19",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46863&end=46939&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46863&end=46939&autoplay=1&enablejsapi=1"
   },
   "18_20": {
     "chapter": 18,
     "verse": 20,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 46939,
     "endSeconds": 47014,
     "duration": 75,
     "formattedStart": "13:02:19",
     "formattedEnd": "13:03:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=46939&end=47014&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=46939&end=47014&autoplay=1&enablejsapi=1"
   },
   "18_21": {
     "chapter": 18,
     "verse": 21,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47014,
     "endSeconds": 47090,
     "duration": 76,
     "formattedStart": "13:03:34",
     "formattedEnd": "13:04:50",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47014&end=47090&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47014&end=47090&autoplay=1&enablejsapi=1"
   },
   "18_22": {
     "chapter": 18,
     "verse": 22,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47090,
     "endSeconds": 47165,
     "duration": 75,
     "formattedStart": "13:04:50",
     "formattedEnd": "13:06:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47090&end=47165&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47090&end=47165&autoplay=1&enablejsapi=1"
   },
   "18_23": {
     "chapter": 18,
     "verse": 23,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47165,
     "endSeconds": 47241,
     "duration": 76,
     "formattedStart": "13:06:05",
     "formattedEnd": "13:07:21",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47165&end=47241&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47165&end=47241&autoplay=1&enablejsapi=1"
   },
   "18_24": {
     "chapter": 18,
     "verse": 24,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47241,
     "endSeconds": 47316,
     "duration": 75,
     "formattedStart": "13:07:21",
     "formattedEnd": "13:08:36",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47241&end=47316&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47241&end=47316&autoplay=1&enablejsapi=1"
   },
   "18_25": {
     "chapter": 18,
     "verse": 25,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47316,
     "endSeconds": 47392,
     "duration": 76,
     "formattedStart": "13:08:36",
     "formattedEnd": "13:09:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47316&end=47392&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47316&end=47392&autoplay=1&enablejsapi=1"
   },
   "18_26": {
     "chapter": 18,
     "verse": 26,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47392,
     "endSeconds": 47468,
     "duration": 76,
     "formattedStart": "13:09:52",
     "formattedEnd": "13:11:08",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47392&end=47468&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47392&end=47468&autoplay=1&enablejsapi=1"
   },
   "18_27": {
     "chapter": 18,
     "verse": 27,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47468,
     "endSeconds": 47543,
     "duration": 75,
     "formattedStart": "13:11:08",
     "formattedEnd": "13:12:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47468&end=47543&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47468&end=47543&autoplay=1&enablejsapi=1"
   },
   "18_28": {
     "chapter": 18,
     "verse": 28,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47543,
     "endSeconds": 47619,
     "duration": 76,
     "formattedStart": "13:12:23",
     "formattedEnd": "13:13:39",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47543&end=47619&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47543&end=47619&autoplay=1&enablejsapi=1"
   },
   "18_29": {
     "chapter": 18,
     "verse": 29,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47619,
     "endSeconds": 47694,
     "duration": 75,
     "formattedStart": "13:13:39",
     "formattedEnd": "13:14:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47619&end=47694&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47619&end=47694&autoplay=1&enablejsapi=1"
   },
   "18_30": {
     "chapter": 18,
     "verse": 30,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47694,
     "endSeconds": 47770,
     "duration": 76,
     "formattedStart": "13:14:54",
     "formattedEnd": "13:16:10",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47694&end=47770&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47694&end=47770&autoplay=1&enablejsapi=1"
   },
   "18_31": {
     "chapter": 18,
     "verse": 31,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47770,
     "endSeconds": 47845,
     "duration": 75,
     "formattedStart": "13:16:10",
     "formattedEnd": "13:17:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47770&end=47845&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47770&end=47845&autoplay=1&enablejsapi=1"
   },
   "18_32": {
     "chapter": 18,
     "verse": 32,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47845,
     "endSeconds": 47921,
     "duration": 76,
     "formattedStart": "13:17:25",
     "formattedEnd": "13:18:41",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47845&end=47921&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47845&end=47921&autoplay=1&enablejsapi=1"
   },
   "18_33": {
     "chapter": 18,
     "verse": 33,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47921,
     "endSeconds": 47996,
     "duration": 75,
     "formattedStart": "13:18:41",
     "formattedEnd": "13:19:56",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47921&end=47996&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47921&end=47996&autoplay=1&enablejsapi=1"
   },
   "18_34": {
     "chapter": 18,
     "verse": 34,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 47996,
     "endSeconds": 48072,
     "duration": 76,
     "formattedStart": "13:19:56",
     "formattedEnd": "13:21:12",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=47996&end=48072&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=47996&end=48072&autoplay=1&enablejsapi=1"
   },
   "18_35": {
     "chapter": 18,
     "verse": 35,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48072,
     "endSeconds": 48147,
     "duration": 75,
     "formattedStart": "13:21:12",
     "formattedEnd": "13:22:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48072&end=48147&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48072&end=48147&autoplay=1&enablejsapi=1"
   },
   "18_36": {
     "chapter": 18,
     "verse": 36,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48147,
     "endSeconds": 48223,
     "duration": 76,
     "formattedStart": "13:22:27",
     "formattedEnd": "13:23:43",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48147&end=48223&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48147&end=48223&autoplay=1&enablejsapi=1"
   },
   "18_37": {
     "chapter": 18,
     "verse": 37,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48223,
     "endSeconds": 48298,
     "duration": 75,
     "formattedStart": "13:23:43",
     "formattedEnd": "13:24:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48223&end=48298&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48223&end=48298&autoplay=1&enablejsapi=1"
   },
   "18_38": {
     "chapter": 18,
     "verse": 38,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48298,
     "endSeconds": 48374,
     "duration": 76,
     "formattedStart": "13:24:58",
     "formattedEnd": "13:26:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48298&end=48374&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48298&end=48374&autoplay=1&enablejsapi=1"
   },
   "18_39": {
     "chapter": 18,
     "verse": 39,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48374,
     "endSeconds": 48450,
     "duration": 76,
     "formattedStart": "13:26:14",
     "formattedEnd": "13:27:30",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48374&end=48450&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48374&end=48450&autoplay=1&enablejsapi=1"
   },
   "18_40": {
     "chapter": 18,
     "verse": 40,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48450,
     "endSeconds": 48525,
     "duration": 75,
     "formattedStart": "13:27:30",
     "formattedEnd": "13:28:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48450&end=48525&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48450&end=48525&autoplay=1&enablejsapi=1"
   },
   "18_41": {
     "chapter": 18,
     "verse": 41,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48525,
     "endSeconds": 48601,
     "duration": 76,
     "formattedStart": "13:28:45",
     "formattedEnd": "13:30:01",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48525&end=48601&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48525&end=48601&autoplay=1&enablejsapi=1"
   },
   "18_42": {
     "chapter": 18,
     "verse": 42,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48601,
     "endSeconds": 48676,
     "duration": 75,
     "formattedStart": "13:30:01",
     "formattedEnd": "13:31:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48601&end=48676&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48601&end=48676&autoplay=1&enablejsapi=1"
   },
   "18_43": {
     "chapter": 18,
     "verse": 43,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48676,
     "endSeconds": 48752,
     "duration": 76,
     "formattedStart": "13:31:16",
     "formattedEnd": "13:32:32",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48676&end=48752&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48676&end=48752&autoplay=1&enablejsapi=1"
   },
   "18_44": {
     "chapter": 18,
     "verse": 44,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48752,
     "endSeconds": 48827,
     "duration": 75,
     "formattedStart": "13:32:32",
     "formattedEnd": "13:33:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48752&end=48827&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48752&end=48827&autoplay=1&enablejsapi=1"
   },
   "18_45": {
     "chapter": 18,
     "verse": 45,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48827,
     "endSeconds": 48903,
     "duration": 76,
     "formattedStart": "13:33:47",
     "formattedEnd": "13:35:03",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48827&end=48903&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48827&end=48903&autoplay=1&enablejsapi=1"
   },
   "18_46": {
     "chapter": 18,
     "verse": 46,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48903,
     "endSeconds": 48978,
     "duration": 75,
     "formattedStart": "13:35:03",
     "formattedEnd": "13:36:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48903&end=48978&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48903&end=48978&autoplay=1&enablejsapi=1"
   },
   "18_47": {
     "chapter": 18,
     "verse": 47,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 48978,
     "endSeconds": 49054,
     "duration": 76,
     "formattedStart": "13:36:18",
     "formattedEnd": "13:37:34",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=48978&end=49054&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=48978&end=49054&autoplay=1&enablejsapi=1"
   },
   "18_48": {
     "chapter": 18,
     "verse": 48,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49054,
     "endSeconds": 49129,
     "duration": 75,
     "formattedStart": "13:37:34",
     "formattedEnd": "13:38:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49054&end=49129&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49054&end=49129&autoplay=1&enablejsapi=1"
   },
   "18_49": {
     "chapter": 18,
     "verse": 49,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49129,
     "endSeconds": 49205,
     "duration": 76,
     "formattedStart": "13:38:49",
     "formattedEnd": "13:40:05",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49129&end=49205&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49129&end=49205&autoplay=1&enablejsapi=1"
   },
   "18_50": {
     "chapter": 18,
     "verse": 50,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49205,
     "endSeconds": 49280,
     "duration": 75,
     "formattedStart": "13:40:05",
     "formattedEnd": "13:41:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49205&end=49280&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49205&end=49280&autoplay=1&enablejsapi=1"
   },
   "18_51": {
     "chapter": 18,
     "verse": 51,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49280,
     "endSeconds": 49356,
     "duration": 76,
     "formattedStart": "13:41:20",
     "formattedEnd": "13:42:36",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49280&end=49356&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49280&end=49356&autoplay=1&enablejsapi=1"
   },
   "18_52": {
     "chapter": 18,
     "verse": 52,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49356,
     "endSeconds": 49432,
     "duration": 76,
     "formattedStart": "13:42:36",
     "formattedEnd": "13:43:52",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49356&end=49432&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49356&end=49432&autoplay=1&enablejsapi=1"
   },
   "18_53": {
     "chapter": 18,
     "verse": 53,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49432,
     "endSeconds": 49507,
     "duration": 75,
     "formattedStart": "13:43:52",
     "formattedEnd": "13:45:07",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49432&end=49507&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49432&end=49507&autoplay=1&enablejsapi=1"
   },
   "18_54": {
     "chapter": 18,
     "verse": 54,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49507,
     "endSeconds": 49583,
     "duration": 76,
     "formattedStart": "13:45:07",
     "formattedEnd": "13:46:23",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49507&end=49583&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49507&end=49583&autoplay=1&enablejsapi=1"
   },
   "18_55": {
     "chapter": 18,
     "verse": 55,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49583,
     "endSeconds": 49658,
     "duration": 75,
     "formattedStart": "13:46:23",
     "formattedEnd": "13:47:38",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49583&end=49658&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49583&end=49658&autoplay=1&enablejsapi=1"
   },
   "18_56": {
     "chapter": 18,
     "verse": 56,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49658,
     "endSeconds": 49734,
     "duration": 76,
     "formattedStart": "13:47:38",
     "formattedEnd": "13:48:54",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49658&end=49734&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49658&end=49734&autoplay=1&enablejsapi=1"
   },
   "18_57": {
     "chapter": 18,
     "verse": 57,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49734,
     "endSeconds": 49809,
     "duration": 75,
     "formattedStart": "13:48:54",
     "formattedEnd": "13:50:09",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49734&end=49809&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49734&end=49809&autoplay=1&enablejsapi=1"
   },
   "18_58": {
     "chapter": 18,
     "verse": 58,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49809,
     "endSeconds": 49885,
     "duration": 76,
     "formattedStart": "13:50:09",
     "formattedEnd": "13:51:25",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49809&end=49885&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49809&end=49885&autoplay=1&enablejsapi=1"
   },
   "18_59": {
     "chapter": 18,
     "verse": 59,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49885,
     "endSeconds": 49960,
     "duration": 75,
     "formattedStart": "13:51:25",
     "formattedEnd": "13:52:40",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49885&end=49960&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49885&end=49960&autoplay=1&enablejsapi=1"
   },
   "18_60": {
     "chapter": 18,
     "verse": 60,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 49960,
     "endSeconds": 50036,
     "duration": 76,
     "formattedStart": "13:52:40",
     "formattedEnd": "13:53:56",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=49960&end=50036&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=49960&end=50036&autoplay=1&enablejsapi=1"
   },
   "18_61": {
     "chapter": 18,
     "verse": 61,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50036,
     "endSeconds": 50111,
     "duration": 75,
     "formattedStart": "13:53:56",
     "formattedEnd": "13:55:11",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50036&end=50111&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50036&end=50111&autoplay=1&enablejsapi=1"
   },
   "18_62": {
     "chapter": 18,
     "verse": 62,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50111,
     "endSeconds": 50187,
     "duration": 76,
     "formattedStart": "13:55:11",
     "formattedEnd": "13:56:27",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50111&end=50187&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50111&end=50187&autoplay=1&enablejsapi=1"
   },
   "18_63": {
     "chapter": 18,
     "verse": 63,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50187,
     "endSeconds": 50262,
     "duration": 75,
     "formattedStart": "13:56:27",
     "formattedEnd": "13:57:42",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50187&end=50262&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50187&end=50262&autoplay=1&enablejsapi=1"
   },
   "18_64": {
     "chapter": 18,
     "verse": 64,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50262,
     "endSeconds": 50338,
     "duration": 76,
     "formattedStart": "13:57:42",
     "formattedEnd": "13:58:58",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50262&end=50338&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50262&end=50338&autoplay=1&enablejsapi=1"
   },
   "18_65": {
     "chapter": 18,
     "verse": 65,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50338,
     "endSeconds": 50414,
     "duration": 76,
     "formattedStart": "13:58:58",
     "formattedEnd": "14:00:14",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50338&end=50414&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50338&end=50414&autoplay=1&enablejsapi=1"
   },
   "18_66": {
     "chapter": 18,
     "verse": 66,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50414,
     "endSeconds": 50489,
     "duration": 75,
     "formattedStart": "14:00:14",
     "formattedEnd": "14:01:29",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50414&end=50489&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50414&end=50489&autoplay=1&enablejsapi=1"
   },
   "18_67": {
     "chapter": 18,
     "verse": 67,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50489,
     "endSeconds": 50565,
     "duration": 76,
     "formattedStart": "14:01:29",
     "formattedEnd": "14:02:45",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50489&end=50565&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50489&end=50565&autoplay=1&enablejsapi=1"
   },
   "18_68": {
     "chapter": 18,
     "verse": 68,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50565,
     "endSeconds": 50640,
     "duration": 75,
     "formattedStart": "14:02:45",
     "formattedEnd": "14:04:00",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50565&end=50640&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50565&end=50640&autoplay=1&enablejsapi=1"
   },
   "18_69": {
     "chapter": 18,
     "verse": 69,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50640,
     "endSeconds": 50716,
     "duration": 76,
     "formattedStart": "14:04:00",
     "formattedEnd": "14:05:16",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50640&end=50716&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50640&end=50716&autoplay=1&enablejsapi=1"
   },
   "18_70": {
     "chapter": 18,
     "verse": 70,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50716,
     "endSeconds": 50791,
     "duration": 75,
     "formattedStart": "14:05:16",
     "formattedEnd": "14:06:31",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50716&end=50791&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50716&end=50791&autoplay=1&enablejsapi=1"
   },
   "18_71": {
     "chapter": 18,
     "verse": 71,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50791,
     "endSeconds": 50867,
     "duration": 76,
     "formattedStart": "14:06:31",
     "formattedEnd": "14:07:47",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50791&end=50867&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50791&end=50867&autoplay=1&enablejsapi=1"
   },
   "18_72": {
     "chapter": 18,
     "verse": 72,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50867,
     "endSeconds": 50942,
     "duration": 75,
     "formattedStart": "14:07:47",
     "formattedEnd": "14:09:02",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50867&end=50942&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50867&end=50942&autoplay=1&enablejsapi=1"
   },
   "18_73": {
     "chapter": 18,
     "verse": 73,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 50942,
     "endSeconds": 51018,
     "duration": 76,
     "formattedStart": "14:09:02",
     "formattedEnd": "14:10:18",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=50942&end=51018&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=50942&end=51018&autoplay=1&enablejsapi=1"
   },
   "18_74": {
     "chapter": 18,
     "verse": 74,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 51018,
     "endSeconds": 51093,
     "duration": 75,
     "formattedStart": "14:10:18",
     "formattedEnd": "14:11:33",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=51018&end=51093&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=51018&end=51093&autoplay=1&enablejsapi=1"
   },
   "18_75": {
     "chapter": 18,
     "verse": 75,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 51093,
     "endSeconds": 51169,
     "duration": 76,
     "formattedStart": "14:11:33",
     "formattedEnd": "14:12:49",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=51093&end=51169&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=51093&end=51169&autoplay=1&enablejsapi=1"
   },
   "18_76": {
     "chapter": 18,
     "verse": 76,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 51169,
     "endSeconds": 51244,
     "duration": 75,
     "formattedStart": "14:12:49",
     "formattedEnd": "14:14:04",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=51169&end=51244&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=51169&end=51244&autoplay=1&enablejsapi=1"
   },
   "18_77": {
     "chapter": 18,
     "verse": 77,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 51244,
     "endSeconds": 51320,
     "duration": 76,
     "formattedStart": "14:14:04",
     "formattedEnd": "14:15:20",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=51244&end=51320&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=51244&end=51320&autoplay=1&enablejsapi=1"
   },
   "18_78": {
     "chapter": 18,
     "verse": 78,
     "chapterName": "मोक्षसंन्यासयोग",
-    "videoId": "28sptQICKCk",
+    "videoId": "6sX74H9jmVI",
     "startSeconds": 51320,
     "endSeconds": 51396,
     "duration": 76,
     "formattedStart": "14:15:20",
     "formattedEnd": "14:16:36",
-    "embedUrl": "https://www.youtube.com/embed/28sptQICKCk?start=51320&end=51396&autoplay=1&enablejsapi=1"
+    "embedUrl": "https://www.youtube.com/embed/6sX74H9jmVI?start=51320&end=51396&autoplay=1&enablejsapi=1"
   }
 };
 

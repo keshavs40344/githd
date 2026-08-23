@@ -9,10 +9,9 @@ import EnterpriseSearchModal from '@/components/EnterpriseSearchModal';
 import SanskritLexiconDrawer from '@/components/SanskritLexiconDrawer';
 import ShlokaCardGeneratorModal from '@/components/ShlokaCardGeneratorModal';
 import GlobalRoyalHeader from '@/components/GlobalRoyalHeader';
-import TempleEntryGate from '@/components/TempleEntryGate';
-import TempleAmbientPlayer from '@/components/TempleAmbientPlayer';
-import TempleAtmosphere from '@/components/TempleAtmosphere';
 import GlobalRoyalFooter from '@/components/GlobalRoyalFooter';
+import TempleAtmosphere from '@/components/TempleAtmosphere';
+import TempleAmbientPlayer from '@/components/TempleAmbientPlayer';
 
 const dmSans = DM_Sans({ 
   subsets: ['latin'], 
@@ -82,20 +81,26 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/icons/icon-192.png" />
       </head>
-      <body className="bg-[#090a0f] text-[#f5eed9] min-h-screen selection:bg-amber-500/30 selection:text-white flex flex-col justify-between">
+      <body className="bg-[#090a0f] text-[#f5eed9] min-h-screen selection:bg-amber-500/30 selection:text-white flex flex-col justify-between relative">
         <LanguageProvider>
           <GlobalAudioProvider>
             
+            {/* Non-blocking Temple Visual Atmosphere (Diyas + Incense + Om Particles) */}
+            <TempleAtmosphere />
+
             {/* Global Royal Header Sticky Nav */}
             <GlobalRoyalHeader />
 
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 relative z-10">{children}</main>
             
             {/* Global Royal Footer */}
             <GlobalRoyalFooter />
 
             {/* Global Persistent Floating Audio Dock */}
             <GlobalAudioDock />
+
+            {/* Floating Temple Aarti & Bell Dock */}
+            <TempleAmbientPlayer />
 
             {/* Enterprise Crisis & Semantic Search Modal (Ctrl+K) */}
             <EnterpriseSearchModal />
