@@ -1,8 +1,10 @@
 import { MetadataRoute } from 'next';
 import { CHAPTERS } from '@/types/verse';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://dharma-os.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://githd.vercel.app';
   const currentDate = new Date().toISOString();
 
   const routes: MetadataRoute.Sitemap = [
@@ -40,18 +42,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}/#sadhana`,
       lastModified: currentDate,
       changeFrequency: 'daily',
-      priority: 0.9,
+      priority: 0.85,
     },
   ];
 
-  CHAPTERS.forEach((chap) => {
-    routes.push({
-      url: `${baseUrl}/#chapter-${chap.number}`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    });
-  });
+  const chapterRoutes: MetadataRoute.Sitemap = CHAPTERS.map((chapter) => ({
+    url: `${baseUrl}/chapter/${chapter.number}`,
+    lastModified: currentDate,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
 
-  return routes;
+  return [...routes, ...chapterRoutes];
 }
