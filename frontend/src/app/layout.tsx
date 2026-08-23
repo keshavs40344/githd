@@ -9,6 +9,9 @@ import EnterpriseSearchModal from '@/components/EnterpriseSearchModal';
 import SanskritLexiconDrawer from '@/components/SanskritLexiconDrawer';
 import ShlokaCardGeneratorModal from '@/components/ShlokaCardGeneratorModal';
 import GlobalRoyalHeader from '@/components/GlobalRoyalHeader';
+import TempleEntryGate from '@/components/TempleEntryGate';
+import TempleAmbientPlayer from '@/components/TempleAmbientPlayer';
+import TempleAtmosphere from '@/components/TempleAtmosphere';
 import GlobalRoyalFooter from '@/components/GlobalRoyalFooter';
 
 const dmSans = DM_Sans({ 
