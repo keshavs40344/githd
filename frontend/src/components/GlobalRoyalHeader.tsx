@@ -1,10 +1,5 @@
 'use client';
 
-import AutonomousSwarmModal from '@/components/AutonomousSwarmModal';
-import DharmaEnterpriseHQModal from '@/components/DharmaEnterpriseHQModal';
-import ExecutiveBoardroomSheetsModal from '@/components/ExecutiveBoardroomSheetsModal';
-import IskconDevoteeSanctuaryModal from '@/components/IskconDevoteeSanctuaryModal';
-
 import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -15,11 +10,12 @@ import {
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
 import LiveOnlineRadioModal from '@/components/LiveOnlineRadioModal';
+import IskconDevoteeSanctuaryModal from '@/components/IskconDevoteeSanctuaryModal';
 
 export default function GlobalRoyalHeader() {
   const [isRadioModalOpen, setIsRadioModalOpen] = React.useState(false);
   const pathname = usePathname();
-  const { setIsSearchModalOpen, playTrack } = useGlobalAudio();
+  const { setIsSearchModalOpen } = useGlobalAudio();
 
   const handleOpenRadio = () => {
     sacredAudio.playTripleGhanta(0.6);
@@ -30,7 +26,7 @@ export default function GlobalRoyalHeader() {
     <header className="sticky top-0 z-40 bg-[#07080d]/95 backdrop-blur-2xl border-b border-[#c5a059]/25 px-3 sm:px-6 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.8)] transition-all">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
         
-        {/* ── LOGO & BRANDING ──────────────────────────────────────────────── */}
+        {/* ── LOGO & BRANDING (100% Pure Sri Radha-Krishna Temple) ─────────── */}
         <Link
           href="/"
           onClick={() => sacredAudio.playNavChime(0.05)}
@@ -41,16 +37,16 @@ export default function GlobalRoyalHeader() {
           </div>
           <div>
             <span className="font-serif font-bold text-sm sm:text-base tracking-wider text-[#f5eed9] group-hover:text-amber-300 transition-colors flex items-center gap-1.5">
-              <span>DHARMA</span>
-              <span className="text-amber-400">.OS</span>
+              <span>श्री राधा-कृष्ण महामन्दिर</span>
+              <span className="text-amber-400 text-xs font-mono">Dharma.OS</span>
             </span>
             <span className="block text-[10px] font-devanagari text-[#c5a059]/80 -mt-0.5">
-              श्रीमद्भगवद्गीता महामन्दिर
+              श्रीमद्भगवद्गीता सनातन ज्ञान पीठ
             </span>
           </div>
         </Link>
 
-        {/* ── CENTER NAVIGATION SHORTCUTS ─────────────────────────────────── */}
+        {/* ── CENTER SACRED NAVIGATION ─────────────────────────────────────── */}
         <nav className="hidden md:flex items-center gap-1.5 bg-[#0f111c]/90 border border-[#c5a059]/25 p-1 rounded-2xl">
           <Link
             href="/#scripture"
@@ -90,18 +86,17 @@ export default function GlobalRoyalHeader() {
           </Link>
         </nav>
 
-        {/* ── RIGHT QUICK ACTIONS ─────────────────────────────────────────── */}
+        {/* ── RIGHT DEVOTIONAL ACTIONS ────────────────────────────────────── */}
         <div className="flex items-center gap-2">
           
-          {/* 24/7 Akhanda Radio Quick Trigger */}
+          {/* ISKCON Global Sanctuary */}
           <IskconDevoteeSanctuaryModal />
-          <ExecutiveBoardroomSheetsModal />
-          <DharmaEnterpriseHQModal />
-          <AutonomousSwarmModal />
+
+          {/* 24/7 Akhanda Krishna Radio */}
           <button
             onClick={handleOpenRadio}
             className="px-3 py-1.5 rounded-xl bg-gradient-to-r from-amber-400/20 via-yellow-400/20 to-amber-500/20 hover:from-amber-400 hover:to-yellow-400 text-yellow-300 hover:text-black border border-amber-400/40 text-xs font-serif font-bold flex items-center gap-1.5 transition-all cursor-pointer shadow-sm"
-            title="२४x७ अखंड गीता व मुरली रेडियो चालू करें"
+            title="२४x७ अखंड कृष्ण भजन व वेणु रेडियो चालू करें"
           >
             <Radio className="w-3.5 h-3.5 animate-pulse" />
             <span className="hidden sm:inline">२४x७ अखंड रेडियो</span>

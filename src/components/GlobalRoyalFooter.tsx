@@ -4,10 +4,13 @@ import React from 'react';
 import Link from 'next/link';
 import { 
   Sparkles, Heart, ShieldCheck, ArrowUp, Radio, 
-  BookOpen, MessageSquare, Flame, Download 
+  BookOpen, MessageSquare, Flame, Download, Terminal 
 } from 'lucide-react';
 import { CHAPTERS } from '@/types/verse';
 import { sacredAudio } from '@/lib/sacredSounds';
+import ExecutiveBoardroomSheetsModal from '@/components/ExecutiveBoardroomSheetsModal';
+import DharmaEnterpriseHQModal from '@/components/DharmaEnterpriseHQModal';
+import AutonomousSwarmModal from '@/components/AutonomousSwarmModal';
 
 const DEVANAGARI_DIGITS = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
 function toDevanagariNum(num: number): string {
@@ -36,7 +39,7 @@ export default function GlobalRoyalFooter() {
                 ॐ
               </div>
               <span className="font-bold text-lg text-[#f5eed9] tracking-wider">
-                DHARMA<span className="text-amber-400">.OS</span>
+                श्री राधा-कृष्ण महामन्दिर <span className="text-amber-400 font-mono text-xs">Dharma.OS</span>
               </span>
             </div>
             <p className="text-xs text-[#c5a059]/80 font-devanagari">
@@ -81,11 +84,11 @@ export default function GlobalRoyalFooter() {
           </div>
         </div>
 
-        {/* ── BOTTOM CREDITS & MISSION ────────────────────────────────────── */}
+        {/* ── BOTTOM CREDITS & DISCREET BACKEND CONSOLE ───────────────────── */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-6 border-t border-[#c5a059]/15 text-xs text-[#c5a059]/70 text-center sm:text-left">
           <div className="space-y-1">
             <p className="text-[#f5eed9]/90 font-medium">
-              Dharma.OS • The World's Most Advanced Sacred Spiritual Operating System
+              श्री राधा-कृष्ण दिव्य महामंदिर • श्रीमद्भगवद्गीता ज्ञान पीठ (Dharma.OS)
             </p>
             <p className="text-[11px]">
               प्रामाणिक व शुद्ध ज्ञान • सनातन वैदिक धर्म व विश्व कल्याण हेतु समर्पित • सर्वाधिकार सुरक्षित
@@ -94,7 +97,19 @@ export default function GlobalRoyalFooter() {
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#141624] border border-[#c5a059]/25 text-[11px] text-[#e6c687]">
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Built with Devotion for Humanity</span>
+            <span>100% Free Lifetime Temple for Devotees</span>
+          </div>
+        </div>
+
+        {/* ── DISCREET BACKEND MNC & SHEETS CONSOLE BAR ───────────────────── */}
+        <div className="pt-4 border-t border-white/5 flex flex-wrap items-center justify-between gap-3 text-[11px] text-[#c5a059]/40">
+          <span className="font-mono">
+            ⚡ Backend: Dharma.OS Autonomous Kernel v4.2 (Ctrl+Shift+D for SDE Console • Ctrl+Shift+E for Telemetry)
+          </span>
+          <div className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <ExecutiveBoardroomSheetsModal />
+            <DharmaEnterpriseHQModal />
+            <AutonomousSwarmModal />
           </div>
         </div>
 

@@ -17,6 +17,7 @@ export default function SDEAutonomousConsole() {
   const [fixSuccessMsg, setFixSuccessMsg] = useState<string | null>(null);
 
   useEffect(() => {
+    // 100% Background Execution
     siteGuardian.init();
     const updateStats = () => {
       setTelemetry(siteGuardian.getTelemetry());
@@ -24,8 +25,21 @@ export default function SDEAutonomousConsole() {
     };
 
     updateStats();
-    const interval = setInterval(updateStats, 1500);
-    return () => clearInterval(interval);
+    const interval = setInterval(updateStats, 2000);
+
+    // Secret Developer/Owner Shortcut (Ctrl+Shift+D)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'D' || e.key === 'd')) {
+        e.preventDefault();
+        setIsOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   const handleRunFullSelfHealing = () => {
@@ -59,28 +73,7 @@ export default function SDEAutonomousConsole() {
 
   return (
     <>
-      {/* ── FLOATING SDE AGENT BADGE (Bottom-Right) ───────────────────────── */}
-      <div className="fixed bottom-5 right-5 z-40">
-        <button
-          onClick={() => {
-            sacredAudio.playNavChime(0.06);
-            setIsOpen(!isOpen);
-          }}
-          className="group px-3.5 py-2 rounded-2xl bg-gradient-to-r from-[#0d1022] to-[#080a14] border-2 border-teal-400/40 hover:border-teal-400 shadow-[0_0_25px_rgba(45,212,191,0.25)] flex items-center gap-2.5 text-xs font-mono font-bold text-teal-300 hover:scale-105 active:scale-95 transition-all cursor-pointer"
-          title="आंतरिक AI सॉफ्टवेयर इंजीनियर कंसोल खोलें"
-        >
-          <div className="w-2.5 h-2.5 rounded-full bg-teal-400 animate-ping" />
-          <div className="flex items-center gap-1.5">
-            <Cpu className="w-3.5 h-3.5 text-teal-400" />
-            <span className="font-serif">🤖 SDE AI Bot (Active)</span>
-          </div>
-          <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-teal-400/20 text-teal-200">
-            {telemetry?.fps || 60} FPS
-          </span>
-        </button>
-      </div>
-
-      {/* ── SDE AUTONOMOUS CONSOLE MODAL ──────────────────────────────────── */}
+      {/* ── BACKEND ONLY: SDE AUTONOMOUS CONSOLE MODAL (Ctrl+Shift+D) ──────── */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl animate-fade-in">
           <div className="relative w-full max-w-3xl max-h-[85vh] overflow-hidden rounded-3xl bg-gradient-to-b from-[#0e1222] via-[#090b16] to-[#04050a] border-2 border-teal-400/40 shadow-[0_20px_90px_rgba(0,0,0,0.95)] flex flex-col">
@@ -93,7 +86,7 @@ export default function SDEAutonomousConsole() {
                 <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
                 <span className="text-xs sm:text-sm font-mono font-bold text-teal-300 ml-2 flex items-center gap-1.5">
                   <Terminal className="w-4 h-4 text-teal-400" />
-                  <span>DHARMA.OS — Internal Autonomous SDE-3 Engineer HUD</span>
+                  <span>DHARMA.OS — Backend Autonomous SDE-3 Engineer HUD</span>
                 </span>
               </div>
 
@@ -113,7 +106,7 @@ export default function SDEAutonomousConsole() {
                 <div className="flex items-center gap-2">
                   <ShieldCheck className="w-5 h-5 text-teal-400 shrink-0" />
                   <span className="text-teal-200 font-serif">
-                    आंतरिक AI सॉफ्टवेयर इंजीनियर २४x७ सक्रिय है — स्वचालित स्व-उपचार (Self-Healing) एवं ₹० टोकन खर्च।
+                    आंतरिक AI सॉफ्टवेयर इंजीनियर बैकएंड में २४x७ कार्यरत है — १००% निःशुल्क व सुरक्षित।
                   </span>
                 </div>
                 <span className="px-2 py-0.5 rounded-full bg-teal-400/20 text-teal-300 font-bold text-[10px] whitespace-nowrap">
