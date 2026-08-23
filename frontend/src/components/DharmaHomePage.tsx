@@ -1,3 +1,4 @@
+import KrishnaWallpaperGallery from '@/components/KrishnaWallpaperGallery';
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
