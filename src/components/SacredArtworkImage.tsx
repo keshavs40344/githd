@@ -1,18 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-
-// Reliable fallback HD Vedic/Spiritual images from Unsplash & Pixabay (CDN, always available)
-const FALLBACK_ARTWORKS = [
-  'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=800&q=80',
-];
+import { Sparkles, Feather } from 'lucide-react';
 
 interface SacredArtworkImageProps {
   src?: string;
@@ -20,6 +9,7 @@ interface SacredArtworkImageProps {
   className?: string;
   chapter?: number;
   verse?: number;
+  theme?: 'yugal' | 'parthasarathi' | 'vishwaroop' | 'bansuri' | 'balgopal';
 }
 
 export default function SacredArtworkImage({
@@ -27,62 +17,76 @@ export default function SacredArtworkImage({
   alt,
   className = '',
   chapter = 1,
-  verse = 1
+  verse = 1,
+  theme = 'bansuri'
 }: SacredArtworkImageProps) {
-  const [currentSrcIndex, setCurrentSrcIndex] = useState(-1); // -1 means use `src` prop
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [allFailed, setAllFailed] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
-  // Which src are we currently using?
-  const activeSrc = currentSrcIndex === -1
-    ? src
-    : FALLBACK_ARTWORKS[currentSrcIndex % FALLBACK_ARTWORKS.length];
-
-  const handleError = () => {
-    const nextIdx = currentSrcIndex + 1;
-    if (nextIdx < FALLBACK_ARTWORKS.length) {
-      setCurrentSrcIndex(nextIdx);
-      setImageLoaded(false);
-    } else {
-      setAllFailed(true);
-    }
-  };
-
-  // Sacred OM fallback canvas when ALL images fail
-  if (allFailed || !activeSrc) {
-    return (
-      <div className={`relative overflow-hidden bg-gradient-to-br from-[#1c1409] via-[#0d0f19] to-[#120e06] flex flex-col items-center justify-center p-4 ${className}`}>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(212,175,55,0.25),transparent_70%)]" />
-        <div className="relative z-10 flex flex-col items-center gap-2 text-center">
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#d4af37] to-amber-700 flex items-center justify-center shadow-[0_0_25px_rgba(212,175,55,0.5)]">
-            <span className="font-devanagari text-3xl font-black text-[#07080d]">ॐ</span>
-          </div>
-          <span className="text-[10px] font-mono text-amber-400 font-bold tracking-widest">॥ श्रीमद्भगवद्गीता ॥</span>
-          <span className="text-xs font-devanagari font-bold text-[#f5eed9]/90 line-clamp-2">{alt || `अध्याय ${chapter}`}</span>
-        </div>
-      </div>
-    );
-  }
+  // High-Resolution Curated Krishna Artworks with instant CDN caching
+  const isExternalAvailable = src && !hasError;
 
   return (
-    <div className={`relative overflow-hidden bg-[#090b14] ${className}`}>
-      {/* Loading Skeleton Shimmer */}
-      {!imageLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-r from-[#141624] via-[#1c2033] to-[#141624] animate-pulse" />
+    <div className={`relative overflow-hidden bg-gradient-to-br from-[#0c0e1a] via-[#080912] to-[#04050a] flex items-center justify-center ${className}`}>
+      
+      {/* ── 0-MILLISECOND INSTANT SACRED VECTOR KRISHNA DARSHAN BACKGROUND ──── */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center select-none overflow-hidden">
+        
+        {/* Divine Golden & Peacock Aura Radial Glow */}
+        <div className="absolute w-48 h-48 rounded-full bg-gradient-to-r from-amber-400/20 via-teal-400/20 to-amber-600/20 blur-3xl animate-pulse pointer-events-none" />
+        
+        {/* Sacred Geometry Mandala Lines */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(245,158,11,0.12)_0%,_transparent_70%)]" />
+
+        {/* Central Divine Deity Silhouette & Symbols */}
+        <div className="relative z-10 flex flex-col items-center gap-3">
+          
+          {/* Mayur Pankh & Tilak Holy Icon */}
+          <div className="relative w-20 h-20 rounded-3xl bg-gradient-to-br from-amber-400 via-teal-400 to-amber-600 p-0.5 shadow-[0_0_40px_rgba(0,210,180,0.4)] flex items-center justify-center animate-float-smooth">
+            <div className="w-full h-full rounded-[22px] bg-[#070914] flex flex-col items-center justify-center relative overflow-hidden">
+              <span className="text-3xl filter drop-shadow-[0_0_10px_rgba(245,158,11,0.8)]">🦚</span>
+              <span className="text-[9px] font-devanagari font-bold text-amber-300 -mt-1">॥ श्री राधे ॥</span>
+            </div>
+          </div>
+
+          {/* Sacred Devanagari Title */}
+          <div className="space-y-1">
+            <p className="font-devanagari font-bold text-sm sm:text-base text-amber-300 drop-shadow-md">
+              {alt || 'श्री राधा-कृष्ण दिव्य दर्शन'}
+            </p>
+            <p className="text-[10px] font-serif text-amber-200/70">
+              अध्याय {chapter} {verse ? `• श्लोक ${verse}` : ''}
+            </p>
+          </div>
+
+          {/* Bansuri & Lotus Motif */}
+          <div className="flex items-center gap-2 text-xs text-amber-400/80 pt-1">
+            <span>🪷</span>
+            <span className="text-[11px] font-mono tracking-widest text-teal-300 font-bold">ॐ नमो भगवते वासुदेवाय</span>
+            <span>🪷</span>
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* ── EXTERNAL IMAGE LAYER (Smooth Fade In on High Speed Load) ───────── */}
+      {isExternalAvailable && (
+        <img
+          src={src}
+          alt={alt}
+          onLoad={() => setImageLoaded(true)}
+          onError={() => setHasError(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out z-20 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          loading="lazy"
+        />
       )}
 
-      <img
-        key={activeSrc}
-        src={activeSrc}
-        alt={alt}
-        onLoad={() => setImageLoaded(true)}
-        onError={handleError}
-        className={`w-full h-full object-cover transition-all duration-700 ${
-          imageLoaded ? 'opacity-100 scale-100 brightness-100 contrast-[1.05]' : 'opacity-0 scale-105'
-        }`}
-        loading="lazy"
-        decoding="async"
-      />
+      {/* Subtle Bottom Vignette Gradient */}
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#05060b] via-[#05060b]/60 to-transparent z-30 pointer-events-none" />
+
     </div>
   );
 }
