@@ -1,4 +1,4 @@
-// 100% EXCLUSIVE ULTRA-HD SRI KRISHNA & RADHA ARTWORKS WITH INSTANT RENDERING
+// 100% EXCLUSIVE PURE SRI KRISHNA & RADHA SACRED ARTWORKS (ZERO UNSPLASH / 100% VEDIC)
 
 export interface KrishnaArt {
   id: string;
@@ -14,7 +14,7 @@ export const KRISHNA_ARTWORKS: KrishnaArt[] = [
     id: 'radha_krishna_yugal',
     title: 'श्री राधा-कृष्ण युगल सरकार दिव्य दर्शन',
     subtitle: 'तप्तकाञ्चनगौराङ्गि राधे वृन्दावनेश्वरी — नित्य निकुंज रस एवं महारास दर्शन',
-    url: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1200&q=80',
+    url: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="aurag" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23ffeed1"/><stop offset="40%" stop-color="%23d97706"/><stop offset="80%" stop-color="%2378350f"/><stop offset="100%" stop-color="%230c0a09"/></radialGradient><linearGradient id="goldg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23fef08a"/><stop offset="50%" stop-color="%23eab308"/><stop offset="100%" stop-color="%23a16207"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23aurag)"/><circle cx="600" cy="360" r="280" fill="none" stroke="url(%23goldg)" stroke-width="6" opacity="0.6" stroke-dasharray="16,8"/><circle cx="600" cy="360" r="240" fill="none" stroke="url(%23goldg)" stroke-width="2" opacity="0.4"/><g transform="translate(600, 360)"><path d="M-120,-40 C-80,-120 80,-120 120,-40 C160,40 100,140 0,180 C-100,140 -160,40 -120,-40 Z" fill="%230284c7" opacity="0.25"/><path d="M-100,-20 Q0,-80 100,-20 Q0,80 -100,-20" fill="none" stroke="url(%23goldg)" stroke-width="8"/><line x1="-160" y1="20" x2="160" y2="-40" stroke="url(%23goldg)" stroke-width="10" stroke-linecap="round"/><circle cx="-80" cy="-6" r="5" fill="%23000"/><circle cx="-40" cy="-14" r="5" fill="%23000"/><circle cx="0" cy="-21" r="5" fill="%23000"/><circle cx="40" cy="-29" r="5" fill="%23000"/><circle cx="80" cy="-36" r="5" fill="%23000"/><path d="M-20,-60 C-10,-120 40,-130 60,-90 C40,-70 20,-60 -20,-60" fill="%23059669"/><circle cx="30" cy="-90" r="14" fill="%230284c7"/><circle cx="30" cy="-90" r="8" fill="%23eab308"/></g><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="44" font-weight="bold" fill="%23fef08a" letter-spacing="4">॥ श्री राधा-कृष्ण युगल सरकार ॥</text><text x="600" y="710" text-anchor="middle" font-family="serif" font-size="24" fill="%23fde047" opacity="0.85">तप्तकाञ्चनगौराङ्गि राधे वृन्दावनेश्वरी • नित्य निकुंज रस दर्शन</text></svg>',
     category: 'yugal',
     tags: ['राधा कृष्ण', 'युगल सरकार', 'वृन्दावन']
   },
@@ -22,7 +22,7 @@ export const KRISHNA_ARTWORKS: KrishnaArt[] = [
     id: 'parthasarathi_updesh',
     title: 'पार्थसारथी श्रीकृष्ण — कुरुक्षेत्र गीता उपदेश',
     subtitle: 'यदा यदा हि धर्मस्य ग्लानिर्भवति भारत — कुरुक्षेत्र में अर्जुन को दिव्य अमृत ज्ञान',
-    url: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80',
+    url: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="aurag2" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fef3c7"/><stop offset="40%" stop-color="%23ea580c"/><stop offset="80%" stop-color="%23431407"/><stop offset="100%" stop-color="%23050505"/></radialGradient><linearGradient id="goldg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="%23fde047"/><stop offset="100%" stop-color="%23ca8a04"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23aurag2)"/><circle cx="600" cy="350" r="260" fill="none" stroke="url(%23goldg2)" stroke-width="4" opacity="0.5"/><g transform="translate(600, 340)"><circle cx="0" cy="0" r="140" fill="none" stroke="url(%23goldg2)" stroke-width="12"/><line x1="-130" y1="0" x2="130" y2="0" stroke="url(%23goldg2)" stroke-width="6"/><line x1="0" y1="-130" x2="0" y2="130" stroke="url(%23goldg2)" stroke-width="6"/><line x1="-92" y1="-92" x2="92" y2="92" stroke="url(%23goldg2)" stroke-width="6"/><line x1="-92" y1="92" x2="92" y2="-92" stroke="url(%23goldg2)" stroke-width="6"/><path d="M-80,80 L80,80 L60,-40 L-60,-40 Z" fill="%23b45309" opacity="0.4"/><polygon points="0,-160 40,-60 -40,-60" fill="url(%23goldg2)"/></g><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="44" font-weight="bold" fill="%23fde047" letter-spacing="4">॥ पार्थसारथी श्रीकृष्ण — कुरुक्षेत्र गीता ज्ञान ॥</text><text x="600" y="710" text-anchor="middle" font-family="serif" font-size="24" fill="%23fed7aa" opacity="0.9">यदा यदा हि धर्मस्य ग्लानिर्भवति भारत • सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज</text></svg>',
     category: 'parthasarathi',
     tags: ['पार्थसारथी', 'गीता ज्ञान', 'कुरुक्षेत्र']
   },
@@ -30,7 +30,7 @@ export const KRISHNA_ARTWORKS: KrishnaArt[] = [
     id: 'vishwaroop_darshan',
     title: 'श्रीकृष्ण विश्वरूप विराट दर्शन',
     subtitle: 'दिवि सूर्यसहस्रस्य भवेद्युगपदुत्थिता — सहस्त्रों सूर्यों के तेज से युक्त ब्रह्मांडीय विराट रूप',
-    url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80',
+    url: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="aurag3" cx="50%" cy="40%" r="65%"><stop offset="0%" stop-color="%23ffffff"/><stop offset="25%" stop-color="%23fde047"/><stop offset="55%" stop-color="%237c2d12"/><stop offset="100%" stop-color="%23020617"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23aurag3)"/><g transform="translate(600, 340)" stroke="%23fbbf24" stroke-width="2" opacity="0.7"><line x1="0" y1="0" x2="0" y2="-280"/><line x1="0" y1="0" x2="198" y2="-198"/><line x1="0" y1="0" x2="280" y2="0"/><line x1="0" y1="0" x2="198" y2="198"/><line x1="0" y1="0" x2="0" y2="280"/><line x1="0" y1="0" x2="-198" y2="198"/><line x1="0" y1="0" x2="-280" y2="0"/><line x1="0" y1="0" x2="-198" y2="-198"/><circle cx="0" cy="0" r="180" fill="none" stroke="%23fef08a" stroke-width="6"/><circle cx="0" cy="0" r="90" fill="none" stroke="%23fef08a" stroke-width="4"/></g><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="44" font-weight="bold" fill="%23fef08a" letter-spacing="4">॥ श्रीकृष्ण विश्वरूप विराट दर्शन ॥</text><text x="600" y="710" text-anchor="middle" font-family="serif" font-size="24" fill="%23fde047" opacity="0.9">दिवि सूर्यसहस्रस्य भवेद्युगपदुत्थिता • सहस्त्रों सूर्यों के तेज से युक्त विराट रूप</text></svg>',
     category: 'vishwaroop',
     tags: ['विश्वरूप', 'विराट रूप', 'परमब्रह्म']
   },
@@ -38,7 +38,7 @@ export const KRISHNA_ARTWORKS: KrishnaArt[] = [
     id: 'banke_bihari_venu',
     title: 'ठाकुर श्री बांके बिहारी — वेणु माधुरी',
     subtitle: 'अधरं मधुरं वदनं मधुरं — त्रिभंगी मुद्रा में मधुर बाँसुरी वादन और नयन कृपा',
-    url: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=80',
+    url: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="aurag4" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fef08a"/><stop offset="40%" stop-color="%23ca8a04"/><stop offset="80%" stop-color="%23713f12"/><stop offset="100%" stop-color="%230c0a09"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23aurag4)"/><g transform="translate(600, 350)"><circle cx="0" cy="-50" r="160" fill="none" stroke="%23fde047" stroke-width="4" opacity="0.5"/><line x1="-220" y1="20" x2="220" y2="-60" stroke="%23fef08a" stroke-width="14" stroke-linecap="round"/><circle cx="-110" cy="-7" r="6" fill="%23000"/><circle cx="-55" cy="-17" r="6" fill="%23000"/><circle cx="0" cy="-27" r="6" fill="%23000"/><circle cx="55" cy="-37" r="6" fill="%23000"/><circle cx="110" cy="-47" r="6" fill="%23000"/><path d="M-30,-80 C-10,-150 50,-160 80,-110 C50,-90 30,-80 -30,-80" fill="%23059669"/><circle cx="45" cy="-115" r="18" fill="%230284c7"/><circle cx="45" cy="-115" r="10" fill="%23eab308"/></g><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="44" font-weight="bold" fill="%23fef08a" letter-spacing="4">॥ ठाकुर श्री बांके बिहारी — वेणु माधुरी ॥</text><text x="600" y="710" text-anchor="middle" font-family="serif" font-size="24" fill="%23fde047" opacity="0.9">अधरं मधुरं वदनं मधुरं • त्रिभंगी मुद्रा में मधुर बाँसुरी वादन</text></svg>',
     category: 'bansuri',
     tags: ['बांके बिहारी', 'बाँसुरी नाद', 'त्रिभंगी']
   },
@@ -46,7 +46,7 @@ export const KRISHNA_ARTWORKS: KrishnaArt[] = [
     id: 'makhan_chor_gopal',
     title: 'बाल गोपाल नटखट माखनचोर',
     subtitle: 'गोकुल की वात्सल्य लीलाएं — यशोदा नंदन का पावन बाल रूप दर्शन',
-    url: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80',
+    url: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="aurag5" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fef3c7"/><stop offset="40%" stop-color="%23f59e0b"/><stop offset="80%" stop-color="%23854d0e"/><stop offset="100%" stop-color="%23020617"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23aurag5)"/><g transform="translate(600, 350)"><ellipse cx="0" cy="40" rx="140" ry="120" fill="%23d97706" opacity="0.6"/><ellipse cx="0" cy="-40" rx="110" ry="30" fill="%23fef08a"/><path d="M-80,-30 Q0,40 80,-30" fill="%23fffbeb" opacity="0.9"/><path d="M-20,-100 C0,-160 50,-160 70,-120 C50,-100 30,-90 -20,-100" fill="%23059669"/><circle cx="40" cy="-125" r="16" fill="%230284c7"/></g><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="44" font-weight="bold" fill="%23fef08a" letter-spacing="4">॥ बाल गोपाल नटखट माखनचोर ॥</text><text x="600" y="710" text-anchor="middle" font-family="serif" font-size="24" fill="%23fde047" opacity="0.9">गोकुल की वात्सल्य लीलाएं • यशोदा नंदन का पावन बाल रूप दर्शन</text></svg>',
     category: 'makhan_chor',
     tags: ['बाल गोपाल', 'माखनचोर', 'गोकुल']
   },
@@ -54,7 +54,7 @@ export const KRISHNA_ARTWORKS: KrishnaArt[] = [
     id: 'giriraj_govardhan',
     title: 'श्री गिरिराज गोवर्धन धारण लीला',
     subtitle: 'इन्द्र के मान का भंजन और कनिष्ठिका अंगुली पर गोवर्धन पर्वत धारण कर ब्रज रक्षा',
-    url: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1200&q=80',
+    url: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="aurag6" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fed7aa"/><stop offset="40%" stop-color="%23c2410c"/><stop offset="80%" stop-color="%23431407"/><stop offset="100%" stop-color="%23050505"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23aurag6)"/><g transform="translate(600, 320)"><polygon points="-240,120 0,-140 240,120" fill="%2378350f" stroke="%23f59e0b" stroke-width="8"/><polygon points="-140,120 0,-40 140,120" fill="%2392400e"/><line x1="0" y1="120" x2="0" y2="180" stroke="%2338bdf8" stroke-width="16" stroke-linecap="round"/></g><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="44" font-weight="bold" fill="%23fef08a" letter-spacing="4">॥ श्री गिरिराज गोवर्धन धारण लीला ॥</text><text x="600" y="710" text-anchor="middle" font-family="serif" font-size="24" fill="%23fed7aa" opacity="0.9">कनिष्ठिका अंगुली पर गोवर्धन पर्वत धारण कर समस्त ब्रजवासियों की रक्षा</text></svg>',
     category: 'govardhan',
     tags: ['गोवर्धन लीला', 'गिरिराज', 'ब्रज रक्षा']
   },
@@ -62,7 +62,7 @@ export const KRISHNA_ARTWORKS: KrishnaArt[] = [
     id: 'yamuna_pulina_bansuri',
     title: 'श्री यमुना पुलिन पर मुरली मनोहर',
     subtitle: 'कदंब वृक्ष की छाया में वेणु नाद — चराचर जगत को सम्मोहित करता प्रेम रस',
-    url: 'https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=1200&q=80',
+    url: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="aurag7" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23bae6fd"/><stop offset="40%" stop-color="%230284c7"/><stop offset="80%" stop-color="%230c4a6e"/><stop offset="100%" stop-color="%23020617"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23aurag7)"/><g transform="translate(600, 360)"><path d="M-300,120 Q-150,60 0,120 Q150,180 300,120" fill="none" stroke="%2338bdf8" stroke-width="8"/><path d="M-300,160 Q-150,100 0,160 Q150,220 300,160" fill="none" stroke="%237dd3fc" stroke-width="5"/><circle cx="0" cy="-60" r="140" fill="none" stroke="%23fde047" stroke-width="6" opacity="0.6"/><line x1="-160" y1="-20" x2="160" y2="-80" stroke="%23fef08a" stroke-width="12" stroke-linecap="round"/></g><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="44" font-weight="bold" fill="%23fef08a" letter-spacing="4">॥ श्री यमुना पुलिन पर मुरली मनोहर ॥</text><text x="600" y="710" text-anchor="middle" font-family="serif" font-size="24" fill="%23bae6fd" opacity="0.9">कदंब वृक्ष की छाया में वेणु नाद • चराचर जगत को सम्मोहित करता दिव्य प्रेम रस</text></svg>',
     category: 'bansuri',
     tags: ['मुरली मनोहर', 'यमुना तट', 'वेणु नाद']
   },
@@ -70,7 +70,7 @@ export const KRISHNA_ARTWORKS: KrishnaArt[] = [
     id: 'radha_rani_kripa',
     title: 'श्री राधा रानी कृपा कटाक्ष दर्शन',
     subtitle: 'मुनीन्द्रवृन्दवन्दिते त्रिलोकशोकहारिणी — बरसाने की स्वामिनी श्री लाडली जू',
-    url: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80',
+    url: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="aurag8" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fbcfe8"/><stop offset="40%" stop-color="%23db2777"/><stop offset="80%" stop-color="%23831843"/><stop offset="100%" stop-color="%230f0309"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23aurag8)"/><circle cx="600" cy="350" r="240" fill="none" stroke="%23f472b6" stroke-width="6" opacity="0.6"/><g transform="translate(600, 350)"><circle cx="0" cy="0" r="100" fill="%23ec4899" opacity="0.3"/><path d="M0,-80 C40,-40 60,0 0,60 C-60,0 -40,-40 0,-80 Z" fill="%23fdf2f8" opacity="0.9"/></g><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="44" font-weight="bold" fill="%23fdf2f8" letter-spacing="4">॥ श्री राधा रानी कृपा कटाक्ष दर्शन ॥</text><text x="600" y="710" text-anchor="middle" font-family="serif" font-size="24" fill="%23fbcfe8" opacity="0.9">मुनीन्द्रवृन्दवन्दिते त्रिलोकशोकहारिणी • बरसाने की स्वामिनी श्री लाडली जू</text></svg>',
     category: 'yugal',
     tags: ['राधा रानी', 'बरसाना', 'कृपा कटाक्ष']
   }

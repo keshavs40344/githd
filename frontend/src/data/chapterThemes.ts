@@ -35,7 +35,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-orange-500 hover:bg-orange-400 text-black',
     glowColor: 'rgba(234, 88, 12, 0.35)',
     gradientBg: 'from-[#2b1008] via-[#150a06] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23ffeed1"/><stop offset="50%" stop-color="%23d97706"/><stop offset="100%" stop-color="%230c0a09"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g1)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fef08a" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fef08a">🪷 🦚 🕉️</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fef08a">॥ श्रीमद्भगवद्गीता यथारूप ॥</text></svg>'
   },
   2: {
     chapter: 2,
@@ -52,7 +52,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-amber-500 hover:bg-amber-400 text-black',
     glowColor: 'rgba(245, 158, 11, 0.4)',
     gradientBg: 'from-[#2a1d04] via-[#140e02] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g2" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fef3c7"/><stop offset="50%" stop-color="%23ea580c"/><stop offset="100%" stop-color="%23050505"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g2)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fde047" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fde047">🛕 🪔 📖</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fde047">॥ श्री पार्थसारथी उपदेश ॥</text></svg>'
   },
   3: {
     chapter: 3,
@@ -69,7 +69,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-red-500 hover:bg-red-400 text-black',
     glowColor: 'rgba(239, 68, 68, 0.35)',
     gradientBg: 'from-[#331105] via-[#1a0701] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g3" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23bae6fd"/><stop offset="50%" stop-color="%230284c7"/><stop offset="100%" stop-color="%23020617"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g3)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%2338bdf8" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%2338bdf8">🎵 🪈 🌊</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23bae6fd">॥ श्री यमुना पुलिन मुरली वेणु नाद ॥</text></svg>'
   },
   4: {
     chapter: 4,
@@ -86,7 +86,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-amber-500 hover:bg-amber-400 text-black',
     glowColor: 'rgba(217, 119, 6, 0.35)',
     gradientBg: 'from-[#2e1503] via-[#160a01] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23ffeed1"/><stop offset="50%" stop-color="%23d97706"/><stop offset="100%" stop-color="%230c0a09"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g1)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fef08a" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fef08a">🪷 🦚 🕉️</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fef08a">॥ श्रीमद्भगवद्गीता यथारूप ॥</text></svg>'
   },
   5: {
     chapter: 5,
@@ -103,7 +103,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-emerald-500 hover:bg-emerald-400 text-black',
     glowColor: 'rgba(16, 185, 129, 0.35)',
     gradientBg: 'from-[#03241b] via-[#01140e] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1528715471579-d1bcf0ba5e83?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g2" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fef3c7"/><stop offset="50%" stop-color="%23ea580c"/><stop offset="100%" stop-color="%23050505"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g2)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fde047" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fde047">🛕 🪔 📖</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fde047">॥ श्री पार्थसारथी उपदेश ॥</text></svg>'
   },
   6: {
     chapter: 6,
@@ -120,7 +120,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-cyan-500 hover:bg-cyan-400 text-black',
     glowColor: 'rgba(6, 182, 212, 0.35)',
     gradientBg: 'from-[#041a2f] via-[#020d18] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g3" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23bae6fd"/><stop offset="50%" stop-color="%230284c7"/><stop offset="100%" stop-color="%23020617"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g3)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%2338bdf8" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%2338bdf8">🎵 🪈 🌊</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23bae6fd">॥ श्री यमुना पुलिन मुरली वेणु नाद ॥</text></svg>'
   },
   7: {
     chapter: 7,
@@ -137,7 +137,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-purple-500 hover:bg-purple-400 text-black',
     glowColor: 'rgba(139, 92, 246, 0.35)',
     gradientBg: 'from-[#1a082b] via-[#0d0417] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23ffeed1"/><stop offset="50%" stop-color="%23d97706"/><stop offset="100%" stop-color="%230c0a09"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g1)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fef08a" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fef08a">🪷 🦚 🕉️</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fef08a">॥ श्रीमद्भगवद्गीता यथारूप ॥</text></svg>'
   },
   8: {
     chapter: 8,
@@ -154,7 +154,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-yellow-400 hover:bg-yellow-300 text-black',
     glowColor: 'rgba(234, 179, 8, 0.4)',
     gradientBg: 'from-[#2b1f04] via-[#140e02] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g2" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fef3c7"/><stop offset="50%" stop-color="%23ea580c"/><stop offset="100%" stop-color="%23050505"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g2)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fde047" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fde047">🛕 🪔 📖</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fde047">॥ श्री पार्थसारथी उपदेश ॥</text></svg>'
   },
   9: {
     chapter: 9,
@@ -171,7 +171,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-rose-500 hover:bg-rose-400 text-black',
     glowColor: 'rgba(244, 63, 94, 0.35)',
     gradientBg: 'from-[#2e0821] via-[#170310] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g3" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23bae6fd"/><stop offset="50%" stop-color="%230284c7"/><stop offset="100%" stop-color="%23020617"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g3)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%2338bdf8" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%2338bdf8">🎵 🪈 🌊</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23bae6fd">॥ श्री यमुना पुलिन मुरली वेणु नाद ॥</text></svg>'
   },
   10: {
     chapter: 10,
@@ -188,7 +188,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-amber-500 hover:bg-amber-400 text-black',
     glowColor: 'rgba(245, 158, 11, 0.35)',
     gradientBg: 'from-[#301c04] via-[#170c01] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23ffeed1"/><stop offset="50%" stop-color="%23d97706"/><stop offset="100%" stop-color="%230c0a09"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g1)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fef08a" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fef08a">🪷 🦚 🕉️</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fef08a">॥ श्रीमद्भगवद्गीता यथारूप ॥</text></svg>'
   },
   11: {
     chapter: 11,
@@ -205,7 +205,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-sky-400 hover:bg-sky-300 text-black',
     glowColor: 'rgba(56, 189, 248, 0.45)',
     gradientBg: 'from-[#052933] via-[#021318] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g2" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fef3c7"/><stop offset="50%" stop-color="%23ea580c"/><stop offset="100%" stop-color="%23050505"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g2)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fde047" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fde047">🛕 🪔 📖</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fde047">॥ श्री पार्थसारथी उपदेश ॥</text></svg>'
   },
   12: {
     chapter: 12,
@@ -222,7 +222,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-fuchsia-500 hover:bg-fuchsia-400 text-black',
     glowColor: 'rgba(217, 70, 239, 0.4)',
     gradientBg: 'from-[#26052b] via-[#120215] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g3" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23bae6fd"/><stop offset="50%" stop-color="%230284c7"/><stop offset="100%" stop-color="%23020617"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g3)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%2338bdf8" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%2338bdf8">🎵 🪈 🌊</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23bae6fd">॥ श्री यमुना पुलिन मुरली वेणु नाद ॥</text></svg>'
   },
   13: {
     chapter: 13,
@@ -239,7 +239,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-lime-500 hover:bg-lime-400 text-black',
     glowColor: 'rgba(132, 204, 22, 0.35)',
     gradientBg: 'from-[#0d2605] via-[#061202] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23ffeed1"/><stop offset="50%" stop-color="%23d97706"/><stop offset="100%" stop-color="%230c0a09"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g1)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fef08a" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fef08a">🪷 🦚 🕉️</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fef08a">॥ श्रीमद्भगवद्गीता यथारूप ॥</text></svg>'
   },
   14: {
     chapter: 14,
@@ -256,7 +256,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-amber-400 hover:bg-amber-300 text-black',
     glowColor: 'rgba(251, 191, 36, 0.35)',
     gradientBg: 'from-[#241a05] via-[#120c02] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g2" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fef3c7"/><stop offset="50%" stop-color="%23ea580c"/><stop offset="100%" stop-color="%23050505"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g2)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fde047" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fde047">🛕 🪔 📖</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fde047">॥ श्री पार्थसारथी उपदेश ॥</text></svg>'
   },
   15: {
     chapter: 15,
@@ -273,7 +273,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-purple-500 hover:bg-purple-400 text-black',
     glowColor: 'rgba(168, 85, 247, 0.4)',
     gradientBg: 'from-[#17082e] via-[#0b0316] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g3" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23bae6fd"/><stop offset="50%" stop-color="%230284c7"/><stop offset="100%" stop-color="%23020617"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g3)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%2338bdf8" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%2338bdf8">🎵 🪈 🌊</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23bae6fd">॥ श्री यमुना पुलिन मुरली वेणु नाद ॥</text></svg>'
   },
   16: {
     chapter: 16,
@@ -290,7 +290,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-red-500 hover:bg-red-400 text-black',
     glowColor: 'rgba(239, 68, 68, 0.35)',
     gradientBg: 'from-[#290d05] via-[#140602] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23ffeed1"/><stop offset="50%" stop-color="%23d97706"/><stop offset="100%" stop-color="%230c0a09"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g1)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fef08a" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fef08a">🪷 🦚 🕉️</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fef08a">॥ श्रीमद्भगवद्गीता यथारूप ॥</text></svg>'
   },
   17: {
     chapter: 17,
@@ -307,7 +307,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-amber-400 hover:bg-amber-300 text-black',
     glowColor: 'rgba(251, 191, 36, 0.35)',
     gradientBg: 'from-[#261c03] via-[#120d01] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g2" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23fef3c7"/><stop offset="50%" stop-color="%23ea580c"/><stop offset="100%" stop-color="%23050505"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g2)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fde047" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fde047">🛕 🪔 📖</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fde047">॥ श्री पार्थसारथी उपदेश ॥</text></svg>'
   },
   18: {
     chapter: 18,
@@ -324,7 +324,7 @@ export const CHAPTER_THEMES_CONFIG: Record<number, ChapterThemeConfig> = {
     buttonBg: 'bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-black font-bold',
     glowColor: 'rgba(245, 158, 11, 0.5)',
     gradientBg: 'from-[#331c03] via-[#1a0d01] to-[#0a0c16]',
-    imageUrl: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=85'
+    imageUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g3" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23bae6fd"/><stop offset="50%" stop-color="%230284c7"/><stop offset="100%" stop-color="%23020617"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g3)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%2338bdf8" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%2338bdf8">🎵 🪈 🌊</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23bae6fd">॥ श्री यमुना पुलिन मुरली वेणु नाद ॥</text></svg>'
   }
 };
 

@@ -182,7 +182,7 @@ export default function SacredMusicHub() {
       youtubeId: extracted.id,
       isPlaylist: extracted.isPlaylist,
       thumbnailUrl: extracted.isPlaylist 
-        ? 'https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=700&auto=format&fit=crop&q=80'
+        ? 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800"><defs><radialGradient id="g1" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%23ffeed1"/><stop offset="50%" stop-color="%23d97706"/><stop offset="100%" stop-color="%230c0a09"/></radialGradient></defs><rect width="100%" height="100%" fill="url(%23g1)"/><circle cx="600" cy="360" r="220" fill="none" stroke="%23fef08a" stroke-width="4" opacity="0.6"/><text x="600" y="380" text-anchor="middle" font-family="serif" font-size="72" fill="%23fef08a">🪷 🦚 🕉️</text><text x="600" y="660" text-anchor="middle" font-family="serif" font-size="38" font-weight="bold" fill="%23fef08a">॥ श्रीमद्भगवद्गीता यथारूप ॥</text></svg>'
         : `https://img.youtube.com/vi/${extracted.id}/hqdefault.jpg`,
       duration: 'Continuous Audio',
       description: 'Seeker customized sacred stream for meditation and chanting.',
