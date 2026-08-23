@@ -25,6 +25,7 @@ import FamilyDevoteeSanctuary from '@/components/FamilyDevoteeSanctuary';
 import WhyChooseDharmaOS from '@/components/WhyChooseDharmaOS';
 import { HUNDRED_LIFE_DILEMMAS } from '@/data/hundredLifeDilemmas';
 import LiveOnlineRadioModal from '@/components/LiveOnlineRadioModal';
+import InteractiveTempleAltar from '@/components/InteractiveTempleAltar';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 const DN = ['०','१','२','३','४','५','६','७','८','९'];

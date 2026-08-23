@@ -270,3 +270,25 @@
 .sacred-glow {
   text-shadow: 0 0 20px rgba(245,158,11,0.6), 0 0 40px rgba(245,158,11,0.3);
 }
+
+/* ═══════════════════════════════════════════════════════
+   TEMPLE PUSHPANJALI (PETAL FALL) ANIMATION
+═══════════════════════════════════════════════════════ */
+@keyframes petalFall {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(0.8);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(120px) rotate(180deg) translateX(30px) scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(280px) rotate(360deg) translateX(-20px) scale(0.6);
+    opacity: 0;
+  }
+}
+
+.animate-petal-fall {
+  animation: petalFall 3s ease-in forwards;
+}
