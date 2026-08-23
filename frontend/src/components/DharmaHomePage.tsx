@@ -1,3 +1,4 @@
+import SDEAutonomousConsole from '@/components/SDEAutonomousConsole';
 import KrishnaWallpaperGallery from '@/components/KrishnaWallpaperGallery';
 'use client';
 
