@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   Sparkles, Search, Radio, Heart, MessageSquare, 
-  BookOpen, Download, Compass, ShieldCheck 
+  BookOpen, Download, Compass, ShieldCheck, Server 
 } from 'lucide-react';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
@@ -84,6 +84,17 @@ export default function GlobalRoyalHeader() {
           >
             वॉलपेपर स्टूडियो
           </Link>
+          <Link
+            href="/server"
+            onClick={() => sacredAudio.playNavChime(0.04)}
+            className={`px-3 py-1.5 rounded-xl text-xs font-serif transition-colors flex items-center gap-1 ${
+              pathname === '/server' ? 'bg-emerald-500/20 text-emerald-300 font-bold' : 'text-emerald-400/80 hover:text-emerald-300'
+            }`}
+            title="लाइव सर्वर कमांड सेंटर एवं साइट कंट्रोलर"
+          >
+            <Server className="w-3 h-3 text-emerald-400" />
+            <span>लाइव सर्वर</span>
+          </Link>
         </nav>
 
         {/* ── RIGHT DEVOTIONAL ACTIONS ────────────────────────────────────── */}
@@ -99,29 +110,40 @@ export default function GlobalRoyalHeader() {
             title="२४x७ अखंड कृष्ण भजन व वेणु रेडियो चालू करें"
           >
             <Radio className="w-3.5 h-3.5 animate-pulse" />
-            <span className="hidden sm:inline">२४x७ अखंड रेडियो</span>
+            <span className="hidden sm:inline">२४x७ रेडियो</span>
           </button>
 
-          {/* AI Search (Ctrl+K) */}
+          {/* Scripture Search */}
           <button
             onClick={() => {
-              setIsSearchModalOpen(true);
               sacredAudio.playNavChime(0.06);
+              setIsSearchModalOpen(true);
             }}
-            className="px-3 py-1.5 rounded-xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/30 text-xs font-serif text-[#e6c687] hover:text-white flex items-center gap-1.5 transition-all cursor-pointer"
-            title="गीता में समाधान खोजें (Ctrl+K)"
+            className="p-2 rounded-xl bg-[#0f111c] hover:bg-[#191c2e] border border-[#c5a059]/30 text-[#e6c687] hover:text-yellow-300 transition-all cursor-pointer shadow-sm"
+            title="श्लोक एवं अध्याय खोजें (Ctrl+K)"
           >
-            <Search className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">खोजें</span>
-            <kbd className="hidden lg:inline text-[9px] bg-black/50 px-1.5 py-0.5 rounded border border-[#c5a059]/30 text-[#c5a059]">
-              ⌘K
-            </kbd>
+            <Search className="w-4 h-4" />
           </button>
+
+          {/* Live Server Link Mobile Icon */}
+          <Link
+            href="/server"
+            onClick={() => sacredAudio.playNavChime(0.04)}
+            className="md:hidden p-2 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 transition-all"
+            title="लाइव सर्वर"
+          >
+            <Server className="w-4 h-4" />
+          </Link>
 
         </div>
 
       </div>
-      <LiveOnlineRadioModal isOpen={isRadioModalOpen} onClose={() => setIsRadioModalOpen(false)} />
+
+      {/* 24/7 Radio Modal */}
+      <LiveOnlineRadioModal
+        isOpen={isRadioModalOpen}
+        onClose={() => setIsRadioModalOpen(false)}
+      />
     </header>
   );
 }

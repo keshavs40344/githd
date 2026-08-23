@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { 
   Sparkles, Heart, ShieldCheck, ArrowUp, Radio, 
-  BookOpen, MessageSquare, Flame, Download 
+  BookOpen, MessageSquare, Flame, Download, Server 
 } from 'lucide-react';
 import { CHAPTERS } from '@/types/verse';
 import { sacredAudio } from '@/lib/sacredSounds';
@@ -45,12 +45,21 @@ export default function GlobalRoyalFooter() {
           </div>
 
           <div className="flex items-center gap-3">
+            <Link
+              href="/server"
+              onClick={() => sacredAudio.playNavChime(0.04)}
+              className="px-4 py-2 rounded-2xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-400/40 text-xs font-mono text-emerald-300 flex items-center gap-1.5 transition-all shadow-md"
+            >
+              <Server className="w-3.5 h-3.5" />
+              <span>लाइव सर्वर कंट्रोल</span>
+            </Link>
+
             <button
               onClick={scrollToTop}
               className="px-4 py-2 rounded-2xl bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/30 text-xs font-serif text-[#e6c687] hover:text-white flex items-center gap-1.5 transition-all cursor-pointer shadow-md"
             >
               <ArrowUp className="w-3.5 h-3.5" />
-              <span>शीर्ष पर जाएं (Back to Top)</span>
+              <span>शीर्ष पर जाएं</span>
             </button>
           </div>
         </div>
