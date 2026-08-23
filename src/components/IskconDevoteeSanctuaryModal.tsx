@@ -5,14 +5,18 @@ import {
   Sparkles, Radio, Heart, BookOpen, Calendar, MapPin,
   CheckCircle2, Volume2, VolumeX, Users, Play, Pause, X, ExternalLink,
   Award, Flame, Flower2, Shield, Tv, Bell, RefreshCw, ChevronLeft, ChevronRight,
-  Info, Share2, Compass, AlertCircle
+  Info, Share2, Compass, AlertCircle, RotateCw, History, Film
 } from 'lucide-react';
 import { 
   ISKCON_TV_CHANNELS, ISKCON_DAILY_AARTI_SCHEDULE, 
   ISKCON_DEVOTEE_NOTICES, UPCOMING_VAISHNAVA_FESTIVALS, 
-  SRILA_PRABHUPADA_TEACHINGS, IskconTvChannel 
+  SRILA_PRABHUPADA_TEACHINGS, IskconTvChannel, FallbackEpisode,
+  getSmartFreshFallbackEpisode
 } from '@/data/iskconGlobalData';
 import { sacredAudio } from '@/lib/sacredSounds';
+
+const WATCHED_STORAGE_KEY = 'dharma_iskcon_watched_videos_v1';
+const FAVORITES_STORAGE_KEY = 'dharma_iskcon_favorite_channels_v1';
 
 export default function IskconDevoteeSanctuaryModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,16 +27,89 @@ export default function IskconDevoteeSanctuaryModal() {
   const [channelRegionFilter, setChannelRegionFilter] = useState<'all' | 'delhi_ncr' | 'india_top'>('all');
   const [mediaMode, setMediaMode] = useState<'video' | 'radio'>('video');
   const [useFallbackVideo, setUseFallbackVideo] = useState<boolean>(false);
+  const [currentEpisode, setCurrentEpisode] = useState<FallbackEpisode>(
+    ISKCON_TV_CHANNELS[0].fallbackPlaylist[0]
+  );
+  const [isFreshVideo, setIsFreshVideo] = useState<boolean>(true);
+  const [episodeIndex, setEpisodeIndex] = useState<number>(0);
+  const [watchedMap, setWatchedMap] = useState<Record<string, number>>({});
+  const [favoriteChannelIds, setFavoriteChannelIds] = useState<string[]>([]);
   const [completedRounds, setCompletedRounds] = useState(4);
   const [currentBead, setCurrentBead] = useState(27);
-  const [japaStreak, setJapaStreak] = useState(14);
   const [isBeadAnimating, setIsBeadAnimating] = useState(false);
 
-  // Reset fallback state whenever channel changes
+  // Load Watch History & Favorites on Client Mount
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        const storedWatched = localStorage.getItem(WATCHED_STORAGE_KEY);
+        if (storedWatched) {
+          setWatchedMap(JSON.parse(storedWatched));
+        }
+        const storedFavs = localStorage.getItem(FAVORITES_STORAGE_KEY);
+        if (storedFavs) {
+          setFavoriteChannelIds(JSON.parse(storedFavs));
+        }
+      }
+    } catch {}
+  }, []);
+
+  // Save Watched Video to History & LocalStorage
+  const recordVideoView = (videoId: string) => {
+    const updated = { ...watchedMap, [videoId]: Date.now() };
+    setWatchedMap(updated);
+    try {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(WATCHED_STORAGE_KEY, JSON.stringify(updated));
+      }
+    } catch {}
+  };
+
+  // Toggle Channel in Favorites
+  const toggleFavorite = (channelId: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    sacredAudio.playNavChime(0.05);
+    const updated = favoriteChannelIds.includes(channelId)
+      ? favoriteChannelIds.filter(id => id !== channelId)
+      : [...favoriteChannelIds, channelId];
+    setFavoriteChannelIds(updated);
+    try {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(updated));
+      }
+    } catch {}
+  };
+
+  // Apply DevOps Deduplication Algorithm to pick fresh unviewed video
+  const applySmartVideoSelection = (channel: IskconTvChannel, customWatched = watchedMap) => {
+    const smart = getSmartFreshFallbackEpisode(channel, customWatched);
+    setCurrentEpisode(smart.episode);
+    setIsFreshVideo(smart.isFresh);
+    setEpisodeIndex(smart.index);
+    recordVideoView(smart.episode.id);
+  };
+
+  // Switch Channel
   const switchChannel = (channel: IskconTvChannel) => {
     setSelectedChannel(channel);
     setUseFallbackVideo(false);
+    applySmartVideoSelection(channel);
     sacredAudio.playNavChime(0.06);
+  };
+
+  // Rotate to Next Fresh Episode (DevOps continuous cycle)
+  const handleRotateNextEpisode = () => {
+    sacredAudio.playTempleBell(0.2);
+    const playlist = selectedChannel.fallbackPlaylist;
+    if (!playlist || playlist.length === 0) return;
+
+    // Pick next index in playlist
+    const nextIdx = (episodeIndex + 1) % playlist.length;
+    const nextEpisode = playlist[nextIdx];
+    setCurrentEpisode(nextEpisode);
+    setEpisodeIndex(nextIdx);
+    setIsFreshVideo(!watchedMap[nextEpisode.id]);
+    recordVideoView(nextEpisode.id);
   };
 
   const handleNextChannel = () => {
@@ -81,6 +158,7 @@ export default function IskconDevoteeSanctuaryModal() {
         onClick={() => {
           sacredAudio.playTripleGhanta(0.5);
           setIsOpen(true);
+          applySmartVideoSelection(selectedChannel);
         }}
         className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-orange-400/20 to-amber-600/20 hover:from-amber-500/30 hover:to-orange-400/30 border-2 border-orange-400/40 text-orange-300 hover:text-white text-xs font-serif font-bold shadow-[0_0_20px_rgba(249,115,22,0.25)] hover:scale-103 active:scale-95 transition-all cursor-pointer"
         title="इस्कॉन २४x७ टीवी नेटवर्क, दिल्ली व अखिल भारतीय धाम लाइव दर्शन"
@@ -110,8 +188,9 @@ export default function IskconDevoteeSanctuaryModal() {
                       <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
                       ISKCON 24x7 Television Network
                     </span>
-                    <span className="text-[10px] font-mono text-amber-300 font-bold hidden sm:inline">
-                      Delhi NCR & All India Top Temples
+                    <span className="text-[10px] font-mono text-teal-300 font-bold hidden sm:inline flex items-center gap-1">
+                      <RotateCw className="w-3 h-3 text-teal-400 animate-spin" style={{ animationDuration: '6s' }} />
+                      DevOps Smart Deduplication Active
                     </span>
                   </div>
                   <h3 className="text-sm sm:text-base font-devanagari font-black text-orange-300">
@@ -187,6 +266,18 @@ export default function IskconDevoteeSanctuaryModal() {
                               <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
                               LIVE ON AIR
                             </span>
+                            
+                            {/* DevOps Fresh Episode Status Badge */}
+                            {useFallbackVideo && (
+                              <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-mono text-[10px] font-bold border ${
+                                isFreshVideo 
+                                  ? 'bg-emerald-500/20 border-emerald-400/40 text-emerald-300' 
+                                  : 'bg-amber-500/20 border-amber-400/40 text-amber-300'
+                              }`}>
+                                <Sparkles className="w-2.5 h-2.5" />
+                                {isFreshVideo ? '✨ ताज़ा नया वीडियो (Unseen)' : '🔄 पूर्व दृष्ट (Rewatch)'}
+                              </span>
+                            )}
                           </div>
                           <p className="text-xs text-orange-300/70 font-sans flex items-center gap-1.5 mt-0.5">
                             <MapPin className="w-3 h-3 text-orange-400" />
@@ -201,7 +292,7 @@ export default function IskconDevoteeSanctuaryModal() {
                         <div className="p-1 rounded-2xl bg-[#1e1509] border border-orange-400/30 flex items-center gap-1 text-xs">
                           <button
                             onClick={() => { setMediaMode('video'); sacredAudio.playNavChime(0.04); }}
-                            className={`px-3 py-1 rounded-xl transition-all ${
+                            className={`px-3 py-1 rounded-xl transition-all cursor-pointer ${
                               mediaMode === 'video' ? 'bg-orange-400 text-black font-bold' : 'text-orange-200 hover:text-white'
                             }`}
                           >
@@ -209,13 +300,26 @@ export default function IskconDevoteeSanctuaryModal() {
                           </button>
                           <button
                             onClick={() => { setMediaMode('radio'); sacredAudio.playNavChime(0.04); }}
-                            className={`px-3 py-1 rounded-xl transition-all ${
+                            className={`px-3 py-1 rounded-xl transition-all cursor-pointer ${
                               mediaMode === 'radio' ? 'bg-orange-400 text-black font-bold' : 'text-orange-200 hover:text-white'
                             }`}
                           >
                             📻 432Hz रेडियो
                           </button>
                         </div>
+
+                        {/* Favorite Button */}
+                        <button
+                          onClick={(e) => toggleFavorite(selectedChannel.id, e)}
+                          className={`p-2 rounded-xl border transition-all cursor-pointer ${
+                            favoriteChannelIds.includes(selectedChannel.id)
+                              ? 'bg-rose-500/20 border-rose-400/40 text-rose-400'
+                              : 'bg-[#1e1509] border-orange-400/30 text-orange-300/60 hover:text-orange-300'
+                          }`}
+                          title="पसंदीदा चैनल में जोड़ें"
+                        >
+                          <Heart className={`w-4 h-4 ${favoriteChannelIds.includes(selectedChannel.id) ? 'fill-current' : ''}`} />
+                        </button>
 
                         {/* Prev & Next Channel TV Remote */}
                         <button
@@ -241,7 +345,7 @@ export default function IskconDevoteeSanctuaryModal() {
                         <iframe
                           src={
                             useFallbackVideo
-                              ? `https://www.youtube-nocookie.com/embed/${selectedChannel.fallbackVideoId}?autoplay=1&rel=0&modestbranding=1`
+                              ? `https://www.youtube-nocookie.com/embed/${currentEpisode.id}?autoplay=1&rel=0&modestbranding=1`
                               : `${selectedChannel.liveStreamEmbedUrl}&autoplay=1`
                           }
                           title={selectedChannel.name}
@@ -288,24 +392,40 @@ export default function IskconDevoteeSanctuaryModal() {
                       )}
                     </div>
 
-                    {/* TV Bottom Smart Fallback Bar */}
+                    {/* TV Bottom Smart Fallback Bar & Episode Rotation */}
                     <div className="flex flex-wrap items-center justify-between gap-3 text-xs text-orange-200/80 pt-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-amber-400 font-bold">💡 लाइव प्रसारण सूचना:</span>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-amber-400 font-bold">💡 लाइव प्रसारण व स्मार्ट रोटेशन:</span>
                         <span>
                           {useFallbackVideo
-                            ? `प्रदर्शित हो रहा है: ${selectedChannel.fallbackTitle}`
-                            : 'यूट्यूब लाइव स्ट्रीम सक्रिय है। यदि लाइव सत्र विराम पर हो तो नीचे क्लिक करें:'}
+                            ? `प्रदर्शित: ${currentEpisode.title} (${episodeIndex + 1}/${selectedChannel.fallbackPlaylist.length})`
+                            : 'यूट्यूब लाइव स्ट्रीम सक्रिय है। यदि लाइव सत्र विराम पर हो तो क्लिक करें:'}
                         </span>
+
                         <button
                           onClick={() => {
                             setUseFallbackVideo(!useFallbackVideo);
                             sacredAudio.playNavChime(0.05);
+                            if (!useFallbackVideo) {
+                              applySmartVideoSelection(selectedChannel);
+                            }
                           }}
                           className="px-2.5 py-1 rounded-lg bg-orange-500/20 hover:bg-orange-500 hover:text-black border border-orange-400/40 text-orange-300 font-bold transition-all cursor-pointer"
                         >
                           {useFallbackVideo ? '🔄 मूल लाइव चैनल पर लौटें' : '📺 २४x७ दर्शन / कथा वीडियो देखें'}
                         </button>
+
+                        {/* Rotate Next Fresh Episode Button */}
+                        {useFallbackVideo && selectedChannel.fallbackPlaylist.length > 1 && (
+                          <button
+                            onClick={handleRotateNextEpisode}
+                            className="px-2.5 py-1 rounded-lg bg-teal-500/20 hover:bg-teal-500 hover:text-black border border-teal-400/40 text-teal-300 font-bold transition-all cursor-pointer flex items-center gap-1"
+                            title="अगला ताज़ा वीडियो लोड करें (DevOps Smart Rotation)"
+                          >
+                            <RotateCw className="w-3 h-3" />
+                            <span>✨ अगला नया वीडियो ({episodeIndex + 1}/{selectedChannel.fallbackPlaylist.length})</span>
+                          </button>
+                        )}
                       </div>
 
                       <a
@@ -318,6 +438,45 @@ export default function IskconDevoteeSanctuaryModal() {
                         <ExternalLink className="w-3.5 h-3.5" />
                       </a>
                     </div>
+
+                    {/* Multi-Episode Selection Vault */}
+                    {useFallbackVideo && selectedChannel.fallbackPlaylist.length > 1 && (
+                      <div className="pt-2 border-t border-orange-400/15 space-y-2">
+                        <span className="text-[11px] text-orange-300/80 font-bold flex items-center gap-1">
+                          <Film className="w-3.5 h-3.5 text-orange-400" />
+                          <span>इस मन्दिर के अन्य उपलब्ध वीडियो एवं आरती (चुनने के लिए क्लिक करें):</span>
+                        </span>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+                          {selectedChannel.fallbackPlaylist.map((ep, idx) => {
+                            const isCurrent = currentEpisode.id === ep.id;
+                            const isWatched = !!watchedMap[ep.id];
+                            return (
+                              <button
+                                key={ep.id}
+                                onClick={() => {
+                                  setCurrentEpisode(ep);
+                                  setEpisodeIndex(idx);
+                                  setIsFreshVideo(!watchedMap[ep.id]);
+                                  recordVideoView(ep.id);
+                                  sacredAudio.playNavChime(0.04);
+                                }}
+                                className={`p-2 rounded-xl text-left border transition-all text-xs flex flex-col justify-between cursor-pointer ${
+                                  isCurrent
+                                    ? 'bg-orange-500/30 border-orange-400 text-orange-200 font-bold'
+                                    : 'bg-[#0a0703] border-white/10 text-[#f5eed9]/70 hover:border-orange-400/40 hover:text-white'
+                                }`}
+                              >
+                                <div className="line-clamp-2 leading-snug">{ep.title}</div>
+                                <div className="flex items-center justify-between text-[10px] text-orange-400/80 mt-1">
+                                  <span>{ep.duration || 'Full HD'}</span>
+                                  <span>{isWatched ? '✓ दृष्ट (Watched)' : '✨ ताज़ा (Unseen)'}</span>
+                                </div>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
 
                   </div>
 
@@ -361,6 +520,7 @@ export default function IskconDevoteeSanctuaryModal() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                       {filteredChannels.map(channel => {
                         const isSelected = selectedChannel.id === channel.id;
+                        const isFav = favoriteChannelIds.includes(channel.id);
                         return (
                           <div
                             key={channel.id}
@@ -376,12 +536,15 @@ export default function IskconDevoteeSanctuaryModal() {
                                 <span className="px-2 py-0.5 rounded-md bg-orange-500/20 border border-orange-400/30 text-orange-300 font-mono text-[10px] font-black">
                                   CH-{channel.channelNo < 10 ? `0${channel.channelNo}` : channel.channelNo}
                                 </span>
-                                {channel.isLiveNow && (
-                                  <span className="flex items-center gap-1 text-[10px] font-mono text-red-400 font-bold">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
-                                    LIVE
-                                  </span>
-                                )}
+                                <div className="flex items-center gap-1.5">
+                                  {isFav && <Heart className="w-3 h-3 text-rose-400 fill-rose-400" />}
+                                  {channel.isLiveNow && (
+                                    <span className="flex items-center gap-1 text-[10px] font-mono text-red-400 font-bold">
+                                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
+                                      LIVE
+                                    </span>
+                                  )}
+                                </div>
                               </div>
                               <h5 className="text-sm font-devanagari font-bold text-[#f5eed9] group-hover:text-orange-300 transition-colors line-clamp-1">
                                 {channel.nameHindi}
@@ -672,7 +835,7 @@ export default function IskconDevoteeSanctuaryModal() {
                 <span>🛕 श्रील प्रभुपाद आंतरराष्ट्रीय कृष्णभावनामृत संघ (ISKCON Global Network)</span>
               </span>
               <span className="font-mono text-teal-300">
-                100% Free Lifetime Devotional Sanctuary for All Devotees
+                DevOps Smart Rotation • 100% Free Lifetime Devotional Broadcast
               </span>
             </div>
 
