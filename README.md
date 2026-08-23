@@ -1,119 +1,73 @@
-# ॐ Dharma.OS — Spiritual Intelligence & Bhagavad Gita Suite
+# ॐ Dharma.OS — Vedic Spiritual Intelligence & Temple Sanctuary
 
-> **Enterprise-grade, GPU-accelerated, offline-first spiritual intelligence and Bhagavad Gita platform.**
+> **The definitive sacred platform for Bhagavad Gita 700 Shlokas, Virtual Temple Sanctum, 24x7 Akhanda Chanting Radio, and Psychologist-Grade Krishna AI Therapy.**
 
----
-
-## 🌟 Key Highlights & Architectural Modules
-
-- **🌌 Module A: GPU WebGL Aurora Shader Engine** (`components/WebGLShaderBackground.tsx`)
-  - Custom GLSL Fragment Shader rendering a continuous, fluid obsidian & Vedic-gold ambient aurora mesh.
-  - Simplex 2D noise, 5-octave Fractal Brownian Motion (FBM), and dual-stage Inigo Quilez domain warping.
-  - 100% GPU offloaded, 0 CPU blocking, automatic render pause on tab hide (`visibilitychange`).
-
-- **📜 Module B: Multi-Layer Scripture Workspace & Anvaya Tokenizer** (`components/ScriptureReader.tsx`)
-  - Multi-layered verse display: Devanagari Sanskrit, IAST Romanized Transliteration, English translation, expandable Hindi translation, and practical life-application insights.
-  - **Anvaya Sanskrit Deconstructor**: Every Sanskrit word is an interactive token. Tap any word to reveal its verbal root (*Dhātu*), grammatical case (*Vibhakti / Purusha*), English meaning, and Hindi translation.
-  - **Quick Verse Grid ("Open All Option")**: Tap the chapter/verse badge in the top navigation to instantly jump to any verse across all 18 chapters.
-  - **Global Search (`Cmd+K` / `Ctrl+K`)**: Search across all verses, meanings, transliterations, and Sanskrit terms.
-
-- **🪘 Module C: Web Audio Harmonic Synthesizer & Vedic Chanting** (`components/AudioController.tsx`)
-  - **Meditative Tanpura Drone Engine**: Synthesizes 136.10 Hz (Cosmic OM / C# Sa) + 204.15 Hz (Pa) + octave overtones via Web Audio API with real-time golden canvas soundwave visualizer. Works 100% offline with zero external audio files needed!
-  - **Voice Recitation**: Recites Sanskrit verses via Web Speech Synthesis with 0.75x, 1.0x, and 1.25x speed modulation.
-  - **Studio Audio Player**: Seamlessly loads `/audio/chX_vY.mp3` when custom audio recordings are provided.
-
-- **🙏 Module D: "Krishna AI" RAG Diagnostic Gateway** (`/api/v1/mentor`, `/mentor`)
-  - Problem diagnosis structured output: Dominant Guna (*Sattva*, *Rajas*, *Tamas*), Root Cause Cognitive Diagnosis, Target Shloka with Sanskrit excerpt, and 24-Hour Behavioral Action Plan.
-  - **Zero-Credit Local Vedantic Engine**: Diagnoses user dilemmas in <15ms with 0 API credit consumption when offline.
-  - **Groq Cloud Integration**: Sub-400ms inference with `llama3-70b-8192` on free tier when `GROQ_API_KEY` is provided.
-
-- **📓 Offline Contemplation Journal & Bookmark Drawer** (`components/SavedVersesDrawer.tsx`)
-  - Bookmark favorite verses with 1 click.
-  - Take personal contemplative notes per verse stored securely in `localStorage`.
-  - Export reflections as a formatted Markdown journal.
+[![Live Demo](https://img.shields.io/badge/Live_Deployment-githd.vercel.app-gold?style=for-the-badge&logo=vercel)](https://githd.vercel.app/)
+[![Next.js 15](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
 
 ---
 
-## 🛠️ Technology Stack
+## 🌟 Core Pillars
+
+### 1. 🛕 Virtual Temple Sanctum (पावन मन्दिर गर्भगृह)
+- **🌸 Pushpanjali Offering**: Real-time petal shower animation (*Kamal, Gulab, Tulsi*) with soothing bansuri chimes.
+- **🪔 Sankalp Diya Lighting**: Devotees can light an eternal virtual diya at the Lord's lotus feet with their name and sacred prayer.
+- **🔥 360° Aarti Thali**: Revolving Aarti flame, triple bronze ghanta and authentic shankhnaad.
+- **🔔 9-Harmonic Bronze Bell**: Physical acoustic synthesis reproducing the inharmonic resonance of pure temple bells.
+
+### 2. 🧠 Psychologist-Grade Krishna AI (CBT + Gita Therapy)
+- **5-Tier Clinical & Vedantic Framework**:
+  1. ❤️ **Radical Empathy**: Deep compassionate validation of human suffering without judgment.
+  2. 🧠 **Subconscious Diagnosis**: Evidence-based cognitive distortion and stress telemetry.
+  3. 🕉️ **Divine Counsel**: Intimate, friend-like guidance speaking directly in Sri Krishna's voice.
+  4. 📜 **Scriptural Prescription**: Exact chapter-verse mapping with practical life translation.
+  5. ⚡ **24-Hour Action Plan & Mantra**: Structured CBT somatic grounding (5-4-3-2-1, Circle of Control, Behavioral Activation) + Voice Audio Speech synthesis.
+
+### 3. 🎵 100% Exact 1–700 Shloka Vedic Audio Engine
+- **First-Syllable Precision**: Crystal-clear authentic Sanskrit chanting starting on the exact first syllable of all 700 shlokas with 432Hz Tanpura resonance.
+- **Live Synchronized Karaoke**: Glowing word-by-word Devanagari highlighting during recitation.
+- **Master Video Streaming**: Full chapter listening powered by classical chanting.
+- **📻 24x7 Akhanda Live Radio**: 5 streaming stations (Akhanda Gita, Vrindavan Kirtan, Vedic Om Chants, Ramcharitmanas, 432Hz Peace).
+
+### 4. 👨‍👩‍👧 Family & Devotee Sanctuary
+- **108 Life Dilemmas Matrix**: Direct Vedic solutions to modern dilemmas (Anxiety, Heartbreak, Career Failure, Family Conflict, Purpose).
+- **Sacred Japa Mala**: Habit streak tracker, physical bead haptics, and counter.
+- **Sanskrit Pronunciation Guru**: Audio-visual syllable-by-syllable trainer for children and families.
+- **HD Wallpaper & Card Studio**: Instant creation and export of shloka contemplation cards.
+
+---
+
+## 🛠️ Architecture & Tech Stack
 
 | Layer | Technologies |
 |---|---|
-| **Frontend** | Next.js 15 (App Router, Server Components), React 19, TypeScript, Tailwind CSS v4, Three.js, Framer Motion, Lucide Icons, Serwist PWA |
-| **Backend** | FastAPI (Python 3.12), Pydantic v2, HTTPX Async Connection Pool, Groq Python SDK, Supabase Python Client |
-| **Database & Auth** | Supabase (PostgreSQL with Row Level Security, pgvector, HNSW indexing) |
-| **Inference Engine** | Groq Cloud API (`llama3-70b-8192`) + Zero-Credit Local Vedantic Engine |
-| **Hosting ($0 Free Tier)** | Vercel (Frontend) + Render / Fly.io (Backend) + Supabase (Database) + Groq (Free Tier) |
+| **Framework** | Next.js 15 (App Router, Server Components), React 19, TypeScript |
+| **Audio Physics** | Web Audio API (Inharmonic 9-partial Bronze Synthesis, 432Hz Tanpura Drone, Web Speech Chanting) |
+| **Styling & Animation** | Tailwind CSS, Framer Motion, Lucide Icons, Custom CSS3 Keyframes |
+| **Data Engine** | 700 Shlokas JSON, 7 Classical Bhashyas, Anvaya Tokenizer, 108 Life Dilemmas |
+| **Deployment** | Vercel Serverless Edge Network |
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Run the Frontend (Next.js 15)
 ```bash
-cd frontend
+# Clone repository
+git clone https://github.com/keshavs40344/githd.git
+cd githd
+
+# Install dependencies
 npm install
+
+# Run development server
 npm run dev
 ```
+
 Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
-### 2. Run the Backend (FastAPI Python - Optional)
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
-Interactive API documentation is available at **[http://localhost:8000/docs](http://localhost:8000/docs)**.
-
 ---
 
-## ⚙️ Environment Variables
-
-### Frontend (`frontend/.env.local` - Optional)
-```env
-GROQ_API_KEY=gsk_your_groq_api_key_here
-GROQ_MODEL=llama3-70b-8192
-NEXT_PUBLIC_API_URL=http://localhost:8000
-```
-
-### Backend (`backend/.env` - Optional)
-```env
-ENVIRONMENT=development
-GROQ_API_KEY=gsk_your_groq_api_key_here
-GROQ_MODEL=llama3-70b-8192
-SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_KEY=your_supabase_anon_key
-ALLOWED_ORIGINS=http://localhost:3000,http://127.0.0.1:3000
-```
-
----
-
-## 📜 Database & pgvector Setup (Supabase)
-
-1. Create a free project at [supabase.com](https://supabase.com).
-2. Go to the **SQL Editor** and execute the migration file:
-   `supabase/migrations/001_initial_schema.sql`
-3. This creates:
-   - `vector` extension & `verse_embeddings` table with `vector(1536)`
-   - Fast HNSW cosine similarity index
-   - `match_verses` RPC search function
-   - `mentor_sessions` conversation history table
-   - Row Level Security (RLS) policies
-
----
-
-## 📦 Production Deployment ($0.00 Free Tier)
-
-- **Frontend (Vercel)**:
-  1. Push repository to GitHub.
-  2. Import `frontend/` directory into Vercel.
-  3. Deploy.
-- **Backend (Render / Fly.io)**:
-  - **Render**: Connect repository using included `backend/render.yaml`.
-  - **Fly.io**: Run `fly launch` using included `backend/fly.toml` and `backend/Dockerfile`.
-
----
-
-## 📄 License
-
-MIT © Dharma.OS
-
+## 🕉️ Dedicated to Universal Peace & Wisdom
+*सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ।*

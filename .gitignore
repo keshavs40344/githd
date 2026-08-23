@@ -9,6 +9,7 @@ node_modules/
 out/
 build/
 dist/
+*.tsbuildinfo
 
 # Environment Variables
 .env
@@ -25,25 +26,20 @@ __pycache__/
 venv/
 .venv/
 env/
-.env
 
-# Logs
+# Logs & OS
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
 *.log
-
-# IDE & OS
-.vscode/
-.idea/
 .DS_Store
-*.pem
 Thumbs.db
+*.zip
+*.tar.gz
+*.tmp
+*.bak
 
 # Scrapes, Dumps & Temp
 *_raw.html
 *.raw
 *.dump
-*.tmp
-*.bak
