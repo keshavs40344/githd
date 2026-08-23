@@ -10,6 +10,7 @@ import SanskritLexiconDrawer from '@/components/SanskritLexiconDrawer';
 import ShlokaCardGeneratorModal from '@/components/ShlokaCardGeneratorModal';
 import GlobalRoyalHeader from '@/components/GlobalRoyalHeader';
 import GlobalRoyalFooter from '@/components/GlobalRoyalFooter';
+import ServerFloatingWidget from '@/components/ServerFloatingWidget';
 import TempleAtmosphere from '@/components/TempleAtmosphere';
 import TempleAmbientPlayer from '@/components/TempleAmbientPlayer';
 
@@ -94,7 +95,8 @@ export default function RootLayout({
             <main className="flex-1 relative z-10">{children}</main>
             
             {/* Global Royal Footer */}
-            <GlobalRoyalFooter />
+            <ServerFloatingWidget />
+        <GlobalRoyalFooter />
 
             {/* Global Persistent Floating Audio Dock */}
             <GlobalAudioDock />
