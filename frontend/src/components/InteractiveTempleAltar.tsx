@@ -1,8 +1,12 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Heart, Flame, Bell, Volume2, ShieldCheck, Sun, Moon, Check, Share2 } from 'lucide-react';
+import { 
+  Sparkles, Heart, Flame, Bell, Volume2, ShieldCheck, 
+  Sun, Moon, Check, Share2, Flower2, Music, Feather
+} from 'lucide-react';
 import { sacredAudio } from '@/lib/sacredSounds';
+import { siteGuardian } from '@/lib/siteGuardianBot';
 
 interface Petal {
   id: number;
@@ -21,51 +25,56 @@ interface LitDiya {
   time: string;
 }
 
-const FLOWERS = ['🌸', '🌺', '🌼', '🪷', '🌻', '🌹', '✨', '💐'];
+const FLOWERS = ['🪷', '🌸', '🌹', '🌼', '🌺', '🍃', '✨', '💐'];
 
 export default function InteractiveTempleAltar() {
   const [aartiActive, setAartiActive] = useState(false);
   const [aartiRot, setAartiRot] = useState(0);
   const [petals, setPetals] = useState<Petal[]>([]);
-  const [offeringCount, setOfferingCount] = useState(148);
+  const [offeringCount, setOfferingCount] = useState(256);
   const [bellRung, setBellRung] = useState(false);
   
   // Diya Lighting Sankalp
   const [devoteeName, setDevoteeName] = useState('');
   const [sankalpText, setSankalpText] = useState('');
   const [litDiyas, setLitDiyas] = useState<LitDiya[]>([
-    { id: 1, name: 'अमित शर्मा', sankalp: 'परिवार में सुख-शान्ति व आरोग्य', time: 'अभी-अभी' },
-    { id: 2, name: 'प्रिया वर्मा', sankalp: 'विद्या व एकाग्रता प्राप्ति', time: '२ मिनट पहले' },
-    { id: 3, name: 'राजेश पटेल', sankalp: 'सत्यनिष्ठा व धर्म पालन', time: '५ मिनट पहले' }
+    { id: 1, name: 'राधा वल्लभ दास', sankalp: 'श्री राधा-कृष्ण युगल चरण अनुराग', time: 'अभी-अभी' },
+    { id: 2, name: 'अमित शर्मा', sankalp: 'परिवार में सुख-शान्ति, आरोग्य व कल्याण', time: '१ मिनट पहले' },
+    { id: 3, name: 'प्रिया वर्मा', sankalp: 'विद्या, एकाग्रता एवं मन की स्थिरता', time: '४ मिनट पहले' }
   ]);
   const [showDiyaForm, setShowDiyaForm] = useState(false);
   const [diyaSuccess, setDiyaSuccess] = useState(false);
 
+  // Initialize Site Guardian Bot on mount
+  useEffect(() => {
+    siteGuardian.init();
+  }, []);
+
   // Pushpanjali (Flower Shower)
   const handlePushpanjali = () => {
-    sacredAudio.playFluteChime(0.3);
+    sacredAudio.playFluteChime(0.35);
     setOfferingCount(prev => prev + 1);
 
-    const newPetals: Petal[] = Array.from({ length: 24 }, (_, i) => ({
+    const newPetals: Petal[] = Array.from({ length: 28 }, (_, i) => ({
       id: Date.now() + i,
-      x: 5 + Math.random() * 90,
+      x: 3 + Math.random() * 94,
       y: -10 - Math.random() * 20,
       rot: Math.random() * 360,
       symbol: FLOWERS[Math.floor(Math.random() * FLOWERS.length)],
-      size: 18 + Math.random() * 18,
-      duration: 2.8 + Math.random() * 1.5,
+      size: 20 + Math.random() * 18,
+      duration: 3.2 + Math.random() * 1.5,
     }));
 
     setPetals(prev => [...prev, ...newPetals]);
     setTimeout(() => {
       setPetals(prev => prev.filter(p => !newPetals.some(np => np.id === p.id)));
-    }, 4500);
+    }, 4800);
   };
 
   // Perform Virtual Aarti
   const handleStartAarti = () => {
     sacredAudio.playTripleGhanta(0.75);
-    sacredAudio.playShankhnaad(0.45);
+    sacredAudio.playShankhnaad(0.5);
     setAartiActive(true);
 
     let angle = 0;
@@ -82,7 +91,7 @@ export default function InteractiveTempleAltar() {
 
   const handleRingBell = () => {
     setBellRung(true);
-    sacredAudio.playTripleGhanta(0.8);
+    sacredAudio.playTripleGhanta(0.85);
     setTimeout(() => setBellRung(false), 1400);
   };
 
@@ -90,255 +99,264 @@ export default function InteractiveTempleAltar() {
     e.preventDefault();
     if (!devoteeName.trim()) return;
 
-    sacredAudio.playTempleBell(0.6);
-    sacredAudio.playFluteChime(0.3);
+    sacredAudio.playTempleBell(0.65);
+    sacredAudio.playFluteChime(0.35);
 
     const newDiya: LitDiya = {
       id: Date.now(),
       name: devoteeName.trim(),
-      sankalp: sankalpText.trim() || 'सर्व मंगल व चित्त शुद्धि',
+      sankalp: sankalpText.trim() || 'श्री राधा-कृष्ण कृपा व मंगल कामना',
       time: 'अभी-अभी'
     };
 
-    setLitDiyas(prev => [newDiya, ...prev.slice(0, 5)]);
+    setLitDiyas(prev => [newDiya, ...prev.slice(0, 11)]);
     setDevoteeName('');
     setSankalpText('');
     setDiyaSuccess(true);
-    setTimeout(() => {
-      setDiyaSuccess(false);
-      setShowDiyaForm(false);
-    }, 2000);
+    setShowDiyaForm(false);
+    setTimeout(() => setDiyaSuccess(false), 4000);
   };
 
   return (
-    <div className="relative rounded-3xl overflow-hidden border-2 border-amber-400/40 bg-gradient-to-b from-[#13162b] via-[#090b14] to-[#120e06] p-6 sm:p-8 shadow-[0_15px_70px_rgba(245,158,11,0.2)]">
+    <div className="relative w-full max-w-7xl mx-auto px-2 sm:px-4 py-4 z-20">
       
-      {/* Flower Petals Layer */}
-      {petals.map(p => (
-        <div
-          key={p.id}
-          className="absolute pointer-events-none z-30 animate-petal-fall"
-          style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            fontSize: `${p.size}px`,
-            transform: `rotate(${p.rot}deg)`,
-            animationDuration: `${p.duration}s`,
-          }}
-        >
-          {p.symbol}
-        </div>
-      ))}
-
-      {/* Temple Arch Header */}
-      <div className="relative z-10 text-center space-y-3 mb-6">
-        
-        {/* Hanging Bells Row */}
-        <div className="flex justify-center items-center gap-6 sm:gap-14 pb-2">
-          {[-1, 0, 1].map((offset, i) => (
-            <button
-              key={i}
-              onClick={handleRingBell}
-              className={`group flex flex-col items-center cursor-pointer transition-transform ${
-                bellRung ? 'animate-bell-swing' : 'hover:scale-115'
-              }`}
-              title="मन्दिर घंटा बजाएं"
-            >
-              <div className="w-0.5 h-6 bg-gradient-to-b from-amber-200 to-amber-600 group-hover:h-7 transition-all" />
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-400 via-yellow-400 to-amber-700 flex items-center justify-center text-xl shadow-[0_0_20px_rgba(245,158,11,0.6)] border-2 border-amber-200/50 group-hover:scale-105">
-                🔔
-              </div>
-            </button>
-          ))}
-        </div>
-
-        {/* Temple Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-mono">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>नित्य दिव्य मन्दिर गर्भगृह • 24x7 Live Mandir Altar</span>
-        </div>
-
-        <h2 className="text-2xl sm:text-4xl font-devanagari font-black text-[#f5eed9]">
-          भगवान श्रीकृष्ण <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500">दिव्य गर्भगृह</span>
-        </h2>
-        
-        <p className="text-xs sm:text-sm text-[#f5eed9]/70 font-serif max-w-lg mx-auto">
-          यहाँ आप ऑनलाइन पुष्पांजलि अर्पित कर सकते हैं, अखंड दीप प्रज्ज्वलित कर सकते हैं, और दिव्य आरती व घण्टा नाद कर सकते हैं।
-        </p>
+      {/* ── PETAL SHOWER CANVAS ────────────────────────────────────────────── */}
+      <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+        {petals.map(p => (
+          <div
+            key={p.id}
+            className="absolute animate-petal-fall"
+            style={{
+              left: `${p.x}%`,
+              top: `${p.y}px`,
+              fontSize: `${p.size}px`,
+              animationDuration: `${p.duration}s`,
+              transform: `rotate(${p.rot}deg)`,
+            }}
+          >
+            {p.symbol}
+          </div>
+        ))}
       </div>
 
-      {/* Main Altar 3-Column Stage */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+      {/* ── MAIN RADHA-KRISHNA MANDIR SANCTUM ─────────────────────────────── */}
+      <div className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#0e1020] via-[#090b16] to-[#05060b] border-2 border-amber-400/40 shadow-[0_20px_80px_rgba(0,0,0,0.9)] p-4 sm:p-8 space-y-6">
         
-        {/* Left: Pushpanjali & Flowers */}
-        <div className="p-5 rounded-2xl bg-[#0f1120]/80 border border-[#c5a059]/30 flex flex-col items-center justify-between text-center space-y-3">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500/20 to-rose-600/20 border border-pink-400/40 flex items-center justify-center text-3xl shadow-inner">
-            🪷
+        {/* Vrindavan Aura & Torana Decoration */}
+        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-amber-500 via-teal-400 to-amber-500" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-gradient-to-b from-amber-500/15 via-teal-500/10 to-transparent pointer-events-none blur-2xl" />
+
+        {/* Top Sanctum Header Banner */}
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-amber-400/20 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400 via-[#c5a059] to-teal-500 flex items-center justify-center shadow-lg text-black font-bold text-2xl animate-glow-pulse">
+              🪷
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-teal-400/20 text-teal-300 border border-teal-400/30 font-bold">
+                  श्री श्री राधा-गोविन्द गर्भगृह
+                </span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+              </div>
+              <h2 className="text-xl sm:text-3xl font-devanagari font-bold text-amber-300 drop-shadow-md">
+                श्री राधा-कृष्ण दिव्य मन्दिर दर्शन
+              </h2>
+            </div>
           </div>
-          <div>
-            <h3 className="font-devanagari font-bold text-base text-[#f5eed9]">पुष्पांजलि अर्पण</h3>
-            <p className="text-xs font-serif text-[#f5eed9]/70 mt-0.5">कमल, गुलाब व तुलसी दल का पावन अर्पण</p>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={handleRingBell}
+              className={`p-2.5 sm:px-4 sm:py-2 rounded-2xl bg-[#141829] hover:bg-[#1f243d] border-2 border-amber-400/30 text-amber-300 hover:text-white flex items-center gap-2 transition-all cursor-pointer shadow-md ${
+                bellRung ? 'scale-105 border-amber-300 bg-amber-400/20' : ''
+              }`}
+              title="कांस्य मन्दिर घण्टा बजाएं"
+            >
+              <Bell className={`w-5 h-5 text-amber-400 ${bellRung ? 'animate-bell-swing' : ''}`} />
+              <span className="text-xs font-serif font-bold hidden sm:inline">कांस्य घण्टा</span>
+            </button>
+
+            <button
+              onClick={handlePushpanjali}
+              className="px-4 py-2 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-300 hover:to-yellow-400 text-black font-serif font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg hover:scale-103 active:scale-95 transition-all cursor-pointer"
+            >
+              <Flower2 className="w-4 h-4 fill-current" />
+              <span>पुष्पांजलि अर्पण</span>
+            </button>
           </div>
-          <div className="text-[11px] font-mono text-amber-400 font-bold bg-amber-400/10 px-3 py-1 rounded-full border border-amber-400/20">
-            💐 {offeringCount} बार पुष्प अर्पित
-          </div>
-          <button
-            onClick={handlePushpanjali}
-            className="w-full py-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-600 text-white font-serif font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer"
-          >
-            <span>🌸 पुष्प अर्पित करें (Offer Flowers)</span>
-          </button>
         </div>
 
-        {/* Center: Divine Aarti Thali & Holy Om */}
-        <div className="relative flex flex-col items-center justify-between p-6 rounded-3xl bg-gradient-to-b from-[#181c33] to-[#090b14] border-2 border-amber-400/50 shadow-2xl text-center">
+        {/* ── SACRED ALTAR DISPLAY (Vrindavan Darshan & Aarti Flame) ─────────── */}
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#13162b] to-[#080912] border-2 border-amber-400/30 p-6 sm:p-10 text-center space-y-6 animate-peacock-glow">
           
-          {/* Circular Holy Aura */}
-          <div className="absolute w-48 h-48 rounded-full bg-[radial-gradient(circle,_rgba(245,158,11,0.25),transparent_70%)] animate-temple-pulse pointer-events-none" />
-
-          {/* Deity Holy Seal */}
-          <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-gradient-to-br from-amber-400 via-yellow-400 to-amber-700 p-1 shadow-[0_0_40px_rgba(245,158,11,0.6)] flex items-center justify-center mb-2">
-            <div className="w-full h-full rounded-full bg-[#07080d] flex flex-col items-center justify-center border-2 border-amber-300/40">
-              <span className="font-devanagari text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-200 to-amber-500">
-                ॐ
-              </span>
-              <span className="text-[9px] font-mono text-amber-300/80 tracking-widest uppercase">श्रीकृष्ण</span>
-            </div>
-
-            {/* Rotating Aarti Thali Flame when active */}
-            {aartiActive && (
-              <div 
-                className="absolute inset-0 pointer-events-none"
-                style={{ transform: `rotate(${aartiRot}deg)` }}
-              >
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                  <div className="w-3 h-6 rounded-full bg-gradient-to-t from-orange-500 via-yellow-300 to-white shadow-[0_0_15px_rgba(245,158,11,1)] animate-pulse" />
-                  <div className="w-6 h-2 rounded-full bg-amber-800" />
-                </div>
-              </div>
-            )}
+          {/* Swinging Temple Bells on Ceiling */}
+          <div className="absolute top-2 left-6 sm:left-12 flex flex-col items-center cursor-pointer" onClick={handleRingBell}>
+            <div className="w-0.5 h-6 bg-amber-400/60" />
+            <Bell className={`w-6 h-6 text-amber-300 ${bellRung ? 'animate-bell-swing' : 'hover:scale-110'} transition-transform`} />
           </div>
 
-          <div className="space-y-1 my-2">
-            <h3 className="font-devanagari font-bold text-lg text-amber-300">
-              ॥ श्री कृष्णाय नमः ॥
+          <div className="absolute top-2 right-6 sm:right-12 flex flex-col items-center cursor-pointer" onClick={handleRingBell}>
+            <div className="w-0.5 h-6 bg-amber-400/60" />
+            <Bell className={`w-6 h-6 text-amber-300 ${bellRung ? 'animate-bell-swing' : 'hover:scale-110'} transition-transform`} />
+          </div>
+
+          {/* Central Sacred Divine Shloka & Deity Frame */}
+          <div className="space-y-3 max-w-2xl mx-auto pt-2">
+            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 text-xs font-serif font-bold shadow-md">
+              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <span>॥ तप्तकाञ्चनगौराङ्गि राधे वृन्दावनेश्वरि ॥</span>
+            </div>
+
+            <h3 className="text-2xl sm:text-4xl font-devanagari font-black text-[#f5eed9] leading-relaxed drop-shadow-[0_4px_25px_rgba(245,158,11,0.5)]">
+              वृषभानुसुता देवि प्रणमामि हरिप्रिये
             </h3>
-            <p className="text-xs font-serif text-[#f5eed9]/70">
-              सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज
+
+            <p className="text-xs sm:text-sm font-serif text-amber-200/90 leading-relaxed max-w-xl mx-auto">
+              हे श्री राधे! आप परम दयामयी एवं वृन्दावन की स्वामिनी हैं। आपके और श्री कृष्ण के युगल चरणों में हमारा कोटि-कोटि प्रणाम।
             </p>
           </div>
 
-          {/* Action: Aarti Button */}
-          <button
-            onClick={handleStartAarti}
-            disabled={aartiActive}
-            className="w-full py-3 rounded-2xl font-serif font-bold text-xs flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(245,158,11,0.5)] transition-all hover:scale-105 active:scale-95 cursor-pointer disabled:opacity-75"
-            style={{
-              background: 'linear-gradient(135deg, #f59e0b, #d97706)',
-              color: '#000'
-            }}
-          >
-            <Flame className="w-4 h-4 fill-current" />
-            <span>{aartiActive ? 'आरती चल रही है...' : '🪔 दिव्य आरती करें (Perform Aarti)'}</span>
-          </button>
-        </div>
-
-        {/* Right: Akhand Diya & Sankalp */}
-        <div className="p-5 rounded-2xl bg-[#0f1120]/80 border border-[#c5a059]/30 flex flex-col items-center justify-between text-center space-y-3">
-          <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/20 border border-amber-400/40 flex items-center justify-center text-3xl shadow-inner">
-            🪔
-          </div>
-          <div>
-            <h3 className="font-devanagari font-bold text-base text-[#f5eed9]">अखंड दीप प्रज्वलन</h3>
-            <p className="text-xs font-serif text-[#f5eed9]/70 mt-0.5">अपने नाम व संकल्प से दीप प्रज्ज्वलित करें</p>
-          </div>
-          
-          <div className="text-[11px] font-mono text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-400/20">
-            🔥 {litDiyas.length + 108} दीप प्रज्ज्वलित
-          </div>
-
-          <button
-            onClick={() => setShowDiyaForm(true)}
-            className="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 text-black font-serif font-bold text-xs flex items-center justify-center gap-1.5 shadow-md hover:scale-105 active:scale-95 transition-all cursor-pointer"
-          >
-            <span>🪔 दीप प्रज्ज्वलित करें (Light Diya)</span>
-          </button>
-        </div>
-
-      </div>
-
-      {/* Diya Lighting Modal / Sheet */}
-      {showDiyaForm && (
-        <div className="mt-6 p-5 rounded-2xl bg-[#0a0c16] border-2 border-amber-400/40 animate-scale-in">
-          <div className="flex items-center justify-between mb-3">
-            <h4 className="font-devanagari font-bold text-sm text-amber-300 flex items-center gap-1.5">
-              <Flame className="w-4 h-4 text-orange-400" />
-              संकल्प दीप सेवा
-            </h4>
-            <button 
-              onClick={() => setShowDiyaForm(false)}
-              className="text-[#c5a059] hover:text-white text-xs cursor-pointer"
+          {/* ── VIRTUAL 360° AARTI THALI CONTAINER ──────────────────────────── */}
+          <div className="py-4 flex flex-col items-center justify-center space-y-4">
+            
+            {/* The Revolving Aarti Plate */}
+            <div 
+              className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-full bg-gradient-to-br from-amber-300 via-[#d4af37] to-amber-700 p-1.5 shadow-[0_0_50px_rgba(245,158,11,0.7)] flex items-center justify-center cursor-pointer transition-transform duration-75"
+              style={{ transform: `rotate(${aartiRot}deg)` }}
+              onClick={handleStartAarti}
+              title="दिव्य आरती प्रारंभ करें"
             >
-              ✕
-            </button>
+              <div className="w-full h-full rounded-full bg-[#0d0f1c] border-2 border-amber-400/60 flex items-center justify-center relative overflow-hidden">
+                {/* Aarti Diya Flame in Center */}
+                <div className="flex flex-col items-center justify-center">
+                  <div className="w-8 h-10 rounded-full bg-gradient-to-t from-orange-600 via-amber-400 to-yellow-100 animate-diya-flame" />
+                  <div className="w-12 h-3 rounded-full bg-amber-600/80 -mt-1 shadow-md" />
+                </div>
+
+                {/* Surrounding Sacred Offerings on Thali */}
+                <span className="absolute top-2 text-xs">🪷</span>
+                <span className="absolute bottom-2 text-xs">🌺</span>
+                <span className="absolute left-2 text-xs">🌿</span>
+                <span className="absolute right-2 text-xs">🪔</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <button
+                onClick={handleStartAarti}
+                disabled={aartiActive}
+                className="px-5 py-2 rounded-2xl bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-300 hover:to-yellow-400 text-black font-serif font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg disabled:opacity-75 cursor-pointer"
+              >
+                <Flame className="w-4 h-4 fill-current" />
+                <span>{aartiActive ? 'आरती चल रही है...' : '🔥 दिव्य आरती करें'}</span>
+              </button>
+
+              <button
+                onClick={() => setShowDiyaForm(!showDiyaForm)}
+                className="px-4 py-2 rounded-2xl bg-[#14182b] hover:bg-[#1f243d] border-2 border-amber-400/40 text-amber-300 font-serif font-bold text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer shadow-md"
+              >
+                <Flame className="w-4 h-4 text-amber-400" />
+                <span>🪔 संकल्प दीप जलाएं</span>
+              </button>
+            </div>
+
           </div>
 
-          {diyaSuccess ? (
-            <div className="p-4 rounded-xl bg-emerald-500/15 border border-emerald-400/40 text-center space-y-1">
-              <Check className="w-6 h-6 text-emerald-400 mx-auto" />
-              <p className="font-devanagari font-bold text-sm text-emerald-300">
-                आपका दीप भगवान के श्रीचरणों में प्रज्ज्वलित हो गया है! 🙏
-              </p>
-              <p className="text-xs font-serif text-[#f5eed9]/70">भगवान आपकी समस्त मनोकामनाएं पूर्ण करें।</p>
-            </div>
-          ) : (
-            <form onSubmit={handleLightDiyaSubmit} className="space-y-3">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {/* Diya Lighting Form Modal Dropdown */}
+          {showDiyaForm && (
+            <form
+              onSubmit={handleLightDiyaSubmit}
+              className="max-w-md mx-auto p-5 rounded-3xl bg-[#0a0c18] border-2 border-amber-400/40 space-y-3 shadow-2xl animate-scale-in text-left"
+            >
+              <h4 className="text-sm font-devanagari font-bold text-amber-300 flex items-center gap-1.5">
+                <span>🪔</span>
+                <span>श्री चरणों में अखंड संकल्प दीप प्रज्ज्वलन</span>
+              </h4>
+              
+              <div>
+                <label className="text-[11px] font-serif text-[#f5eed9]/80 block mb-1">आपका नाम (Devotee Name):</label>
                 <input
                   type="text"
-                  placeholder="आपका शुभ नाम (Your Name)"
+                  required
                   value={devoteeName}
                   onChange={e => setDevoteeName(e.target.value)}
-                  required
-                  className="px-3.5 py-2 rounded-xl bg-[#141626] border border-[#c5a059]/30 text-xs font-serif text-[#f5eed9] placeholder-[#c5a059]/40 focus:outline-none focus:border-amber-400"
-                />
-                <input
-                  type="text"
-                  placeholder="आपका संकल्प / प्रार्थना (Optional Prayer)"
-                  value={sankalpText}
-                  onChange={e => setSankalpText(e.target.value)}
-                  className="px-3.5 py-2 rounded-xl bg-[#141626] border border-[#c5a059]/30 text-xs font-serif text-[#f5eed9] placeholder-[#c5a059]/40 focus:outline-none focus:border-amber-400"
+                  placeholder="उदा. केशव शर्मा"
+                  className="w-full px-3.5 py-2 rounded-xl bg-[#14172b] border border-amber-400/30 text-xs font-serif text-[#f5eed9] placeholder-amber-400/40 focus:outline-none focus:border-amber-400"
                 />
               </div>
-              <button
-                type="submit"
-                className="w-full py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-yellow-500 text-black font-serif font-bold text-xs flex items-center justify-center gap-2 shadow-md hover:scale-[1.01] transition-all cursor-pointer"
-              >
-                <span>🔥 भगवान के श्रीचरणों में दीप अर्पित करें</span>
-              </button>
+
+              <div>
+                <label className="text-[11px] font-serif text-[#f5eed9]/80 block mb-1">आपकी मनोकामना / संकल्प (Prayer / Sankalp):</label>
+                <input
+                  type="text"
+                  value={sankalpText}
+                  onChange={e => setSankalpText(e.target.value)}
+                  placeholder="उदा. परिवार में सुख-शान्ति, भक्ति व उत्तम स्वास्थ्य"
+                  className="w-full px-3.5 py-2 rounded-xl bg-[#14172b] border border-amber-400/30 text-xs font-serif text-[#f5eed9] placeholder-amber-400/40 focus:outline-none focus:border-amber-400"
+                />
+              </div>
+
+              <div className="flex items-center justify-end gap-2 pt-1">
+                <button
+                  type="button"
+                  onClick={() => setShowDiyaForm(false)}
+                  className="px-3 py-1.5 rounded-xl text-xs font-serif text-amber-300/70 hover:text-white cursor-pointer"
+                >
+                  रद्द करें
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-black text-xs font-serif font-bold shadow-md cursor-pointer"
+                >
+                  दीप प्रज्ज्वलित करें ✨
+                </button>
+              </div>
             </form>
           )}
 
-          {/* Recent devotees who lit diyas */}
-          <div className="mt-4 pt-3 border-t border-amber-400/15">
-            <p className="text-[10px] font-mono text-[#c5a059]/60 mb-2">हाल ही में प्रज्ज्वलित दीप:</p>
-            <div className="flex flex-wrap gap-2">
-              {litDiyas.map(d => (
-                <div key={d.id} className="px-2.5 py-1 rounded-lg bg-[#141624] border border-amber-400/20 text-[10px] font-serif text-amber-200 flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-                  <span className="font-bold">{d.name}</span>
-                  <span className="text-[#c5a059]/60">({d.sankalp})</span>
-                </div>
-              ))}
+          {/* Diya Success Notification */}
+          {diyaSuccess && (
+            <div className="p-3 rounded-2xl bg-amber-400/20 border border-amber-400/50 text-amber-200 text-xs font-serif animate-scale-in max-w-md mx-auto">
+              🪔 आपका संकल्प दीप श्री राधा-कृष्ण के पावन चरणों में प्रज्ज्वलित हो चुका है!
             </div>
+          )}
+
+        </div>
+
+        {/* ── RECENT SANKALP DIYA STREAM (भक्तों की दीप सेवा) ───────────────── */}
+        <div className="space-y-3 pt-2">
+          <div className="flex items-center justify-between text-xs font-serif text-[#c5a059]">
+            <span className="font-bold flex items-center gap-1.5">
+              <span>🪔</span>
+              <span>गर्भगृह में प्रज्ज्वलित अखंड दीप सेवा ({litDiyas.length}):</span>
+            </span>
+            <span className="text-[10px] font-mono text-emerald-400">● Live Sanctum</span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {litDiyas.map(d => (
+              <div
+                key={d.id}
+                className="p-3.5 rounded-2xl bg-[#0d0f1e]/90 border border-amber-400/25 flex items-start gap-3 shadow-md hover:border-amber-400/50 transition-colors"
+              >
+                <div className="w-8 h-8 rounded-xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center shrink-0 text-amber-300">
+                  🪔
+                </div>
+                <div className="min-w-0 space-y-0.5 text-left">
+                  <div className="flex items-center justify-between gap-1">
+                    <p className="text-xs font-serif font-bold text-[#f5eed9] truncate">{d.name}</p>
+                    <span className="text-[9px] font-mono text-amber-400/70 shrink-0">{d.time}</span>
+                  </div>
+                  <p className="text-[11px] font-serif text-amber-200/80 line-clamp-1 italic">
+                    "{d.sankalp}"
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      )}
 
-      {/* Bottom Sanctum Footer */}
-      <div className="mt-6 pt-4 border-t border-amber-400/15 flex flex-wrap items-center justify-between text-xs font-mono text-[#c5a059]/70 gap-2">
-        <span>🪔 नित्य आरती समय: ब्राह्म मुहूर्त व संध्या काल</span>
-        <span className="text-amber-300 font-serif">यतो धर्मस्ततो जयः (जहाँ धर्म है, वहीं विजय है)</span>
       </div>
 
     </div>
