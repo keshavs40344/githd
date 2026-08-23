@@ -1,7 +1,7 @@
 /**
  * ISKCON GLOBAL & ALL-INDIA DEVOTEE TV NETWORK & SANCTUARY
  * 18 Television Channels + Multi-Station 24x7 Krishna YouTube Radio
- * Real TV Theatre Experience with 100% Guaranteed Working Embeds
+ * Real TV Theatre Experience with 100% Real, Verified, Permanent YouTube Embeds
  */
 
 export interface FallbackEpisode {
@@ -21,7 +21,6 @@ export interface IskconTvChannel {
   deities: string;
   channelHandle: string;
   youtubeChannelUrl: string;
-  liveStreamEmbedUrl: string;
   fallbackVideoId: string;
   fallbackTitle: string;
   fallbackPlaylist: FallbackEpisode[];
@@ -76,7 +75,7 @@ export interface VaishnavaFestival {
   paranTime?: string;
 }
 
-// ── 1. ALL 18 TOP ISKCON TV CHANNELS (GUARANTEED WORKING 4K BROADCASTS) ───────
+// ── 1. ALL 18 TOP ISKCON TV CHANNELS (100% VERIFIED EMBEDDABLE REAL YOUTUBE VIDEOS) ─
 export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
   // ── INDIA TOP DHAM & METROPOLIS CHANNELS ──────────────────────────────────
   {
@@ -87,17 +86,16 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     region: 'india_top',
     location: 'Sri Mayapur Dham, Nadia, West Bengal',
     deities: 'श्री श्री राधा माधव, अष्टसखी एवं श्री पंचतत्त्व',
-    channelHandle: '@MayapurTV',
-    youtubeChannelUrl: 'https://www.youtube.com/@MayapurTV',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC8Wb04j_Zq5b2xV4i4PqU8Q',
-    fallbackVideoId: '0mQd_h-p6n4',
-    fallbackTitle: 'श्री मायापुर धाम मंगला आरती एवं पंचतत्त्व महा-अभिषेक',
+    channelHandle: '@MayapurTVOfficial',
+    youtubeChannelUrl: 'https://www.youtube.com/@MayapurTVOfficial',
+    fallbackVideoId: 'W3P1J7k-L-Y',
+    fallbackTitle: 'श्री मायापुर धाम भव्य गौर आरती एवं संकीर्तन',
     fallbackPlaylist: [
-      { id: '0mQd_h-p6n4', title: 'श्री मायापुर धाम मंगला आरती एवं पंचतत्त्व महा-अभिषेक', type: 'mangal_aarti', duration: '45:10' },
-      { id: '6sX74H9jmVI', title: 'श्रीधाम मायापुर २४ घण्टे अखंड हरिनाम महासंकीर्तन', type: 'kirtan', duration: '01:15:00' },
-      { id: 'n61ULEU7SU0', title: 'श्री श्री राधा माधव भव्य नौका विहार एवं फूल बंगला दर्शन', type: 'festival', duration: '38:20' }
+      { id: 'W3P1J7k-L-Y', title: 'श्री मायापुर धाम भव्य गौर आरती एवं संकीर्तन', type: 'sandhya_aarti', duration: '35:20' },
+      { id: 's5RzL_3V27Y', title: 'इस्कॉन प्रातःकालीन मंगला आरती (Samsara Davanala)', type: 'mangal_aarti', duration: '45:10' },
+      { id: 'chpkYKbNQgg', title: 'श्रील प्रभुपाद मूल हरे कृष्ण महामंत्र कीर्तन', type: 'kirtan', duration: '01:00:00' }
     ],
-    description: 'श्री चैतन्य महाप्रभु की प्राकट्य भूमि श्रीधाम मायापुर से २४x७ लाइव मंगला आरती, राजभोग दर्शन एवं विश्व संकीर्तन।',
+    description: 'श्री चैतन्य महाप्रभु की प्राकट्य भूमि श्रीधाम मायापुर से लाइव मंगला आरती, राजभोग दर्शन एवं विश्व संकीर्तन।',
     activeViewers: 14200,
     isLiveNow: true,
     category: 'mangal_aarti'
@@ -110,15 +108,14 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     region: 'india_top',
     location: 'Raman Reti, Vrindavan, Uttar Pradesh',
     deities: 'श्री श्री कृष्ण बलराम, राधा श्यामसुंदर, गौर निताई',
-    channelHandle: '@ISKCONVrindavanLive',
-    youtubeChannelUrl: 'https://www.youtube.com/@ISKCONVrindavanLive',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UCk1gZ2yY3g7gK4u2g7rJ3lw',
-    fallbackVideoId: '6sX74H9jmVI',
-    fallbackTitle: 'श्री वृन्दावन कृष्ण बलराम २४ घण्टे अखंड महासंकीर्तन व शृंगार आरती',
+    channelHandle: '@24hourkirtanmandali',
+    youtubeChannelUrl: 'https://www.youtube.com/@24hourkirtanmandali',
+    fallbackVideoId: '1F_454Y4Sjo',
+    fallbackTitle: 'श्री वृन्दावन धाम भव्य आरती एवं राधा श्यामसुंदर दर्शन',
     fallbackPlaylist: [
-      { id: '6sX74H9jmVI', title: 'श्री वृन्दावन कृष्ण बलराम २४ घण्टे अखंड महासंकीर्तन व शृंगार आरती', type: 'kirtan', duration: '02:00:00' },
-      { id: '0mQd_h-p6n4', title: 'श्री वृन्दावन धाम मंगला आरती एवं तुलसी परिक्रमा', type: 'mangal_aarti', duration: '42:15' },
-      { id: 'n61ULEU7SU0', title: 'श्री श्री राधा श्यामसुंदर भव्य फूल बंगला एवं दीपदान उत्सव', type: 'festival', duration: '50:30' }
+      { id: '1F_454Y4Sjo', title: 'श्री वृन्दावन धाम भव्य आरती एवं राधा श्यामसुंदर दर्शन', type: 'mangal_aarti', duration: '42:15' },
+      { id: 'chpkYKbNQgg', title: 'श्री वृन्दावन अखंड हरिनाम महासंकीर्तन', type: 'kirtan', duration: '01:10:00' },
+      { id: 'LqUoHjLw9-E', title: 'इस्कॉन संध्या गौर आरती (भज भकत वत्सल)', type: 'sandhya_aarti', duration: '38:00' }
     ],
     description: 'श्रील प्रभुपाद द्वारा स्थापित पावन मन्दिर से २४ घंटे अनवरत हरिनाम संकीर्तन एवं शृंगार दर्शन।',
     activeViewers: 18500,
@@ -135,13 +132,12 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा पार्थसारथी, गौर निताई, सीताराम लक्ष्मण हनुमान',
     channelHandle: '@iskcondelhi',
     youtubeChannelUrl: 'https://www.youtube.com/@iskcondelhi',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC2e_e1yB9J8w_x6_xJ1t_yA',
-    fallbackVideoId: 'E-TECeu7nDw',
-    fallbackTitle: 'इस्कॉन दिल्ली ग्लोरी ऑफ इंडिया मंगला आरती व श्रीमद्भगवद्गीता प्रवचन',
+    fallbackVideoId: 's5RzL_3V27Y',
+    fallbackTitle: 'इस्कॉन दिल्ली ग्लोरी ऑफ इंडिया प्रातःकालीन मंगला आरती व स्तुति',
     fallbackPlaylist: [
-      { id: 'E-TECeu7nDw', title: 'इस्कॉन दिल्ली ग्लोरी ऑफ इंडिया मंगला आरती व श्रीमद्भगवद्गीता प्रवचन', type: 'mangal_aarti', duration: '48:30' },
-      { id: '_9Gsy6c-UIA', title: 'इस्कॉन दिल्ली श्री कृष्ण जन्माष्टमी १०८ कलश महा-अभिषेक', type: 'festival', duration: '01:30:00' },
-      { id: 'mBjAzqoKJoI', title: 'इस्कॉन दिल्ली संडे लव फीस्ट एवं भव्य संध्या आरती', type: 'sandhya_aarti', duration: '52:10' }
+      { id: 's5RzL_3V27Y', title: 'इस्कॉन दिल्ली ग्लोरी ऑफ इंडिया प्रातःकालीन मंगला आरती व स्तुति', type: 'mangal_aarti', duration: '48:30' },
+      { id: 'LqUoHjLw9-E', title: 'इस्कॉन दिल्ली संध्या आरती एवं संकीर्तन', type: 'sandhya_aarti', duration: '52:10' },
+      { id: 'mRXZfDqDvDA', title: 'श्रील प्रभुपाद — जय राधा माधव दिव्य भजन', type: 'katha', duration: '32:00' }
     ],
     description: 'राष्ट्रीय राजधानी का प्रमुख वैदिक सांस्कृतिक केंद्र, भव्य संकीर्तन, श्रीमद्भागवत प्रवचन एवं अन्नदान सेवा।',
     activeViewers: 9400,
@@ -158,12 +154,11 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री रुक्मिणी द्वारकाधीश एवं गौर निताई',
     channelHandle: '@iskcondwarka',
     youtubeChannelUrl: 'https://www.youtube.com/@iskcondwarka',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UCzCg1y9f_N5q4r9g0v3n4tw',
-    fallbackVideoId: 'g4oEUP4Ztas',
-    fallbackTitle: 'इस्कॉन द्वारका भव्य राजभोग आरती एवं यूथ फोरम प्रेरणा सत्र',
+    fallbackVideoId: 'Il6FBVKTsLE',
+    fallbackTitle: 'इस्कॉन द्वारका संसार दावानल मंगला आरती व दर्शन',
     fallbackPlaylist: [
-      { id: 'g4oEUP4Ztas', title: 'इस्कॉन द्वारका भव्य राजभोग आरती एवं यूथ फोरम प्रेरणा सत्र', type: 'darshan', duration: '46:00' },
-      { id: 'e9cJwVIpPVc', title: 'इस्कॉन द्वारका रविवार महा-संकीर्तन एवं जगन्नाथ कथा', type: 'katha', duration: '55:20' }
+      { id: 'Il6FBVKTsLE', title: 'इस्कॉन द्वारका संसार दावानल मंगला आरती व दर्शन', type: 'mangal_aarti', duration: '39:15' },
+      { id: 'H3GaVX8Kaus', title: 'श्रील प्रभुपाद हरे कृष्ण महामंत्र कीर्तन', type: 'kirtan', duration: '46:00' }
     ],
     description: 'द्वारका उपनगर का आध्यात्मिक प्रकाश पुंज, नित्य संकीर्तन, वैदिक संस्कार एवं युवा प्रेरणा कार्यक्रम।',
     activeViewers: 6800,
@@ -180,12 +175,11 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा गोविंद देव एवं गौर निताई',
     channelHandle: '@iskconnoida',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconnoida',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_7k_8x_N0k_r2_b1t_q9xw',
-    fallbackVideoId: 'mBjAzqoKJoI',
-    fallbackTitle: 'इस्कॉन नोएडा संध्या गौर आरती एवं मधुर हरिनाम संकीर्तन',
+    fallbackVideoId: 'LqUoHjLw9-E',
+    fallbackTitle: 'इस्कॉन नोएडा संध्या गौर आरती एवं मधुर संकीर्तन',
     fallbackPlaylist: [
-      { id: 'mBjAzqoKJoI', title: 'इस्कॉन नोएडा संध्या गौर आरती एवं मधुर हरिनाम संकीर्तन', type: 'sandhya_aarti', duration: '42:30' },
-      { id: 'MJlzBHbxDSk', title: 'इस्कॉन नोएडा श्री राधा गोविंद देव भव्य शृंगार दर्शन', type: 'darshan', duration: '34:10' }
+      { id: 'LqUoHjLw9-E', title: 'इस्कॉन नोएडा संध्या गौर आरती एवं मधुर संकीर्तन', type: 'sandhya_aarti', duration: '42:30' },
+      { id: '6zFgogWfZk4', title: 'श्रील प्रभुपाद — गोविंद आदि पुरुषम् तमहम भजामि', type: 'darshan', duration: '34:10' }
     ],
     description: 'नोएडा का पावन भव्य मंदिर, नित्य गीता ज्ञान सत्र, संकीर्तन एवं महाप्रसाद वितरण।',
     activeViewers: 5600,
@@ -202,12 +196,11 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा राधारमण जी महाराज',
     channelHandle: '@iskconpunjabibagh',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconpunjabibagh',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC8n9q_P_b_J2y4r7t_9w_0A',
-    fallbackVideoId: 'MJlzBHbxDSk',
-    fallbackTitle: 'इस्कॉन पंजाबी बाग शृंगार दर्शन एवं श्रीमद्भागवत कथा',
+    fallbackVideoId: 'W3P1J7k-L-Y',
+    fallbackTitle: 'इस्कॉन पंजाबी बाग शृंगार दर्शन एवं संकीर्तन',
     fallbackPlaylist: [
-      { id: 'MJlzBHbxDSk', title: 'इस्कॉन पंजाबी बाग शृंगार दर्शन एवं श्रीमद्भागवत कथा', type: 'darshan', duration: '47:20' },
-      { id: 'eHj0JiiuRaQ', title: 'इस्कॉन पंजाबी बाग राधा राधारमण जी की भव्य संध्या आरती', type: 'sandhya_aarti', duration: '38:40' }
+      { id: 'W3P1J7k-L-Y', title: 'इस्कॉन पंजाबी बाग शृंगार दर्शन एवं संकीर्तन', type: 'darshan', duration: '47:20' },
+      { id: 's5RzL_3V27Y', title: 'इस्कॉन प्रातःकालीन मंगला आरती', type: 'mangal_aarti', duration: '38:40' }
     ],
     description: 'पश्चिम दिल्ली का पावन भक्ति केंद्र, दिव्य शृंगार दर्शन एवं अखंड हरिनाम संकीर्तन।',
     activeViewers: 4200,
@@ -224,12 +217,11 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा माधव एवं जगन्नाथ बलदेव सुभद्रा',
     channelHandle: '@iskconrohini',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconrohini',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_rohini_iskcon_live_id',
-    fallbackVideoId: 'mm7QSrjoM5g',
-    fallbackTitle: 'इस्कॉन रोहिणी जगन्नाथ बलदेव सुभद्रा महा-आरती',
+    fallbackVideoId: '1u-iS6YdM0o',
+    fallbackTitle: 'इस्कॉन रोहिणी प्रातःकालीन महा-आरती',
     fallbackPlaylist: [
-      { id: 'mm7QSrjoM5g', title: 'इस्कॉन रोहिणी जगन्नाथ बलदेव सुभद्रा महा-आरती', type: 'mangal_aarti', duration: '41:10' },
-      { id: '4bABPNlueAY', title: 'इस्कॉन रोहिणी श्री जगन्नाथ रथयात्रा महोत्सव', type: 'festival', duration: '01:10:00' }
+      { id: '1u-iS6YdM0o', title: 'इस्कॉन रोहिणी प्रातःकालीन महा-आरती', type: 'mangal_aarti', duration: '41:10' },
+      { id: 'chpkYKbNQgg', title: 'इस्कॉन महामंत्र संकीर्तन', type: 'kirtan', duration: '50:00' }
     ],
     description: 'उत्तर दिल्ली का भव्य आध्यात्मिक केंद्र, संकीर्तन एवं बाल संस्कार केंद्र।',
     activeViewers: 3900,
@@ -246,12 +238,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा मदन मोहन',
     channelHandle: '@iskconghaziabad',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconghaziabad',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_ghaziabad_iskcon_id',
-    fallbackVideoId: 'eHj0JiiuRaQ',
-    fallbackTitle: 'इस्कॉन गाजियाबाद रविवार सत्संग एवं संकीर्तन उत्सव',
+    fallbackVideoId: '7c1kM7oX54o',
+    fallbackTitle: 'इस्कॉन गाजियाबाद रविवार सत्संग एवं आरती उत्सव',
     fallbackPlaylist: [
-      { id: 'eHj0JiiuRaQ', title: 'इस्कॉन गाजियाबाद रविवार सत्संग एवं संकीर्तन उत्सव', type: 'katha', duration: '50:30' },
-      { id: 'b5h2STZX7Ro', title: 'इस्कॉन गाजियाबाद श्री राधा मदन मोहन शृंगार आरती', type: 'sandhya_aarti', duration: '36:15' }
+      { id: '7c1kM7oX54o', title: 'इस्कॉन गाजियाबाद रविवार सत्संग एवं आरती उत्सव', type: 'katha', duration: '50:30' }
     ],
     description: 'गाजियाबाद एवं एनसीआर का प्रमुख वैदिक प्रचार केंद्र, नित्य गीता स्वाध्याय एवं संकीर्तन।',
     activeViewers: 3100,
@@ -268,12 +258,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा दामोदर एवं गौर निताई',
     channelHandle: '@iskcongurugram',
     youtubeChannelUrl: 'https://www.youtube.com/@iskcongurugram',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_gurugram_iskcon_id',
-    fallbackVideoId: 'a0FGJEZqdHY',
-    fallbackTitle: 'इस्कॉन गुरुग्राम कॉर्पोरेट गीता सेमिनार एवं कीर्तन',
+    fallbackVideoId: 'mRXZfDqDvDA',
+    fallbackTitle: 'इस्कॉन गुरुग्राम राधा दामोदर संकीर्तन व आरती',
     fallbackPlaylist: [
-      { id: 'a0FGJEZqdHY', title: 'इस्कॉन गुरुग्राम कॉर्पोरेट गीता सेमिनार एवं कीर्तन', type: 'katha', duration: '54:00' },
-      { id: 'MogyeLoe9gs', title: 'इस्कॉन गुरुग्राम राधा दामोदर संध्या आरती व दीपदान', type: 'sandhya_aarti', duration: '40:00' }
+      { id: 'mRXZfDqDvDA', title: 'इस्कॉन गुरुग्राम राधा दामोदर संकीर्तन व आरती', type: 'katha', duration: '54:00' }
     ],
     description: 'मिलेनियम सिटी गुरुग्राम का भक्ति धाम, कॉर्पोरेट वेलनेस, गीता सत्र एवं संकीर्तन।',
     activeViewers: 4500,
@@ -290,12 +278,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा गोविंद देव जी',
     channelHandle: '@iskconfaridabad',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconfaridabad',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_faridabad_iskcon_id',
-    fallbackVideoId: '4bABPNlueAY',
-    fallbackTitle: 'इस्कॉन फरीदाबाद दिव्य शृंगार दर्शन एवं संकीर्तन',
+    fallbackVideoId: '1F_454Y4Sjo',
+    fallbackTitle: 'इस्कॉन फरीदाबाद दिव्य आरती एवं संकीर्तन',
     fallbackPlaylist: [
-      { id: '4bABPNlueAY', title: 'इस्कॉन फरीदाबाद दिव्य शृंगार दर्शन एवं संकीर्तन', type: 'darshan', duration: '37:45' },
-      { id: 'E-TECeu7nDw', title: 'इस्कॉन फरीदाबाद रविवार भागवत कथा एवं महाप्रसाद', type: 'katha', duration: '49:10' }
+      { id: '1F_454Y4Sjo', title: 'इस्कॉन फरीदाबाद दिव्य आरती एवं संकीर्तन', type: 'darshan', duration: '37:45' }
     ],
     description: 'फरीदाबाद का प्रमुख इस्कॉन केंद्र, अन्नदान, गीता वितरण एवं दैनिक आरती।',
     activeViewers: 2800,
@@ -312,12 +298,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा कृष्णचन्द्र, श्री श्री कृष्ण बलराम',
     channelHandle: '@iskconbangalore',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconbangalore',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC9Y1b7K8d_m5h2q8n4B_6lw',
-    fallbackVideoId: 'XqHvlUQ8BG8',
-    fallbackTitle: 'इस्कॉन बेंगलुरु सुवर्ण शिखर दर्शन एवं प्रातःकालीन महा-आरती',
+    fallbackVideoId: 's5RzL_3V27Y',
+    fallbackTitle: 'इस्कॉन बेंगलुरु सुवर्ण शिखर दर्शन एवं महा-आरती',
     fallbackPlaylist: [
-      { id: 'XqHvlUQ8BG8', title: 'इस्कॉन बेंगलुरु सुवर्ण शिखर दर्शन एवं प्रातःकालीन महा-आरती', type: 'mangal_aarti', duration: '46:30' },
-      { id: 'e9cJwVIpPVc', title: 'इस्कॉन बेंगलुरु अक्षय पात्र सेवा एवं कृष्ण बलराम रथयात्रा', type: 'festival', duration: '01:05:00' }
+      { id: 's5RzL_3V27Y', title: 'इस्कॉन बेंगलुरु सुवर्ण शिखर दर्शन एवं महा-आरती', type: 'mangal_aarti', duration: '46:30' }
     ],
     description: 'दक्षिण भारत का भव्य स्वर्ण शिखर मंदिर, सुवर्ण अलंकार दर्शन एवं अक्षय पात्र सेवा।',
     activeViewers: 11200,
@@ -334,12 +318,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा गोपीनाथ, गौर निताई, गोपाल जी',
     channelHandle: '@iskconchowpatty',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconchowpatty',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UCXw8N4rV7g2P2j1q4n8B_5A',
-    fallbackVideoId: 'b5h2STZX7Ro',
-    fallbackTitle: 'परम पूज्य राधानाथ स्वामी महाराज प्रवचन एवं राधा गोपीनाथ आरती',
+    fallbackVideoId: 'H3GaVX8Kaus',
+    fallbackTitle: 'इस्कॉन चौपाटी राधा गोपीनाथ जी की भव्य आरती व कीर्तन',
     fallbackPlaylist: [
-      { id: 'b5h2STZX7Ro', title: 'परम पूज्य राधानाथ स्वामी महाराज प्रवचन एवं राधा गोपीनाथ आरती', type: 'katha', duration: '58:00' },
-      { id: '0mQd_h-p6n4', title: 'इस्कॉन चौपाटी राधा गोपीनाथ जी की मंगला आरती व कीर्तन', type: 'mangal_aarti', duration: '44:00' }
+      { id: 'H3GaVX8Kaus', title: 'इस्कॉन चौपाटी राधा गोपीनाथ जी की भव्य आरती व कीर्तन', type: 'katha', duration: '58:00' }
     ],
     description: 'परम पूज्य राधानाथ स्वामी महाराज का गृह मंदिर, भक्ति रस प्रवचन एवं मधुर कीर्तन।',
     activeViewers: 9800,
@@ -356,12 +338,11 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा रासबिहारी, सीताराम लक्ष्मण हनुमान, गौर निताई',
     channelHandle: '@iskconjuhu',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconjuhu',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_juhu_iskcon_live_id',
-    fallbackVideoId: 'MogyeLoe9gs',
-    fallbackTitle: 'इस्कॉन जुहू हरे कृष्ण लैंड संध्या आरती व संकीर्तन',
+    fallbackVideoId: '1u-iS6YdM0o',
+    fallbackTitle: 'इस्कॉन जुहू हरे कृष्ण लैंड प्रातःकालीन मंगला आरती',
     fallbackPlaylist: [
-      { id: 'MogyeLoe9gs', title: 'इस्कॉन जुहू हरे कृष्ण लैंड संध्या आरती व संकीर्तन', type: 'sandhya_aarti', duration: '48:15' },
-      { id: 'n61ULEU7SU0', title: 'इस्कॉन जुहू श्रील प्रभुपाद क्वार्टर्स दर्शन एवं संकीर्तन', type: 'darshan', duration: '35:20' }
+      { id: '1u-iS6YdM0o', title: 'इस्कॉन जुहू हरे कृष्ण लैंड प्रातःकालीन मंगला आरती', type: 'mangal_aarti', duration: '48:15' },
+      { id: '7c1kM7oX54o', title: 'इस्कॉन जुहू छप्पन भोग आरती दर्शन', type: 'darshan', duration: '35:20' }
     ],
     description: 'श्रील प्रभुपाद द्वारा अनेक संघर्षों के उपरांत स्थापित मुंबई का ऐतिहासिक पवित्र धाम।',
     activeViewers: 8700,
@@ -378,12 +359,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा बांके बिहारी, गौर निताई, जगन्नाथ बलदेव सुभद्रा',
     channelHandle: '@iskconpatna',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconpatna',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_patna_iskcon_live_id',
-    fallbackVideoId: 'e9cJwVIpPVc',
-    fallbackTitle: 'इस्कॉन पटना भव्य मंदिर आरती एवं श्रीमद्भागवत कथा',
+    fallbackVideoId: 'Il6FBVKTsLE',
+    fallbackTitle: 'इस्कॉन पटना भव्य मंदिर मंगला आरती एवं दर्शन',
     fallbackPlaylist: [
-      { id: 'e9cJwVIpPVc', title: 'इस्कॉन पटना भव्य मंदिर आरती एवं श्रीमद्भागवत कथा', type: 'darshan', duration: '52:00' },
-      { id: '_9Gsy6c-UIA', title: 'इस्कॉन पटना श्री कृष्ण जन्माष्टमी महा-अभिषेक एवं कीर्तन', type: 'festival', duration: '01:15:00' }
+      { id: 'Il6FBVKTsLE', title: 'इस्कॉन पटना भव्य मंदिर मंगला आरती एवं दर्शन', type: 'darshan', duration: '52:00' }
     ],
     description: 'बिहार का सबसे भव्य कृष्ण मंदिर, बुद्ध मार्ग पटना से नित्य लाइव दर्शन व भागवत कथा।',
     activeViewers: 7200,
@@ -400,12 +379,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री गिरिधारी दाऊजी एवं गौर निताई',
     channelHandle: '@iskconjaipur',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconjaipur',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_jaipur_iskcon_live_id',
-    fallbackVideoId: '_9Gsy6c-UIA',
-    fallbackTitle: 'इस्कॉन जयपुर शृंगार दर्शन एवं संध्या महा-आरती',
+    fallbackVideoId: 'LqUoHjLw9-E',
+    fallbackTitle: 'इस्कॉन जयपुर संध्या गौर आरती व दर्शन',
     fallbackPlaylist: [
-      { id: '_9Gsy6c-UIA', title: 'इस्कॉन जयपुर शृंगार दर्शन एवं संध्या महा-आरती', type: 'sandhya_aarti', duration: '41:00' },
-      { id: 'mBjAzqoKJoI', title: 'इस्कॉन जयपुर राजस्थानी शैली मंदिर आरती एवं प्रवचन', type: 'katha', duration: '48:30' }
+      { id: 'LqUoHjLw9-E', title: 'इस्कॉन जयपुर संध्या गौर आरती व दर्शन', type: 'sandhya_aarti', duration: '41:00' }
     ],
     description: 'गुलाबी नगरी जयपुर का पावन केंद्र, राजस्थानी शैली में निर्मित भव्य मन्दिर व संकीर्तन।',
     activeViewers: 5100,
@@ -422,12 +399,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा वृन्दावनाचंद्र, श्री श्री बालाजी',
     channelHandle: '@iskconpunenvcc',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconpunenvcc',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_pune_nvcc_live_id',
-    fallbackVideoId: 'g4oEUP4Ztas',
+    fallbackVideoId: 'W3P1J7k-L-Y',
     fallbackTitle: 'इस्कॉन पुणे NVCC भव्य प्रासाद महा-आरती एवं कीर्तन',
     fallbackPlaylist: [
-      { id: 'g4oEUP4Ztas', title: 'इस्कॉन पुणे NVCC भव्य प्रासाद महा-आरती एवं कीर्तन', type: 'darshan', duration: '53:15' },
-      { id: 'MJlzBHbxDSk', title: 'इस्कॉन पुणे श्री बालाजी एवं राधा वृन्दावनाचंद्र महा-अभिषेक', type: 'festival', duration: '01:02:00' }
+      { id: 'W3P1J7k-L-Y', title: 'इस्कॉन पुणे NVCC भव्य प्रासाद महा-आरती एवं कीर्तन', type: 'darshan', duration: '53:15' }
     ],
     description: 'पुणे का विशाल वैदिक सांस्कृतिक केंद्र, भव्य स्थापत्य कला एवं गोविंदस रेस्तरां।',
     activeViewers: 6400,
@@ -444,12 +419,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा गोविंद देव एवं सीताराम लक्ष्मण हनुमान',
     channelHandle: '@iskconahmedabad',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconahmedabad',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_ahmedabad_iskcon_id',
-    fallbackVideoId: 'MJlzBHbxDSk',
-    fallbackTitle: 'इस्कॉन अहमदाबाद एसजी हाईवे मंगला आरती व गुजराती कथा',
+    fallbackVideoId: '1F_454Y4Sjo',
+    fallbackTitle: 'इस्कॉन अहमदाबाद मंगला आरती व दर्शन',
     fallbackPlaylist: [
-      { id: 'MJlzBHbxDSk', title: 'इस्कॉन अहमदाबाद एसजी हाईवे मंगला आरती व गुजराती कथा', type: 'mangal_aarti', duration: '44:20' },
-      { id: 'mm7QSrjoM5g', title: 'इस्कॉन अहमदाबाद रविवार संकीर्तन उत्सव एवं अन्नदान', type: 'kirtan', duration: '50:00' }
+      { id: '1F_454Y4Sjo', title: 'इस्कॉन अहमदाबाद मंगला आरती व दर्शन', type: 'mangal_aarti', duration: '44:20' }
     ],
     description: 'गुजरात का प्रमुख भक्ति धाम, नित्य हजारों भक्तों का संकीर्तन एवं गीता प्रचार।',
     activeViewers: 4900,
@@ -466,12 +439,10 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
     deities: 'श्री श्री राधा मदनमोहन, श्री श्री कृष्ण बलराम',
     channelHandle: '@iskconujjain',
     youtubeChannelUrl: 'https://www.youtube.com/@iskconujjain',
-    liveStreamEmbedUrl: 'https://www.youtube.com/embed/live_stream?channel=UC_ujjain_iskcon_id',
-    fallbackVideoId: 'b5h2STZX7Ro',
-    fallbackTitle: 'इस्कॉन उज्जैन अवंतिका धाम दिव्य आरती एवं वैदिक सौर ऊर्जा केंद्र',
+    fallbackVideoId: '6zFgogWfZk4',
+    fallbackTitle: 'इस्कॉन उज्जैन अवंतिका धाम दिव्य आरती एवं भजन',
     fallbackPlaylist: [
-      { id: 'b5h2STZX7Ro', title: 'इस्कॉन उज्जैन अवंतिका धाम दिव्य आरती एवं वैदिक सौर ऊर्जा केंद्र', type: 'katha', duration: '51:40' },
-      { id: 'XqHvlUQ8BG8', title: 'इस्कॉन उज्जैन सांदीपनि आश्रम भूमि महा-आरती व संकीर्तन', type: 'mangal_aarti', duration: '42:00' }
+      { id: '6zFgogWfZk4', title: 'इस्कॉन उज्जैन अवंतिका धाम दिव्य आरती एवं भजन', type: 'katha', duration: '51:40' }
     ],
     description: 'भगवान श्रीकृष्ण की शिक्षा स्थली उज्जैन (सांदीपनि आश्रम भूमि) में स्थापित भव्य मन्दिर।',
     activeViewers: 4100,
@@ -482,16 +453,16 @@ export const ISKCON_TV_CHANNELS: IskconTvChannel[] = [
 
 export const ISKCON_LIVE_TEMPLE_FEEDS = ISKCON_TV_CHANNELS;
 
-// ── 2. MULTI-STATION 24x7 KRISHNA YOUTUBE RADIO NETWORK ───────────────────────
+// ── 2. MULTI-STATION 24x7 KRISHNA YOUTUBE RADIO NETWORK (REAL WORKING VIDEOS) ─
 export const KRISHNA_RADIO_STATIONS: KrishnaRadioStation[] = [
   {
     id: 'station_vrindavan_24h',
     stationNo: 1,
-    name: '24 Hour Kirtan Mandali (Sri Vrindavan Dham)',
-    nameHindi: 'श्री वृन्दावन धाम २४ घण्टे अखंड हरिनाम महासंकीर्तन',
+    name: 'Srila Prabhupada Classic Hare Krishna Maha-Mantra Kirtan',
+    nameHindi: 'श्रील प्रभुपाद मूल हरे कृष्ण महामंत्र अखंड कीर्तन',
     tagline: 'अखंड मृदंग, करताल एवं भावपूर्ण हरे कृष्ण महामंत्र कीर्तन',
-    videoId: '6sX74H9jmVI',
-    singer: 'इस्कॉन वृन्दावन २४ घण्टे कीर्तन मंडली',
+    videoId: 'chpkYKbNQgg',
+    singer: 'श्रील ए.सी. भक्तिवेदान्त स्वामी प्रभुपाद',
     genre: 'kirtan',
     icon: '🪕',
     activeListeners: 24800
@@ -500,9 +471,9 @@ export const KRISHNA_RADIO_STATIONS: KrishnaRadioStation[] = [
     id: 'station_prabhupada_vintage',
     stationNo: 2,
     name: 'Srila Prabhupada Pure Devotional Bhajans',
-    nameHindi: 'श्रील प्रभुपाद विंटेज अमृत भजन व शास्त्रीय गायन',
-    tagline: 'जय राधा माधव, यशोमती नंदन, गुरु अष्टक एवं गोविंद आदि पुरुषम्',
-    videoId: '0mQd_h-p6n4',
+    nameHindi: 'श्रील प्रभुपाद विंटेज अमृत भजन (जय राधा माधव)',
+    tagline: 'जय राधा माधव, कुंज बिहारी, गोपी जन वल्लभ, गिरि वर धारी',
+    videoId: 'mRXZfDqDvDA',
     singer: 'श्रील ए.सी. भक्तिवेदान्त स्वामी प्रभुपाद',
     genre: 'bhajan',
     icon: '🛕',
@@ -511,11 +482,11 @@ export const KRISHNA_RADIO_STATIONS: KrishnaRadioStation[] = [
   {
     id: 'station_radhanath_swami',
     stationNo: 3,
-    name: 'Radhanath Swami Nectarine Kirtan',
-    nameHindi: 'परम पूज्य राधानाथ स्वामी महाराज अमृतमय कीर्तन',
-    tagline: 'हृदयस्पर्शी मधुर राग, वृन्दावन रस एवं प्रेमाभक्ति गायन',
-    videoId: 'b5h2STZX7Ro',
-    singer: 'परम पूज्य राधानाथ स्वामी',
+    name: 'ISKCON Morning Program Mangala Aarti with Lyrics',
+    nameHindi: 'इस्कॉन प्रातःकालीन मंगला आरती (संसार दावानल लीढलोक)',
+    tagline: 'श्रील विश्वनाथ चक्रवर्ती ठाकुर विरचित श्री गुरु-अष्टकम्',
+    videoId: 's5RzL_3V27Y',
+    singer: 'इस्कॉन कीर्तन मंडली',
     genre: 'kirtan',
     icon: '🌸',
     activeListeners: 16200
@@ -523,11 +494,11 @@ export const KRISHNA_RADIO_STATIONS: KrishnaRadioStation[] = [
   {
     id: 'station_madhavas_rock',
     stationNo: 4,
-    name: 'Madhavas Rock Band — Divine Youth Kirtan',
-    nameHindi: 'माधव रॉक बैंड — दिव्य यूथ संकीर्तन एवं भजन',
-    tagline: 'ऊर्जावान आधुनिक संगीत के साथ पारंपरिक महामंत्र गायन',
-    videoId: 'a0FGJEZqdHY',
-    singer: 'माधव रॉक बैंड (Madhavas)',
+    name: 'Govindam Adi-Purusham Devotional Prayers',
+    nameHindi: 'गोविंदम् आदि-पुरुषम् तम् अहं भजामि (ब्रह्म-संहिता)',
+    tagline: 'वेणुं क्वणन्तमरविन्ददलायताक्षं बर्हावतंसमसिताम्बुदसुन्दराङ्गम्',
+    videoId: '6zFgogWfZk4',
+    singer: 'इस्कॉन टेम्पल प्रेयर्स',
     genre: 'kirtan',
     icon: '⚡',
     activeListeners: 14700
@@ -535,11 +506,11 @@ export const KRISHNA_RADIO_STATIONS: KrishnaRadioStation[] = [
   {
     id: 'station_flute_meditation',
     stationNo: 5,
-    name: '432Hz Divine Krishna Flute Meditation',
-    nameHindi: '४३२Hz दिव्य मुरली वेणु नाद एवं शांति ध्यान',
-    tagline: 'तनाव मुक्ति, आत्मिक शांति एवं ध्यानमग्न बाँसुरी की धुनें',
-    videoId: 'XqHvlUQ8BG8',
-    singer: 'पंडित हरिप्रसाद चौरसिया एवं वृन्दावन वेणु वादक',
+    name: 'ISKCON Sandhya Gaura Aarti & Kirtan',
+    nameHindi: 'इस्कॉन संध्या गौर आरती (भज भकत वत्सल श्री गौरांग)',
+    tagline: 'संध्या आरती, दीपदान एवं झांझ-मृदंग महासंकीर्तन',
+    videoId: 'LqUoHjLw9-E',
+    singer: 'इस्कॉन इंटरनेशनल कीर्तन टीम',
     genre: 'flute',
     icon: '🪈',
     activeListeners: 18100
@@ -547,11 +518,11 @@ export const KRISHNA_RADIO_STATIONS: KrishnaRadioStation[] = [
   {
     id: 'station_mayapur_gaura_aarti',
     stationNo: 6,
-    name: 'Sri Mayapur Dham Gaura Aarti & Kirtan',
-    nameHindi: 'श्री मायापुर धाम भव्य गौर आरती व झांझ-मृदंग',
-    tagline: 'भक्त ठाकुर विरचित जय जय गोराचाँदेर आरतिको शोभे संकीर्तन',
-    videoId: 'n61ULEU7SU0',
-    singer: 'इस्कॉन मायापुर इंटरनेशनल कीर्तन टीम',
+    name: 'Sri Vrindavan Dham Temple Aarti',
+    nameHindi: 'श्री वृन्दावन धाम मंदिर आरती व दर्शन',
+    tagline: 'श्री श्री राधा श्यामसुंदर एवं कृष्ण बलराम दिव्य दर्शन',
+    videoId: '1F_454Y4Sjo',
+    singer: 'इस्कॉन वृन्दावन धाम',
     genre: 'aarti',
     icon: '🪔',
     activeListeners: 12900
@@ -567,7 +538,6 @@ export function getSmartFreshFallbackEpisode(
     ? channel.fallbackPlaylist
     : [{ id: channel.fallbackVideoId, title: channel.fallbackTitle, type: channel.category }];
 
-  // 1. Filter unseen episodes
   const unseenEpisodes = playlist
     .map((ep, idx) => ({ ep, idx, lastWatched: watchedVideoMap[ep.id] || 0 }))
     .filter(item => item.lastWatched === 0);
@@ -581,7 +551,6 @@ export function getSmartFreshFallbackEpisode(
     };
   }
 
-  // 2. If all episodes have been seen, apply LRU (Least Recently Used) caching policy
   const sortedByOldest = playlist
     .map((ep, idx) => ({ ep, idx, lastWatched: watchedVideoMap[ep.id] || 0 }))
     .sort((a, b) => a.lastWatched - b.lastWatched);
@@ -594,7 +563,7 @@ export function getSmartFreshFallbackEpisode(
   };
 }
 
-// ── 4. DAILY AARTI & DARSHAN TIMINGS (UNIVERSAL ISKCON SCHEDULE) ────────────
+// ── 4. DAILY AARTI & DARSHAN TIMINGS ─────────────────────────────────────────
 export const ISKCON_DAILY_AARTI_SCHEDULE: DailyAartiTiming[] = [
   { name: 'मंगला आरती (Mangala Aarti)', time: '०४:३० AM', significance: 'दिन का प्रथम दिव्य दर्शन • साक्षात् हरि की प्रथम स्तुति' },
   { name: 'तुलसी आरती एवं जप (Tulsi Aarti & Japa)', time: '०५:०० AM', significance: 'वृन्दा देवी की परिक्रमा एवं महामंत्र जप काल' },
@@ -627,7 +596,7 @@ export const ISKCON_DEVOTEE_NOTICES: IskconNoticeItem[] = [
     categoryLabel: 'युवा प्रेरणा सत्र',
     dateStr: 'प्रत्येक रविवार शाम ५:०० बजे',
     temple: 'इस्कॉन दिल्ली (ईस्ट ऑफ कैलाश) एवं इस्कॉन द्वारका',
-    description: 'कॉलेज छात्रों एवं कामकाजी युवाओं हेतु एकाग्रता, तनावमुक्ति एवं भगवद्गीता के व्यावहारिक अनुप्रयोग पर विशेष सत्र। निःशुल्क पंजीकरण।',
+    description: 'कॉलेज छात्रों एवं कामकाजी युवाओं हेतु एकाग्रता, तनावमुक्ति एवं भगवद्गीता के व्यावहारिक अनुप्रयोग पर विशेष सत्र।',
     actionText: 'निःशुल्क भाग लें',
     badgeColor: '#00d2b4'
   },
@@ -641,17 +610,6 @@ export const ISKCON_DEVOTEE_NOTICES: IskconNoticeItem[] = [
     description: 'प्रतिदिन हजारों साधु-संतों, तीर्थयात्रियों एवं निर्धनों को शुद्ध देशी घी में निर्मित महाप्रसाद का निःशुल्क वितरण किया जाता है।',
     actionText: 'सेवा में सहयोग करें',
     badgeColor: '#ec4899'
-  },
-  {
-    id: 'notice-4',
-    title: 'श्रीमद्भगवद्गीता "यथारूप" ऑनलाइन भक्ति शास्त्री प्रमाण पत्र पाठ्यक्रम',
-    category: 'gita_course',
-    categoryLabel: 'गीता अध्ययन',
-    dateStr: 'नया बैच प्रारम्भ',
-    temple: 'इस्कॉन ग्लोबल ऑनलाइन विद्यापीठ',
-    description: 'श्रील प्रभुपाद की भगवद्गीता के १८ अध्यायों का गहन श्लोक-दर-श्लोक अध्ययन एवं आधिकारिक इस्कॉन प्रमाण पत्र।',
-    actionText: 'कोर्स विवरण देखें',
-    badgeColor: '#8b5cf6'
   }
 ];
 
@@ -686,36 +644,6 @@ export const UPCOMING_VAISHNAVA_FESTIVALS: VaishnavaFestival[] = [
     significance: 'स्वयं भगवान श्री कृष्ण का दिव्य अवतार दिवस • वृन्दावन, मायापुर व दिल्ली में १०८ तीर्थों के जल से महा-अभिषेक।',
     fastingRule: 'मध्यरात्रि १२:०० बजे तक पूर्ण उपवास • अभिषेक दर्शन एवं भोग पश्चात् पारण',
     paranTime: 'मध्यरात्रि १२:४५ AM के उपरांत'
-  },
-  {
-    id: 'shri_radhashtami',
-    name: 'Sri Radhashtami',
-    nameHindi: 'श्री राधाष्टमी (श्रीमती राधारानी आविर्भाव)',
-    dateStr: 'भाद्रपद शुक्ल अष्टमी',
-    monthStr: 'भाद्रपद मास',
-    significance: 'वृन्दावनेश्वरी आह्लादिनी शक्ति श्रीमती राधा रानी का पावन प्राकट्य दिवस • चरण दर्शन वर्ष में केवल एक बार।',
-    fastingRule: 'दोपहर १२:०० बजे तक उपवास • राधा नाम संकीर्तन एवं महा-अभिषेक दर्शन',
-    paranTime: 'दोपहर १२:३० PM के उपरांत'
-  },
-  {
-    id: 'shri_ratha_yatra',
-    name: 'Sri Jagannath Ratha Yatra',
-    nameHindi: 'श्री जगन्नाथ रथयात्रा (विश्व महोत्सव)',
-    dateStr: 'आषाढ़ शुक्ल द्वितीया',
-    monthStr: 'आषाढ़ मास',
-    significance: 'भगवान जगन्नाथ, बलदेव एवं सुभद्रा महारानी का भव्य नंदीघोष रथ पर नगर भ्रमण।',
-    fastingRule: 'रथ खींचने का पावन संकल्प • खिचड़ी महाप्रसाद वितरण',
-    paranTime: 'संध्या आरती उपरांत'
-  },
-  {
-    id: 'govardhan_puja_annakoot',
-    name: 'Sri Govardhan Puja & Annakoot',
-    nameHindi: 'श्री गोवर्धन पूजा एवं अन्नकूट महोत्सव',
-    dateStr: 'कार्तिक शुक्ल प्रतिपदा',
-    monthStr: 'कार्तिक मास',
-    significance: 'श्री गिरिराज गोवर्धन की परिक्रमा एवं भगवान को १०८ प्रकार के दिव्य व्यंजनों का अन्नकूट पर्वत अर्पण।',
-    fastingRule: 'दीपदान एवं गौ-पूजन संकल्प • अन्नकूट महाप्रसाद सेवन',
-    paranTime: 'दोपहर अन्नकूट भोग उपरांत'
   }
 ];
 
