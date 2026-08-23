@@ -73,6 +73,8 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
   const { currentTrack, isPlaying, playTrack, togglePlayPause, setIsSearchModalOpen } = useGlobalAudio();
   const [activeTab, setActiveTab] = useState<'scripture'|'dilemmas'|'healer'|'sadhana'|'mentor'|'wallpapers'>('scripture');
   const [dailyIdx, setDailyIdx] = useState(0);
+  const [chapterYogaFilter, setChapterYogaFilter] = useState<'all' | 'karma' | 'bhakti' | 'jnana'>('all');
+  const [chapterSearchQuery, setChapterSearchQuery] = useState('');
 
   const [copied, setCopied] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -108,6 +110,24 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
     setCopied(true); sacredAudio.playNavChime(0.08);
     setTimeout(() => setCopied(false), 2000);
   };
+
+  // Chapter filtering by Yoga & Search Query
+  const filteredChapters = CHAPTERS.filter(ch => {
+    if (chapterYogaFilter === 'karma' && (ch.number < 1 || ch.number > 6)) return false;
+    if (chapterYogaFilter === 'bhakti' && (ch.number < 7 || ch.number > 12)) return false;
+    if (chapterYogaFilter === 'jnana' && (ch.number < 13 || ch.number > 18)) return false;
+    
+    if (chapterSearchQuery.trim()) {
+      const q = chapterSearchQuery.toLowerCase().trim();
+      return (
+        ch.number.toString() === q ||
+        ch.name_sanskrit.toLowerCase().includes(q) ||
+        ch.name_en.toLowerCase().includes(q) ||
+        ch.summary_hi.toLowerCase().includes(q)
+      );
+    }
+    return true;
+  });
 
   const filteredDilemmas = HUNDRED_LIFE_DILEMMAS.filter(d => {
     const matchCat = categoryFilter === 'all' || d.category === categoryFilter;
@@ -366,41 +386,99 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
           ))}
         </div>
 
-        {/* ── TAB 1: SCRIPTURE 18 CHAPTERS GRID ─────────────────────────── */}
+        {/* ── TAB 1: SCRIPTURE 18 CHAPTERS GRID WITH YOGA FILTERS & SEARCH ── */}
         {activeTab === 'scripture' && (
           <div className="space-y-6 pt-4 animate-fade-in">
-            <div className="flex items-center justify-between">
+            
+            {/* Header & Controls */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-amber-400/20 pb-4">
               <div>
-                <h3 className="text-xl sm:text-2xl font-devanagari font-bold text-amber-300">
-                  सम्पूर्ण १८ अध्याय (All 18 Chapters)
-                </h3>
-                <p className="text-xs text-[#c5a059]/80 font-serif">
-                  कर्मयोग, ज्ञानयोग और भक्तियोग का त्रिवेणी संगम — प्रत्येक अध्याय का गहन अध्ययन करें।
+                <div className="flex items-center gap-2">
+                  <span className="text-base">📖</span>
+                  <h3 className="text-xl sm:text-2xl font-devanagari font-black text-amber-300">
+                    सम्पूर्ण १८ अध्याय • वैदिक महाग्रंथ
+                  </h3>
+                </div>
+                <p className="text-xs text-[#c5a059]/90 font-serif mt-0.5">
+                  कर्मयोग (१-६), भक्तियोग (७-१२) एवं ज्ञानयोग (१३-१८) का शाश्वत त्रिवेणी संगम
                 </p>
+              </div>
+
+              {/* Search & Yoga Filter Tabs */}
+              <div className="flex flex-wrap items-center gap-2">
+                
+                {/* Yoga Division Filter Buttons */}
+                <div className="p-1 rounded-2xl bg-[#101324] border border-amber-400/30 flex items-center gap-1 text-xs">
+                  {[
+                    { id: 'all', label: 'सभी १८ अध्याय' },
+                    { id: 'karma', label: 'कर्मयोग (१-६)' },
+                    { id: 'bhakti', label: 'भक्तियोग (७-१२)' },
+                    { id: 'jnana', label: 'ज्ञानयोग (१३-१८)' }
+                  ].map(f => (
+                    <button
+                      key={f.id}
+                      onClick={() => {
+                        setChapterYogaFilter(f.id as any);
+                        sacredAudio.playNavChime(0.04);
+                      }}
+                      className={`px-3 py-1 rounded-xl transition-all cursor-pointer font-serif ${
+                        chapterYogaFilter === f.id
+                          ? 'bg-gradient-to-r from-amber-400 to-yellow-500 text-black font-bold shadow-sm'
+                          : 'text-[#f5eed9]/70 hover:text-white'
+                      }`}
+                    >
+                      {f.label}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Chapter Quick Search */}
+                <div className="relative">
+                  <Search className="w-3.5 h-3.5 text-amber-400/60 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={chapterSearchQuery}
+                    onChange={(e) => setChapterSearchQuery(e.target.value)}
+                    placeholder="अध्याय खोजें..."
+                    className="pl-8 pr-3 py-1.5 rounded-xl bg-[#101324] border border-amber-400/30 text-xs font-serif text-amber-200 placeholder-amber-400/40 focus:outline-none focus:border-amber-400 w-36 sm:w-48"
+                  />
+                </div>
+
               </div>
             </div>
 
+            {/* Chapters Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {CHAPTERS.map(ch => {
+              {filteredChapters.map(ch => {
                 const theme = getChapterTheme(ch.number);
+                const yogaBadge = 
+                  ch.number <= 6 ? { name: 'कर्मयोग खण्ड', color: 'text-amber-400 bg-amber-400/10 border-amber-400/30' } :
+                  ch.number <= 12 ? { name: 'भक्तियोग खण्ड', color: 'text-orange-400 bg-orange-400/10 border-orange-400/30' } :
+                  { name: 'ज्ञानयोग खण्ड', color: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/30' };
+
                 return (
                   <Link
                     key={ch.number}
                     href={`/chapter/${ch.number}`}
                     onClick={() => sacredAudio.playTempleBell(0.15)}
-                    className="p-5 rounded-3xl bg-gradient-to-b from-[#121528] to-[#090b16] border-2 border-amber-400/20 hover:border-amber-400 hover:shadow-[0_10px_30px_rgba(245,158,11,0.2)] transition-all group block space-y-3"
+                    className="p-5 rounded-3xl bg-gradient-to-b from-[#121528] to-[#090b16] border-2 border-amber-400/25 hover:border-amber-400 hover:shadow-[0_12px_35px_rgba(245,158,11,0.25)] transition-all group block space-y-3 relative overflow-hidden"
                   >
                     <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-2xl bg-amber-400/15 border border-amber-400/30 flex items-center justify-center font-devanagari font-bold text-amber-300 text-lg group-hover:scale-110 transition-transform">
-                        {toDN(ch.number)}
+                      <div className="flex items-center gap-2.5">
+                        <div className="w-10 h-10 rounded-2xl bg-amber-400/15 border border-amber-400/30 flex items-center justify-center font-devanagari font-black text-amber-300 text-lg group-hover:scale-110 transition-transform shadow-sm">
+                          {toDN(ch.number)}
+                        </div>
+                        <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${yogaBadge.color} font-bold`}>
+                          {yogaBadge.name}
+                        </span>
                       </div>
-                      <span className="text-xs font-mono px-2.5 py-1 rounded-xl bg-black/40 border border-amber-400/20 text-amber-300">
+                      <span className="text-xs font-mono px-2.5 py-1 rounded-xl bg-black/50 border border-amber-400/20 text-amber-300 font-bold">
                         {ch.verses_count} श्लोक
                       </span>
                     </div>
 
                     <div>
-                      <h4 className="text-lg font-devanagari font-bold text-[#f5eed9] group-hover:text-amber-300 transition-colors">
+                      <h4 className="text-lg font-devanagari font-black text-[#f5eed9] group-hover:text-amber-300 transition-colors">
                         {ch.name_sanskrit}
                       </h4>
                       <p className="text-xs text-amber-200/70 font-serif line-clamp-1 mt-0.5">
@@ -408,18 +486,29 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
                       </p>
                     </div>
 
-                    <p className="text-xs text-[#f5eed9]/70 font-serif line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-[#f5eed9]/80 font-serif line-clamp-2 leading-relaxed">
                       {ch.summary_hi}
                     </p>
 
                     <div className="pt-2 border-t border-white/10 flex items-center justify-between text-xs font-serif text-amber-300 group-hover:text-yellow-200 font-bold">
-                      <span>अध्याय खोलें</span>
+                      <span className="flex items-center gap-1">
+                        <BookOpen className="w-3.5 h-3.5" />
+                        <span>सम्पूर्ण अध्याय व श्लोक खोलें</span>
+                      </span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </Link>
                 );
               })}
             </div>
+
+            {filteredChapters.length === 0 && (
+              <div className="p-8 text-center rounded-3xl bg-[#101324] border border-amber-400/20 space-y-2">
+                <p className="text-amber-300 font-serif font-bold text-base">कोई अध्याय नहीं मिला</p>
+                <p className="text-xs text-amber-200/70">कृपया अन्य खोज शब्द अथवा योग खण्ड चुनें।</p>
+              </div>
+            )}
+
           </div>
         )}
 

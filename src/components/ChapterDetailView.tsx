@@ -185,6 +185,44 @@ export default function ChapterDetailView({
           </div>
         </div>
 
+                {/* ── CHAPTER CONTINUOUS AUDIO CHANTING & ESSENCE BAR ─────────────── */}
+        <div className={`p-4 rounded-2xl bg-gradient-to-r from-[#141628] via-[#0d0f19] to-[#141628] border-2 ${chapterTheme.borderClass} shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4`}>
+          <div className="flex items-center gap-3">
+            <div className="w-12 h-12 rounded-2xl bg-amber-400/20 border border-amber-400/40 flex items-center justify-center text-amber-300 text-xl font-bold shadow-md">
+              🪈
+            </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-bold border border-amber-400/30">
+                  अध्याय {toDevanagariNum(chapterNum)} सम्पूर्ण पारायण
+                </span>
+                <span className="text-[10px] font-mono text-emerald-400 font-bold">
+                  वैदिक स्वर • HD Audio
+                </span>
+              </div>
+              <h3 className="text-sm sm:text-base font-devanagari font-bold text-[#f5eed9]">
+                {chapterInfo.name_sanskrit} — अखंड श्लोक पाठ एवं शास्त्रीय भाष्य
+              </h3>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
+            <button
+              onClick={() => {
+                const firstVerse = chapterVerses[0];
+                if (firstVerse) {
+                  playTrack(firstVerse.chapter, firstVerse.verse, firstVerse.devanagari, firstVerse.translation_hi);
+                  sacredAudio.playTempleBell(0.3);
+                }
+              }}
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-400 text-black font-serif font-bold text-xs flex items-center gap-2 shadow-lg hover:scale-103 active:scale-95 transition-all cursor-pointer"
+            >
+              <Play className="w-4 h-4 fill-current" />
+              <span>प्रारम्भ से पाठ सुनें (Verse 1)</span>
+            </button>
+          </div>
+        </div>
+
         {/* ── QUICK SEARCH & VERSE JUMP TABS ─────────────────────────────────── */}
         <div className={`flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#0d0f19]/90 backdrop-blur-xl p-3 sm:p-4 rounded-2xl border ${chapterTheme.borderClass}`}>
           

@@ -46,6 +46,13 @@ interface AcharyaBhashyaItem {
 
 const ACHARYA_LIST: AcharyaBhashyaItem[] = [
   {
+    id: 'prabhupada',
+    name: 'श्रील ए.सी. भक्तिवेदान्त स्वामी प्रभुपाद',
+    tradition: 'भगवद्गीता यथारूप (इस्कॉन संस्थापक)',
+    icon: '🛕',
+    tagline: 'परम पुरुषोत्तम भगवान श्रीकृष्ण की अनन्य प्रेमाभक्ति व शरणागति'
+  },
+  {
     id: 'universal',
     name: 'समग्र वैदिक सार',
     tradition: 'सारगर्भित समन्वय',
@@ -195,6 +202,10 @@ export default function ScriptureReader({
   };
 
   const getActiveBhashyaContent = () => {
+    if (activeSampradaya === 'prabhupada') {
+      return (canonical?.deep_bhashya?.hi || canonical?.deep_bhashya?.hinglish || universal.sampradaya_notes.universal) + 
+        `\n\n[श्रील प्रभुपाद तात्पर्य]: भगवान श्रीकृष्ण ही सर्वकारणकारणम् एवं परम सत्य हैं। भगवद्गीता का प्रत्येक श्लोक जीवात्मा को भगवान के साथ अपने नित्य संबंध को पुनः जागृत करने का आह्वान करता है। हरे कृष्ण महामंत्र का जप करते हुए निष्काम भाव से की गई सेवा ही जीवन का सर्वोच्च परम लक्ष्य है।`;
+    }
     if (activeSampradaya === 'advaita') return universal.sampradaya_notes.advaita;
     if (activeSampradaya === 'vishishtadvaita') return universal.sampradaya_notes.vishishtadvaita;
     if (activeSampradaya === 'dvaita') return universal.sampradaya_notes.dvaita;
