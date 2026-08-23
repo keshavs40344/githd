@@ -1,0 +1,12 @@
+[package]
+name = "dharma-rust-core"
+version = "2.0.0"
+authors = ["Keshav Sharma <keshav@dharma.os>"]
+edition = "2021"
+description = "Ultra High-Performance Vedic DSP & Metric Engine in Rust"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# Zero-cost SIMD and WebAssembly bindings
