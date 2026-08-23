@@ -1,11 +1,13 @@
 'use client';
 
+import { vedicVoiceDsp } from '@/lib/cppVedicAudioDsp';
+
 /**
- * DHARMA.OS — SACRED SOUND & ACOUSTIC SYNTHESIS ENGINE (C++ / RUST ACCELERATED)
+ * DHARMA.OS — SACRED SOUND & ACOUSTIC SYNTHESIS ENGINE (C++23 DSP ACCELERATED)
  * 
  * Features:
- * - 9-harmonic physical bronze temple bell synthesis
- * - Robust voice selection with onvoiceschanged asynchronous loading
+ * - Ultra-Natural Speech Synthesis with C++ Vedic Formant & 432Hz Resonance
+ * - 9-Harmonic Bronze Temple Bell physical simulation
  * - 432Hz Tanpura & 136.1Hz Cosmic Om continuous drone
  * - Shankhnaad, singing bowls, and bansuri flute harmonic chimes
  */
@@ -40,6 +42,7 @@ class SacredSoundEngine {
         const AudioCtx = window.AudioContext || (window as any).webkitAudioContext;
         if (AudioCtx) {
           this.ctx = new AudioCtx();
+          vedicVoiceDsp.init(this.ctx);
         }
       }
       if (this.ctx && this.ctx.state === 'suspended') {
@@ -60,384 +63,411 @@ class SacredSoundEngine {
     }
   }
 
-  public vibrate(p: number | number[]) {
-    try { 
-      if (typeof window !== 'undefined' && 'navigator' in window && navigator.vibrate) {
-        navigator.vibrate(p); 
-      }
-    } catch {}
+  public isSoundEnabled(): boolean {
+    return this.soundEnabled;
+  }
+
+  // ── NATURAL DIVINE SPEECH SYNTHESIS ───────────────────────────────────────
+  public getBestDivineVoice(): SpeechSynthesisVoice | null {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return null;
+    const voices = this.cachedVoices.length > 0 ? this.cachedVoices : window.speechSynthesis.getVoices();
+    if (!voices || voices.length === 0) return null;
+
+    // 1. Preferred Hindi / Sanskrit natural deep voices
+    const naturalHindi = voices.find(v => 
+      (v.lang.startsWith('hi') || v.lang.startsWith('sa')) && 
+      (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Online') || v.name.includes('Neural'))
+    );
+    if (naturalHindi) return naturalHindi;
+
+    // 2. Any Hindi / Indian English rich voice
+    const anyIndian = voices.find(v => v.lang.includes('hi') || v.lang.includes('IN') || v.lang.includes('sa'));
+    if (anyIndian) return anyIndian;
+
+    // 3. Fallback to Google / Natural English
+    const naturalEnglish = voices.find(v => 
+      v.name.includes('Natural') || v.name.includes('Neural') || v.name.includes('Google')
+    );
+    return naturalEnglish || voices[0] || null;
   }
 
   /**
-   * 🔔 AUTHENTIC BRONZE TEMPLE GHANTA (मंदिर घंटा)
-   * 9 Inharmonic Partials with Clapper Transient and Spatial Reverb Delay
+   * Speaks with Lord Krishna's Divine, Warm & Resonant Timbre
    */
-  public playTempleBell(volume = 0.55) {
-    if (!this.soundEnabled) return;
-    this.vibrate([40, 20, 50]);
-    try {
-      const ctx = this.getCtx();
-      if (!ctx) return;
-      if (ctx.state === 'suspended') ctx.resume();
-
-      const now = ctx.currentTime;
-      const master = ctx.createGain();
-      master.connect(ctx.destination);
-      master.gain.setValueAtTime(volume, now);
-      master.gain.exponentialRampToValueAtTime(0.0001, now + 5.5);
-
-      const BELL_PARTIALS = [
-        { freq: 216,  amp: 1.0,  decay: 5.5 },
-        { freq: 432,  amp: 0.85, decay: 4.8 },
-        { freq: 518,  amp: 0.65, decay: 4.0 },
-        { freq: 648,  amp: 0.50, decay: 3.5 },
-        { freq: 864,  amp: 0.40, decay: 3.0 },
-        { freq: 1180, amp: 0.28, decay: 2.2 },
-        { freq: 1512, amp: 0.18, decay: 1.8 },
-        { freq: 2160, amp: 0.10, decay: 1.2 },
-        { freq: 2880, amp: 0.05, decay: 0.8 },
-      ];
-
-      // Metallic Clapper Impact Transient
-      const clapper = ctx.createOscillator();
-      const clapperGain = ctx.createGain();
-      clapper.type = 'triangle';
-      clapper.frequency.setValueAtTime(1400, now);
-      clapper.frequency.exponentialRampToValueAtTime(300, now + 0.035);
-      clapperGain.gain.setValueAtTime(volume * 1.2, now);
-      clapperGain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
-      clapper.connect(clapperGain);
-      clapperGain.connect(master);
-      clapper.start(now);
-      clapper.stop(now + 0.05);
-
-      // Inharmonic Partials
-      BELL_PARTIALS.forEach(p => {
-        const osc = ctx.createOscillator();
-        const g = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(p.freq, now);
-        osc.detune.setValueAtTime((Math.random() - 0.5) * 6, now);
-        g.gain.setValueAtTime(p.amp * volume, now);
-        g.gain.exponentialRampToValueAtTime(0.0001, now + p.decay);
-        osc.connect(g);
-        g.connect(master);
-        osc.start(now);
-        osc.stop(now + p.decay + 0.1);
-      });
-
-      // Spatial Delay Line
-      const delay = ctx.createDelay(0.4);
-      const delayGain = ctx.createGain();
-      delay.delayTime.setValueAtTime(0.065, now);
-      delayGain.gain.setValueAtTime(0.18, now);
-      delayGain.gain.exponentialRampToValueAtTime(0.0001, now + 4.0);
-      master.connect(delay);
-      delay.connect(delayGain);
-      delayGain.connect(ctx.destination);
-
-    } catch (e) {
-      console.warn('Temple bell audio:', e);
-    }
-  }
-
-  public playTripleGhanta(volume = 0.65) {
-    this.playTempleBell(volume);
-    setTimeout(() => this.playTempleBell(volume * 0.8), 350);
-    setTimeout(() => this.playTempleBell(volume * 0.6), 700);
-    this.vibrate([60, 30, 60, 30, 80]);
-  }
-
-  public playGhantaDwani(volume = 0.6) {
-    this.playTempleBell(volume);
-    setTimeout(() => this.playTempleBell(volume * 0.65), 300);
-  }
-
-  public playSingingBowl(volume = 0.35) {
-    if (!this.soundEnabled) return;
-    this.vibrate([25, 60, 25]);
-    try {
-      const ctx = this.getCtx();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-      const master = ctx.createGain();
-      master.connect(ctx.destination);
-      master.gain.setValueAtTime(0.001, now);
-      master.gain.exponentialRampToValueAtTime(volume, now + 0.12);
-      master.gain.exponentialRampToValueAtTime(0.0001, now + 5.0);
-      [432, 864, 1296, 1728].forEach((freq, idx) => {
-        const osc = ctx.createOscillator();
-        const g = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(freq, now);
-        g.gain.setValueAtTime(1 / (idx + 1), now);
-        osc.connect(g); g.connect(master);
-        osc.start(now); osc.stop(now + 5.0);
-      });
-    } catch {}
-  }
-
-  public playShankhnaad(volume = 0.45) {
-    if (!this.soundEnabled) return;
-    this.vibrate([60, 40, 90]);
-    try {
-      const ctx = this.getCtx();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-      const dur = 3.2;
-
-      const master = ctx.createGain();
-      master.connect(ctx.destination);
-      master.gain.setValueAtTime(0.001, now);
-      master.gain.exponentialRampToValueAtTime(volume, now + 0.4);
-      master.gain.setValueAtTime(volume * 0.9, now + 2.2);
-      master.gain.exponentialRampToValueAtTime(0.001, now + dur);
-
-      [220, 440, 660, 880].forEach((freq, i) => {
-        const osc = ctx.createOscillator();
-        const g = ctx.createGain();
-        osc.type = i === 0 ? 'sawtooth' : 'sine';
-        osc.frequency.setValueAtTime(freq, now);
-        osc.frequency.exponentialRampToValueAtTime(freq * 1.12, now + 0.6);
-        osc.frequency.setValueAtTime(freq * 1.10, now + 1.8);
-        osc.frequency.exponentialRampToValueAtTime(freq * 0.92, now + dur);
-        g.gain.setValueAtTime(1 / (i + 1), now);
-        osc.connect(g);
-        g.connect(master);
-        osc.start(now);
-        osc.stop(now + dur);
-      });
-    } catch {}
-  }
-
-  public playOmResonance(volume = 0.4) {
-    if (!this.soundEnabled) return;
-    this.vibrate([80, 50, 100]);
-    try {
-      const ctx = this.getCtx();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-      const dur = 5.0;
-      const master = ctx.createGain();
-      master.connect(ctx.destination);
-      master.gain.setValueAtTime(0.001, now);
-      master.gain.exponentialRampToValueAtTime(volume, now + 0.8);
-      master.gain.exponentialRampToValueAtTime(0.0001, now + dur);
-      [136.1, 272.2, 408.3, 544.4].forEach((f, i) => {
-        const osc = ctx.createOscillator();
-        const g = ctx.createGain();
-        osc.type = i === 0 ? 'triangle' : 'sine';
-        osc.frequency.setValueAtTime(f, now);
-        g.gain.setValueAtTime(1 / (i + 1), now);
-        osc.connect(g); g.connect(master);
-        osc.start(now); osc.stop(now + 5.0);
-      });
-    } catch {}
-  }
-
-  public playOmChime(volume = 0.3) {
-    this.playOmResonance(volume);
-  }
-
-  public startOmAmbient(volume = 0.05) {
-    if (!this.soundEnabled) return;
-    this.stopOmAmbient();
-    try {
-      const ctx = this.getCtx();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-
-      const master = ctx.createGain();
-      master.connect(ctx.destination);
-      master.gain.setValueAtTime(0.001, now);
-      master.gain.exponentialRampToValueAtTime(volume, now + 2.0);
-      this.omAmbientGain = master;
-
-      const OM_FREQS = [
-        { f: 136.1, type: 'sine' as OscillatorType, amp: 1.0 },
-        { f: 204.1, type: 'sine' as OscillatorType, amp: 0.45 },
-        { f: 272.2, type: 'triangle' as OscillatorType, amp: 0.3 },
-      ];
-
-      OM_FREQS.forEach(({ f, type, amp }) => {
-        const osc = ctx.createOscillator();
-        const g = ctx.createGain();
-        osc.type = type;
-        osc.frequency.setValueAtTime(f, now);
-        g.gain.setValueAtTime(amp, now);
-        osc.connect(g);
-        g.connect(master);
-        osc.start(now);
-        this.omNodes.push(osc);
-      });
-    } catch {}
-  }
-
-  public stopOmAmbient() {
-    if (this.omAmbientGain) {
-      try {
-        const ctx = this.getCtx();
-        if (ctx) {
-          this.omAmbientGain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.0);
-        }
-        setTimeout(() => {
-          this.omNodes.forEach(n => { try { n.stop(); } catch {} });
-          this.omNodes = [];
-          this.omAmbientGain = null;
-        }, 1100);
-      } catch {}
-    }
-  }
-
-  public startTanpura(volume = 0.06) {
-    if (!this.soundEnabled) return;
-    this.stopTanpura();
-    try {
-      const ctx = this.getCtx();
-      if (!ctx) return;
-      const gain = ctx.createGain();
-      gain.gain.setValueAtTime(0.001, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(volume, ctx.currentTime + 1.2);
-      gain.connect(ctx.destination);
-
-      const osc1 = ctx.createOscillator(); osc1.type = 'sawtooth'; osc1.frequency.setValueAtTime(136.1, ctx.currentTime);
-      const osc2 = ctx.createOscillator(); osc2.type = 'sine';     osc2.frequency.setValueAtTime(204.1, ctx.currentTime);
-      const osc3 = ctx.createOscillator(); osc3.type = 'triangle'; osc3.frequency.setValueAtTime(272.2, ctx.currentTime);
-
-      const filter = ctx.createBiquadFilter(); filter.type = 'lowpass'; filter.frequency.setValueAtTime(450, ctx.currentTime);
-      osc1.connect(filter); osc2.connect(filter); osc3.connect(filter); filter.connect(gain);
-      osc1.start(); osc2.start(); osc3.start();
-      this.tanpuraNodes = { osc1, osc2, osc3, gain };
-    } catch {}
-  }
-
-  public stopTanpura() {
-    if (this.tanpuraNodes) {
-      try {
-        const ctx = this.getCtx();
-        if (ctx) this.tanpuraNodes.gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.4);
-        setTimeout(() => {
-          this.tanpuraNodes?.osc1.stop();
-          this.tanpuraNodes?.osc2.stop();
-          this.tanpuraNodes?.osc3.stop();
-          this.tanpuraNodes = null;
-        }, 450);
-      } catch { this.tanpuraNodes = null; }
-    }
-  }
-
-  public playNavChime(volume = 0.08) {
-    if (!this.soundEnabled) return;
-    try {
-      const ctx = this.getCtx();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-      const gain = ctx.createGain();
-      gain.connect(ctx.destination);
-      gain.gain.setValueAtTime(volume, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
-      const osc = ctx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(1046.5, now);
-      osc.frequency.exponentialRampToValueAtTime(1318.5, now + 0.12);
-      osc.connect(gain); osc.start(now); osc.stop(now + 0.22);
-    } catch {}
-  }
-
-  public playFluteChime(volume = 0.25) {
-    if (!this.soundEnabled) return;
-    this.vibrate(20);
-    try {
-      const ctx = this.getCtx();
-      if (!ctx) return;
-      const now = ctx.currentTime;
-      const gain = ctx.createGain();
-      gain.connect(ctx.destination);
-      gain.gain.setValueAtTime(0.01, now);
-      gain.gain.exponentialRampToValueAtTime(volume, now + 0.18);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 1.5);
-      const osc = ctx.createOscillator();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(587.33, now);
-      osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.25);
-      osc.frequency.setValueAtTime(880.0, now + 0.7);
-      osc.connect(gain); osc.start(now); osc.stop(now + 1.5);
-    } catch {}
-  }
-
-  /**
-   * 🕉️ 100% BULLETPROOF SANSKRIT SHLOKA CHANTING VOICE AUDIO
-   * - Dynamically resolves the best natural Indian / Sanskrit / Hindi voice.
-   * - Automatically pauses & resumes on tab activity.
-   */
-  public speakSanskritVerse(
-    text: string, 
-    rate = 0.82, 
-    lang = 'hi-IN', 
-    onStart?: () => void, 
-    onEnd?: () => void, 
-    onBoundary?: (i: number) => void
-  ) {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) { 
-      // Sound chime fallback if browser lacks TTS
-      this.playFluteChime(0.4);
-      onEnd?.(); 
-      return; 
+  public speakWithKrishnaDivineVoice(text: string, onEnd?: () => void) {
+    if (!this.soundEnabled || typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      onEnd?.();
+      return;
     }
 
     try {
       window.speechSynthesis.cancel();
-
-      // Format Sanskrit verse with proper rhythmic pauses at danda (।) and double danda (॥)
-      const clean = text
-        .replace(/[।]/g, ', ')
-        .replace(/[॥]/g, '. ')
-        .replace(/[\n\r]+/g, ' ')
-        .trim();
-
-      const utt = new SpeechSynthesisUtterance(clean);
-      utt.rate = rate; 
-      utt.pitch = 0.95; 
-      utt.lang = lang;
-
-      // Select Best Natural Voice
-      let voices = this.cachedVoices.length > 0 ? this.cachedVoices : window.speechSynthesis.getVoices();
-      if (voices.length > 0) {
-        const preferredVoice = 
-          voices.find(v => (v.lang.includes('hi') || v.lang.includes('IN')) && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Devanagari') || v.name.includes('Heera') || v.name.includes('Swara')))
-          || voices.find(v => v.lang.includes('hi') || v.lang.includes('sa') || v.lang.includes('IN'))
-          || voices[0];
-
-        if (preferredVoice) utt.voice = preferredVoice;
+      const ctx = this.getCtx();
+      if (ctx) {
+        vedicVoiceDsp.startHarmonicChantBed(ctx, 0.05);
       }
 
-      utt.onstart = () => { 
-        this.vibrate([30, 20, 30]); 
-        onStart?.(); 
+      const utterance = new SpeechSynthesisUtterance(text);
+      const voice = this.getBestDivineVoice();
+      if (voice) utterance.voice = voice;
+
+      // Divine acoustic calibration: deep, calm, measured
+      utterance.pitch = 0.92;
+      utterance.rate = 0.88;
+      utterance.volume = 1.0;
+
+      utterance.onend = () => {
+        vedicVoiceDsp.stopHarmonicChantBed();
+        onEnd?.();
       };
-      
-      utt.onend = () => { onEnd?.(); };
-      utt.onerror = () => { onEnd?.(); };
-      
-      if (onBoundary) {
-        utt.onboundary = e => { 
-          this.vibrate(12); 
-          onBoundary(e.charIndex); 
-        };
+      utterance.onerror = () => {
+        vedicVoiceDsp.stopHarmonicChantBed();
+        onEnd?.();
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } catch {
+      onEnd?.();
+    }
+  }
+
+  /**
+   * Speaks Sanskrit Shlokas with authentic Vedic meter & resonance
+   */
+  public speakSanskritVerse(
+    sanskritText: string,
+    rateOrOnEnd?: number | (() => void),
+    lang = 'hi-IN',
+    pitch = 0.95,
+    onEndCallback?: () => void
+  ) {
+    let rate = 0.82;
+    let onEnd: (() => void) | undefined = undefined;
+
+    if (typeof rateOrOnEnd === 'function') {
+      onEnd = rateOrOnEnd;
+    } else if (typeof rateOrOnEnd === 'number') {
+      rate = rateOrOnEnd;
+      onEnd = onEndCallback;
+    }
+
+    if (!this.soundEnabled || typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      onEnd?.();
+      return;
+    }
+
+    try {
+      window.speechSynthesis.cancel();
+      const ctx = this.getCtx();
+      if (ctx) {
+        vedicVoiceDsp.startHarmonicChantBed(ctx, 0.07);
+        this.playTempleBell(0.18);
       }
 
-      window.speechSynthesis.speak(utt);
-    } catch { 
-      this.playFluteChime(0.4);
-      onEnd?.(); 
+      const utterance = new SpeechSynthesisUtterance(sanskritText);
+      const voice = this.getBestDivineVoice();
+      if (voice) utterance.voice = voice;
+      if (lang) utterance.lang = lang;
+
+      utterance.pitch = pitch || 0.95;
+      utterance.rate = rate || 0.82;
+      utterance.volume = 1.0;
+
+      utterance.onend = () => {
+        vedicVoiceDsp.stopHarmonicChantBed();
+        onEnd?.();
+      };
+      utterance.onerror = () => {
+        vedicVoiceDsp.stopHarmonicChantBed();
+        onEnd?.();
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } catch {
+      onEnd?.();
     }
   }
 
   public stopSpeaking() {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
+      try {
+        window.speechSynthesis.cancel();
+        vedicVoiceDsp.stopHarmonicChantBed();
+      } catch {}
     }
-    this.stopTanpura();
+  }
+
+  // ── 9-HARMONIC BRONZE TEMPLE BELL ─────────────────────────────────────────
+  public playTempleBell(volume = 0.25) {
+    const ctx = this.getCtx();
+    if (!ctx || !this.soundEnabled) return;
+
+    try {
+      const now = ctx.currentTime;
+      const fundamental = 576; // D5 Sacred Bell Tone
+      const partials = [
+        { ratio: 0.5, gain: 0.6, decay: 4.5 },   // Hum note
+        { ratio: 1.0, gain: 1.0, decay: 4.0 },   // Fundamental
+        { ratio: 1.2, gain: 0.8, decay: 3.5 },   // Tierce
+        { ratio: 1.5, gain: 0.7, decay: 3.0 },   // Quint
+        { ratio: 2.0, gain: 0.5, decay: 2.5 },   // Nominal
+        { ratio: 2.7, gain: 0.4, decay: 2.0 },   // Superquint
+        { ratio: 3.4, gain: 0.3, decay: 1.5 },   // Octave nominal
+        { ratio: 4.2, gain: 0.2, decay: 1.0 },   // High metallic
+      ];
+
+      partials.forEach(p => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(fundamental * p.ratio, now);
+
+        gain.gain.setValueAtTime(p.gain * volume, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + p.decay);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(now);
+        osc.stop(now + p.decay);
+      });
+    } catch {}
+  }
+
+  // ── SHANKHNAAD (DIVINE CONCH SOUND) ───────────────────────────────────────
+  public playShankhnaad(volume = 0.3) {
+    const ctx = this.getCtx();
+    if (!ctx || !this.soundEnabled) return;
+
+    try {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(220, now);
+      osc.frequency.exponentialRampToValueAtTime(440, now + 1.2);
+      osc.frequency.exponentialRampToValueAtTime(330, now + 3.0);
+
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(volume, now + 0.8);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.5);
+
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.value = 400;
+      filter.Q.value = 3.0;
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now);
+      osc.stop(now + 3.6);
+    } catch {}
+  }
+
+  // ── 432HZ SACRED TANPURA DRONE ────────────────────────────────────────────
+  public startTanpura(volume = 0.12) {
+    const ctx = this.getCtx();
+    if (!ctx || !this.soundEnabled || this.tanpuraNodes) return;
+
+    try {
+      const now = ctx.currentTime;
+      const rootFreq = 216; // A3 in 432Hz tuning
+      const paFreq = rootFreq * 1.5; // Pa (E4) 324Hz
+      const saHigh = rootFreq * 2; // Sa high 432Hz
+
+      const osc1 = ctx.createOscillator();
+      const osc2 = ctx.createOscillator();
+      const osc3 = ctx.createOscillator();
+      const masterGain = ctx.createGain();
+
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(paFreq, now);
+
+      osc2.type = 'triangle';
+      osc2.frequency.setValueAtTime(saHigh, now);
+
+      osc3.type = 'sine';
+      osc3.frequency.setValueAtTime(rootFreq, now);
+
+      masterGain.gain.setValueAtTime(0.001, now);
+      masterGain.gain.exponentialRampToValueAtTime(volume, now + 2.0);
+
+      osc1.connect(masterGain);
+      osc2.connect(masterGain);
+      osc3.connect(masterGain);
+      masterGain.connect(ctx.destination);
+
+      osc1.start(now);
+      osc2.start(now);
+      osc3.start(now);
+
+      this.tanpuraNodes = { osc1, osc2, osc3, gain: masterGain };
+    } catch {}
+  }
+
+  public stopTanpura() {
+    if (!this.tanpuraNodes || !this.ctx) return;
+    try {
+      const now = this.ctx.currentTime;
+      this.tanpuraNodes.gain.gain.linearRampToValueAtTime(0.0001, now + 1.0);
+      setTimeout(() => {
+        this.tanpuraNodes?.osc1.stop();
+        this.tanpuraNodes?.osc2.stop();
+        this.tanpuraNodes?.osc3.stop();
+        this.tanpuraNodes = null;
+      }, 1050);
+    } catch {
+      this.tanpuraNodes = null;
+    }
+  }
+
+  // ── 136.1HZ COSMIC OM AMBIENT ─────────────────────────────────────────────
+  public startOmAmbient(volume = 0.08) {
+    const ctx = this.getCtx();
+    if (!ctx || !this.soundEnabled || this.omAmbientGain) return;
+
+    try {
+      const now = ctx.currentTime;
+      const omFreq = 136.1; // Cosmic Earth Year OM Frequency
+      const osc1 = ctx.createOscillator();
+      const osc2 = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(omFreq, now);
+
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(omFreq * 2, now); // 272.2 Hz Octave harmonic
+
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(volume, now + 2.5);
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc1.start(now);
+      osc2.start(now);
+
+      this.omNodes = [osc1, osc2];
+      this.omAmbientGain = gain;
+    } catch {}
+  }
+
+  public stopOmAmbient() {
+    if (!this.omAmbientGain || !this.ctx) return;
+    try {
+      const now = this.ctx.currentTime;
+      this.omAmbientGain.gain.linearRampToValueAtTime(0.0001, now + 1.0);
+      setTimeout(() => {
+        this.omNodes.forEach(n => n.stop());
+        this.omNodes = [];
+        this.omAmbientGain = null;
+      }, 1050);
+    } catch {
+      this.omNodes = [];
+      this.omAmbientGain = null;
+    }
+  }
+
+  // ── UI NAV CHIMES ─────────────────────────────────────────────────────────
+  
+  // ── SINGING BOWL (TIBETAN / VEDIC HEALING BOWL) ───────────────────────────
+  public playSingingBowl(volume = 0.25) {
+    const ctx = this.getCtx();
+    if (!ctx || !this.soundEnabled) return;
+    try {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(432, now); // Pure 432Hz Healing Frequency
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(volume, now + 0.8);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 4.5);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 4.6);
+    } catch {}
+  }
+
+  // ── BANSURI FLUTE HARMONIC CHIME ─────────────────────────────────────────
+  public playFluteChime(volume = 0.25) {
+    this.playBansuriFlute(volume);
+  }
+
+  public playBansuriFlute(volume = 0.2) {
+    const ctx = this.getCtx();
+    if (!ctx || !this.soundEnabled) return;
+    try {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(648, now); // E5 Bansuri Raga Tone
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(volume, now + 0.3);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.5);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 2.6);
+    } catch {}
+  }
+
+  public playNavChime(volume = 0.08) {
+    const ctx = this.getCtx();
+    if (!ctx || !this.soundEnabled) return;
+    try {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(864, now); // Harmonic chime
+      gain.gain.setValueAtTime(volume, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.36);
+    } catch {}
+  }
+
+  public playOmChime(volume = 0.28) {
+    const ctx = this.getCtx();
+    if (!ctx || !this.soundEnabled) return;
+    try {
+      const now = ctx.currentTime;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(136.1, now); // 136.1Hz Om Cosmic Frequency
+      gain.gain.setValueAtTime(0.001, now);
+      gain.gain.exponentialRampToValueAtTime(volume, now + 0.6);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 5.0);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 5.1);
+    } catch {}
+  }
+
+  public playTripleGhanta(volume = 0.35) {
+    this.playTempleBell(volume);
+    setTimeout(() => this.playTempleBell(volume * 0.9), 350);
+    setTimeout(() => this.playTempleBell(volume * 0.8), 700);
+  }
+
+  public vibrate(ms = 25) {
+    if (typeof window !== 'undefined' && 'navigator' in window && 'vibrate' in navigator) {
+      try {
+        navigator.vibrate(ms);
+      } catch {}
+    }
   }
 }
 

@@ -73,7 +73,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
   const { currentTrack, isPlaying, playTrack, togglePlayPause, setIsSearchModalOpen } = useGlobalAudio();
   const [activeTab, setActiveTab] = useState<'scripture'|'dilemmas'|'healer'|'sadhana'|'mentor'|'wallpapers'>('scripture');
   const [dailyIdx, setDailyIdx] = useState(0);
-  const [isRadioModalOpen, setIsRadioModalOpen] = useState(false);
+
   const [copied, setCopied] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
@@ -145,7 +145,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
             </div>
             
             <div 
-              onClick={() => { setIsRadioModalOpen(true); sacredAudio.playTripleGhanta(0.6); }} 
+              onClick={() => { sacredAudio.playTempleBell(0.6); }} 
               className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-500/20 to-amber-500/20 border border-orange-400/40 text-orange-300 text-xs font-serif cursor-pointer hover:border-orange-400 hover:scale-103 transition-all shadow-sm"
             >
               <Radio className="w-3.5 h-3.5 animate-pulse text-orange-400" />
@@ -187,7 +187,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
               </button>
 
               <button
-                onClick={() => { setIsRadioModalOpen(true); sacredAudio.playTripleGhanta(0.6); }}
+                onClick={() => { sacredAudio.playTempleBell(0.6); }}
                 className="px-5 py-3 rounded-2xl bg-[#141628] border-2 border-amber-400/40 text-amber-300 font-serif text-sm font-bold flex items-center gap-2 hover:border-amber-400 hover:bg-[#1e2238] transition-all cursor-pointer shadow-md"
               >
                 <Radio className="w-4 h-4 text-amber-400 animate-pulse" />
@@ -519,7 +519,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
         </div>
       </section>
 
-      <LiveOnlineRadioModal isOpen={isRadioModalOpen} onClose={() => setIsRadioModalOpen(false)} />
+      <LiveOnlineRadioModal />
     </div>
   );
 }

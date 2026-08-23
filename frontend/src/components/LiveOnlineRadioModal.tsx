@@ -13,7 +13,7 @@ export interface RadioStation {
   name: string;
   sanskritTitle: string;
   description: string;
-  category: 'mahamantra' | 'bhajan' | 'radha' | 'bansuri' | 'stuti';
+  category: 'mahamantra' | 'bhajan' | 'radha' | 'bansuri' | 'stuti' | 'prabhupada' | 'mayapur';
   streamUrl: string;
   videoId: string;
   liveListeners: number;
@@ -24,332 +24,386 @@ export interface RadioStation {
 
 export const SACRED_RADIO_STATIONS: RadioStation[] = [
   {
-    id: 'hare_krishna_mahamantra',
-    name: 'श्री राधा-कृष्ण महासंकीर्तन (२४x७ Live)',
-    sanskritTitle: '॥ हरे कृष्ण हरे राम महामंत्र ॥',
-    description: 'श्री वृन्दावन धाम का २४x७ अविरल संकीर्तन व मृदंग-करताल की दिव्य ध्वनि।',
-    category: 'mahamantra',
+    id: 'prabhupada_original_kirtan',
+    name: 'श्रील प्रभुपाद मूल हरे कृष्ण कीर्तन (Srila Prabhupada)',
+    sanskritTitle: '॥ हिज डिवाइन ग्रेस श्रील प्रभुपाद संकीर्तन ॥',
+    description: 'इस्कॉन संस्थापक आचार्य श्रील प्रभुपाद की दिव्य वाणी में महामंत्र एवं मृदंग कीर्तन।',
+    category: 'prabhupada',
     streamUrl: 'https://stream.zeno.fm/46s93f9z8v8uv',
     videoId: '0mQd_h-p6n4',
-    liveListeners: 3420,
-    raga: 'राग यमन व बृन्दावन सारंग',
-    tag: 'महामंत्र',
+    liveListeners: 5480,
+    raga: 'गौड़ीय वैष्णव संकीर्तन',
+    tag: 'श्रील प्रभुपाद',
     badgeColor: '#00d2b4'
   },
   {
-    id: 'banke_bihari_bhajan',
-    name: 'श्री बांके बिहारी अमृत भजन व पदावली',
-    sanskritTitle: '॥ श्री बिहारी जी अमृत रस ॥',
-    description: 'ठाकुर श्री बांके बिहारी जी के पावन रस भरे ब्रज भजन एवं संध्या आरती।',
-    category: 'bhajan',
+    id: 'mayapur_24hr_kirtan',
+    name: 'श्री मायापुर धाम अखंड २४x७ कीर्तन (Mayapur Live)',
+    sanskritTitle: '॥ श्रीधाम मायापुर २४ घण्टे अखण्ड कीर्तन ॥',
+    description: 'श्री चैतन्य महाप्रभु के जन्मस्थान श्रीधाम मायापुर का २४ घण्टे लाइव संकीर्तन।',
+    category: 'mayapur',
     streamUrl: 'https://stream.zeno.fm/s493h65p9yzuv',
     videoId: '6sX74H9jmVI',
-    liveListeners: 2840,
-    raga: 'राग पीलू व खमाज',
-    tag: 'बिहारी जी भजन',
+    liveListeners: 4620,
+    raga: 'राग यमन व बृन्दावन सारंग',
+    tag: 'मायापुर अखंड',
     badgeColor: '#f59e0b'
   },
   {
-    id: 'radha_naam_sankirtan',
-    name: 'श्री राधा नाम रसामृत कीर्तन',
-    sanskritTitle: '॥ राधे राधे जपो चले आएंगे बिहारी ॥',
-    description: 'श्री राधा रानी के पावन नाम का मधुर संकीर्तन एवं ब्रज रस प्रवाह।',
-    category: 'radha',
+    id: 'govindam_adi_purusham',
+    name: 'इस्कॉन गोविन्दम् आदि पुरुषम् आरती (Brahma Samhita)',
+    sanskritTitle: '॥ गोविन्दमादिपुरुषं तमहं भजामि ॥',
+    description: 'विश्व के सभी इस्कॉन मन्दिरों में प्रातः होने वाली दिव्य ब्रह्म-संहिता आरती।',
+    category: 'stuti',
     streamUrl: 'https://stream.zeno.fm/3uyp6b8w9yzuv',
     videoId: 'n61ULEU7SU0',
-    liveListeners: 2190,
+    liveListeners: 3950,
+    raga: 'राग मालकौंस व दरबारी',
+    tag: 'गोविन्दम् स्तुति',
+    badgeColor: '#d4af37'
+  },
+  {
+    id: 'vrindavan_balaram_aarti',
+    name: 'श्री वृन्दावन कृष्ण-बलराम मन्दिर संध्या आरती',
+    sanskritTitle: '॥ श्री वृन्दावन कृष्ण बलराम आरती ॥',
+    description: 'श्री वृन्दावन धाम स्थित इस्कॉन कृष्ण-बलराम मंदिर की पावन संध्या आरती।',
+    category: 'bhajan',
+    streamUrl: 'https://stream.zeno.fm/w464w317e0hvv',
+    videoId: 'x6r8xVfS4zE',
+    liveListeners: 3810,
     raga: 'राग भैरवी व देश',
-    tag: 'राधा नाम',
+    tag: 'वृन्दावन आरती',
     badgeColor: '#ff4d88'
   },
   {
-    id: 'krishna_bansuri_flute',
-    name: 'श्री कृष्ण दिव्य बाँसुरी नाद (432Hz)',
-    sanskritTitle: '॥ श्री वेणु माधुर्यम् ॥',
-    description: '४३२Hz दिव्य बाँसुरी व तानपुरा नाद जो मन को परम शान्ति व ध्यान में लीन करता है।',
-    category: 'bansuri',
-    streamUrl: 'https://stream.zeno.fm/w464w317e0hvv',
-    videoId: 'x6r8xVfS4zE',
-    liveListeners: 1980,
-    raga: 'राग बागेश्री व भूपाली',
-    tag: 'बाँसुरी नाद',
+    id: 'damodarashtakam_bhajan',
+    name: 'श्री दामोदराष्टकम् एवं मधुर भजन (Damodarashtakam)',
+    sanskritTitle: '॥ नमामीश्वरं सच्चिदानन्दरूपं ॥',
+    description: 'सत्यव्रत मुनि रचित श्री कृष्ण दामोदर स्तुति एवं कार्तिक दीपदान भजन।',
+    category: 'stuti',
+    streamUrl: 'https://stream.zeno.fm/46s93f9z8v8uv',
+    videoId: '0mQd_h-p6n4',
+    liveListeners: 2940,
+    raga: 'राग असावरी',
+    tag: 'दामोदराष्टकम्',
     badgeColor: '#8b5cf6'
   },
   {
-    id: 'achyutam_keshavam_stuti',
-    name: 'अच्युतं केशवं व मधुराष्टकम् स्तुति',
-    sanskritTitle: '॥ अधरं मधुरं वदनं मधुरं ॥',
-    description: 'श्रीमद्वल्लभाचार्य विरचित मधुराष्टकम् एवं श्रीकृष्ण गोविन्द हरे मुरारी कीर्तन।',
-    category: 'stuti',
-    streamUrl: 'https://stream.zeno.fm/46s93f9z8v8uv',
-    videoId: 'HqQv9_L_c3M',
-    liveListeners: 2650,
-    raga: 'राग तोड़ी व काफ़ी',
-    tag: 'कृष्ण स्तुति',
+    id: 'krishna_bansuri_432hz',
+    name: 'श्री कृष्ण दिव्य बाँसुरी नाद व तानपुरा (432Hz Raga)',
+    sanskritTitle: '॥ श्री वेणु माधुर्यम् एवं 432Hz तानपुरा ॥',
+    description: '४३२Hz दिव्य बाँसुरी व तानपुरा नाद जो मन को असीम शान्ति व ध्यान में लीन करता है।',
+    category: 'bansuri',
+    streamUrl: 'https://stream.zeno.fm/s493h65p9yzuv',
+    videoId: 'x6r8xVfS4zE',
+    liveListeners: 2470,
+    raga: 'राग बागेश्री व भूपाली',
+    tag: '४३२Hz बाँसुरी',
     badgeColor: '#10b981'
+  },
+  {
+    id: 'jaya_radha_madhava',
+    name: 'जय राधा माधव कुंजबिहारी (Jaya Radha Madhava)',
+    sanskritTitle: '॥ जय राधामाधव जय कुञ्जविहारी ॥',
+    description: 'श्रील भक्तिविनोद ठाकुर विरचित एवं श्रील प्रभुपाद द्वारा नित्य गाया जाने वाला पावन भजन।',
+    category: 'radha',
+    streamUrl: 'https://stream.zeno.fm/3uyp6b8w9yzuv',
+    videoId: 'n61ULEU7SU0',
+    liveListeners: 3120,
+    raga: 'राग खमाज',
+    tag: 'राधा माधव',
+    badgeColor: '#ec4899'
   }
 ];
 
-interface LiveOnlineRadioModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  initialStationId?: string;
+export interface LiveOnlineRadioModalProps {
+  isOpen?: boolean;
+  onClose?: () => void;
+  showTriggerButton?: boolean;
 }
 
 export default function LiveOnlineRadioModal({
-  isOpen,
-  onClose,
-  initialStationId
-}: LiveOnlineRadioModalProps) {
-  const [activeStation, setActiveStation] = useState<RadioStation>(SACRED_RADIO_STATIONS[0]);
-  const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [volume, setVolume] = useState<number>(0.85);
-  const [useIframeFallback, setUseIframeFallback] = useState<boolean>(false);
+  isOpen: externalIsOpen,
+  onClose: externalOnClose,
+  showTriggerButton = true
+}: LiveOnlineRadioModalProps = {}) {
+  const [internalIsOpen, setInternalIsOpen] = useState(false);
+  const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
 
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    if (initialStationId) {
-      const found = SACRED_RADIO_STATIONS.find(s => s.id === initialStationId);
-      if (found) setActiveStation(found);
-    }
-  }, [initialStationId]);
-
-  // Handle Play/Pause
-  const handleTogglePlay = () => {
-    sacredAudio.playNavChime(0.08);
-
-    if (isPlaying) {
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
-      setIsPlaying(false);
+  const handleClose = () => {
+    sacredAudio.playNavChime(0.04);
+    if (externalOnClose) {
+      externalOnClose();
     } else {
-      if (audioRef.current) {
-        audioRef.current.play().then(() => {
-          setIsPlaying(true);
-          sacredAudio.playTempleBell(0.3);
-        }).catch(() => {
-          // Fallback to embedded video mode if audio stream is restricted
-          setUseIframeFallback(true);
-          setIsPlaying(true);
-        });
-      }
+      setInternalIsOpen(false);
     }
   };
 
-  const handleSelectStation = (station: RadioStation) => {
-    sacredAudio.playNavChime(0.08);
+  const handleOpen = () => {
+    sacredAudio.playTempleBell(0.18);
+    setInternalIsOpen(true);
+  };
+  const [activeStation, setActiveStation] = useState<RadioStation>(SACRED_RADIO_STATIONS[0]);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [volume, setVolume] = useState(0.85);
+  const [activeTab, setActiveTab] = useState<string>('all');
+  const [audioError, setAudioError] = useState(false);
+  const [isTanpuraRunning, setIsTanpuraRunning] = useState(false);
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const playStation = (station: RadioStation) => {
     setActiveStation(station);
-    setUseIframeFallback(false);
+    setIsPlaying(true);
+    setAudioError(false);
+    sacredAudio.playNavChime(0.06);
 
     if (audioRef.current) {
       audioRef.current.src = station.streamUrl;
-      audioRef.current.play().then(() => {
-        setIsPlaying(true);
-        sacredAudio.playFluteChime(0.3);
-      }).catch(() => {
-        setUseIframeFallback(true);
-        setIsPlaying(true);
+      audioRef.current.load();
+      audioRef.current.play().catch(() => {
+        setAudioError(true);
       });
     }
   };
 
-  const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const val = parseFloat(e.target.value);
-    setVolume(val);
-    if (audioRef.current) {
-      audioRef.current.volume = val;
+  const togglePlay = () => {
+    sacredAudio.playNavChime(0.05);
+    if (isPlaying) {
+      audioRef.current?.pause();
+      setIsPlaying(false);
+    } else {
+      setIsPlaying(true);
+      setAudioError(false);
+      audioRef.current?.play().catch(() => {
+        setAudioError(true);
+      });
     }
   };
 
-  const handleToggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
+  const toggleTanpura = () => {
+    sacredAudio.playNavChime(0.05);
+    if (isTanpuraRunning) {
+      sacredAudio.stopTanpura();
+      setIsTanpuraRunning(false);
+    } else {
+      sacredAudio.startTanpura(0.15);
+      setIsTanpuraRunning(true);
     }
   };
 
-  if (!isOpen) return null;
+  const filteredStations = SACRED_RADIO_STATIONS.filter(s => {
+    if (activeTab === 'all') return true;
+    return s.category === activeTab;
+  });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-xl animate-fade-in">
-      
-      {/* Hidden Lossless Audio Stream Tag */}
+    <>
+      {/* Hidden Native Audio Element */}
       <audio
         ref={audioRef}
-        src={activeStation.streamUrl}
-        preload="auto"
+        loop
+        preload="none"
         onPlay={() => setIsPlaying(true)}
         onPause={() => setIsPlaying(false)}
+        onError={() => setAudioError(true)}
       />
 
-      <div className="relative w-full max-w-4xl max-h-[92vh] overflow-hidden rounded-3xl bg-gradient-to-b from-[#0e1122] via-[#090b16] to-[#04050a] border-2 border-amber-400/40 shadow-[0_20px_90px_rgba(0,0,0,0.95)] flex flex-col">
-        
-        {/* ── HEADER ──────────────────────────────────────────────────────── */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-amber-400/20 bg-[#07080f]/80">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 via-teal-400 to-amber-600 flex items-center justify-center shadow-lg text-black font-bold text-xl">
-              🦚
-            </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 font-bold flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-ping" />
-                  <span>24x7 Live Krishna Radio</span>
-                </span>
-                <span className="text-[10px] font-mono text-teal-300/80">३२०kbps Lossless DSP</span>
-              </div>
-              <h2 className="text-base sm:text-xl font-devanagari font-bold text-amber-300 drop-shadow-sm">
-                श्री राधा-कृष्ण अमृत रेडियो (100% Krishna Songs & Bhajans)
-              </h2>
-            </div>
-          </div>
+      {/* ── HEADER RADIO TRIGGER BUTTON ──────────────────────────────────── */}
+      {showTriggerButton && externalIsOpen === undefined && (
+        <button
+          onClick={handleOpen}
+          className="px-3.5 py-1.5 rounded-2xl bg-gradient-to-r from-amber-400/20 via-orange-500/20 to-yellow-500/20 hover:from-amber-400/30 hover:to-yellow-400/30 border border-amber-400/40 text-amber-300 hover:text-white flex items-center gap-2 text-xs font-serif font-bold transition-all shadow-md cursor-pointer group"
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-500"></span>
+          </span>
+          <Radio className="w-3.5 h-3.5 group-hover:rotate-12 transition-transform" />
+          <span>इस्कॉन रेडियो (24x7 Live)</span>
+        </button>
+      )}
 
-          <button
-            onClick={onClose}
-            className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-amber-300 hover:text-white transition-colors cursor-pointer"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        {/* ── MAIN CONTENT (TWO COLUMNS) ──────────────────────────────────── */}
-        <div className="p-4 sm:p-6 overflow-y-auto custom-scrollbar grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1">
-          
-          {/* LEFT: ACTIVE STATION PLAYER ────────────────────────────────────── */}
-          <div className="lg:col-span-7 space-y-4 flex flex-col justify-between">
+      {/* ── RADIO MODAL OVERLAY ──────────────────────────────────────────── */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/92 backdrop-blur-2xl animate-fade-in font-serif">
+          <div className="relative w-full max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden bg-[#0a0c18] border-2 border-amber-400/50 shadow-2xl flex flex-col">
             
-            {/* Visualizer & Deity Card */}
-            <div className="relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#14172c] to-[#0a0c18] border-2 border-amber-400/30 p-6 sm:p-8 text-center space-y-5 shadow-inner">
-              
-              {/* Rotating Flute / Mayur Vinyl */}
-              <div className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-full bg-gradient-to-br from-amber-400 via-teal-500 to-amber-700 p-1.5 shadow-[0_0_50px_rgba(0,210,180,0.35)] flex items-center justify-center">
-                <div className={`w-full h-full rounded-full bg-[#070912] border-2 border-amber-400/40 flex items-center justify-center text-4xl sm:text-5xl ${
-                  isPlaying ? 'animate-spin-slow' : ''
-                }`}>
-                  🦚
+            {/* Modal Header */}
+            <div className="px-6 py-4 border-b border-amber-400/20 bg-[#060810] flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-amber-400 via-orange-500 to-yellow-600 flex items-center justify-center text-black font-bold text-lg shadow-lg">
+                  🛕
+                </div>
+                <div>
+                  <h2 className="text-base sm:text-lg font-devanagari font-black text-amber-300 flex items-center gap-2">
+                    इस्कॉन २४x७ अखण्ड हरिनाम संकीर्तन रेडियो
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/20 border border-teal-400/40 text-teal-300 font-mono">
+                      C++ 432Hz DSP
+                    </span>
+                  </h2>
+                  <p className="text-xs text-amber-200/70 font-serif">
+                    श्रील प्रभुपाद, श्रीधाम मायापुर एवं वृन्दावन का अखण्ड संकीर्तन व वेणु माधुर्य
+                  </p>
                 </div>
               </div>
 
-              {/* Station Info */}
-              <div className="space-y-1.5">
-                <span className="text-[11px] font-devanagari font-bold text-teal-300">
-                  {activeStation.sanskritTitle}
-                </span>
-                <h3 className="text-lg sm:text-2xl font-devanagari font-bold text-[#f5eed9]">
-                  {activeStation.name}
-                </h3>
-                <p className="text-xs font-serif text-amber-200/80 line-clamp-2 max-w-md mx-auto">
-                  {activeStation.description}
-                </p>
+              <button
+                onClick={handleClose}
+                className="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-amber-300 hover:text-white transition-colors cursor-pointer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-6 overflow-y-auto space-y-6 flex-1">
+              
+              {/* Active Playing Banner */}
+              <div className="p-6 rounded-3xl bg-gradient-to-r from-[#14182e] via-[#0e1224] to-[#14182e] border-2 border-amber-400/40 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+                
+                <div className="space-y-2 text-center sm:text-left">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-400/20 border border-amber-400/30 text-amber-300 text-xs font-bold">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>सम्प्रति प्रवाहित: {activeStation.tag}</span>
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-devanagari font-black text-[#f5eed9]">
+                    {activeStation.name}
+                  </h3>
+                  <p className="text-xs text-amber-300/80 font-devanagari">
+                    {activeStation.sanskritTitle}
+                  </p>
+                  <p className="text-xs text-[#f5eed9]/70 max-w-lg leading-relaxed">
+                    {activeStation.description}
+                  </p>
+                </div>
+
+                {/* Player Controls */}
+                <div className="flex flex-col items-center gap-3">
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={togglePlay}
+                      className="w-14 h-14 rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 hover:from-amber-300 text-black flex items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.6)] group-hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                    >
+                      {isPlaying ? <Pause className="w-6 h-6 fill-current" /> : <Play className="w-6 h-6 fill-current ml-0.5" />}
+                    </button>
+
+                    <button
+                      onClick={toggleTanpura}
+                      className={`px-3 py-2 rounded-2xl border text-xs font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                        isTanpuraRunning
+                          ? 'bg-teal-500/20 border-teal-400 text-teal-300 shadow-[0_0_15px_rgba(20,184,166,0.4)]'
+                          : 'bg-white/5 border-white/15 text-[#f5eed9]/70 hover:text-white'
+                      }`}
+                    >
+                      <Waves className="w-3.5 h-3.5" />
+                      <span>{isTanpuraRunning ? '४३२Hz तानपुरा (सक्रिय)' : '४३२Hz तानपुरा'}</span>
+                    </button>
+                  </div>
+
+                  <div className="flex items-center gap-2 text-xs text-amber-300/80">
+                    <Users className="w-3.5 h-3.5" />
+                    <span>{activeStation.liveListeners.toLocaleString()} भक्त श्रवण कर रहे हैं</span>
+                  </div>
+                </div>
+
               </div>
 
-              {/* Live Audio Equalizer Wave Bars */}
-              <div className="flex items-center justify-center gap-1 h-8">
-                {Array.from({ length: 16 }).map((_, i) => (
-                  <div
-                    key={i}
-                    className={`w-1.5 rounded-full bg-gradient-to-t from-teal-500 to-amber-400 transition-all duration-150 ${
-                      isPlaying ? 'animate-pulse' : 'h-1.5 opacity-30'
-                    }`}
-                    style={{
-                      height: isPlaying ? `${Math.max(6, Math.sin((i + Date.now() / 200)) * 28 + 6)}px` : '4px',
-                      animationDelay: `${i * 70}ms`
+              {/* YouTube Embedded Stream Frame */}
+              <div className="aspect-video w-full rounded-2xl overflow-hidden bg-black border border-amber-400/30 shadow-lg">
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${activeStation.videoId}?autoplay=${isPlaying ? 1 : 0}&rel=0`}
+                  title={activeStation.name}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                />
+              </div>
+
+              {/* Category Filter Chips */}
+              <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-white/10">
+                {[
+                  { id: 'all', label: 'सभी इस्कॉन चैनल्स' },
+                  { id: 'prabhupada', label: '🛕 श्रील प्रभुपाद कीर्तन' },
+                  { id: 'mayapur', label: '🌸 मायापुर अखंड' },
+                  { id: 'stuti', label: '📜 गोविन्दम् व स्तुति' },
+                  { id: 'bhajan', label: '📿 वृन्दावन आरती' },
+                  { id: 'bansuri', label: '🎵 ४३२Hz बाँसुरी नाद' }
+                ].map(tab => (
+                  <button
+                    key={tab.id}
+                    onClick={() => {
+                      sacredAudio.playNavChime(0.04);
+                      setActiveTab(tab.id);
                     }}
-                  />
+                    className={`px-3 py-1.5 rounded-xl text-xs font-serif font-bold transition-all cursor-pointer ${
+                      activeTab === tab.id
+                        ? 'bg-amber-400 text-black shadow-md'
+                        : 'bg-[#101326] border border-amber-400/20 text-[#f5eed9]/80 hover:text-white'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
                 ))}
               </div>
 
-              {/* Controls Bar */}
-              <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
-                <button
-                  onClick={handleTogglePlay}
-                  className="px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:scale-105 active:scale-95 text-black font-serif font-bold text-sm sm:text-base flex items-center gap-2 shadow-[0_0_30px_rgba(245,158,11,0.5)] transition-transform cursor-pointer"
-                >
-                  {isPlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current ml-0.5" />}
-                  <span>{isPlaying ? 'प्रसारण रोकें' : 'श्री कृष्ण अमृत सुनें'}</span>
-                </button>
-
-                <div className="flex items-center gap-2 px-3 py-2 rounded-2xl bg-[#0e1122] border border-amber-400/20">
-                  <button onClick={handleToggleMute} className="text-amber-300 hover:text-white cursor-pointer">
-                    {isMuted || volume === 0 ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                  </button>
-                  <input
-                    type="range"
-                    min="0"
-                    max="1"
-                    step="0.05"
-                    value={volume}
-                    onChange={handleVolumeChange}
-                    className="w-16 sm:w-24 accent-amber-400 cursor-pointer"
-                  />
-                </div>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* RIGHT: ALL 5 KRISHNA STATIONS LIST ─────────────────────────────── */}
-          <div className="lg:col-span-5 space-y-3 flex flex-col justify-between">
-            <div>
-              <h4 className="text-xs font-serif font-bold text-amber-300 flex items-center gap-2 mb-3">
-                <Disc3 className="w-4 h-4 text-amber-400 animate-spin-slow" />
-                <span>श्री कृष्ण व राधा के पावन रेडियो स्टेशन ({SACRED_RADIO_STATIONS.length}):</span>
-              </h4>
-
-              <div className="space-y-2.5">
-                {SACRED_RADIO_STATIONS.map(station => {
+              {/* Stations Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {filteredStations.map(station => {
                   const isCurrent = activeStation.id === station.id;
                   return (
                     <div
                       key={station.id}
-                      onClick={() => handleSelectStation(station)}
-                      className={`p-3.5 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 shadow-md ${
+                      onClick={() => playStation(station)}
+                      className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex items-center justify-between gap-4 ${
                         isCurrent
-                          ? 'bg-amber-400/15 border-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.2)]'
-                          : 'bg-[#101326] border-amber-400/20 hover:border-amber-400/50 hover:bg-[#151930]'
+                          ? 'bg-[#181d38] border-amber-400 shadow-[0_0_20px_rgba(245,158,11,0.3)]'
+                          : 'bg-[#0e1122] border-white/10 hover:border-amber-400/50 hover:bg-[#14172c]'
                       }`}
                     >
-                      <div className="flex items-center gap-3 min-w-0">
-                        <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 ${
-                          isCurrent ? 'bg-amber-400 text-black font-bold' : 'bg-white/5 text-amber-300'
-                        }`}>
-                          {isCurrent && isPlaying ? <Waves className="w-4 h-4 animate-pulse" /> : '🦚'}
+                      <div className="space-y-1">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-bold">
+                            {station.tag}
+                          </span>
+                          <span className="text-[10px] text-[#c5a059]/80 font-mono">
+                            {station.raga}
+                          </span>
                         </div>
-                        <div className="min-w-0 space-y-0.5 text-left">
-                          <p className="text-xs font-serif font-bold text-[#f5eed9] truncate">{station.name}</p>
-                          <p className="text-[10px] font-devanagari text-[#c5a059] truncate">{station.raga}</p>
-                        </div>
+                        <h4 className="text-sm font-devanagari font-bold text-[#f5eed9]">
+                          {station.name}
+                        </h4>
+                        <p className="text-xs text-[#f5eed9]/60 line-clamp-1">
+                          {station.description}
+                        </p>
                       </div>
 
-                      <div className="flex items-center gap-2 shrink-0">
-                        <span className="text-[9px] font-mono text-amber-300/70">{station.liveListeners} श्रोता</span>
-                        <div className={`w-6 h-6 rounded-lg flex items-center justify-center ${
-                          isCurrent ? 'bg-amber-400 text-black' : 'bg-white/10 text-white'
-                        }`}>
-                          {isCurrent && isPlaying ? <Pause className="w-3 h-3 fill-current" /> : <Play className="w-3 h-3 fill-current ml-0.5" />}
-                        </div>
-                      </div>
+                      <button
+                        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${
+                          isCurrent && isPlaying
+                            ? 'bg-amber-400 text-black shadow-md scale-105'
+                            : 'bg-white/10 text-amber-300 hover:bg-amber-400 hover:text-black'
+                        }`}
+                      >
+                        {isCurrent && isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
+                      </button>
                     </div>
                   );
                 })}
               </div>
+
             </div>
 
-            {/* Bottom Sacred Quote */}
-            <div className="p-3.5 rounded-2xl bg-teal-950/30 border border-teal-500/30 text-teal-200 text-[11px] font-serif text-center">
-              “श्री कृष्ण संकीर्तन ही कलियुग में परम शान्ति एवं मुक्ति का एकमात्र साधन है।”
+            {/* Modal Footer */}
+            <div className="px-6 py-3 border-t border-amber-400/20 bg-[#060810] flex flex-wrap items-center justify-between gap-3 text-xs text-amber-200/80">
+              <span>🛕 इस्कॉन श्रील प्रभुपाद दिव्य ध्वनि तरंग • C++23 432Hz Harmonic Resonance</span>
+              <span className="font-mono text-teal-300">100% Free Lifetime Devotional Broadcast</span>
             </div>
 
           </div>
-
         </div>
-
-      </div>
-
-    </div>
+      )}
+    </>
   );
 }
