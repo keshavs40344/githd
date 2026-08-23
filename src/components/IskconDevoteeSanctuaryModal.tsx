@@ -26,7 +26,6 @@ export default function IskconDevoteeSanctuaryModal() {
   // TV & Live Stream State
   const [selectedChannel, setSelectedChannel] = useState<IskconTvChannel>(ISKCON_TV_CHANNELS[0]);
   const [channelRegionFilter, setChannelRegionFilter] = useState<'all' | 'delhi_ncr' | 'india_top'>('all');
-  const [isLiveStreamMode, setIsLiveStreamMode] = useState<boolean>(false);
   const [currentEpisode, setCurrentEpisode] = useState<FallbackEpisode>(
     ISKCON_TV_CHANNELS[0].fallbackPlaylist[0]
   );
@@ -36,6 +35,7 @@ export default function IskconDevoteeSanctuaryModal() {
   const [favoriteChannelIds, setFavoriteChannelIds] = useState<string[]>([]);
   const [isTheatreMode, setIsTheatreMode] = useState(false);
   const [channelGlitchAnimation, setChannelGlitchAnimation] = useState(false);
+  const [isVideoLoading, setIsVideoLoading] = useState(true);
 
   // Radio State
   const [selectedRadioStation, setSelectedRadioStation] = useState<KrishnaRadioStation>(KRISHNA_RADIO_STATIONS[0]);
@@ -99,7 +99,8 @@ export default function IskconDevoteeSanctuaryModal() {
   // Switch TV Channel with realistic CRT transition
   const switchChannel = (channel: IskconTvChannel) => {
     setChannelGlitchAnimation(true);
-    setTimeout(() => setChannelGlitchAnimation(false), 350);
+    setIsVideoLoading(true);
+    setTimeout(() => setChannelGlitchAnimation(false), 300);
     setSelectedChannel(channel);
     applySmartVideoSelection(channel);
     sacredAudio.playTempleBell(0.18);
@@ -164,10 +165,7 @@ export default function IskconDevoteeSanctuaryModal() {
     return c.region === channelRegionFilter;
   });
 
-  // Current Video ID guaranteed to play
-  const activeVideoId = isLiveStreamMode 
-    ? (selectedChannel.fallbackVideoId || currentEpisode.id) 
-    : currentEpisode.id;
+  const activeVideoId = currentEpisode.id || selectedChannel.fallbackVideoId || '0mQd_h-p6n4';
 
   return (
     <>
@@ -179,25 +177,25 @@ export default function IskconDevoteeSanctuaryModal() {
           applySmartVideoSelection(selectedChannel);
         }}
         className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-2xl bg-gradient-to-r from-amber-500/20 via-orange-400/20 to-amber-600/20 hover:from-amber-500/30 hover:to-orange-400/30 border-2 border-orange-400/40 text-orange-300 hover:text-white text-xs font-serif font-bold shadow-[0_0_20px_rgba(249,115,22,0.25)] hover:scale-103 active:scale-95 transition-all cursor-pointer"
-        title="इस्कॉन २४x७ टीवी नेटवर्क, दिल्ली व अखिल भारतीय धाम लाइव दर्शन"
+        title="इस्कॉन २४x७ टीवी थियेटर, दिल्ली व अखिल भारतीय धाम लाइव दर्शन"
       >
         <span className="relative flex h-2.5 w-2.5">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500"></span>
         </span>
         <Tv className="w-3.5 h-3.5 text-orange-400 animate-pulse" />
-        <span>इस्कॉन टीवी थियेटर (18 Live Channels)</span>
+        <span>इस्कॉन टीवी थियेटर (18 Channels)</span>
       </button>
 
       {/* ── FULLSCREEN ISKCON THEATRE SANCTUARY MODAL ────────────────────── */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black/95 backdrop-blur-3xl animate-fade-in font-serif">
-          <div className={`relative w-full ${isTheatreMode ? 'max-w-full h-full' : 'max-w-7xl max-h-[96vh]'} overflow-hidden rounded-3xl bg-gradient-to-b from-[#140e06] via-[#090603] to-[#020101] border-2 border-orange-400/50 shadow-[0_30px_120px_rgba(0,0,0,0.99)] flex flex-col transition-all duration-300`}>
+          <div className={`relative w-full ${isTheatreMode ? 'max-w-full h-full' : 'max-w-7xl h-[92vh]'} overflow-hidden rounded-3xl bg-gradient-to-b from-[#140e06] via-[#090603] to-[#020101] border-2 border-orange-400/50 shadow-[0_30px_120px_rgba(0,0,0,0.99)] flex flex-col transition-all duration-300`}>
             
             {/* Modal Top Bar */}
-            <div className="px-5 py-3 border-b border-orange-400/20 bg-[#080502]/95 flex flex-wrap items-center justify-between gap-3 shrink-0">
+            <div className="px-4 sm:px-6 py-3 border-b border-orange-400/20 bg-[#080502]/95 flex items-center justify-between gap-3 shrink-0">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-400 via-amber-400 to-yellow-600 flex items-center justify-center text-xl text-black font-bold shadow-lg">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-br from-orange-400 via-amber-400 to-yellow-600 flex items-center justify-center text-xl text-black font-bold shadow-lg shrink-0">
                   🛕
                 </div>
                 <div>
@@ -206,18 +204,17 @@ export default function IskconDevoteeSanctuaryModal() {
                       <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
                       ISKCON Devotee Television Theatre
                     </span>
-                    <span className="text-[10px] font-mono text-teal-300 font-bold hidden sm:inline flex items-center gap-1">
-                      <RotateCw className="w-3 h-3 text-teal-400 animate-spin" style={{ animationDuration: '6s' }} />
-                      Guaranteed 100% Video Playback Active
+                    <span className="text-[10px] font-mono text-emerald-400 font-bold hidden sm:inline">
+                      1080p HD Video Active
                     </span>
                   </div>
-                  <h3 className="text-sm sm:text-base font-devanagari font-black text-orange-300">
+                  <h3 className="text-xs sm:text-base font-devanagari font-black text-orange-300 line-clamp-1">
                     इस्कॉन १८-चैनल २४x७ लाइव टीवी थियेटर एवं दिव्य भजन रेडियो
                   </h3>
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 shrink-0">
                 {/* Fullscreen Theatre Toggle */}
                 <button
                   onClick={() => setIsTheatreMode(!isTheatreMode)}
@@ -269,156 +266,136 @@ export default function IskconDevoteeSanctuaryModal() {
               })}
             </div>
 
-            {/* Modal Body */}
-            <div className="p-3 sm:p-5 overflow-y-auto space-y-5 flex-1 bg-[#060402]">
+            {/* Modal Body with Clean Flex Layout */}
+            <div className="flex-1 overflow-y-auto p-3 sm:p-5 bg-[#060402]">
               
-              {/* ── TAB 1: 24x7 ISKCON REAL TV THEATRE SCREEN ───────────────── */}
+              {/* ── TAB 1: 24x7 ISKCON REAL TV THEATRE SCREEN (SIDE-BY-SIDE STUDIO) ── */}
               {activeTab === 'tv_network' && (
-                <div className="space-y-5">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 h-full">
                   
-                  {/* REAL TV THEATRE CHASSIS */}
-                  <div className="p-3 sm:p-5 rounded-3xl bg-gradient-to-b from-[#181006] via-[#0d0803] to-[#040201] border-2 border-orange-400/50 shadow-[0_0_60px_rgba(249,115,22,0.2)] space-y-3 relative">
+                  {/* LEFT: REAL TV THEATRE SCREEN & CONTROLS (7/12 COLS) */}
+                  <div className="lg:col-span-7 flex flex-col space-y-3">
                     
-                    {/* TV Top Header & OSD Bar */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b border-orange-400/20 pb-2.5">
-                      <div className="flex items-center gap-2.5">
-                        <span className="px-3 py-1 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-black font-black text-xs font-mono tracking-wider shadow-sm flex items-center gap-1">
-                          <Monitor className="w-3.5 h-3.5" />
-                          CH-{selectedChannel.channelNo < 10 ? `0${selectedChannel.channelNo}` : selectedChannel.channelNo}
-                        </span>
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <h4 className="text-sm sm:text-base font-devanagari font-black text-orange-200">
+                    {/* TV Cinema Chassis */}
+                    <div className="p-3.5 sm:p-4 rounded-3xl bg-gradient-to-b from-[#1c1206] via-[#0d0803] to-[#040201] border-2 border-orange-400/50 shadow-[0_0_50px_rgba(249,115,22,0.2)] space-y-3">
+                      
+                      {/* OSD Header Bar */}
+                      <div className="flex items-center justify-between gap-2 border-b border-orange-400/20 pb-2">
+                        <div className="flex items-center gap-2">
+                          <span className="px-2.5 py-0.5 rounded-lg bg-orange-500 text-black font-black text-xs font-mono">
+                            CH-{selectedChannel.channelNo < 10 ? `0${selectedChannel.channelNo}` : selectedChannel.channelNo}
+                          </span>
+                          <div>
+                            <h4 className="text-sm sm:text-base font-devanagari font-black text-orange-200 line-clamp-1">
                               {selectedChannel.nameHindi}
                             </h4>
-                            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-600/30 border border-red-500/50 text-red-300 font-mono text-[10px] font-bold">
-                              <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-ping" />
-                              4K CINEMA THEATRE
-                            </span>
-                            
-                            {/* DevOps Fresh Episode Status Badge */}
-                            <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full font-mono text-[10px] font-bold border ${
-                              isFreshVideo 
-                                ? 'bg-emerald-500/20 border-emerald-400/40 text-emerald-300' 
-                                : 'bg-amber-500/20 border-amber-400/40 text-amber-300'
-                            }`}>
-                              <Sparkles className="w-2.5 h-2.5" />
-                              {isFreshVideo ? '✨ ताज़ा नया वीडियो (Unseen)' : '🔄 पूर्व दृष्ट (Rewatch)'}
+                            <p className="text-[10px] text-orange-300/70 font-sans line-clamp-1">
+                              {selectedChannel.location} • विग्रह: {selectedChannel.deities}
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* Remote Action Buttons */}
+                        <div className="flex items-center gap-1 shrink-0">
+                          <button
+                            onClick={(e) => toggleFavorite(selectedChannel.id, e)}
+                            className={`p-1.5 rounded-lg border transition-all cursor-pointer ${
+                              favoriteChannelIds.includes(selectedChannel.id)
+                                ? 'bg-rose-500/20 border-rose-400/40 text-rose-400'
+                                : 'bg-[#1e1509] border-orange-400/30 text-orange-300/60'
+                            }`}
+                            title="पसंदीदा"
+                          >
+                            <Heart className={`w-3.5 h-3.5 ${favoriteChannelIds.includes(selectedChannel.id) ? 'fill-current' : ''}`} />
+                          </button>
+
+                          <button
+                            onClick={handlePrevChannel}
+                            className="px-2.5 py-1 rounded-lg bg-[#1e1509] hover:bg-orange-400 hover:text-black border border-orange-400/30 text-orange-300 text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
+                          >
+                            <ChevronLeft className="w-3 h-3" />
+                            <span>CH-</span>
+                          </button>
+                          <button
+                            onClick={handleNextChannel}
+                            className="px-2.5 py-1 rounded-lg bg-[#1e1509] hover:bg-orange-400 hover:text-black border border-orange-400/30 text-orange-300 text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
+                          >
+                            <span>CH+</span>
+                            <ChevronRight className="w-3 h-3" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Video Player Viewport */}
+                      <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border-2 border-[#2b1d0c] shadow-[inset_0_0_80px_rgba(0,0,0,0.9),0_0_40px_rgba(249,115,22,0.25)]">
+                        {channelGlitchAnimation && (
+                          <div className="absolute inset-0 z-30 bg-gradient-to-b from-white/30 via-orange-400/40 to-black/80 backdrop-blur-sm animate-pulse pointer-events-none flex items-center justify-center">
+                            <span className="text-xl font-mono font-black text-amber-300 tracking-widest animate-ping">
+                              CH-{selectedChannel.channelNo} TUNING...
                             </span>
                           </div>
-                          <p className="text-[11px] text-orange-300/70 font-sans flex items-center gap-1 mt-0.5">
-                            <MapPin className="w-3 h-3 text-orange-400" />
-                            <span>{selectedChannel.location} • विग्रह: {selectedChannel.deities}</span>
-                          </p>
-                        </div>
-                      </div>
+                        )}
 
-                      {/* TV Remote Quick Controls */}
-                      <div className="flex items-center gap-1.5">
-                        {/* Favorite Button */}
-                        <button
-                          onClick={(e) => toggleFavorite(selectedChannel.id, e)}
-                          className={`p-2 rounded-xl border transition-all cursor-pointer ${
-                            favoriteChannelIds.includes(selectedChannel.id)
-                              ? 'bg-rose-500/20 border-rose-400/40 text-rose-400'
-                              : 'bg-[#1e1509] border-orange-400/30 text-orange-300/60 hover:text-orange-300'
-                          }`}
-                          title="पसंदीदा चैनल में जोड़ें"
-                        >
-                          <Heart className={`w-4 h-4 ${favoriteChannelIds.includes(selectedChannel.id) ? 'fill-current' : ''}`} />
-                        </button>
-
-                        {/* Prev & Next Channel TV Remote */}
-                        <button
-                          onClick={handlePrevChannel}
-                          className="px-3 py-1.5 rounded-xl bg-[#1e1509] hover:bg-orange-400 hover:text-black border border-orange-400/30 text-orange-300 text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
-                          title="पिछला चैनल"
-                        >
-                          <ChevronLeft className="w-3.5 h-3.5" />
-                          <span>CH-</span>
-                        </button>
-                        <button
-                          onClick={handleNextChannel}
-                          className="px-3 py-1.5 rounded-xl bg-[#1e1509] hover:bg-orange-400 hover:text-black border border-orange-400/30 text-orange-300 text-xs font-bold transition-all cursor-pointer flex items-center gap-1"
-                          title="अगला चैनल"
-                        >
-                          <span>CH+</span>
-                          <ChevronRight className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
-                    </div>
-
-                    {/* REAL TV SCREEN VIEWPORT WITH CURVED BEZEL & ON-SCREEN WATERMARK */}
-                    <div className="relative w-full aspect-video rounded-2xl overflow-hidden bg-black border-4 border-[#2b1d0c] shadow-[inset_0_0_80px_rgba(0,0,0,0.9),0_0_40px_rgba(249,115,22,0.25)] group">
-                      
-                      {/* CRT Channel Change Beam Animation */}
-                      {channelGlitchAnimation && (
-                        <div className="absolute inset-0 z-30 bg-gradient-to-b from-white/30 via-orange-400/40 to-black/80 backdrop-blur-sm animate-pulse pointer-events-none flex items-center justify-center">
-                          <span className="text-2xl font-mono font-black text-amber-300 tracking-widest animate-ping">
-                            CH-{selectedChannel.channelNo} TUNING...
+                        <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
+                          <span className="px-2 py-0.5 rounded bg-black/80 border border-orange-400/40 text-orange-300 font-mono text-[9px] font-black flex items-center gap-1 shadow">
+                            <Tv className="w-2.5 h-2.5 text-orange-400" />
+                            ISKCON THEATRE 1080p
                           </span>
                         </div>
-                      )}
 
-                      {/* On-Screen Watermark */}
-                      <div className="absolute top-3 left-3 z-20 pointer-events-none flex items-center gap-2 opacity-80 group-hover:opacity-100 transition-opacity">
-                        <span className="px-2.5 py-0.5 rounded-md bg-black/70 backdrop-blur-md border border-orange-400/40 text-orange-300 font-mono text-[10px] font-black flex items-center gap-1 shadow-lg">
-                          <Tv className="w-3 h-3 text-orange-400" />
-                          ISKCON TV • 1080p
-                        </span>
+                        {/* Guaranteed YouTube Embed */}
+                        <iframe
+                          key={`${selectedChannel.id}_${activeVideoId}`}
+                          src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1&playsinline=1`}
+                          title={selectedChannel.name}
+                          className="w-full h-full border-0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                        />
                       </div>
 
-                      {/* 100% Guaranteed Working Embed */}
-                      <iframe
-                        key={`${selectedChannel.id}_${activeVideoId}_${isLiveStreamMode}`}
-                        src={`https://www.youtube-nocookie.com/embed/${activeVideoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1&playsinline=1`}
-                        title={selectedChannel.name}
-                        className="w-full h-full border-0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
-                    </div>
+                      {/* On-Screen Program & Rotate Fresh Video Bar */}
+                      <div className="flex flex-wrap items-center justify-between gap-2 text-xs pt-1">
+                        <div className="flex items-center gap-1.5 min-w-0">
+                          <span className="text-amber-400 font-bold shrink-0">प्रोग्राम:</span>
+                          <span className="font-sans font-bold text-[#f5eed9] truncate">
+                            {currentEpisode.title}
+                          </span>
+                        </div>
 
-                    {/* TV Bottom Smart Fallback Bar & Episode Rotation */}
-                    <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-orange-200/80 pt-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="text-amber-400 font-bold">📺 ऑन-स्क्रीन प्रोग्राम:</span>
-                        <span className="font-sans font-bold text-[#f5eed9]">
-                          {currentEpisode.title}
-                        </span>
-
-                        {/* Rotate Next Fresh Episode Button */}
-                        {selectedChannel.fallbackPlaylist.length > 1 && (
-                          <button
-                            onClick={handleRotateNextEpisode}
-                            className="px-2.5 py-1 rounded-lg bg-teal-500/20 hover:bg-teal-500 hover:text-black border border-teal-400/40 text-teal-300 font-bold transition-all cursor-pointer flex items-center gap-1"
-                            title="अगला ताज़ा वीडियो लोड करें (DevOps Smart Rotation)"
+                        <div className="flex items-center gap-1.5 shrink-0">
+                          {selectedChannel.fallbackPlaylist.length > 1 && (
+                            <button
+                              onClick={handleRotateNextEpisode}
+                              className="px-2 py-1 rounded-lg bg-teal-500/20 hover:bg-teal-500 hover:text-black border border-teal-400/40 text-teal-300 font-bold text-[11px] transition-all cursor-pointer flex items-center gap-1"
+                              title="अगला ताज़ा वीडियो लोड करें"
+                            >
+                              <RotateCw className="w-3 h-3" />
+                              <span>✨ अगला नया वीडियो</span>
+                            </button>
+                          )}
+                          <a
+                            href={selectedChannel.youtubeChannelUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-2 py-1 rounded-lg bg-red-600/20 hover:bg-red-600 text-red-300 hover:text-white border border-red-500/30 text-[11px] font-bold flex items-center gap-1"
                           >
-                            <RotateCw className="w-3 h-3" />
-                            <span>✨ अगला नया वीडियो ({episodeIndex + 1}/{selectedChannel.fallbackPlaylist.length})</span>
-                          </button>
-                        )}
+                            <span>यूट्यूब ↗</span>
+                          </a>
+                        </div>
                       </div>
 
-                      <a
-                        href={selectedChannel.youtubeChannelUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-red-600/20 hover:bg-red-600 text-red-300 hover:text-white border border-red-500/30 transition-all font-bold text-[11px]"
-                      >
-                        <span>आधिकारिक यूट्यूब चैनल खोलें</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
                     </div>
 
-                    {/* Multi-Episode Selection Vault */}
+                    {/* Multi-Episode Vault for Selected Temple */}
                     {selectedChannel.fallbackPlaylist.length > 1 && (
-                      <div className="pt-2 border-t border-orange-400/15 space-y-1.5">
+                      <div className="p-3 rounded-2xl bg-[#0d0904] border border-orange-400/20 space-y-2">
                         <span className="text-[11px] text-orange-300/80 font-bold flex items-center gap-1">
                           <Film className="w-3.5 h-3.5 text-orange-400" />
-                          <span>इस मन्दिर के अन्य उपलब्ध वीडियो एवं आरती (चुनने के लिए क्लिक करें):</span>
+                          <span>{selectedChannel.nameHindi} के उपलब्ध एपिसोड्स:</span>
                         </span>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                           {selectedChannel.fallbackPlaylist.map((ep, idx) => {
                             const isCurrent = currentEpisode.id === ep.id;
                             const isWatched = !!watchedMap[ep.id];
@@ -435,13 +412,13 @@ export default function IskconDevoteeSanctuaryModal() {
                                 className={`p-2 rounded-xl text-left border transition-all text-xs flex flex-col justify-between cursor-pointer ${
                                   isCurrent
                                     ? 'bg-orange-500/30 border-orange-400 text-orange-200 font-bold'
-                                    : 'bg-[#0a0703] border-white/10 text-[#f5eed9]/70 hover:border-orange-400/40 hover:text-white'
+                                    : 'bg-[#060402] border-white/10 text-[#f5eed9]/70 hover:border-orange-400/40 hover:text-white'
                                 }`}
                               >
                                 <div className="line-clamp-2 leading-snug">{ep.title}</div>
                                 <div className="flex items-center justify-between text-[10px] text-orange-400/80 mt-1">
-                                  <span>{ep.duration || '4K Ultra HD'}</span>
-                                  <span>{isWatched ? '✓ दृष्ट (Watched)' : '✨ ताज़ा (Unseen)'}</span>
+                                  <span>{ep.duration || 'Full HD'}</span>
+                                  <span>{isWatched ? '✓ दृष्ट' : '✨ ताज़ा'}</span>
                                 </div>
                               </button>
                             );
@@ -452,23 +429,21 @@ export default function IskconDevoteeSanctuaryModal() {
 
                   </div>
 
-                  {/* Channel Guide & Directory */}
-                  <div className="space-y-3">
+                  {/* RIGHT: CHANNEL GUIDE & 18 TEMPLES SELECTOR (5/12 COLS) */}
+                  <div className="lg:col-span-5 flex flex-col space-y-3">
                     
-                    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-orange-400/20 pb-2">
-                      <div className="flex items-center gap-2">
+                    {/* Region Filter Header */}
+                    <div className="flex items-center justify-between gap-2 border-b border-orange-400/20 pb-2">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-orange-300">
                         <Tv className="w-4 h-4 text-orange-400" />
-                        <h4 className="text-sm font-devanagari font-black text-[#f5eed9] uppercase tracking-wider">
-                          इस्कॉन टीवी चैनल डायरेक्टरी (चैनल चुनें):
-                        </h4>
+                        <span>चैनल डायरेक्टरी (१८ चैनल्स)</span>
                       </div>
 
-                      {/* Region Filters */}
-                      <div className="flex items-center gap-1.5 text-xs">
+                      <div className="flex items-center gap-1 text-[11px]">
                         {[
-                          { id: 'all', label: 'सभी १८ चैनल' },
-                          { id: 'delhi_ncr', label: '🏛️ दिल्ली NCR (८ केंद्र)' },
-                          { id: 'india_top', label: '🛕 अखिल भारतीय प्रमुख धाम (१० केंद्र)' }
+                          { id: 'all', label: 'सभी' },
+                          { id: 'delhi_ncr', label: 'दिल्ली NCR' },
+                          { id: 'india_top', label: 'प्रमुख धाम' }
                         ].map(f => (
                           <button
                             key={f.id}
@@ -476,10 +451,10 @@ export default function IskconDevoteeSanctuaryModal() {
                               setChannelRegionFilter(f.id as any);
                               sacredAudio.playNavChime(0.04);
                             }}
-                            className={`px-3 py-1 rounded-xl transition-all cursor-pointer ${
+                            className={`px-2 py-0.5 rounded-lg transition-all cursor-pointer ${
                               channelRegionFilter === f.id
-                                ? 'bg-orange-400 text-black font-bold shadow-sm'
-                                : 'bg-[#140e06] border border-orange-400/20 text-orange-200/70 hover:text-white'
+                                ? 'bg-orange-400 text-black font-bold'
+                                : 'bg-[#140e06] text-orange-200/70'
                             }`}
                           >
                             {f.label}
@@ -488,8 +463,8 @@ export default function IskconDevoteeSanctuaryModal() {
                       </div>
                     </div>
 
-                    {/* Channel Cards Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                    {/* Scrollable Channel List */}
+                    <div className="space-y-2 overflow-y-auto max-h-[480px] custom-scrollbar pr-1">
                       {filteredChannels.map(channel => {
                         const isSelected = selectedChannel.id === channel.id;
                         const isFav = favoriteChannelIds.includes(channel.id);
@@ -497,37 +472,30 @@ export default function IskconDevoteeSanctuaryModal() {
                           <div
                             key={channel.id}
                             onClick={() => switchChannel(channel)}
-                            className={`p-3.5 rounded-2xl border transition-all cursor-pointer text-left flex flex-col justify-between space-y-2 group ${
+                            className={`p-2.5 rounded-2xl border transition-all cursor-pointer text-left flex items-center justify-between gap-3 ${
                               isSelected
-                                ? 'bg-gradient-to-br from-[#241608] to-[#140c04] border-orange-400 shadow-[0_0_20px_rgba(249,115,22,0.3)] scale-102'
+                                ? 'bg-gradient-to-r from-[#2a1a0a] to-[#140c04] border-orange-400 shadow-md scale-101'
                                 : 'bg-[#0d0904] border-orange-400/20 hover:border-orange-400/60 hover:bg-[#181006]'
                             }`}
                           >
-                            <div className="space-y-1">
-                              <div className="flex items-center justify-between gap-2">
-                                <span className="px-2 py-0.5 rounded-md bg-orange-500/20 border border-orange-400/30 text-orange-300 font-mono text-[10px] font-black">
-                                  CH-{channel.channelNo < 10 ? `0${channel.channelNo}` : channel.channelNo}
-                                </span>
-                                <div className="flex items-center gap-1.5">
-                                  {isFav && <Heart className="w-3 h-3 text-rose-400 fill-rose-400" />}
-                                  <span className="flex items-center gap-1 text-[10px] font-mono text-amber-400 font-bold">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                                    ON AIR
-                                  </span>
-                                </div>
+                            <div className="flex items-center gap-2.5 min-w-0">
+                              <span className="px-2 py-1 rounded-lg bg-orange-500/20 text-orange-300 font-mono text-xs font-black shrink-0">
+                                CH-{channel.channelNo < 10 ? `0${channel.channelNo}` : channel.channelNo}
+                              </span>
+                              <div className="min-w-0">
+                                <h5 className="text-xs sm:text-sm font-devanagari font-bold text-[#f5eed9] truncate">
+                                  {channel.nameHindi}
+                                </h5>
+                                <p className="text-[10px] text-orange-200/60 font-sans truncate">
+                                  {channel.location}
+                                </p>
                               </div>
-                              <h5 className="text-sm font-devanagari font-bold text-[#f5eed9] group-hover:text-orange-300 transition-colors line-clamp-1">
-                                {channel.nameHindi}
-                              </h5>
-                              <p className="text-[11px] text-orange-200/60 font-sans line-clamp-1">
-                                {channel.location}
-                              </p>
                             </div>
 
-                            <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[10px] text-orange-300/80">
-                              <span>{channel.deities}</span>
-                              <span className="font-mono text-amber-400 font-bold flex items-center gap-1">
-                                <Users className="w-3 h-3" />
+                            <div className="flex items-center gap-1.5 shrink-0">
+                              {isFav && <Heart className="w-3 h-3 text-rose-400 fill-rose-400" />}
+                              <span className="text-[10px] font-mono text-amber-400 font-bold flex items-center gap-1">
+                                <Users className="w-2.5 h-2.5" />
                                 {channel.activeViewers.toLocaleString()}
                               </span>
                             </div>
@@ -544,10 +512,7 @@ export default function IskconDevoteeSanctuaryModal() {
               {/* ── TAB 2: 24x7 KRISHNA YOUTUBE RADIO NETWORK ───────────────── */}
               {activeTab === 'radio_network' && (
                 <div className="space-y-5">
-                  
-                  {/* Active Radio Station Player Screen */}
                   <div className="p-4 sm:p-6 rounded-3xl bg-gradient-to-b from-[#181108] via-[#0d0904] to-black border-2 border-orange-400/40 shadow-2xl space-y-4">
-                    
                     <div className="flex flex-wrap items-center justify-between gap-3 border-b border-orange-400/20 pb-3">
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-400 to-amber-600 flex items-center justify-center text-2xl text-black font-bold shadow-lg animate-pulse">
@@ -584,18 +549,17 @@ export default function IskconDevoteeSanctuaryModal() {
                       </div>
                     </div>
 
-                    {/* YouTube Audio/Video Player Viewport */}
                     <div className="relative w-full aspect-video sm:h-72 rounded-2xl overflow-hidden bg-black border-2 border-orange-500/30 shadow-[0_0_40px_rgba(249,115,22,0.2)]">
                       <iframe
                         key={selectedRadioStation.id}
-                        src={`https://www.youtube-nocookie.com/embed/${selectedRadioStation.videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1&playsinline=1`}
+                        src={`https://www.youtube.com/embed/${selectedRadioStation.videoId}?autoplay=1&rel=0&modestbranding=1&enablejsapi=1&playsinline=1`}
                         title={selectedRadioStation.name}
                         className="w-full h-full border-0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
                         allowFullScreen
                       />
                     </div>
-
                   </div>
 
                   {/* Radio Stations Directory Grid */}
@@ -647,7 +611,6 @@ export default function IskconDevoteeSanctuaryModal() {
                       })}
                     </div>
                   </div>
-
                 </div>
               )}
 
@@ -780,17 +743,6 @@ export default function IskconDevoteeSanctuaryModal() {
                             {notice.description}
                           </p>
                         </div>
-
-                        {notice.actionText && (
-                          <div className="pt-3 border-t border-white/5 flex justify-end">
-                            <button
-                              onClick={() => sacredAudio.playNavChime(0.05)}
-                              className="px-3.5 py-1.5 rounded-xl bg-orange-500/20 hover:bg-orange-500 hover:text-black border border-orange-400/30 text-orange-300 font-bold text-xs transition-all cursor-pointer"
-                            >
-                              {notice.actionText} →
-                            </button>
-                          </div>
-                        )}
                       </div>
                     ))}
                   </div>
@@ -891,11 +843,9 @@ export default function IskconDevoteeSanctuaryModal() {
             </div>
 
             {/* Modal Bottom Bar */}
-            <div className="px-6 py-2.5 border-t border-orange-400/20 bg-[#060402] flex flex-wrap items-center justify-between gap-3 text-xs text-orange-200/80 shrink-0">
-              <span className="flex items-center gap-1.5">
-                <span>🛕 श्रील प्रभुपाद आंतरराष्ट्रीय कृष्णभावनामृत संघ (ISKCON Global TV Theatre)</span>
-              </span>
-              <span className="font-mono text-teal-300">
+            <div className="px-6 py-2 border-t border-orange-400/20 bg-[#060402] flex items-center justify-between text-xs text-orange-200/80 shrink-0">
+              <span>🛕 श्रील प्रभुपाद आंतरराष्ट्रीय कृष्णभावनामृत संघ (ISKCON Global TV Theatre)</span>
+              <span className="font-mono text-teal-300 hidden sm:inline">
                 100% Guaranteed 4K Playback • Free Lifetime Devotional Broadcast
               </span>
             </div>
