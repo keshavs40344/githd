@@ -186,12 +186,14 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
                 <kbd className="bg-black/20 text-[10px] px-1.5 py-0.5 rounded font-mono">⌘K</kbd>
               </button>
 
+              <IskconDevoteeSanctuaryModal />
+
               <button
                 onClick={() => { sacredAudio.playTempleBell(0.6); }}
                 className="px-5 py-3 rounded-2xl bg-[#141628] border-2 border-amber-400/40 text-amber-300 font-serif text-sm font-bold flex items-center gap-2 hover:border-amber-400 hover:bg-[#1e2238] transition-all cursor-pointer shadow-md"
               >
                 <Radio className="w-4 h-4 text-amber-400 animate-pulse" />
-                <span>२४x७ अखण्ड रेडियो चालू करें</span>
+                <span>२४x७ अखण्ड रेडियो</span>
               </button>
             </div>
           </div>
