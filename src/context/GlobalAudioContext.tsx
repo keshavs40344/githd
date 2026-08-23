@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { getMasterTimestampForVerse, MasterShlokaTimestamp, MASTER_VIDEO_ID } from '@/data/gitaMasterAudioTimestamps';
 import { getArtworkDetailsForShloka, KrishnaArt } from '@/data/krishnaArtworks';
 import { getSpeakerForVerse, SpeakerInfo } from '@/lib/universalVedicEngine';
@@ -40,6 +40,7 @@ interface GlobalAudioContextType {
   setIsSearchModalOpen: (open: boolean) => void;
   setSelectedLexiconWord: (word: any | null) => void;
   setActiveCardGeneratorVerse: (verse: any | null) => void;
+  playSanskritChant: () => void;
 }
 
 const GlobalAudioContext = createContext<GlobalAudioContextType | undefined>(undefined);
@@ -51,9 +52,6 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
   const [autoPlayNext, setAutoPlayNext] = useState(true);
   const [sleepTimerRemaining, setSleepTimerRemaining] = useState<number | null>(null);
   const [currentTimeSec, setCurrentTimeSec] = useState(0);
-  
-  // Active streaming src
-  const [audioIframeSrc, setAudioIframeSrc] = useState<string | null>(null);
 
   // Enterprise UI Drawers State
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -128,31 +126,35 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
     setCurrentTrack(track);
     setCurrentTimeSec(0);
     setIsPlaying(true);
-    sacredAudio.playTempleBell(0.35);
+    sacredAudio.playTempleBell(0.4);
+  };
 
-    // Guaranteed YouTube Audio Stream starting exactly at timestamp
-    const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${timestamp.startSeconds}&autoplay=1&enablejsapi=1&playsinline=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`;
-    setAudioIframeSrc(src);
+  const playSanskritChant = () => {
+    if (!currentTrack || !currentTrack.devanagari) return;
+    sacredAudio.startTanpura(0.04);
+    sacredAudio.speakSanskritVerse(
+      currentTrack.devanagari,
+      0.82,
+      'hi-IN',
+      undefined,
+      () => sacredAudio.stopTanpura()
+    );
   };
 
   const togglePlayPause = () => {
     if (!currentTrack) return;
-    if (isPlaying) {
-      setIsPlaying(false);
-      setAudioIframeSrc(null);
+    setIsPlaying(prev => !prev);
+    if (!isPlaying) {
+      sacredAudio.playNavChime(0.06);
     } else {
-      setIsPlaying(true);
-      const startSec = currentTrack.timestamp.startSeconds + currentTimeSec;
-      const src = `https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${startSec}&autoplay=1&enablejsapi=1&playsinline=1&origin=${typeof window !== 'undefined' ? window.location.origin : ''}`;
-      setAudioIframeSrc(src);
+      sacredAudio.stopSpeaking();
     }
-    sacredAudio.playNavChime(0.06);
   };
 
   const stopAudio = () => {
     setIsPlaying(false);
-    setAudioIframeSrc(null);
     setCurrentTimeSec(0);
+    sacredAudio.stopSpeaking();
   };
 
   const nextTrack = () => {
@@ -205,24 +207,11 @@ export function GlobalAudioProvider({ children }: { children: React.ReactNode })
         setSleepTimer,
         setIsSearchModalOpen,
         setSelectedLexiconWord,
-        setActiveCardGeneratorVerse
+        setActiveCardGeneratorVerse,
+        playSanskritChant
       }}
     >
       {children}
-      
-      {/* 
-        Audio Stream Iframe: Mounted with valid size in background
-        so all desktop and mobile browsers permit continuous autoplay!
-      */}
-      {audioIframeSrc && (
-        <div style={{ position: 'fixed', bottom: 10, right: 10, width: 280, height: 160, opacity: 0.001, pointerEvents: 'none', zIndex: -1 }}>
-          <iframe
-            src={audioIframeSrc}
-            title="Gita Chanting Audio Stream"
-            allow="autoplay; encrypted-media"
-          />
-        </div>
-      )}
     </GlobalAudioContext.Provider>
   );
 }

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { 
   Play, Pause, SkipBack, SkipForward, Volume2, X, 
   ChevronUp, ChevronDown, Sparkles, SlidersHorizontal, 
-  ExternalLink, Disc3, Music 
+  ExternalLink, Disc3, Music, Mic
 } from 'lucide-react';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
 import { sacredAudio } from '@/lib/sacredSounds';
@@ -24,10 +24,11 @@ export default function GlobalAudioDock() {
     togglePlayPause, 
     stopAudio, 
     nextTrack, 
-    prevTrack 
+    prevTrack,
+    playSanskritChant 
   } = useGlobalAudio();
 
-  const [showEmbeddedPlayer, setShowEmbeddedPlayer] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   if (!currentTrack) return null;
 
@@ -40,34 +41,60 @@ export default function GlobalAudioDock() {
     return `${m}:${s < 10 ? '0' : ''}${s}`;
   };
 
+  const startSec = currentTrack.timestamp.startSeconds;
+
   return (
     <div className="fixed bottom-4 left-3 right-3 sm:left-auto sm:right-6 sm:max-w-md z-50 animate-fade-in">
       
-      {/* Expandable Embedded Video/Sound Player */}
-      {showEmbeddedPlayer && (
-        <div className="mb-3 rounded-2xl bg-[#090b14]/95 backdrop-blur-2xl border border-[#c5a059]/40 p-3 shadow-2xl space-y-2 animate-fade-in">
+      {/* ── VISIBLE EMBEDDED STREAM PLAYER ─────────────────────────────────── */}
+      {isPlaying && isExpanded && (
+        <div className="mb-2 rounded-2xl bg-[#090b14]/98 backdrop-blur-2xl border-2 border-amber-400/50 p-3 shadow-2xl space-y-2 animate-scale-in">
           <div className="flex items-center justify-between text-xs font-serif text-[#f5eed9]">
-            <span>प्रामाणिक शास्त्रीय वाचन (स्वर: शैलेन्द्र भारती)</span>
-            <button
-              onClick={() => setShowEmbeddedPlayer(false)}
-              className="text-[#c5a059] hover:text-[#f5eed9] p-1 cursor-pointer"
-            >
-              <ChevronDown className="w-4 h-4" />
-            </button>
+            <div className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="font-bold text-amber-300">
+                ॥ अध्याय {toDevanagariNum(currentTrack.chapter)} • श्लोक {toDevanagariNum(currentTrack.verse)} ॥
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={playSanskritChant}
+                className="px-2 py-0.5 rounded-lg bg-amber-400/20 hover:bg-amber-400/30 text-amber-300 text-[10px] font-serif flex items-center gap-1 border border-amber-400/30 cursor-pointer"
+                title="संस्कृत वाणी उच्चारण सुनें"
+              >
+                <Mic className="w-3 h-3" />
+                <span>उच्चारण</span>
+              </button>
+              <button
+                onClick={() => setIsExpanded(false)}
+                className="text-[#c5a059] hover:text-[#f5eed9] p-0.5 cursor-pointer"
+                title="प्लेयर छोटा करें"
+              >
+                <ChevronDown className="w-4 h-4" />
+              </button>
+            </div>
           </div>
-          <div className="aspect-video w-full rounded-xl overflow-hidden bg-black border border-[#c5a059]/20">
+
+          {/* Guaranteed Visible Video/Audio Player */}
+          <div className="aspect-video w-full rounded-xl overflow-hidden bg-black border border-amber-400/30">
             <iframe
-              src={`https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${currentTrack.timestamp.startSeconds}&autoplay=1&controls=1&enablejsapi=1`}
-              title="Gita Shloka Audio"
+              src={`https://www.youtube.com/embed/${MASTER_VIDEO_ID}?start=${startSec}&autoplay=1&controls=1&enablejsapi=1&rel=0`}
+              title="Gita Shloka Audio Stream"
               className="w-full h-full"
-              allow="autoplay; encrypted-media"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
             />
+          </div>
+
+          <div className="flex items-center justify-between text-[10px] font-mono text-[#c5a059]/80 px-1">
+            <span>⏱ श्लोक समय: {currentTrack.timestamp.formattedStart}</span>
+            <span className="text-emerald-400">320kbps HD Audio ✓</span>
           </div>
         </div>
       )}
 
-      {/* Floating Audio Pill Dock */}
-      <div className="relative rounded-full bg-[#0a0c16]/95 backdrop-blur-2xl border-2 border-[#c5a059]/40 p-2 sm:p-2.5 shadow-[0_10px_35px_rgba(0,0,0,0.9)] flex items-center justify-between gap-3 ring-1 ring-[#f5eed9]/20">
+      {/* ── FLOATING AUDIO PILL DOCK ────────────────────────────────────────── */}
+      <div className="relative rounded-full bg-[#0a0c16]/95 backdrop-blur-2xl border-2 border-amber-400/40 p-2 sm:p-2.5 shadow-[0_10px_35px_rgba(0,0,0,0.9)] flex items-center justify-between gap-3 ring-1 ring-amber-400/20">
         
         {/* Track Meta & Link */}
         <Link
@@ -87,8 +114,8 @@ export default function GlobalAudioDock() {
           <div className="min-w-0 space-y-0.5">
             <div className="flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-[11px] font-mono font-bold text-[#f5eed9] truncate group-hover:text-[#e6c687] transition-colors">
-                ॥ अध्याय {toDevanagariNum(currentTrack.chapter)} · श्लोक {toDevanagariNum(currentTrack.verse)} ॥
+              <span className="text-[11px] font-mono font-bold text-[#f5eed9] truncate group-hover:text-amber-300 transition-colors">
+                ॥ {toDevanagariNum(currentTrack.chapter)}.{toDevanagariNum(currentTrack.verse)} ॥
               </span>
             </div>
             
@@ -98,64 +125,66 @@ export default function GlobalAudioDock() {
                 {[40, 90, 60, 100, 75, 45, 80].map((h, i) => (
                   <span
                     key={i}
-                    className="w-0.5 rounded-full bg-[#c5a059] transition-all"
-                    style={{
-                      height: isPlaying ? `${Math.max(25, (h * ((i % 3) + 1)) % 100)}%` : '20%',
-                      animationDuration: `${0.4 + i * 0.1}s`
-                    }}
+                    className={`w-0.5 bg-amber-400 rounded-full transition-all duration-300 ${
+                      isPlaying ? 'animate-pulse' : 'opacity-40'
+                    }`}
+                    style={{ height: isPlaying ? `${h}%` : '20%' }}
                   />
                 ))}
               </div>
-              <span className="text-[9px] text-[#c5a059]/80 font-sans truncate">
-                स्वर: शैलेन्द्र भारती ({formatTime(currentTimeSec)} / {formatTime(durationSec)})
+              <span className="text-[9px] font-mono text-[#c5a059]/80">
+                {formatTime(currentTimeSec)} / {formatTime(durationSec)}
               </span>
             </div>
           </div>
         </Link>
 
-        {/* Controls: [ Prev ] [ Play/Pause ] [ Next ] [ Expand Player ] [ Close ] */}
+        {/* Controls */}
         <div className="flex items-center gap-1 sm:gap-1.5 shrink-0">
           
           <button
             onClick={prevTrack}
-            className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#e6c687] flex items-center justify-center transition-all cursor-pointer"
+            className="p-1.5 rounded-full text-[#c5a059] hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
             title="पिछला श्लोक"
           >
-            <SkipBack className="w-3.5 h-3.5" />
+            <SkipBack className="w-4 h-4" />
           </button>
 
           <button
             onClick={togglePlayPause}
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-amber-400 via-[#c5a059] to-amber-500 text-black flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.6)] hover:scale-110 active:scale-95 transition-transform cursor-pointer border border-[#f5eed9]"
+            className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-500 text-black flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer font-bold"
             title={isPlaying ? 'रोकें' : 'चलाएं'}
           >
-            {isPlaying ? <Pause className="w-4 h-4 fill-current" /> : <Play className="w-4 h-4 fill-current ml-0.5" />}
+            {isPlaying ? (
+              <Pause className="w-4 h-4 sm:w-5 sm:h-5 fill-current" />
+            ) : (
+              <Play className="w-4 h-4 sm:w-5 sm:h-5 fill-current ml-0.5" />
+            )}
           </button>
 
           <button
             onClick={nextTrack}
-            className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#e6c687] flex items-center justify-center transition-all cursor-pointer"
+            className="p-1.5 rounded-full text-[#c5a059] hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
             title="अगला श्लोक"
           >
-            <SkipForward className="w-3.5 h-3.5" />
+            <SkipForward className="w-4 h-4" />
           </button>
 
           <button
-            onClick={() => setShowEmbeddedPlayer(!showEmbeddedPlayer)}
-            className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#141624] hover:bg-[#1f2238] border border-[#c5a059]/25 text-[#c5a059] flex items-center justify-center transition-all cursor-pointer"
-            title="विस्तृत प्लेयर खोलें"
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="p-1.5 rounded-full text-amber-300 hover:text-white hover:bg-white/5 transition-colors cursor-pointer"
+            title={isExpanded ? 'प्लेयर छिपाएं' : 'प्लेयर दिखाएं'}
           >
-            {showEmbeddedPlayer ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronUp className="w-3.5 h-3.5" />}
+            {isExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
           </button>
 
           <button
             onClick={stopAudio}
-            className="w-6 h-6 rounded-full text-[#c5a059]/50 hover:text-[#f5eed9] hover:bg-red-500/20 flex items-center justify-center transition-colors ml-0.5 cursor-pointer"
+            className="p-1.5 rounded-full text-[#c5a059]/60 hover:text-red-400 hover:bg-white/5 transition-colors cursor-pointer ml-0.5"
             title="बंद करें"
           >
             <X className="w-3.5 h-3.5" />
           </button>
-
         </div>
 
       </div>
