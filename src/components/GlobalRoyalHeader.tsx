@@ -9,14 +9,16 @@ import {
 } from 'lucide-react';
 import { sacredAudio } from '@/lib/sacredSounds';
 import { useGlobalAudio } from '@/context/GlobalAudioContext';
+import LiveOnlineRadioModal from '@/components/LiveOnlineRadioModal';
 
 export default function GlobalRoyalHeader() {
+  const [isRadioModalOpen, setIsRadioModalOpen] = React.useState(false);
   const pathname = usePathname();
   const { setIsSearchModalOpen, playTrack } = useGlobalAudio();
 
   const handleOpenRadio = () => {
-    sacredAudio.playFluteChime(0.4);
-    playTrack(2, 47, 'कर्मण्येवाधिकारस्ते मा फलेषु कदाचन', '२४x७ अखंड गीता रसामृत व दिव्य मुरली नाद');
+    sacredAudio.playTripleGhanta(0.6);
+    setIsRadioModalOpen(true);
   };
 
   return (
@@ -115,6 +117,7 @@ export default function GlobalRoyalHeader() {
         </div>
 
       </div>
+      <LiveOnlineRadioModal isOpen={isRadioModalOpen} onClose={() => setIsRadioModalOpen(false)} />
     </header>
   );
 }

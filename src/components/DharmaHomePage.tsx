@@ -24,6 +24,7 @@ import KrishnaAIChat from '@/components/KrishnaAIChat';
 import FamilyDevoteeSanctuary from '@/components/FamilyDevoteeSanctuary';
 import WhyChooseDharmaOS from '@/components/WhyChooseDharmaOS';
 import { HUNDRED_LIFE_DILEMMAS } from '@/data/hundredLifeDilemmas';
+import LiveOnlineRadioModal from '@/components/LiveOnlineRadioModal';
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 const DN = ['०','१','२','३','४','५','६','७','८','९'];
@@ -72,6 +73,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
   const { currentTrack, isPlaying, playTrack, togglePlayPause, setIsSearchModalOpen } = useGlobalAudio();
   const [activeTab, setActiveTab] = useState<'scripture'|'dilemmas'|'family'|'healer'|'sadhana'|'mentor'|'why'>('scripture');
   const [dailyIdx, setDailyIdx] = useState(0);
+  const [isRadioModalOpen, setIsRadioModalOpen] = useState(false);
   const [copied, setCopied] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
@@ -153,7 +155,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               <span>LIVE • सर्वर सक्रिय</span>
             </div>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-mono">
+            <div onClick={() => { setIsRadioModalOpen(true); sacredAudio.playTripleGhanta(0.6); }} className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-400/30 text-amber-300 text-xs font-mono cursor-pointer hover:border-amber-400">
               <Radio className="w-3 h-3 animate-pulse" />
               <span>२४x७ अखंड गीता रेडियो</span>
             </div>
@@ -185,7 +187,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
                 <kbd className="bg-black/20 text-[10px] px-1.5 py-0.5 rounded font-mono">⌘K</kbd>
               </button>
               <button
-                onClick={() => { playTrack(2, 47, 'कर्मण्येवाधिकारस्ते', 'Karma Yoga'); sacredAudio.playFluteChime(0.4); }}
+                onClick={() => { setIsRadioModalOpen(true); sacredAudio.playTripleGhanta(0.6); }}
                 className="px-6 py-3 rounded-2xl bg-[#141624] border border-[#c5a059]/40 text-[#e6c687] font-serif text-sm flex items-center gap-2 hover:border-amber-400 hover:bg-[#1a1e30] transition-all cursor-pointer"
               >
                 <Radio className="w-4 h-4 text-amber-400 animate-pulse" />
@@ -634,6 +636,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
         </div>
       </section>
 
+      <LiveOnlineRadioModal isOpen={isRadioModalOpen} onClose={() => setIsRadioModalOpen(false)} />
     </div>
   );
 }
