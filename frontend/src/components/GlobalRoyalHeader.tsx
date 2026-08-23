@@ -2,6 +2,7 @@
 
 import AutonomousSwarmModal from '@/components/AutonomousSwarmModal';
 import DharmaEnterpriseHQModal from '@/components/DharmaEnterpriseHQModal';
+import ExecutiveBoardroomSheetsModal from '@/components/ExecutiveBoardroomSheetsModal';
 
 import React from 'react';
 import Link from 'next/link';
@@ -92,6 +93,7 @@ export default function GlobalRoyalHeader() {
         <div className="flex items-center gap-2">
           
           {/* 24/7 Akhanda Radio Quick Trigger */}
+          <ExecutiveBoardroomSheetsModal />
           <DharmaEnterpriseHQModal />
           <AutonomousSwarmModal />
           <button
