@@ -39,7 +39,7 @@ const COMPARISON_ROWS = [
     google: 'उपलब्ध नहीं'
   },
   {
-    feature: 'अति-सरल एवं विज्ञापन-मुक्त (100% Zero Ads & Clean)',
+    feature: 'अति-सरल एवं पवित्र वातावरण (100% Pure Focus & Clean)',
     dharmaOS: 'रॉयल ऑब्सिडियन व सोलर गोल्ड पवित्र मन्दिर डिजाइन, शून्य विज्ञापन',
     genericAI: 'बोरिंग चैट टेक्स्ट बॉक्स',
     google: 'पॉपअप्स, बैनर एड्स और भटकाव'
@@ -132,7 +132,7 @@ export default function WhyChooseDharmaOS() {
 
         <div className="p-4 rounded-2xl bg-[#141624]/90 border border-[#c5a059]/20 space-y-1 text-center">
           <span className="text-2xl">✨</span>
-          <h4 className="text-xs font-serif font-bold text-[#f5eed9]">सरल, दिव्य व विज्ञापन-मुक्त</h4>
+          <h4 className="text-xs font-serif font-bold text-[#f5eed9]">सरल, दिव्य व पवित्र वातावरण</h4>
           <p className="text-[11px] text-[#c5a059]/80 font-sans">
             बिना किसी रुकावट या भटकाव के मानसिक शांति का केंद्र।
           </p>

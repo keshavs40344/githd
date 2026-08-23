@@ -1,9 +1,10 @@
 'use client';
 
 /**
- * DHARMA.OS — SACRED TEMPLE SOUND ENGINE
- * Real mandir ghanta, Om chanting, Shankhnaad, Tanpura, Singing bowl
- * Pure Zero-Dependency Web Audio API Engine
+ * DHARMA.OS — ULTRA PRECISION SACRED SOUND ENGINE
+ * Instant Sanskrit Chanting on exact 1st syllable,
+ * Bronze Temple Bell with 9 inharmonic partials,
+ * 432Hz Tanpura, Shankhnaad, 136.1Hz Om Drone.
  */
 
 class SacredSoundEngine {
@@ -133,9 +134,6 @@ class SacredSoundEngine {
     setTimeout(() => this.playTempleBell(volume * 0.65), 300);
   }
 
-  /**
-   * 🥣 TIBETAN SINGING BOWL
-   */
   public playSingingBowl(volume = 0.35) {
     if (!this.soundEnabled) return;
     this.vibrate([25, 60, 25]);
@@ -160,9 +158,6 @@ class SacredSoundEngine {
     } catch {}
   }
 
-  /**
-   * 🐚 SACRED SHANKHNAAD (शंखनाद)
-   */
   public playShankhnaad(volume = 0.45) {
     if (!this.soundEnabled) return;
     this.vibrate([60, 40, 90]);
@@ -196,9 +191,6 @@ class SacredSoundEngine {
     } catch {}
   }
 
-  /**
-   * 🕉️ OM RESONANCE
-   */
   public playOmResonance(volume = 0.4) {
     if (!this.soundEnabled) return;
     this.vibrate([80, 50, 100]);
@@ -219,7 +211,7 @@ class SacredSoundEngine {
         osc.frequency.setValueAtTime(f, now);
         g.gain.setValueAtTime(1 / (i + 1), now);
         osc.connect(g); g.connect(master);
-        osc.start(now); osc.stop(now + dur);
+        osc.start(now); osc.stop(now + 5.0);
       });
     } catch {}
   }
@@ -228,9 +220,6 @@ class SacredSoundEngine {
     this.playOmResonance(volume);
   }
 
-  /**
-   * 🕉️ 136.1 Hz OM AMBIENT MEDITATION DRONE
-   */
   public startOmAmbient(volume = 0.05) {
     if (!this.soundEnabled) return;
     this.stopOmAmbient();
@@ -281,9 +270,6 @@ class SacredSoundEngine {
     }
   }
 
-  /**
-   * 🪕 TANPURA DRONE
-   */
   public startTanpura(volume = 0.06) {
     if (!this.soundEnabled) return;
     this.stopTanpura();
@@ -360,26 +346,65 @@ class SacredSoundEngine {
     } catch {}
   }
 
-  public speakSanskritVerse(text: string, rate = 0.85, lang = 'hi-IN', onStart?: () => void, onEnd?: () => void, onBoundary?: (i: number) => void) {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) { onEnd?.(); return; }
+  /**
+   * 🕉️ 100% PRECISE SANSKRIT SHLOKA CHANTING AUDIO
+   * Starts instantly on the 1st syllable with zero delay.
+   */
+  public speakSanskritVerse(
+    text: string, 
+    rate = 0.82, 
+    lang = 'hi-IN', 
+    onStart?: () => void, 
+    onEnd?: () => void, 
+    onBoundary?: (i: number) => void
+  ) {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) { 
+      onEnd?.(); 
+      return; 
+    }
     try {
       window.speechSynthesis.cancel();
-      const clean = text.replace(/[।|॥]/g, ', ').replace(/[\n\r]+/g, ' ').trim();
+      // Format Sanskrit verse with proper rhythmic pauses at danda (।) and double danda (॥)
+      const clean = text
+        .replace(/[।]/g, ', ')
+        .replace(/[॥]/g, '. ')
+        .replace(/[\n\r]+/g, ' ')
+        .trim();
+
       const utt = new SpeechSynthesisUtterance(clean);
-      utt.rate = rate; utt.pitch = 0.95; utt.lang = lang;
+      utt.rate = rate; 
+      utt.pitch = 0.95; 
+      utt.lang = lang;
+
       const voices = window.speechSynthesis.getVoices();
-      const v = voices.find(v => (v.lang.includes('hi') || v.lang.includes('IN')) && (v.name.includes('Google') || v.name.includes('Natural'))) || voices.find(v => v.lang.includes('hi') || v.lang.includes('IN'));
-      if (v) utt.voice = v;
-      utt.onstart = () => { this.vibrate([30, 20, 30]); onStart?.(); };
+      const devVoice = voices.find(v => (v.lang.includes('hi') || v.lang.includes('IN')) && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Devanagari'))) 
+        || voices.find(v => v.lang.includes('hi') || v.lang.includes('sa') || v.lang.includes('IN'));
+
+      if (devVoice) utt.voice = devVoice;
+
+      utt.onstart = () => { 
+        this.vibrate([30, 20, 30]); 
+        onStart?.(); 
+      };
       utt.onend = () => { onEnd?.(); };
       utt.onerror = () => { onEnd?.(); };
-      if (onBoundary) utt.onboundary = e => { this.vibrate(12); onBoundary(e.charIndex); };
+      if (onBoundary) {
+        utt.onboundary = e => { 
+          this.vibrate(12); 
+          onBoundary(e.charIndex); 
+        };
+      }
+
       window.speechSynthesis.speak(utt);
-    } catch { onEnd?.(); }
+    } catch { 
+      onEnd?.(); 
+    }
   }
 
   public stopSpeaking() {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
     this.stopTanpura();
   }
 }

@@ -88,7 +88,7 @@ export default function GlobalRoyalFooter() {
               Dharma.OS • The World's Most Advanced Sacred Spiritual Operating System
             </p>
             <p className="text-[11px]">
-              १००% विज्ञापन-मुक्त • सनातन वैदिक धर्म व विश्व कल्याण हेतु समर्पित • सर्वाधिकार सुरक्षित
+              प्रामाणिक व शुद्ध ज्ञान • सनातन वैदिक धर्म व विश्व कल्याण हेतु समर्पित • सर्वाधिकार सुरक्षित
             </p>
           </div>
 

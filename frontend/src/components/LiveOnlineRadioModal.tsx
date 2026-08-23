@@ -347,7 +347,7 @@ export default function LiveOnlineRadioModal({
 
         {/* Footer info bar */}
         <div className="px-5 py-3 bg-[#06070d] border-t border-amber-400/15 flex flex-wrap items-center justify-between text-[11px] font-mono text-[#c5a059]/70 gap-2 shrink-0">
-          <span>📡 320kbps HD Lossless Stream • 100% Ad-Free</span>
+          <span>📡 320kbps HD Lossless Stream • Continuous Divine Chanting</span>
           <span className="text-amber-400">सर्वधर्म समभाव • सनातन धर्म ज्ञानकोष</span>
         </div>
       </div>

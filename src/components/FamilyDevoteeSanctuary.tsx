@@ -85,7 +85,7 @@ export default function FamilyDevoteeSanctuary() {
         <div className="space-y-2 text-center md:text-left">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-serif">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>१००% विज्ञापन-मुक्त • सुरक्षित पारिवारिक वातावरण • शून्य भटकाव</span>
+            <span>प्रामाणिक व शुद्ध ज्ञान • सुरक्षित पारिवारिक वातावरण • शून्य भटकाव</span>
           </div>
 
           <h2 className="text-2xl sm:text-3xl font-devanagari font-bold text-[#f5eed9]">
@@ -110,7 +110,7 @@ export default function FamilyDevoteeSanctuary() {
             <Radio className={`w-4 h-4 ${isPlayingFluteRadio ? 'animate-pulse' : ''}`} />
             <span>{isPlayingFluteRadio ? 'अखंड रसामृत बज रहा है (Pause)' : '२४x७ अखंड गीता व मुरली धुन (Play)'}</span>
           </button>
-          <span className="text-[10px] font-mono text-[#c5a059]/70">Zero Ads • High-Fidelity 432Hz Sound</span>
+          <span className="text-[10px] font-mono text-[#c5a059]/70">Pure Focus • High-Fidelity 432Hz Sound</span>
         </div>
       </div>
 

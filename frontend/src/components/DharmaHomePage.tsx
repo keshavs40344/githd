@@ -36,7 +36,7 @@ const LIVE_STATS = [
   { label: 'सम्पूर्ण श्लोक', value: '७०० श्लोक', icon: '📖', sub: '18 Chapters • All Verses' },
   { label: 'शास्त्रीय भाष्य', value: '७ भाष्यकार', icon: '🕉️', sub: 'Shankaracharya + 6 More' },
   { label: 'जीवन समाधान', value: '१०८ समाधान', icon: '🎯', sub: 'Every Human Problem Solved' },
-  { label: 'पूर्ण निःशुल्क', value: '१००% मुफ़्त', icon: '🪔', sub: 'Zero Ads • Zero Tracking' },
+  { label: 'पूर्ण निःशुल्क', value: '१००% मुफ़्त', icon: '🪔', sub: 'Pure Vedic Wisdom' },
 ];
 
 // ── Daily Featured Verses ─────────────────────────────────────────────────────
@@ -162,7 +162,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
             </div>
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/15 border border-blue-400/30 text-blue-300 text-xs font-mono">
               <ShieldCheck className="w-3 h-3" />
-              <span>१००% विज्ञापन-मुक्त • Zero Tracking</span>
+              <span>प्रामाणिक वैदिक ज्ञान • Authentic Wisdom</span>
             </div>
           </div>
 
@@ -622,7 +622,7 @@ export default function DharmaHomePage({ verses }: { verses?: any[] }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
             {[
-              { icon: <ShieldCheck className="w-5 h-5 text-emerald-400" />, label: '१००% विज्ञापन-मुक्त', sub: 'Zero Ads Forever' },
+              { icon: <ShieldCheck className="w-5 h-5 text-emerald-400" />, label: 'प्रामाणिक व शुद्ध ज्ञान', sub: 'Universal Spiritual Sanctum' },
               { icon: <Globe2 className="w-5 h-5 text-blue-400" />, label: 'वेदोक्त प्रामाणिक', sub: '7 Classical Commentaries' },
               { icon: <Zap className="w-5 h-5 text-amber-400" />, label: 'तुरंत उत्तर', sub: 'Instant Gita Guidance' },
               { icon: <Heart className="w-5 h-5 text-red-400" />, label: 'भक्तिपूर्ण निर्मित', sub: 'Built with Devotion' },
